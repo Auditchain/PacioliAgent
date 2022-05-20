@@ -174,10 +174,10 @@ async function verifyPacioli(metadatatUrl, trxHash) {
     const result = await ipfs1.files.cat(metadatatUrl);
     const reportUrl = JSON.parse(result)["reportUrl"];
     console.log("[1 " + trxHash + "]" + "  Querying Pacioli " + reportUrl);
-    const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
-        .catch(error => console.log("ERROR: " + error));
-    // const reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
-    //      .catch(error => console.log("ERROR: " + error));
+    // const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
+    //     .catch(error => console.log("ERROR: " + error));
+    const reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
+         .catch(error => console.log("ERROR: " + error));
 
 
     if (!reportContent)
@@ -202,10 +202,10 @@ async function verifyPacioli(metadatatUrl, trxHash) {
 }
 
 // TODO:  Use only for testing to bypass calling Pacioli
-async function verifyPacioli1(metadatatUrl, trxHash) {
+// async function verifyPacioli(metadatatUrl, trxHash) {
 
-    return ["QmSNQetWJuvwahuQbxJwEMoa5yPprfWdSqhJUZaSTKJ4Mg/AuditchainMetadataReport.json", 0]
-}
+//     return ["QmSNQetWJuvwahuQbxJwEMoa5yPprfWdSqhJUZaSTKJ4Mg/AuditchainMetadataReport.json", 0]
+// }
 
 
 /**
@@ -621,7 +621,8 @@ async function initProcess(privateKey) {
 
     setUpContracts(privateKey);
     validatorDetails = await fetchValidatorDetails();
-
+    console.log("Details known about this node:");
+    console.log(validatorDetails);
 
     const validationStruct = await nodeOperationsPreEvent.methods.nodeOpStruct(owner).call();
     const isNodeOperator = validationStruct.isNodeOperator;
