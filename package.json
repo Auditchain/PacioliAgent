@@ -11,7 +11,7 @@
   "dependencies": {
     "big-number": "^2.0.0",
     "ipfs-api": "^26.1.2",
-    "ipfs-http-client": "^56.0.3",
+    "ipfs-http-client": "^53.0.1",
     "prompt-sync": "^4.2.0",
     "truffle-contract": "^4.0.31"
   }
