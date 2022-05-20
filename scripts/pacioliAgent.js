@@ -285,11 +285,7 @@ async function handlePacioliIPFS(url, trxHash) {
 async function validate(documentHash, initTime, choice, trxHash, valUrl, reportHash, subscriber) {
 
     console.log("[6 " + trxHash + "] Waiting for validation transaction to complete... ");
-
-    // if (mutex) {
-    // mutex = false;
     const nonce = await web3.eth.getTransactionCount(owner);
-    // console.log("Nonce value from validate:", nonce);
 
     try {
 
@@ -307,8 +303,6 @@ async function validate(documentHash, initTime, choice, trxHash, valUrl, reportH
 
         validationCount++
         console.log("Total validation count:" + validationCount);
-        // mutex = true;
-        // nonce++;
         return true;
     }
     catch (error) {
@@ -342,8 +336,6 @@ async function checkHash(validators, valHash) {
     const count = validators.length;
     const winnerSelected = Math.floor((Math.random() * count));
     const winnerAddress = validators[winnerSelected];
-    // const validationHash = event.returnValues.validationHash;
-    // const owner = providerForUpdate.addresses[0];
 
     console.log("[8 " + "0x" + "] Verifying winner validation for account:" + winnerAddress)
 
@@ -413,8 +405,6 @@ async function checkHash(validators, valHash) {
 async function voteWinner(winners, votes, validationHash, trxHash) {
 
     const nonce = await web3.eth.getTransactionCount(owner);
-    // console.log("validation  hash from voteWinner:", validationHash);
-
     try {
         const receipt = await nonCohortValidate.methods.voteWinner(winners, votes, validationHash)
             .send({ from: owner, gas: 800000, nonce: nonce })
@@ -428,9 +418,6 @@ async function voteWinner(winners, votes, validationHash, trxHash) {
     }
 
 }
-
-
-
 
 
 async function getBlockNumber() {
@@ -457,13 +444,11 @@ async function checkValQueue(vHash) {
         if (Number(queueSize) > 0) {
 
             let result = await queueContract.methods.getNextValidation().call();
-            // console.log("result:", result);
             let validationHash = result[0];
             let documentHash = result[1]
             let url =  result[2];
             let user = result[3];
             let initTime = result[4];
-            // [validationHash, url] = await queueContract.methods.getNextValidation().call();
             if (vHash != validationHash && validationHash != zeroTransaction) {
                 console.log("from checkValQueue", validationHash);
                 let isValidated = await nonCohortValidate.methods.isValidated(validationHash).call({ from: owner });
@@ -472,18 +457,6 @@ async function checkValQueue(vHash) {
 
                     try {
 
-                        // const nonce = await web3.eth.getTransactionCount(owner);
-                        // const blockNumber = Number(await getBlockNumber()) - 1;
-
-                        // const validationInitialized = await nonCohortValidate.getPastEvents("ValidationInitialized", {
-                        //     filter: { validationHash: validationHash },
-                        //     fromBlock: 0,
-                        //     toBlock: "latest",
-                        // });
-
-
-                        // const values = validationInitialized[0].returnValues;
-                        // const trxHash = validationInitialized[0].transactionHash;
                         let trxHash= "0x"
 
                         const [metaDataLink, reportHash, isValid] = await handlePacioliIPFS(url, trxHash);
@@ -509,8 +482,6 @@ async function checkValQueue(vHash) {
                         setIntervalId = setInterval(
                             () => (checkValQueue(vHash).then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
                             intervalSize);
-                        // await checkVoteQueue();
-
                         console.log("after reading events or Pacioli bad response", error);
                     }
                 }
@@ -520,7 +491,6 @@ async function checkValQueue(vHash) {
                     setIntervalId = setInterval(
                         () => (checkValQueue(validationHash).then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
                         intervalSize);
-                    // await checkVoteQueue();
                 }
 
             } else {
@@ -564,25 +534,13 @@ async function checkVoteQueue(vHash) {
         if (Number(queueSize) > 0) {
             validationHash = await queueContract.methods.getNextValidationToVote().call();
 
-            // validationHash = await returnNextValidationForVote(lastValidationHash);
-
             if (vHash != validationHash && validationHash != zeroTransaction) {
 
                 let hasVoted = await nonCohortValidate.methods.hasVoted(validationHash).call({ from: owner });
                 if (!hasVoted) {
 
                     console.log("check vote queue", validationHash);
-                    // const blockNumber = await getBlockNumber();
-
-
-                    // const requestExecuted = await nonCohortValidate.getPastEvents("RequestExecuted", {
-                    //     filter: { validationHash: validationHash },
-                    //     fromBlock: 0,
-                    //     toBlock: "latest",
-                    // });
-
-                    // const values = requestExecuted[0];
-                    // const trxHash = values.transactionHash;
+                  
                     const trxHash = "0x";
 
                     const executed = await executeVote(validationHash, trxHash);
@@ -629,8 +587,6 @@ async function executeVote(valHash, trxHash) {
 
     let results = await nonCohortValidate.methods.collectValidationResults(valHash).call();
 
-    // console.log("results from executeVote:", results[0]);
-
     for (let i = 0; i < results[0].length; i++) {
         const [vote, winner] = await checkHash(results[0], valHash);
 
@@ -648,7 +604,6 @@ async function executeVote(valHash, trxHash) {
 
     return executed;
 
-
 }
 
 
@@ -660,8 +615,6 @@ async function getFileAtr() {
 }
 
 async function initProcess(privateKey) {
-
-
 
     owner = provider.addresses[0];
     web3 = new Web3(provider);
