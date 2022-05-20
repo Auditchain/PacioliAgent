@@ -174,10 +174,10 @@ async function verifyPacioli(metadatatUrl, trxHash) {
     const result = await ipfs1.files.cat(metadatatUrl);
     const reportUrl = JSON.parse(result)["reportUrl"];
     console.log("[1 " + trxHash + "]" + "  Querying Pacioli " + reportUrl);
-    const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
-        .catch(error => console.log("ERROR: " + error));
-    // const reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
-    //      .catch(error => console.log("ERROR: " + error));
+    // const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
+    //     .catch(error => console.log("ERROR: " + error));
+    const reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
+         .catch(error => console.log("ERROR: " + error));
 
 
     if (!reportContent)
@@ -193,7 +193,7 @@ async function verifyPacioli(metadatatUrl, trxHash) {
             path: "Pacioli.json",
             content: bufRule
         }];
-    const resultPacioli = await ipfs.addAll(reportFile, { wrapWithDirectory: true });
+    const resultPacioli = await ipfs.add(reportFile, { wrapWithDirectory: true });
     const pacioliIPFS = resultPacioli.cid + '/' + "Pacioli.json"
 
     console.log("[3 " + trxHash + "] Pacioli report saved at: " + ipfsBase + pacioliIPFS);
@@ -202,10 +202,10 @@ async function verifyPacioli(metadatatUrl, trxHash) {
 }
 
 // TODO:  Use only for testing to bypass calling Pacioli
-// async function verifyPacioli(metadatatUrl, trxHash) {
+async function verifyPacioli1(metadatatUrl, trxHash) {
 
-//     return ["QmSNQetWJuvwahuQbxJwEMoa5yPprfWdSqhJUZaSTKJ4Mg/AuditchainMetadataReport.json", 0]
-// }
+    return ["QmSNQetWJuvwahuQbxJwEMoa5yPprfWdSqhJUZaSTKJ4Mg/AuditchainMetadataReport.json", 0]
+}
 
 
 /**
@@ -239,7 +239,7 @@ async function uploadMetadataToIpfs(url, reportPacioliIPFSUrl, trxHash, isValid)
             content: buf
         }];
 
-    const result = await ipfs.addAll(metadataFile, { wrapWithDirectory: true });
+    const result = await ipfs.add(metadataFile, { wrapWithDirectory: true });
     const urlMetadata = result.cid + '/' + "AuditchainMetadataReport.json";
 
     console.log("[5 " + trxHash + "] Metadata created: " + ipfsBase + urlMetadata);
@@ -336,17 +336,18 @@ function sleep(ms) {
  * @returns {winner address for which check was done } winnerAddress
  */
 
-async function checkHash(event) {
+async function checkHash(validators, valHash) {
 
-    const count = event.returnValues.winners.length;
+
+    const count = validators.length;
     const winnerSelected = Math.floor((Math.random() * count));
-    const winnerAddress = event.returnValues.winners[winnerSelected];
-    const validationHash = event.returnValues.validationHash;
+    const winnerAddress = validators[winnerSelected];
+    // const validationHash = event.returnValues.validationHash;
     // const owner = providerForUpdate.addresses[0];
 
-    console.log("[8 " + event.transactionHash + "] Verifying winner validation for account:" + winnerAddress)
+    console.log("[8 " + "0x" + "] Verifying winner validation for account:" + winnerAddress)
 
-    let validation = await nonCohortValidate.methods.collectValidationResults(validationHash).call();
+    let validation = await nonCohortValidate.methods.collectValidationResults(valHash).call();
 
     let winnerReportUrl, myReportUrl, winnerReportHash, myReportHash = 0;
     let times = 0;
@@ -397,7 +398,7 @@ async function checkHash(event) {
     if (winnerReportHash == myReportHash)
         vote = true;
 
-    console.log("[9 " + event.transactionHash + "] Winner validation verified as ", vote ? "similar." : "different.")
+    console.log("[9 " + "0x" + "] Winner validation verified as ", vote ? "similar." : "different.")
 
     return [vote, winnerAddress];
 }
@@ -412,7 +413,7 @@ async function checkHash(event) {
 async function voteWinner(winners, votes, validationHash, trxHash) {
 
     const nonce = await web3.eth.getTransactionCount(owner);
-    console.log("validation  hash from voteWinner:", validationHash);
+    // console.log("validation  hash from voteWinner:", validationHash);
 
     try {
         const receipt = await nonCohortValidate.methods.voteWinner(winners, votes, validationHash)
@@ -454,34 +455,43 @@ async function checkValQueue(vHash) {
         let validationHash;
 
         if (Number(queueSize) > 0) {
-            validationHash = await queueContract.methods.getNextValidation().call();
+
+            let result = await queueContract.methods.getNextValidation().call();
+            // console.log("result:", result);
+            let validationHash = result[0];
+            let documentHash = result[1]
+            let url =  result[2];
+            let user = result[3];
+            let initTime = result[4];
+            // [validationHash, url] = await queueContract.methods.getNextValidation().call();
             if (vHash != validationHash && validationHash != zeroTransaction) {
-                console.log("from checkValQueueu", validationHash);
+                console.log("from checkValQueue", validationHash);
                 let isValidated = await nonCohortValidate.methods.isValidated(validationHash).call({ from: owner });
 
                 if (isValidated == 0) {
 
                     try {
 
-                        const nonce = await web3.eth.getTransactionCount(owner);
-                        const blockNumber = Number(await getBlockNumber()) - 1;
+                        // const nonce = await web3.eth.getTransactionCount(owner);
+                        // const blockNumber = Number(await getBlockNumber()) - 1;
 
-                        const validationInitialized = await nonCohortValidate.getPastEvents("ValidationInitialized", {
-                            filter: { validationHash: validationHash },
-                            fromBlock: 0,
-                            toBlock: "latest",
-                        });
+                        // const validationInitialized = await nonCohortValidate.getPastEvents("ValidationInitialized", {
+                        //     filter: { validationHash: validationHash },
+                        //     fromBlock: 0,
+                        //     toBlock: "latest",
+                        // });
 
 
-                        const values = validationInitialized[0].returnValues;
-                        const trxHash = validationInitialized[0].transactionHash;
+                        // const values = validationInitialized[0].returnValues;
+                        // const trxHash = validationInitialized[0].transactionHash;
+                        let trxHash= "0x"
 
-                        const [metaDataLink, reportHash, isValid] = await handlePacioliIPFS(values.url, trxHash);
+                        const [metaDataLink, reportHash, isValid] = await handlePacioliIPFS(url, trxHash);
 
                         if (metaDataLink == undefined)
                             throw "Process aborted due to failed Pacioli response"
 
-                        const hasExecuted = await validate(values.documentHash, values.initTime, isValid ? 1 : 2, trxHash, metaDataLink, reportHash, values.user);
+                        const hasExecuted = await validate(documentHash, initTime, isValid ? 1 : 2, trxHash, metaDataLink, reportHash, user);
                         console.log("has executed in checkValQueue", hasExecuted);
 
                         if (hasExecuted) {
@@ -562,19 +572,20 @@ async function checkVoteQueue(vHash) {
                 if (!hasVoted) {
 
                     console.log("check vote queue", validationHash);
-                    const blockNumber = await getBlockNumber();
+                    // const blockNumber = await getBlockNumber();
 
 
-                    const requestExecuted = await nonCohortValidate.getPastEvents("RequestExecuted", {
-                        filter: { validationHash: validationHash },
-                        fromBlock: 0,
-                        toBlock: "latest",
-                    });
+                    // const requestExecuted = await nonCohortValidate.getPastEvents("RequestExecuted", {
+                    //     filter: { validationHash: validationHash },
+                    //     fromBlock: 0,
+                    //     toBlock: "latest",
+                    // });
 
-                    const values = requestExecuted[0];
-                    const trxHash = values.transactionHash;
+                    // const values = requestExecuted[0];
+                    // const trxHash = values.transactionHash;
+                    const trxHash = "0x";
 
-                    const executed = await executeVote(values, trxHash);
+                    const executed = await executeVote(validationHash, trxHash);
                     if (!executed)
                         await checkVoteQueue();
                 }
@@ -611,13 +622,17 @@ async function checkVoteQueue(vHash) {
  * @dev It will execute vote on the winners
  * @param { an object with validators and their choices} values 
  */
-async function executeVote(values, trxHash) {
+async function executeVote(valHash, trxHash) {
 
     let winners = [];
     let votes = [];
 
-    for (let i = 0; i < values.returnValues.winners.length; i++) {
-        const [vote, winner] = await checkHash(values);
+    let results = await nonCohortValidate.methods.collectValidationResults(valHash).call();
+
+    // console.log("results from executeVote:", results[0]);
+
+    for (let i = 0; i < results[0].length; i++) {
+        const [vote, winner] = await checkHash(results[0], valHash);
 
         if (winner != null) {
             votes[i] = vote;
@@ -625,11 +640,11 @@ async function executeVote(values, trxHash) {
         }
     }
 
-    let hasVoted = await nonCohortValidate.methods.hasVoted(values.returnValues.validationHash).call({ from: owner });
+    let hasVoted = await nonCohortValidate.methods.hasVoted(valHash).call({ from: owner });
     let executed = true;
 
     if (!hasVoted)
-        executed = await voteWinner(winners, votes, values.returnValues.validationHash, trxHash);
+        executed = await voteWinner(winners, votes, valHash, trxHash);
 
     return executed;
 
@@ -647,14 +662,11 @@ async function getFileAtr() {
 async function initProcess(privateKey) {
 
 
+
     owner = provider.addresses[0];
     web3 = new Web3(provider);
 
     setUpContracts(privateKey);
-
-    validatorDetails = await fetchValidatorDetails();
-    console.log("Details known about this node:");
-    console.log(validatorDetails);
 
     const validationStruct = await nodeOperationsPreEvent.methods.nodeOpStruct(owner).call();
     const isNodeOperator = validationStruct.isNodeOperator;
