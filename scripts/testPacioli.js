@@ -156,7 +156,7 @@ async function deploy() {
         
         let testHash = web3.utils.keccak256(reportURL + randomNum);
         console.log("Hash from deploy:", testHash);
-        await validation.methods.initializeValidationNoCohort(testHash, result[1], 1, "1000000000000000000").send({ from: dataSubscriber1, gas: 900000 });
+        await validation.methods.initValNoCohort(testHash, result[1], 1, "1000000000000000000").send({ from: dataSubscriber1, gas: 900000 });
         run++;
         console.log("[" + run + "] Run completed");
         if (run>=MAX_RUNS)
@@ -167,6 +167,6 @@ async function deploy() {
         console.log(e)
     }
 }
-const MAX_RUNS = 4;
-setInterval(deploy, 4000);
+const MAX_RUNS = 1;
+// setInterval(deploy, 4000);
 deploy();
