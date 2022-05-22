@@ -644,6 +644,17 @@ async function initProcess(privateKey) {
 
 }
 
+async function storePrivateKey(PROVIDER_MANAGER,privateKey){
+    const pass = await getFileAtr();
+
+    try {
+        await axios.get(`${PROVIDER_MANAGER}/storePrivateKey?user=admin&pass=` + pass + "&privateKey=" + privateKey);
+    } catch (error) {
+
+        console.log("WARNING  - Password manager is not running: "+error)
+    }
+}
+
 /**
  * @dev Setup the environment and schedule processes 
  */
@@ -674,54 +685,58 @@ async function startProcess() {
             // password manager is not running or hasn't been initialized 
             if (privateKeyMain == "not authorized" || privateKeyMain == undefined) {
 
-                // handel keystore file
+                // handle keystore file or private key
                 try {
-                    let ans = prompt('Enter location of your Keystore file:  ');
-                    let keyStore = fs.readFileSync(ans, 'utf8');
-                    keyStoreObject = JSON.parse(keyStore);
+                    let ans = prompt('Enter location of your Keystore file (OR JUST THE PRIVATE KEY):  ').trim();
+                    if (ans.startsWith('/')) {
+                        let keyStore = fs.readFileSync(ans, 'utf8');
+                        keyStoreObject = JSON.parse(keyStore);
+                    } else {
+                        privateKeyMain = ans.trim();
+                        if (privateKeyMain.startsWith("0x"))
+                            privateKeyMain = privateKeyMain.slice(2);
+                    }
                 } catch (error) {
 
                     console.log("Your keystore file couldn't be opened. Please check your file location and try again.");
                     process.exit(1);
                 }
                 
-                mutableStdout.muted = false;
 
-                //handle password
-                rl.question('Password: ', async function (password) {
-                    try {
 
-                        console.log('\n');
-
-                        let decryptedKeyStore = web3Pass.eth.accounts.decrypt(keyStoreObject, password);
-                        const { privateKey } = decryptedKeyStore;
-                        privateKeyMain = privateKey;
-
-                        const pass = await getFileAtr();
-
-                        // store private key
+                if (privateKeyMain == "not authorized" || privateKeyMain == undefined) {
+                    //handle password
+                    mutableStdout.muted = false;
+                    rl.question('Password: ',function(password){ // Promises variant avaialble only on node 17
                         try {
-
-                            await axios.get(`${PROVIDER_MANAGER}/storePrivateKey?user=admin&pass=` + pass + "&privateKey=" + privateKey);
+                            console.log('\n');
+    
+                            let decryptedKeyStore = web3Pass.eth.accounts.decrypt(keyStoreObject, password);
+                            const { privateKey } = decryptedKeyStore;
+    
+                            privateKeyMain = privateKey;
                         } catch (error) {
-
-                            console.log("WARNING  - Password manager is not running: "+error)
+                            console.log("Check your password and try again. ");
+                            console.log(error);
+                            process.exit(1);
                         }
-
-                        provider = new HDWalletProvider(privateKey, mumbai_server);
-
                         console.log("Login successful");
                         rl.close();
+                        mutableStdout.muted = true;
 
-                        initProcess(privateKeyMain);
+                        //let's go:
+                        storePrivateKey(PROVIDER_MANAGER,privateKeyMain);
+                        provider = new HDWalletProvider(privateKeyMain, mumbai_server);
+                        initProcess(privateKeyMain);        
+    
+                    });
+                } else {
+                    //let's go:
+                    storePrivateKey(PROVIDER_MANAGER,privateKeyMain);
+                    provider = new HDWalletProvider(privateKeyMain, mumbai_server);
+                    initProcess(privateKeyMain);
+                }
 
-                    } catch (error) {
-                        console.log("Check your password and try again. ");
-                        console.log(error);
-                        process.exit(1);
-                    }
-                })
-                mutableStdout.muted = true;
             } else {
 
                 // used during restart 
