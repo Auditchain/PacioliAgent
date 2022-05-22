@@ -688,7 +688,6 @@ async function startProcess() {
                 // handle keystore file or private key
                 try {
                     let ans = prompt('Enter location of your Keystore file (OR JUST THE PRIVATE KEY):  ').trim();
-                    console.log(ans);
                     if (ans.startsWith('/')) {
                         let keyStore = fs.readFileSync(ans, 'utf8');
                         keyStoreObject = JSON.parse(keyStore);
