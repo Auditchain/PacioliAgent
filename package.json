@@ -9,7 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.4",
+    "@truffle/hdwallet-provider": "^2.0.8",
     "big-number": "^2.0.0",
+    "dotenv": "^9.0.2",
     "ipfs-api": "^26.1.2",
     "ipfs-http-client": "^53.0.1",
     "prompt-sync": "^4.2.0",

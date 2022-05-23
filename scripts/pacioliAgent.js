@@ -174,10 +174,10 @@ async function verifyPacioli(metadatatUrl, trxHash) {
     const result = await ipfs1.files.cat(metadatatUrl);
     const reportUrl = JSON.parse(result)["reportUrl"];
     console.log("[1 " + trxHash + "]" + "  Querying Pacioli " + reportUrl);
-    const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
-        .catch(error => console.log("ERROR: " + error));
-    // const reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
-    //      .catch(error => console.log("ERROR: " + error));
+    // const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
+    //     .catch(error => console.log("ERROR: " + error));
+    const reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
+         .catch(error => console.log("ERROR: " + error));
 
 
     if (!reportContent)
@@ -202,10 +202,10 @@ async function verifyPacioli(metadatatUrl, trxHash) {
 }
 
 // TODO:  Use only for testing to bypass calling Pacioli
-async function verifyPacioli1(metadatatUrl, trxHash) {
+// async function verifyPacioli(metadatatUrl, trxHash) {
 
-    return ["QmSNQetWJuvwahuQbxJwEMoa5yPprfWdSqhJUZaSTKJ4Mg/AuditchainMetadataReport.json", 0]
-}
+//     return ["QmSNQetWJuvwahuQbxJwEMoa5yPprfWdSqhJUZaSTKJ4Mg/AuditchainMetadataReport.json", 0]
+// }
 
 
 /**
@@ -621,7 +621,8 @@ async function initProcess(privateKey) {
 
     setUpContracts(privateKey);
     validatorDetails = await fetchValidatorDetails();
-
+    console.log("Details known about this node:");
+    console.log(validatorDetails);
 
     const validationStruct = await nodeOperationsPreEvent.methods.nodeOpStruct(owner).call();
     const isNodeOperator = validationStruct.isNodeOperator;
@@ -641,6 +642,17 @@ async function initProcess(privateKey) {
     else
         console.log("You can't validate because you are not a node operator. Please register as node operator first and restart this process.");
 
+}
+
+async function storePrivateKey(PROVIDER_MANAGER,privateKey){
+    const pass = await getFileAtr();
+
+    try {
+        await axios.get(`${PROVIDER_MANAGER}/storePrivateKey?user=admin&pass=` + pass + "&privateKey=" + privateKey);
+    } catch (error) {
+
+        console.log("WARNING  - Password manager is not running: "+error)
+    }
 }
 
 /**
@@ -673,54 +685,58 @@ async function startProcess() {
             // password manager is not running or hasn't been initialized 
             if (privateKeyMain == "not authorized" || privateKeyMain == undefined) {
 
-                // handel keystore file
+                // handle keystore file or private key
                 try {
-                    let ans = prompt('Enter location of your Keystore file:  ');
-                    let keyStore = fs.readFileSync(ans, 'utf8');
-                    keyStoreObject = JSON.parse(keyStore);
+                    let ans = prompt('Enter location of your Keystore file (OR JUST THE PRIVATE KEY):  ').trim();
+                    if (ans.startsWith('/')) {
+                        let keyStore = fs.readFileSync(ans, 'utf8');
+                        keyStoreObject = JSON.parse(keyStore);
+                    } else {
+                        privateKeyMain = ans.trim();
+                        if (privateKeyMain.startsWith("0x"))
+                            privateKeyMain = privateKeyMain.slice(2);
+                    }
                 } catch (error) {
 
                     console.log("Your keystore file couldn't be opened. Please check your file location and try again.");
                     process.exit(1);
                 }
                 
-                mutableStdout.muted = false;
 
-                //handle password
-                rl.question('Password: ', async function (password) {
-                    try {
 
-                        console.log('\n');
-
-                        let decryptedKeyStore = web3Pass.eth.accounts.decrypt(keyStoreObject, password);
-                        const { privateKey } = decryptedKeyStore;
-                        privateKeyMain = privateKey;
-
-                        const pass = await getFileAtr();
-
-                        // store private key
+                if (privateKeyMain == "not authorized" || privateKeyMain == undefined) {
+                    //handle password
+                    mutableStdout.muted = false;
+                    rl.question('Password: ',function(password){ // Promises variant avaialble only on node 17
                         try {
-
-                            await axios.get(`${PROVIDER_MANAGER}/storePrivateKey?user=admin&pass=` + pass + "&privateKey=" + privateKey);
+                            console.log('\n');
+    
+                            let decryptedKeyStore = web3Pass.eth.accounts.decrypt(keyStoreObject, password);
+                            const { privateKey } = decryptedKeyStore;
+    
+                            privateKeyMain = privateKey;
                         } catch (error) {
-
-                            console.log("WARNING  - Password manager is not running: "+error)
+                            console.log("Check your password and try again. ");
+                            console.log(error);
+                            process.exit(1);
                         }
-
-                        provider = new HDWalletProvider(privateKey, mumbai_server);
-
                         console.log("Login successful");
                         rl.close();
+                        mutableStdout.muted = true;
 
-                        initProcess(privateKeyMain);
+                        //let's go:
+                        storePrivateKey(PROVIDER_MANAGER,privateKeyMain);
+                        provider = new HDWalletProvider(privateKeyMain, mumbai_server);
+                        initProcess(privateKeyMain);        
+    
+                    });
+                } else {
+                    //let's go:
+                    storePrivateKey(PROVIDER_MANAGER,privateKeyMain);
+                    provider = new HDWalletProvider(privateKeyMain, mumbai_server);
+                    initProcess(privateKeyMain);
+                }
 
-                    } catch (error) {
-                        console.log("Check your password and try again. ");
-                        console.log(error);
-                        process.exit(1);
-                    }
-                })
-                mutableStdout.muted = true;
             } else {
 
                 // used during restart 
