@@ -165,13 +165,13 @@ async function setUpContracts() {
 
 /** 
  * @dev Call Pacioli endpoint and receive report, then store it on IPFS
- * @param  {contains information about the location of the submitted report on IPFS by the data subscriber }
+ * @param  {contains information about the location of the submitted report on IPFS by the data subscriber } metadataUrl
  * @param  {blockchain transaction hash} trxHash
  * @returns {location of Pacioli report on IPFS and result of validation valid or not}
  */
-async function verifyPacioli(metadatatUrl, trxHash) {
+async function verifyPacioli(metadataUrl, trxHash) {
 
-    const result = await ipfs1.files.cat(metadatatUrl);
+    const result = await ipfs1.files.cat(metadataUrl);
     const reportUrl = JSON.parse(result)["reportUrl"];
     console.log("[1 " + trxHash + "]" + "  Querying Pacioli " + reportUrl);
     // const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
@@ -325,7 +325,8 @@ function sleep(ms) {
 
 /**
  * @dev {Verify if hashes match. Validator checks hash of their own validation with the hashes of winners}
- * @param {containing all details } event 
+ * @param {list of validators} validators
+ * @param {validation hash } valHash 
  * @returns {vote which has been determined by comparing hashes true or false} vote
  * @returns {winner address for which check was done } winnerAddress
  */
@@ -398,7 +399,7 @@ async function checkHash(validators, valHash) {
 
 /**
  * @dev {Validator votes who is the winner of validation}
- * @param  {list of validators who have successfully completed validation} winner
+ * @param  {list of validators who have successfully completed validation} winners
  * @param  {votes of respective validators} votes
  * @param  {validation hash of transaction in question} validationHash
  */
@@ -430,7 +431,7 @@ async function getBlockNumber() {
 
 /**
  * @dev checks if there is any request in queue for validation
- * @param {last processed validation hash } lastValidationHash 
+ * @param {last processed validation hash } vHash 
  */
 async function checkValQueue(vHash) {
 
@@ -520,7 +521,7 @@ async function checkValQueue(vHash) {
 
 /**
  * @dev checks if there is any request in queue for a vote of winning validator
- * @param {last processed validation hash } lastValidationHash 
+ * @param {last processed validation hash } vHash 
  */
 async function checkVoteQueue(vHash) {
 
@@ -578,7 +579,8 @@ async function checkVoteQueue(vHash) {
 
 /**
  * @dev It will execute vote on the winners
- * @param { an object with validators and their choices} values 
+ * @param { validation hash} valHash 
+ * @param {transaction hash} trxHash
  */
 async function executeVote(valHash, trxHash) {
 
