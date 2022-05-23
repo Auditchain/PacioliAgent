@@ -364,17 +364,17 @@ async function checkHash(validators, valHash) {
         if (myReportHash == 0 && i == validation[0].length - 1) {
             if (times > 5) {
                 i = validation[0].length;
-                console.log("[8. " + times + "  " + event.transactionHash + "] Gave up on waiting for results of validation. Limit of retries reached.");
+                console.log("[8. " + times + " ] Gave up on waiting for results of validation. Limit of retries reached.");
                 return [null, null];
 
 
             }
             else {
 
-                console.log("[8. " + times + "  " + event.transactionHash + "] It will wait for 5 sec");
+                console.log("[8. " + times + "] It will wait for 5 sec");
                 await sleep(sleepTime);
                 validation = await nonCohortValidate.methods.collectValidationResults(validationHash).call();
-                console.log("[8. " + times + "]" + event.transactionHash + "] Attempting Validation again");
+                console.log("[8. " + times +  " Attempting Validation again");
                 i = -1;
             }
         }
