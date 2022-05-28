@@ -374,7 +374,7 @@ async function checkHash(validators, valHash) {
 
                 console.log("[8. " + times + "] It will wait for 5 sec");
                 await sleep(sleepTime);
-                validation = await nonCohortValidate.methods.collectValidationResults(validationHash).call();
+                validation = await nonCohortValidate.methods.collectValidationResults(valHash).call();
                 console.log("[8. " + times +  " Attempting Validation again");
                 i = -1;
             }
