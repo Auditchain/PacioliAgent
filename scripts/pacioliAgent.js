@@ -19,7 +19,7 @@ const SECRETS_PATH = process.env.SECRETS_PATH ? process.env.SECRETS_PATH : '/sec
 
 // update process.env with variables not yet defined outside
 if (fs.existsSync(SECRETS_PATH)) {
-    require('dotenv').config({ path: `${SECRETS_PATH}/PacioliNode.env` });
+    require('dotenv').config({ path: 'PacioliNode.env' });
     privateKeyMain = fs.readFileSync(`${SECRETS_PATH}/account.txt`, 'utf8').trim();
 } else if (process.env.PACIOLI_ENV)
     require('dotenv').config({ path: process.env.PACIOLI_ENV });
@@ -759,5 +759,26 @@ async function startProcess() {
 
 }
 
-startProcess();
+if (process.env.TEST_RUNS){
+    const reports = [
+        "https://xbrlsite.azurewebsites.net/2021/reporting-scheme/proof/reference-implementation/instance.xml",
+        "https://www.sec.gov/Archives/edgar/data/1318605/000095017021000046/tsla-20210331.htm",
+        "https://www.sec.gov/Archives/edgar/data/789019/000156459020034944/msft-10k_20200630_htm.xml",
+        "https://www.sec.gov/Archives/edgar/data/1108524/000110852417000040/crm-20171031.xml",
+    ];
+    
+    let N = parseInt(process.env.TEST_RUNS);
+    if (N<1||N>20) throw("Bad TEST_RUNS");
+
+    for(var i=0; i<N; i++){
+        const reportURL = reports[i%reports.length];
+        console.log(`Calling Pacioli with ${reportURL} (${i})`);
+        pacioli.callLocal(reportURL, "dummyTx"+i, true).then(function(result){
+            console.log("Result for "+reportURL+": "+JSON.stringify(result));
+        }).catch(function(error){
+            console.log("Error for "+reportURL+": "+JSON.stringify(error));
+        });
+    }
+
+} else startProcess();
 
