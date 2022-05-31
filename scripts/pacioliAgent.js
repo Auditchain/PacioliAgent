@@ -774,7 +774,7 @@ if (process.env.TEST_RUNS){
         const reportURL = reports[i%reports.length];
         console.log(`Calling Pacioli with ${reportURL} (${i})`);
         pacioli.callLocal(reportURL, "dummyTx"+i, true).then(function(result){
-            console.log("Result for "+reportURL+": "+JSON.stringify(result));
+            console.log("Result for "+reportURL+": "+result.ipfs);
         }).catch(function(error){
             console.log("Error for "+reportURL+": "+JSON.stringify(error));
         });
