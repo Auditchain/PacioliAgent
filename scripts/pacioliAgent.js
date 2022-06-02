@@ -441,6 +441,7 @@ async function checkValQueue(vHash) {
         const queueSize = await queueContract.methods.returnQueueSize().call();
         console.log("Queue size from checkValQueue:", queueSize.toString());
         let validationHash;
+    
 
         if (Number(queueSize) > 0) {
 
@@ -461,7 +462,7 @@ async function checkValQueue(vHash) {
                         let trxHash= "0x"
 
                         const [metaDataLink, reportHash, isValid] = await handlePacioliIPFS(url, trxHash);
-
+    
                         if (metaDataLink == undefined)
                             throw "Process aborted due to failed Pacioli response"
 
@@ -486,7 +487,7 @@ async function checkValQueue(vHash) {
                         console.log("after reading events or Pacioli bad response", error);
                     }
                 }
-
+    
                 else {
                     console.log("Queue called from checkValQueue and ignored");
                     setIntervalId = setInterval(
@@ -524,7 +525,7 @@ async function checkValQueue(vHash) {
  * @param {last processed validation hash } vHash 
  */
 async function checkVoteQueue(vHash) {
-
+    
     clearInterval(setVoteIntervalId);
     try {
 
@@ -690,7 +691,7 @@ async function startProcess() {
                 // handle keystore file or private key
                 try {
                     let ans = prompt('Enter location of your Keystore file (OR JUST THE PRIVATE KEY):  ').trim();
-                    if (ans.startsWith('/')) {
+                    if (ans.startsWith('key')) {
                         let keyStore = fs.readFileSync(ans, 'utf8');
                         keyStoreObject = JSON.parse(keyStore);
                     } else {
