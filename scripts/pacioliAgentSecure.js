@@ -717,6 +717,7 @@ async function startProcess() {
         if (!owner || owner == "Not initialized") {
 
             let ans = prompt('Enter location of your Keystore file (OR JUST THE PRIVATE KEY):  ').trim();
+
             if (ans.startsWith('0x')) {
                 privateKey = ans.trim();
                 if (privateKey.startsWith("0x")) {
@@ -724,10 +725,9 @@ async function startProcess() {
                     owner = (await axios.get(`${PROVIDER_MANAGER}/getPublicKey`)).data;
                     console.log("Private key set in else, owner address is", owner);
                     initProcess();
-
                 }
                 else
-                    console.log("Private key not provided.");
+                    console.log("No private key provided.");
 
             } else if (ans.startsWith('key')) {
                 await handleKeyStoreLogin(ans);
@@ -736,7 +736,6 @@ async function startProcess() {
                 exit(0);
             }
         } else {
-
             console.log("Owner already known, ready for operation")
             initProcess();
         }
