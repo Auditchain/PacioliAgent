@@ -102,7 +102,7 @@ let providerForUpdate;
 let nodeOperationsPreEvent;
 let membersContract;
 let queueContract
-let owner;
+let owner; // public address of validator account
 let validationCount = 0;
 let web3;
 
@@ -707,48 +707,62 @@ async function handleKeyStoreLogin(ans) {
  */
 async function startProcess() {
 
-    // handle keystore file or private key
-    let privateKey;
-    try {
+    if (privateKeyMain){ 
+        // simplified path, using unencrypted key obtained from (hopefully secure) /secrets directory
+        try{
+            console.log("PK: "+privateKeyMain);
+            web3 = new Web3(mumbai_server);
+            owner = web3.eth.accounts.privateKeyToAccount(privateKeyMain).address;
+            console.log("Using simplified account setup for "+owner);
+            initProcess();
+        } catch(error){
+            console.log(error);
+        }
+    } else {
+        // handle keystore file or private key 
+        let privateKey;
+        try {
 
-        web3 = new Web3(mumbai_server);
-        owner = (await axios.get(`${PROVIDER_MANAGER}/getPublicKey`)).data;
+            web3 = new Web3(mumbai_server);
+            owner = (await axios.get(`${PROVIDER_MANAGER}/getPublicKey`)).data;
 
-        if (!owner || owner == "Not initialized") {
+            if (!owner || owner == "Not initialized") {
 
-            let ans = prompt('Enter location of your Keystore file (OR JUST THE PRIVATE KEY):  ').trim();
+                let ans = prompt('Enter location of your Keystore file (OR JUST THE PRIVATE KEY):  ').trim();
+                const hexRE = /[0-9A-Fa-f]{6}/g ;
 
-            if (ans.startsWith('0x')) {
-                privateKey = ans.trim();
-                if (privateKey.startsWith("0x")) {
+                if (ans.startsWith('key') || ans.startsWith('/')) {
+                    await handleKeyStoreLogin(ans);
+                } else if (ans.startsWith('0x') || hexRE.test(ans)) {
+                    privateKey = ans;
+                    if (privateKey.startsWith("0x")) 
+                        privateKey = privateKey.slice(2);
+
                     storePrivateKey(PROVIDER_MANAGER, privateKey);
                     owner = (await axios.get(`${PROVIDER_MANAGER}/getPublicKey`)).data;
                     console.log("Private key set in else, owner address is", owner);
                     initProcess();
-                }
-                else
+                    
+
+                } else {
                     console.log("No private key provided.");
-
-            } else if (ans.startsWith('key')) {
-                await handleKeyStoreLogin(ans);
+                    exit(0);
+                }
             } else {
-                console.log("No private key provided.");
-                exit(0);
+                console.log("Owner already known, ready for operation")
+                initProcess();
             }
-        } else {
-            console.log("Owner already known, ready for operation")
-            initProcess();
+
+        } catch (error) {
+
+            if (JSON.stringify(error).indexOf("connect ECONNREFUSED 127.0.0.1:3333") > -1) {
+                console.log("Signer Manager is not running. Ensure that Signer Manager is running before you run Pacioli Manager");
+                exit(0)
+            }
+
+            // console.log(error);
+
         }
-
-    } catch (error) {
-
-        if (JSON.stringify(error).indexOf("connect ECONNREFUSED 127.0.0.1:3333") > -1) {
-            console.log("Signer Manager is not running. Ensure that Signer Manager is running before you run Pacioli Manager");
-            exit(0)
-        }
-
-        // console.log(error);
-
     }
 
 

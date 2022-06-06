@@ -2,14 +2,13 @@
 let express = require('express');
 let bodyParser = require('body-parser');
 let Web3 = require('web3');
-const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 require('dotenv').config({ path: '.env' }); // update process.env.
 
 
 const nonCohortAddress = process.env.VALIDATIONS_NO_COHORT_ADDRESS;
 const endPoint = process.env.MUMBAI_SERVER;
 
-const web3 = createAlchemyWeb3(endPoint);
+const web3 = new Web3(endPoint);
 
 const fs = require('fs');
 
