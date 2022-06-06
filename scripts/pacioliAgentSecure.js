@@ -1,5 +1,4 @@
 "use strict";
-let contract = require('truffle-contract');
 let Web3 = require('web3');
 let ethers = require('ethers');
 let axios = require("axios");
@@ -8,11 +7,10 @@ const fs = require('fs');
 var readline = require('readline');
 var Writable = require('stream').Writable;
 const prompt = require('prompt-sync')({ sigint: true });
+const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
 
 const { create } = require("ipfs-http-client");
-
-
-let privateKeyMain;
 
 const SECRETS_PATH = process.env.SECRETS_PATH ? process.env.SECRETS_PATH : '/secrets';
 const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : 'http://localhost:3333';
@@ -20,7 +18,6 @@ const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MAN
 // update process.env with variables not yet defined outside
 if (fs.existsSync(SECRETS_PATH)) {
     require('dotenv').config({ path: 'PacioliNode.env' });
-    privateKeyMain = fs.readFileSync(`${SECRETS_PATH}/account.txt`, 'utf8').trim();
 } else if (process.env.PACIOLI_ENV)
     require('dotenv').config({ path: process.env.PACIOLI_ENV });
 else
@@ -38,7 +35,6 @@ const ipfs = create({
         authorization: auth
     }
 })
-
 
 var mutableStdout = new Writable({
     write: function (chunk, encoding, callback) {
@@ -67,15 +63,8 @@ const { throwError } = require('ethers/errors');
 const { exit } = require('process');
 
 // import ethereum connection strings.
-const ropsten_infura_server = process.env.ROPSTEN_INFURA_SERVER;
-const rinkeby_infura_server = process.env.RINKEBY_INFURA_SERVER;
-const main_infura_server = process.env.MAINNET_INFURA_SERVER;
-const goerli_infura_server = process.env.GOERLI_INFURA_SERVER
-const mumbai_server = process.env.MUMBAI_SERVER;
-const local_host = process.env.LOCAL;
-const mnemonic = process.env.MNEMONIC;
-
-// process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0; // required only for accessing Pacioli via callRemote(..)
+const endPoint = process.env.MUMBAI_SERVER;
+console.log("end point:", endPoint)
 
 
 // Address for smart contracts
@@ -89,15 +78,11 @@ let agentBornAT;
 let intervalSize = 7000;
 let sleepTime = 7000;
 let zeroTransaction = "0x0000000000000000000000000000000000000000000000000000000000000000";
-let mutex = true;
 let setIntervalId;
 let setVoteIntervalId;
 let ipfsBase = 'https://ipfs.infura.io/ipfs/';
 
-
-
 let nonCohortValidate;
-let providerForUpdate;
 let nodeOperationsPreEvent;
 let membersContract;
 let queueContract
@@ -155,8 +140,8 @@ async function setUpContracts() {
     nodeOperationsPreEvent = new web3.eth.Contract(NODE_OPERATIONS["abi"], nodeOperationsAddress);
     membersContract = new web3.eth.Contract(MEMBERS["abi"], members);
     queueContract = new web3.eth.Contract(QUEUE["abi"], queue);
-
 }
+
 
 
 /** 
@@ -165,15 +150,15 @@ async function setUpContracts() {
  * @param  {blockchain transaction hash} trxHash
  * @returns {location of Pacioli report on IPFS and result of validation valid or not}
  */
-async function verifyPacioli1(metadataUrl, trxHash) {
+async function verifyPacioli(metadataUrl, trxHash) {
 
     const result = await ipfs1.files.cat(metadataUrl);
     const reportUrl = JSON.parse(result)["reportUrl"];
     console.log("[1 " + trxHash + "]" + "  Querying Pacioli " + reportUrl);
-    // const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
-    //     .catch(error => console.log("ERROR: " + error));
-    const reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
+    const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
         .catch(error => console.log("ERROR: " + error));
+    // const reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
+    //     .catch(error => console.log("ERROR: " + error));
 
 
     if (!reportContent)
@@ -197,15 +182,19 @@ async function verifyPacioli1(metadataUrl, trxHash) {
     return [pacioliIPFS, reportContent.isValid];
 }
 
-// TODO:  Use only for testing to bypass calling Pacioli
-async function verifyPacioli(metadatatUrl, trxHash) {
 
-    return ["QmSNQetWJuvwahuQbxJwEMoa5yPprfWdSqhJUZaSTKJ4Mg/AuditchainMetadataReport.json", 0]
-}
+
+// TODO:  Use only for testing to bypass calling Pacioli
+// async function verifyPacioli(metadatatUrl, trxHash) {
+
+//     return ["QmSNQetWJuvwahuQbxJwEMoa5yPprfWdSqhJUZaSTKJ4Mg/AuditchainMetadataReport.json", 0]
+// }
+
+
 
 
 /**
- *  @dev {Store the metadata file on IPFS}
+ * @dev {Store the metadata file on IPFS}
  * @param {url of the report to validate} url 
  * @param {IFPS link of pacioli report} reportPacioliIPFSUrl 
  * @param {blockchain transaction hash} trxHash 
@@ -243,6 +232,8 @@ async function uploadMetadataToIpfs(url, reportPacioliIPFSUrl, trxHash, isValid)
 }
 
 
+
+
 /**
  * @dev call Pacioli and pass isValid result to validation function. Save metadata file on IPFS. 
  * @param {url of the report to process} url  
@@ -269,6 +260,8 @@ async function handlePacioliIPFS(url, trxHash) {
     return [metaDataLink, reportHash, isValid]
 
 }
+
+
 
 
 /**
@@ -311,6 +304,8 @@ async function validate(documentHash, initTime, choice, trxHash, valUrl, reportH
 }
 
 
+
+
 /**
  * @dev {To implement wait}
  * @param {number of milliseconds to wait} ms 
@@ -321,6 +316,8 @@ function sleep(ms) {
         setTimeout(resolve, ms);
     });
 }
+
+
 
 
 /**
@@ -366,8 +363,6 @@ async function checkHash(validators, valHash) {
                 i = validation[0].length;
                 console.log("[8. " + times + " ] Gave up on waiting for results of validation. Limit of retries reached.");
                 return [null, null];
-
-
             }
             else {
 
@@ -381,7 +376,6 @@ async function checkHash(validators, valHash) {
 
         if (ownerHashFound && winnerHashFound)
             i = validation[0].length;
-
     }
     // owner has voted and can verify
 
@@ -394,6 +388,8 @@ async function checkHash(validators, valHash) {
 
     return [vote, winnerAddress];
 }
+
+
 
 
 /**
@@ -427,12 +423,6 @@ async function voteWinner(winners, votes, validationHash, trxHash) {
 }
 
 
-async function getBlockNumber() {
-
-    const blockNumber = await web3.eth.getBlockNumber() - 3495;
-    // console.log("block number:", blockNumber);
-    return blockNumber;
-}
 
 
 /**
@@ -527,6 +517,8 @@ async function checkValQueue(vHash) {
 
 }
 
+
+
 /**
  * @dev checks if there is any request in queue for a vote of winning validator
  * @param {last processed validation hash } vHash 
@@ -587,6 +579,8 @@ async function checkVoteQueue(vHash) {
 
 }
 
+
+
 /**
  * @dev It will execute vote on the winners
  * @param { validation hash} valHash 
@@ -619,6 +613,9 @@ async function executeVote(valHash, trxHash) {
 }
 
 
+/**
+ * @dev Initiate all variables and start checking queue
+ */
 
 async function initProcess() {
 
@@ -658,6 +655,11 @@ async function storePrivateKey(PROVIDER_MANAGER, privateKey) {
     }
 }
 
+
+/**
+ * @dev {in case user wants to use keystore file trigger this function}
+ * @param {location of keystore file} ans 
+ */
 async function handleKeyStoreLogin(ans) {
 
     try {
@@ -695,14 +697,13 @@ async function handleKeyStoreLogin(ans) {
     } catch (error) {
 
         console.log("Your keystore file couldn't be opened. Please check your file location and try again.");
-        console.log(error);
         process.exit(1);
     }
 }
 
 
 /**
- * @dev Setup the environment and schedule processes 
+ * @dev Request private key and initialize Signing manager
  */
 async function startProcess() {
 
@@ -710,7 +711,8 @@ async function startProcess() {
     let privateKey;
     try {
 
-        web3 = new Web3(mumbai_server);
+        web3 = new Web3(endPoint);
+        // web3 = createAlchemyWeb3(endPoint);
         owner = (await axios.get(`${PROVIDER_MANAGER}/getPublicKey`)).data;
 
         if (!owner || owner == "Not initialized") {
@@ -744,18 +746,8 @@ async function startProcess() {
             console.log("Signer Manager is not running. Ensure that Signer Manager is running before you run Pacioli Manager");
             exit(0)
         }
-
-        // console.log(error);
-
     }
-
-
-
-
-
 }
-
-
 
 
 if (process.env.TEST_RUNS) {
