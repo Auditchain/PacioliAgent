@@ -1,7 +1,6 @@
 "use strict";
 let contract = require('truffle-contract');
 let Web3 = require('web3');
-let Web3WsProvider = require('web3-providers-ws');
 let ethers = require('ethers');
 let axios = require("axios");
 let ipfsAPI = require("ipfs-api");
@@ -166,7 +165,7 @@ async function setUpContracts() {
  * @param  {blockchain transaction hash} trxHash
  * @returns {location of Pacioli report on IPFS and result of validation valid or not}
  */
-async function verifyPacioli(metadataUrl, trxHash) {
+async function verifyPacioli1(metadataUrl, trxHash) {
 
     const result = await ipfs1.files.cat(metadataUrl);
     const reportUrl = JSON.parse(result)["reportUrl"];
@@ -199,10 +198,10 @@ async function verifyPacioli(metadataUrl, trxHash) {
 }
 
 // TODO:  Use only for testing to bypass calling Pacioli
-// async function verifyPacioli(metadatatUrl, trxHash) {
+async function verifyPacioli(metadatatUrl, trxHash) {
 
-//     return ["QmSNQetWJuvwahuQbxJwEMoa5yPprfWdSqhJUZaSTKJ4Mg/AuditchainMetadataReport.json", 0]
-// }
+    return ["QmSNQetWJuvwahuQbxJwEMoa5yPprfWdSqhJUZaSTKJ4Mg/AuditchainMetadataReport.json", 0]
+}
 
 
 /**
@@ -723,7 +722,6 @@ async function startProcess() {
                 if (privateKey.startsWith("0x")) {
                     storePrivateKey(PROVIDER_MANAGER, privateKey);
                     owner = (await axios.get(`${PROVIDER_MANAGER}/getPublicKey`)).data;
-                    console.log("Private key set in else, owner address is", owner);
                     initProcess();
                 }
                 else
