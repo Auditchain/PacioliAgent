@@ -64,7 +64,7 @@ const { exit } = require('process');
 
 // import ethereum connection strings.
 const endPoint = process.env.MUMBAI_SERVER;
-console.log("end point:", endPoint)
+// console.log("end point:", endPoint)
 
 
 // Address for smart contracts
