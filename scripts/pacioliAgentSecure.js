@@ -729,7 +729,7 @@ async function startProcess() {
                 else
                     console.log("No private key provided.");
 
-            } else if (ans.startsWith('key')) {
+            } else if (ans.startsWith('key')||ans.startsWith('/')) {
                 await handleKeyStoreLogin(ans);
             } else {
                 console.log("No private key provided.");
