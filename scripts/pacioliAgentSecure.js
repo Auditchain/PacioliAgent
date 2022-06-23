@@ -64,7 +64,7 @@ const { exit } = require('process');
 
 // import ethereum connection strings.
 const endPoint = process.env.MUMBAI_SERVER;
-console.log("end point:", endPoint)
+// console.log("end point:", endPoint)
 
 
 // Address for smart contracts
@@ -729,7 +729,7 @@ async function startProcess() {
                 else
                     console.log("No private key provided.");
 
-            } else if (ans.startsWith('key')) {
+            } else if (ans.startsWith('key')||ans.startsWith('/')) {
                 await handleKeyStoreLogin(ans);
             } else {
                 console.log("No private key provided.");

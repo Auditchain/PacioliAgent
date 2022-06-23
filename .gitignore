@@ -5,3 +5,4 @@ package-lock.json
 settings.json
 .openzeppelin/
 
+.myLocation.json
