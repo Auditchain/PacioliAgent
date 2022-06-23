@@ -60,7 +60,7 @@ async function uploadReportToIPFS(url) {
     try {
         console.log("Uploading report to IPFS...", url);
         const reportContent = (await axios.get(url)).data;
-       
+
         const bufRule = Buffer.from(reportContent); // to simulate different submissions
         const reportFile = [
             {
@@ -143,30 +143,32 @@ async function deploy() {
 
     try {
 
+        if (run >= MAX_RUNS)
+            process.exit(0);
+
+
         let randomNum = Math.floor(Math.random() * 1000000);
 
         // if no report given as command argument, round-robbin of the above
-        let reportURL = myArgs[0] ? myArgs[0] : reports[run%reports.length];
-        let result 
+        let reportURL = myArgs[0] ? myArgs[0] : reports[run % reports.length];
+        let result
 
         await setUpContracts("0x9ca184fa913e7ca5f49b0c89a2665beac582c12cce4308473ef65f4166d58dfa");
         const dataSubscriber1 = providerForUpdate.addresses[0];
         result = await saveToIpfs(reportURL);
 
-        
+
         let testHash = web3.utils.keccak256(reportURL + randomNum);
         console.log("Hash from deploy:", testHash);
-        await validation.methods.initValNoCohort(testHash, result[1], 1, "10000000000000000000").send({ from: dataSubscriber1, gas: 900000 });
+        await validation.methods.initValNoCohort(testHash, result[1], 0, "10000000000000000000").send({ from: dataSubscriber1, gas: 900000 });
         run++;
         console.log("[" + run + "] Run completed");
-        if (run>=MAX_RUNS)
-            process.exit(0);
 
 
     } catch (e) {
         console.log(e)
     }
 }
-const MAX_RUNS = 1;
-// setInterval(deploy, 4000);
+const MAX_RUNS = 5;
+setInterval(deploy, 4000);
 deploy();
