@@ -13,7 +13,7 @@ const { createAlchemyWeb3 } = require("@alch/alchemy-web3")
 const { create } = require("ipfs-http-client");
 
 const SECRETS_PATH = process.env.SECRETS_PATH ? process.env.SECRETS_PATH : '/secrets';
-const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : 'http://localhost:3336';
+const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : 'http://localhost:3333';
 
 // update process.env with variables not yet defined outside
 if (fs.existsSync(SECRETS_PATH)) {
@@ -157,10 +157,10 @@ async function verifyPacioli(metadataUrl, trxHash) {
     const result = await ipfs1.files.cat(metadataUrl);
     const reportUrl = JSON.parse(result)["reportUrl"];
     console.log("[1 " + trxHash + "]" + "  Querying Pacioli " + reportUrl);
-    // const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
-    //     .catch(error => console.log("ERROR: " + error));
-    const reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
+    const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
         .catch(error => console.log("ERROR: " + error));
+    // const reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
+    //     .catch(error => console.log("ERROR: " + error));
 
 
     if (!reportContent)
