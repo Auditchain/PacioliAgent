@@ -501,7 +501,7 @@ async function checkValQueue(vHash) {
                         if (metaDataLink == undefined)
                             throw "Process aborted due to failed Pacioli response"
 
-                   
+
 
                         const hasExecuted = await validate(documentHash, initTime, isValid ? 1 : 2, trxHash, metaDataLink, reportHash, user);
                         // console.log("has executed in checkValQueue", hasExecuted);
@@ -795,7 +795,7 @@ async function startProcess() {
                 else
                     console.log("No private key provided.");
 
-            } else if (ans.startsWith('key')) {
+            } else if (ans.startsWith('key') || ans.startsWith('/')) {
                 await handleKeyStoreLogin(ans);
             } else {
                 console.log("No private key provided.");
@@ -838,4 +838,3 @@ if (process.env.TEST_RUNS) {
     }
 
 } else startProcess();
-
