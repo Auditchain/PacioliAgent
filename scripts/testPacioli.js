@@ -137,20 +137,27 @@ const reports = [
     "https://www.sec.gov/Archives/edgar/data/1108524/000110852417000040/crm-20171031.xml",
 ];
 
+var completed = 0;
+
 async function deploy() {
 
     let myArgs = process.argv.slice(2);
 
     try {
 
-        if (run >= MAX_RUNS)
+        if (completed>=MAX_RUNS)
             process.exit(0);
+
+        if (run >= MAX_RUNS)
+            return;
 
 
         let randomNum = Math.floor(Math.random() * 1000000);
 
         // if no report given as command argument, round-robbin of the above
         let reportURL = myArgs[0] ? myArgs[0] : reports[run % reports.length];
+        run++;
+
         let result
 
         await setUpContracts("0x9ca184fa913e7ca5f49b0c89a2665beac582c12cce4308473ef65f4166d58dfa");
@@ -161,8 +168,8 @@ async function deploy() {
         let testHash = web3.utils.keccak256(reportURL + randomNum);
         console.log("Hash from deploy:", testHash);
         await validation.methods.initValNoCohort(testHash, result[1], 0, "10000000000000000000").send({ from: dataSubscriber1, gas: 900000 });
-        run++;
         console.log("[" + run + "] Run completed");
+        completed++ ;
 
 
     } catch (e) {
