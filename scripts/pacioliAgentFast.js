@@ -448,7 +448,7 @@ async function voteWinner(winners, votes, validationHash, trxHash) {
  * @dev checks if there is any request in queue for validation
  * @param {last processed validation hash } vHash 
  */
-async function checkValQueue(vHash) {
+ async function checkValQueue(vHash) {
 
     clearInterval(setIntervalId);
     try {
@@ -460,18 +460,22 @@ async function checkValQueue(vHash) {
 
         if (Number(queueSize) > 0) {
 
-            let result;
+            // let result;
 
-            if (vHash && vHash != zeroTransaction) {
+           let result = await queueContract.methods.getNextValidation().call();
+           let valResult = await nonCohortValidate.methods.isValidated(result[0]).call({ from: owner });
+
+
+            if (vHash && vHash != zeroTransaction && valResult[0] != 0) {
                 console.log("vHash from checkValQueue for getValidationToProcess", vHash);
 
                 result = await queueContract.methods.getValidationToProcess(vHash).call();
             }
-            else {
-                console.log("vHash from checkValQueue for getNextValidation", vHash);
+            // else {
+            //     console.log("vHash from checkValQueue for getNextValidation", vHash);
 
-                result = await queueContract.methods.getNextValidation().call();
-            }
+            //     result = await queueContract.methods.getNextValidation().call();
+            // }
 
             console.log("result from checkValQueue:", result);
 
