@@ -17,7 +17,7 @@ const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MAN
 
 // update process.env with variables not yet defined outside
 if (fs.existsSync(SECRETS_PATH)) {
-    require('dotenv').config({ path: 'PacioliNode.env' }); valHash
+    require('dotenv').config({ path: 'PacioliNode.env' }); 
 } else if (process.env.PACIOLI_ENV)
     require('dotenv').config({ path: process.env.PACIOLI_ENV });
 else
