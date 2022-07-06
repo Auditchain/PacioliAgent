@@ -785,18 +785,15 @@ async function startProcess() {
 
             let ans = prompt('Enter location of your Keystore file (OR JUST THE PRIVATE KEY):  ').trim();
 
-            if (ans.startsWith('0x')) {
-                privateKey = ans.trim();
-                if (privateKey.startsWith("0x")) {
-                    storePrivateKey(PROVIDER_MANAGER, privateKey);
-                    owner = (await axios.get(`${PROVIDER_MANAGER}/getPublicKey`)).data;
-                    initProcess();
-                }
-                else
-                    console.log("No private key provided.");
-
-            } else if (ans.startsWith('key') || ans.startsWith('/')) {
+            if (ans.startsWith('key') || ans.startsWith('/')) {
                 await handleKeyStoreLogin(ans);
+            } else if (ans.startsWith('0x') || ans.length==64) {
+                privateKey = ans;
+                if (!privateKey.startsWith('0x'))
+                    privateKey = '0x'+privateKey;
+                storePrivateKey(PROVIDER_MANAGER, privateKey);
+                owner = (await axios.get(`${PROVIDER_MANAGER}/getPublicKey`)).data;
+                initProcess();
             } else {
                 console.log("No private key provided.");
                 exit(0);
