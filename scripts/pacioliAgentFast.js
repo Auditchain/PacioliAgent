@@ -7,7 +7,7 @@ const fs = require('fs');
 var readline = require('readline');
 var Writable = require('stream').Writable;
 const prompt = require('prompt-sync')({ sigint: true });
-const { createAlchemyWeb3 } = require("@alch/alchemy-web3")
+const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 
 
 const { create } = require("ipfs-http-client");
