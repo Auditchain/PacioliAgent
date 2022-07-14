@@ -52,16 +52,11 @@ app.use(function (req, res, next) {
     next();
 });
 
-async function sign(data) {
-
+async function sign(data, nonce) {
 
     try {
 
         if (data.startsWith("0x42d47412") || data.startsWith("0xd4632bcf")) {
-            const testNonce = await web3.eth.getTransactionCount(publicKey, 'latest'); // nonce starts counting from 0
-
-            if (testNonce > nonce)
-                nonce = testNonce;
            
             let gas;
 
@@ -80,8 +75,6 @@ async function sign(data) {
                 'data': data,
             };
 
-            nonce++;
-
             const signedTx = await web3.eth.accounts.signTransaction(transaction, privateKey);
             return signedTx.rawTransaction;
         }
@@ -92,19 +85,11 @@ async function sign(data) {
     }
 }
 
-async function getNonce() {
-    nonce = await web3.eth.getTransactionCount(publicKey, 'latest');
-    return nonce;
-
-}
-
 
 app.get('/storePrivateKey', async function (req, res) {
 
     privateKey = req.query.privateKey
     publicKey = web3.eth.accounts.privateKeyToAccount(privateKey).address;
-    // owner = provider.addresses[0];
-    // nonce = getNonce();
     nonce = await web3.eth.getTransactionCount(publicKey, 'latest');
     console.log("Key created from:", req.ip, new Date());
     console.log("public key:", publicKey);
@@ -129,13 +114,15 @@ app.get('/getPublicKey', function (req, res) {
 app.get('/sign', async function (req, res) {
 
     let data = req.query.data;
+    let nonce = req.query.nonce;
 
     try {
         console.log("Signature requested:", req.ip, new Date());
         console.log("data:", data);
+        console.log("nonce:", nonce);
         console.log('\n');
 
-        const signedTx = await sign(data);
+        const signedTx = await sign(data, nonce);
         res.end(JSON.stringify(signedTx));
 
     } catch (err) {
