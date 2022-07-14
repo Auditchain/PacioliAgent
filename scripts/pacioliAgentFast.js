@@ -17,7 +17,7 @@ const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MAN
 
 // update process.env with variables not yet defined outside
 if (fs.existsSync(SECRETS_PATH)) {
-    require('dotenv').config({ path: 'PacioliNode.env' }); 
+    require('dotenv').config({ path: 'PacioliNode.env' });
 } else if (process.env.PACIOLI_ENV)
     require('dotenv').config({ path: process.env.PACIOLI_ENV });
 else
@@ -91,6 +91,7 @@ let validationCount = 0;
 let web3;
 let minValidatorCount;
 let locked;
+let nonce;
 
 let ipfs1 = ipfsAPI('ipfs.infura.io', 5001, {
     protocol: 'https'
@@ -189,7 +190,7 @@ async function verifyPacioli(metadataUrl, trxHash) {
 // TODO:  Use only for testing to bypass calling Pacioli
 // async function verifyPacioli(metadatatUrl, trxHash) {
 
-//     return ["QmSNQetWJuvwahuQbxJwEMoa5yPprfWdSqhJUZaSTKJ4Mg/AuditchainMetadataReport.json", 0]
+//     return ["QmP9Wo6XmJs1b3ciPe8dH54qFfCTYxL35R3m5WG3WrU5sr/AuditchainMetadataReport", 0]
 // }
 
 
@@ -280,18 +281,14 @@ async function validate(documentHash, initTime, choice, trxHash, valUrl, reportH
 
     try {
         const data = nonCohortValidate.methods.validate(documentHash, initTime, subscriber, choice, valUrl, reportHash).encodeABI();
-        const signedMessage = (await axios.get(`${PROVIDER_MANAGER}/sign?data=${data}`)).data;
 
+        const nonce = await web3.eth.getTransactionCount(owner, 'latest');
+        const signedMessage = (await axios.get(`${PROVIDER_MANAGER}/sign?data=${data}&nonce=${nonce}`)).data;
 
         if (signedMessage != "Not approved call") {
 
-            // while (locked)
-            // await sleep(sleepTime);
-
-            // locked = true;
-
             const receipt = await web3.eth.sendSignedTransaction(signedMessage);
-            // locked = false;
+
             if (choice == 1)
                 console.log("[7 " + receipt.transactionHash + "] Request has been validated as acceptable.")
             else
@@ -389,7 +386,6 @@ async function checkHash(validators, valHash) {
     // owner has voted and can verify
 
     let vote = false;
-
     if (winnerReportHash == myReportHash)
         vote = true;
 
@@ -412,21 +408,14 @@ async function voteWinner(winners, votes, validationHash, trxHash) {
     const nonce = await web3.eth.getTransactionCount(owner);
     try {
         const data = nonCohortValidate.methods.voteWinner(winners, votes, validationHash).encodeABI();
-        const signedMessage = (await axios.get(`${PROVIDER_MANAGER}/sign?data=${data}`)).data;
+        const nonce = await web3.eth.getTransactionCount(owner);
+        const signedMessage = (await axios.get(`${PROVIDER_MANAGER}/sign?data=${data}&nonce=${nonce}`)).data;
 
         if (signedMessage != "Not approved call") {
 
-            // while (locked)
-            // await  sleep(sleepTime);
-
-            // locked = true;
             const receipt = await web3.eth.sendSignedTransaction(signedMessage);
-            // locked = false;
-
             let completed = await nonCohortValidate.methods.returnValidationRecord(validationHash).call();
-
             console.log("completed ", completed);
-
             console.log("[11 " + receipt.transactionHash + "] Verification of winners completed...  ");
             return true;
         } else {
@@ -448,34 +437,26 @@ async function voteWinner(winners, votes, validationHash, trxHash) {
  * @dev checks if there is any request in queue for validation
  * @param {last processed validation hash } vHash 
  */
- async function checkValQueue(vHash) {
+async function checkValQueue(vHash) {
 
     clearInterval(setIntervalId);
     try {
 
+        await checkVoteQueue();
         const queueSize = await queueContract.methods.returnQueueSize().call();
         console.log("Queue size from checkValQueue:", queueSize.toString());
         let validationHash;
 
-
         if (Number(queueSize) > 0) {
 
-            // let result;
-
-           let result = await queueContract.methods.getNextValidation().call();
-           let valResult = await nonCohortValidate.methods.isValidated(result[0]).call({ from: owner });
-
+            let result = await queueContract.methods.getNextValidation().call();
+            let valResult = await nonCohortValidate.methods.isValidated(result[0]).call({ from: owner });
 
             if (vHash && vHash != zeroTransaction && valResult[0] != 0) {
                 console.log("vHash from checkValQueue for getValidationToProcess", vHash);
 
                 result = await queueContract.methods.getValidationToProcess(vHash).call();
             }
-            // else {
-            //     console.log("vHash from checkValQueue for getNextValidation", vHash);
-
-            //     result = await queueContract.methods.getNextValidation().call();
-            // }
 
             console.log("result from checkValQueue:", result);
 
@@ -484,11 +465,10 @@ async function voteWinner(winners, votes, validationHash, trxHash) {
             let url = result[2];
             let user = result[3];
             let initTime = result[4];
-
             if (vHash != validationHash && validationHash != zeroTransaction) {
                 let valResult = await nonCohortValidate.methods.isValidated(validationHash).call({ from: owner });
 
-                console.log("valResult from checkValQueue", valResult)
+                // console.log("valResult from checkValQueue", valResult)
 
                 console.log("is validated:", valResult[0]);
                 console.log("number of validations:", valResult[1]);
@@ -505,14 +485,10 @@ async function voteWinner(winners, votes, validationHash, trxHash) {
                         if (metaDataLink == undefined)
                             throw "Process aborted due to failed Pacioli response"
 
-
-
                         const hasExecuted = await validate(documentHash, initTime, isValid ? 1 : 2, trxHash, metaDataLink, reportHash, user);
-                        // console.log("has executed in checkValQueue", hasExecuted);
 
                         if (hasExecuted) {
                             console.log("validation executed")
-                            // await checkVoteQueue();
                             await checkValQueue(validationHash);
                         }
                         else {
@@ -520,7 +496,6 @@ async function voteWinner(winners, votes, validationHash, trxHash) {
                             setIntervalId = setInterval(
                                 () => (checkValQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
                                 intervalSize);
-                            // await che0xd66f2ee9bc1eda34087ccd5e5ac699194b7a34f12fbda8e115fb2506e3740429ckValQueue();
                         }
                     }
 
@@ -598,45 +573,22 @@ async function checkVoteQueue(vHash) {
                     console.log("check vote queue", validationHash);
 
                     const trxHash = "0x";
-
-
                     const executed = await executeVote(validationHash, trxHash);
-                    if (!executed) {
-                        setVoteIntervalId = setInterval(
-                            () => (checkVoteQueue(vHash).then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
-                            intervalSize);
-                        // await checkVoteQueue();
-                    }
-                    else {
-                        setVoteIntervalId = setInterval(
-                            () => (checkVoteQueue(validationHash).then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
-                            intervalSize);
-                        // await checkVoteQueue(validationHash);
-                    }
+
                 }
                 else {
-                    console.log("Queue called from checkVoteQueue and ignored");
-                    setVoteIntervalId = setInterval(
-                        () => (checkVoteQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
-                        intervalSize);
+                    console.log("Nothing to vote on.")
                 }
 
             } else {
-                console.log("Queue called from checkVoteQueue and ignored");
-                setVoteIntervalId = setInterval(
-                    () => (checkVoteQueue(vHash).then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
-                    intervalSize);
+                console.log("Nothing to vote on, zero hash.")
             }
         } else {
-            console.log("Queue called from checkVoteQueue and is empty");
-            setVoteIntervalId = setInterval(
-                () => (checkVoteQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
-                intervalSize);
+            console.log("vote queue is empty.")
         }
+
     } catch (error) {
-        setVoteIntervalId = setInterval(
-            () => (checkVoteQueue(vHash).then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
-            intervalSize);
+
 
         console.log(error)
     }
@@ -704,7 +656,7 @@ async function initProcess() {
         agentBornAT = Date.now();
 
         checkValQueue();
-        checkVoteQueue();
+        // checkVoteQueue();
 
     }
     else if (isDelegating)
@@ -781,8 +733,8 @@ async function startProcess() {
     let privateKey;
     try {
 
-        // web3 = new Web3(endPoint);
-        web3 = createAlchemyWeb3(endPoint);
+        web3 = new Web3(endPoint);
+        // web3 = createAlchemyWeb3(endPoint);
         owner = (await axios.get(`${PROVIDER_MANAGER}/getPublicKey`)).data;
 
         if (!owner || owner == "Not initialized") {
@@ -791,10 +743,10 @@ async function startProcess() {
 
             if (ans.startsWith('key') || ans.startsWith('/')) {
                 await handleKeyStoreLogin(ans);
-            } else if (ans.startsWith('0x') || ans.length==64) {
+            } else if (ans.startsWith('0x') || ans.length == 64) {
                 privateKey = ans;
                 if (!privateKey.startsWith('0x'))
-                    privateKey = '0x'+privateKey;
+                    privateKey = '0x' + privateKey;
                 storePrivateKey(PROVIDER_MANAGER, privateKey);
                 owner = (await axios.get(`${PROVIDER_MANAGER}/getPublicKey`)).data;
                 initProcess();
