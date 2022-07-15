@@ -58,16 +58,16 @@ async function sign(data, nonce) {
 
         if (data.startsWith("0x42d47412") || data.startsWith("0xd4632bcf")) {
 
-            let gasPrice = Number(await web3.eth.getGasPrice()) + 100000000 ; //add extra 5% to ensure validation
+            let gasPrice = Number(await web3.eth.getGasPrice()) +   100000000 ; //add extra 5% to ensure validation
 
             console.log("gasPrice ", gasPrice );
            
-            let gas;
+            let gas = 500000;
 
-            if (data.startsWith("0x42d47412"))
-                gas = 9000000
-            else
-                gas = 8000000;
+            // if (data.startsWith("0x42d47412"))
+            //     gas = 500000
+            // else
+            //     gas = 500000;
 
             const transaction = {
                 'to': nonCohortAddress,
