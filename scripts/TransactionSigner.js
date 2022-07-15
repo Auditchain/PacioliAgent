@@ -57,6 +57,10 @@ async function sign(data, nonce) {
     try {
 
         if (data.startsWith("0x42d47412") || data.startsWith("0xd4632bcf")) {
+
+            let gasPrice = Number(await web3.eth.getGasPrice()) + 100000000 ; //add extra 5% to ensure validation
+
+            console.log("gasPrice ", gasPrice );
            
             let gas;
 
@@ -69,8 +73,8 @@ async function sign(data, nonce) {
                 'to': nonCohortAddress,
                 'value': 0,
                 'gas': gas,
-                'maxFeePerGas': 2500000000,
-                'maxPriorityFeePerGas': 2500000000,
+                'maxFeePerGas': gasPrice,
+                'maxPriorityFeePerGas': gasPrice,
                 'nonce': nonce,
                 'data': data,
             };
@@ -127,7 +131,7 @@ app.get('/sign', async function (req, res) {
 
     } catch (err) {
         console.log(err);
-        res.end(err);
+        res.end(err)
     }
 })
 
