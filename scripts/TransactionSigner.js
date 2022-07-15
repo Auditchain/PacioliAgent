@@ -9,6 +9,7 @@ require('dotenv').config({ path: '.env' }); // update process.env.
 const nonCohortAddress = process.env.VALIDATIONS_NO_COHORT_ADDRESS;
 const endPoint = process.env.MUMBAI_SERVER;
 
+
 const web3 = createAlchemyWeb3(endPoint);
 
 const fs = require('fs');
@@ -58,16 +59,18 @@ async function sign(data, nonce) {
 
         if (data.startsWith("0x42d47412") || data.startsWith("0xd4632bcf")) {
 
-            let gasPrice = Number(await web3.eth.getGasPrice()) +   100000000 ; //add extra 5% to ensure validation
+            let gasPrice = Number(await web3.eth.getGasPrice()) + 100000000; //add extra 5% to ensure validation
 
-            console.log("gasPrice ", gasPrice );
-           
-            let gas = 500000;
+            
+            let gas =  await  web3.eth.estimateGas({
+                to: nonCohortAddress,
+                data: data,
+                from: publicKey,
+            })
+            
+            console.log("gasPrice ", gasPrice);
+            console.log("gas ", gas);
 
-            // if (data.startsWith("0x42d47412"))
-            //     gas = 500000
-            // else
-            //     gas = 500000;
 
             const transaction = {
                 'to': nonCohortAddress,
@@ -92,15 +95,20 @@ async function sign(data, nonce) {
 
 app.get('/storePrivateKey', async function (req, res) {
 
-    privateKey = req.query.privateKey
-    publicKey = web3.eth.accounts.privateKeyToAccount(privateKey).address;
-    nonce = await web3.eth.getTransactionCount(publicKey, 'latest');
-    console.log("Key created from:", req.ip, new Date());
-    console.log("public key:", publicKey);
-    console.log("starting nonce:", nonce);
-    console.log('\n');
+    try {
 
-    res.end();
+        privateKey = req.query.privateKey
+        publicKey = web3.eth.accounts.privateKeyToAccount(privateKey).address;
+        nonce = await web3.eth.getTransactionCount(publicKey, 'latest');
+        console.log("Key created from:", req.ip, new Date());
+        console.log("public key:", publicKey);
+        console.log("starting nonce:", nonce);
+        console.log('\n');
+
+        res.end();
+    } catch (error) {
+        console.log(error);
+    }
 });
 
 
