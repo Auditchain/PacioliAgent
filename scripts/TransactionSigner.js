@@ -61,15 +61,18 @@ async function sign(data, nonce) {
 
             let gasPrice = Number(await web3.eth.getGasPrice()) + 100000000; //add extra 5% to ensure validation
 
-            
-            let gas =  await  web3.eth.estimateGas({
+
+            let gas = await web3.eth.estimateGas({
                 to: nonCohortAddress,
                 data: data,
                 from: publicKey,
             })
-            
+
             console.log("gasPrice ", gasPrice);
             console.log("gas ", gas);
+
+            if (gasPrice < 60000000000)
+                gasPrice = 60000000000
 
 
             const transaction = {
