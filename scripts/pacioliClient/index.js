@@ -38,7 +38,7 @@ const pacioli = function(){
             const tmpFile = os.tmpdir()+"/"+process.pid+"_"+(fileCounter++)+".json";
             // hacky way to pass command line arguments... see these_parameters/2 in webapi.pl
             var ARGS = [
-                "--stack_limit=768m",
+                "--stack_limit=1024m",
                 "-g 'webapi:cli_api_main, halt(0)'",
                 `${ENV.PACIOLI_DIRECTORY}/swish/user_module_for_swish.pl`,
                 "--peer myIP",
