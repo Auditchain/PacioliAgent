@@ -157,12 +157,21 @@ async function verifyPacioli(metadataUrl, trxHash) {
 
     const result = await ipfs1.files.cat(metadataUrl);
     const reportUrl = JSON.parse(result)["reportUrl"];
+
+    const queryingPacioliStart = Date.now();
     console.log("[1 " + trxHash + "]" + "  Querying Pacioli " + reportUrl);
+
+   
+
     // const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
     //     .catch(error => console.log("ERROR: " + error));
     const reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
         .catch(error => console.log("ERROR: " + error));
 
+
+    const  timePast = (Date.now() - queryingPacioliStart) / 1000/ 60;
+
+    console.log("It took " + timePast + "  minutes to query Pacioli");
 
     if (!reportContent)
         return [null, false];
