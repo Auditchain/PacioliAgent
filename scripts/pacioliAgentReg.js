@@ -155,13 +155,15 @@ async function setUpContracts() {
  */
 async function verifyPacioli(metadataUrl, trxHash) {
 
+    console.log("metadataUrl:", metadataUrl)
+
     const result = await ipfs1.files.cat(metadataUrl);
     const reportUrl = JSON.parse(result)["reportUrl"];
 
     const queryingPacioliStart = Date.now();
     console.log("[1 " + trxHash + "]" + "  Querying Pacioli " + reportUrl);
 
-   
+
 
     const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
         .catch(error => console.log("ERROR: " + error));
@@ -169,7 +171,7 @@ async function verifyPacioli(metadataUrl, trxHash) {
     //     .catch(error => console.log("ERROR: " + error));
 
 
-    const  timePast = (Date.now() - queryingPacioliStart) / 1000/ 60;
+    const timePast = (Date.now() - queryingPacioliStart) / 1000 / 60;
 
     console.log("It took " + timePast + "  minutes to query Pacioli");
 
@@ -446,7 +448,7 @@ async function voteWinner(winners, votes, validationHash, trxHash) {
  * @dev checks if there is any request in queue for validation
  * @param {last processed validation hash } vHash 
  */
-async function checkValQueue(vHash) {
+async function checkValQueue() {
 
     clearInterval(setIntervalId);
     try {
@@ -458,26 +460,44 @@ async function checkValQueue(vHash) {
 
         if (Number(queueSize) > 0) {
 
-            let result = await queueContract.methods.getNextValidation().call();
-            let valResult = await nonCohortValidate.methods.isValidated(result[0]).call({ from: owner });
 
-            if (vHash && vHash != zeroTransaction && valResult[0] != 0) {
-                console.log("vHash from checkValQueue for getValidationToProcess", vHash);
+            const canValidate = nonCohortValidate.methods.canValidate();
+            if (canValidate[0] == zeroTransaction) {
 
-                result = await queueContract.methods.getValidationToProcess(vHash).call();
+                console.log("Queue called from checkValQueue and ignored. Nothing to process");
+                setIntervalId = setInterval(
+                    () => (checkValQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
+                    intervalSize);
+                return false;
             }
+
+            const data = nonCohortValidate.methods.registerValidation().encodeABI();
+            const nonce = await web3.eth.getTransactionCount(owner);
+            const signedMessage = (await axios.get(`${PROVIDER_MANAGER}/sign?data=${data}&nonce=${nonce}`)).data;
+            let receipt;
+
+            if (signedMessage != "Not approved call") {
+
+                receipt = await web3.eth.sendSignedTransaction(signedMessage);
+                console.log("receipt:", receipt.logs[0]);
+                console.log("[11 " + receipt.transactionHash + "] Queue position registered...  ");
+            } else {
+                console.log("This call is not approved. nonCohortValidate.methods.registerValidation().encodeABI()")
+                return false;
+            }
+
+            console.log("validation hash:", receipt.logs[0].data);
+            let id = await queueContract.methods.findIdForValidationHash(receipt.logs[0].data).call();
+            console.log("Id:", id);
+            let result = await queueContract.methods.get(id).call();
+
 
             console.log("result from checkValQueue:", result);
 
-            let validationHash = result[0];
-            let documentHash = result[1]
-            let url = result[2];
-            let user = result[3];
-            let initTime = result[4];
-            if (vHash != validationHash && validationHash != zeroTransaction) {
-                let valResult = await nonCohortValidate.methods.isValidated(validationHash).call({ from: owner });
+            let validationHash = receipt.logs[0].data;
 
-                // console.log("valResult from checkValQueue", valResult)
+            if (validationHash != zeroTransaction) {
+                let valResult = await nonCohortValidate.methods.isValidated(validationHash).call({ from: owner });
 
                 console.log("is validated:", valResult[0]);
                 console.log("number of validations:", valResult[1]);
@@ -489,16 +509,16 @@ async function checkValQueue(vHash) {
 
                         let trxHash = "0x"
 
-                        const [metaDataLink, reportHash, isValid] = await handlePacioliIPFS(url, trxHash);
+                        const [metaDataLink, reportHash, isValid] = await handlePacioliIPFS(result.url, trxHash);
 
                         if (metaDataLink == undefined)
                             throw "Process aborted due to failed Pacioli response"
 
-                        const hasExecuted = await validate(documentHash, initTime, isValid ? 1 : 2, trxHash, metaDataLink, reportHash, user);
+                        const hasExecuted = await validate(result.documentHash, result.initTime, isValid ? 1 : 2, trxHash, metaDataLink, reportHash, result.user);
 
                         if (hasExecuted) {
                             console.log("validation executed")
-                            await checkValQueue(validationHash);
+                            await checkValQueue();
                         }
                         else {
                             console.log("validation failed")
@@ -510,23 +530,21 @@ async function checkValQueue(vHash) {
 
                     catch (error) {
                         setIntervalId = setInterval(
-                            () => (checkValQueue(vHash).then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
+                            () => (checkValQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
                             intervalSize);
                         console.log("after reading events or Pacioli bad response", error);
                     }
-                }
-
-                else {
+                } else {
                     console.log("Queue called from checkValQueue and ignored.");
                     setIntervalId = setInterval(
-                        () => (checkValQueue(validationHash).then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
+                        () => (checkValQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
                         intervalSize);
                 }
 
             } else {
                 console.log("Queue called from checkValQueue and ignored");
                 setIntervalId = setInterval(
-                    () => (checkValQueue(validationHash).then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
+                    () => (checkValQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
                     intervalSize);
             }
         } else {

@@ -57,7 +57,7 @@ async function sign(data, nonce) {
 
     try {
 
-        if (data.startsWith("0x42d47412") || data.startsWith("0xd4632bcf")) {
+        if (data.startsWith("0x42d47412") || data.startsWith("0xd4632bcf") || data.startsWith("0x87c77617")) {
 
             let gasPrice = Number(await web3.eth.getGasPrice()) + 100000000; //add extra 5% to ensure validation
 

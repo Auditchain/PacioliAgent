@@ -8382,18 +8382,18 @@
         688
       ],
       "Locked": [
-        14317
+        14549
       ],
       "StringsUpgradeable": [
         3785
       ]
     },
-    "id": 14318,
+    "id": 14550,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 14120,
+        "id": 14352,
         "literals": [
           "solidity",
           "=",
@@ -8406,9 +8406,9 @@
       {
         "absolutePath": "@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgradeable.sol",
         "file": "@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgradeable.sol",
-        "id": 14121,
+        "id": 14353,
         "nodeType": "ImportDirective",
-        "scope": 14318,
+        "scope": 14550,
         "sourceUnit": 210,
         "src": "57:91:48",
         "symbolAliases": [],
@@ -8419,13 +8419,13 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 14123,
+              "id": 14355,
               "name": "AccessControlEnumerableUpgradeable",
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 209,
               "src": "262:34:48"
             },
-            "id": 14124,
+            "id": 14356,
             "nodeType": "InheritanceSpecifier",
             "src": "262:34:48"
           }
@@ -8442,15 +8442,15 @@
         ],
         "contractKind": "contract",
         "documentation": {
-          "id": 14122,
+          "id": 14354,
           "nodeType": "StructuredDocumentation",
           "src": "150:93:48",
           "text": "@title Locked\n @dev Smart contract to enable locking and unlocking of token holders. "
         },
         "fullyImplemented": true,
-        "id": 14317,
+        "id": 14549,
         "linearizedBaseContracts": [
-          14317,
+          14549,
           209,
           544,
           3831,
@@ -8466,11 +8466,11 @@
           {
             "constant": false,
             "functionSelector": "1a921b3e",
-            "id": 14128,
+            "id": 14360,
             "mutability": "mutable",
             "name": "lockedList",
             "nodeType": "VariableDeclaration",
-            "scope": 14317,
+            "scope": 14549,
             "src": "304:43:48",
             "stateVariable": true,
             "storageLocation": "default",
@@ -8479,9 +8479,9 @@
               "typeString": "mapping(address => bool)"
             },
             "typeName": {
-              "id": 14127,
+              "id": 14359,
               "keyType": {
-                "id": 14125,
+                "id": 14357,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "313:7:48",
@@ -8497,7 +8497,7 @@
                 "typeString": "mapping(address => bool)"
               },
               "valueType": {
-                "id": 14126,
+                "id": 14358,
                 "name": "bool",
                 "nodeType": "ElementaryTypeName",
                 "src": "324:4:48",
@@ -8511,21 +8511,21 @@
           },
           {
             "anonymous": false,
-            "id": 14132,
+            "id": 14364,
             "name": "AddedLock",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 14131,
+              "id": 14363,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14130,
+                  "id": 14362,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "user",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14132,
+                  "scope": 14364,
                   "src": "370:12:48",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8534,7 +8534,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14129,
+                    "id": 14361,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "370:7:48",
@@ -8553,21 +8553,21 @@
           },
           {
             "anonymous": false,
-            "id": 14136,
+            "id": 14368,
             "name": "RemovedLock",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 14135,
+              "id": 14367,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14134,
+                  "id": 14366,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "user",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14136,
+                  "scope": 14368,
                   "src": "407:12:48",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -8576,7 +8576,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14133,
+                    "id": 14365,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "407:7:48",
@@ -8596,11 +8596,11 @@
           {
             "constant": true,
             "functionSelector": "092c5b3b",
-            "id": 14141,
+            "id": 14373,
             "mutability": "constant",
             "name": "CONTROLLER_ROLE",
             "nodeType": "VariableDeclaration",
-            "scope": 14317,
+            "scope": 14549,
             "src": "487:70:48",
             "stateVariable": true,
             "storageLocation": "default",
@@ -8609,7 +8609,7 @@
               "typeString": "bytes32"
             },
             "typeName": {
-              "id": 14137,
+              "id": 14369,
               "name": "bytes32",
               "nodeType": "ElementaryTypeName",
               "src": "487:7:48",
@@ -8622,7 +8622,7 @@
               "arguments": [
                 {
                   "hexValue": "434f4e54524f4c4c45525f524f4c45",
-                  "id": 14139,
+                  "id": 14371,
                   "isConstant": false,
                   "isLValue": false,
                   "isPure": true,
@@ -8644,7 +8644,7 @@
                     "typeString": "literal_string \"CONTROLLER_ROLE\""
                   }
                 ],
-                "id": 14138,
+                "id": 14370,
                 "name": "keccak256",
                 "nodeType": "Identifier",
                 "overloadedDeclarations": [],
@@ -8655,7 +8655,7 @@
                   "typeString": "function (bytes memory) pure returns (bytes32)"
                 }
               },
-              "id": 14140,
+              "id": 14372,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -8675,11 +8675,11 @@
           {
             "constant": true,
             "functionSelector": "d5391393",
-            "id": 14146,
+            "id": 14378,
             "mutability": "constant",
             "name": "MINTER_ROLE",
             "nodeType": "VariableDeclaration",
-            "scope": 14317,
+            "scope": 14549,
             "src": "563:62:48",
             "stateVariable": true,
             "storageLocation": "default",
@@ -8688,7 +8688,7 @@
               "typeString": "bytes32"
             },
             "typeName": {
-              "id": 14142,
+              "id": 14374,
               "name": "bytes32",
               "nodeType": "ElementaryTypeName",
               "src": "563:7:48",
@@ -8701,7 +8701,7 @@
               "arguments": [
                 {
                   "hexValue": "4d494e5445525f524f4c45",
-                  "id": 14144,
+                  "id": 14376,
                   "isConstant": false,
                   "isLValue": false,
                   "isPure": true,
@@ -8723,7 +8723,7 @@
                     "typeString": "literal_string \"MINTER_ROLE\""
                   }
                 ],
-                "id": 14143,
+                "id": 14375,
                 "name": "keccak256",
                 "nodeType": "Identifier",
                 "overloadedDeclarations": [],
@@ -8734,7 +8734,7 @@
                   "typeString": "function (bytes memory) pure returns (bytes32)"
                 }
               },
-              "id": 14145,
+              "id": 14377,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -8753,7 +8753,7 @@
           },
           {
             "body": {
-              "id": 14158,
+              "id": 14390,
               "nodeType": "Block",
               "src": "657:131:48",
               "statements": [
@@ -8763,11 +8763,11 @@
                       {
                         "arguments": [
                           {
-                            "id": 14150,
+                            "id": 14382,
                             "name": "CONTROLLER_ROLE",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 14141,
+                            "referencedDeclaration": 14373,
                             "src": "687:15:48",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bytes32",
@@ -8776,7 +8776,7 @@
                           },
                           {
                             "expression": {
-                              "id": 14151,
+                              "id": 14383,
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
@@ -8787,7 +8787,7 @@
                                 "typeString": "msg"
                               }
                             },
-                            "id": 14152,
+                            "id": 14384,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -8812,7 +8812,7 @@
                               "typeString": "address"
                             }
                           ],
-                          "id": 14149,
+                          "id": 14381,
                           "name": "hasRole",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
@@ -8823,7 +8823,7 @@
                             "typeString": "function (bytes32,address) view returns (bool)"
                           }
                         },
-                        "id": 14153,
+                        "id": 14385,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -8840,7 +8840,7 @@
                       },
                       {
                         "hexValue": "4c6f636b65643a3a6973436f6e74726f6c6c6572202d2043616c6c6572206973206e6f74206120636f6e74726f6c6c6572",
-                        "id": 14154,
+                        "id": 14386,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -8866,7 +8866,7 @@
                           "typeString": "literal_string \"Locked::isController - Caller is not a controller\""
                         }
                       ],
-                      "id": 14148,
+                      "id": 14380,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -8880,7 +8880,7 @@
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 14155,
+                    "id": 14387,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -8895,22 +8895,22 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 14156,
+                  "id": 14388,
                   "nodeType": "ExpressionStatement",
                   "src": "671:98:48"
                 },
                 {
-                  "id": 14157,
+                  "id": 14389,
                   "nodeType": "PlaceholderStatement",
                   "src": "780:1:48"
                 }
               ]
             },
-            "id": 14159,
+            "id": 14391,
             "name": "isController",
             "nodeType": "ModifierDefinition",
             "parameters": {
-              "id": 14147,
+              "id": 14379,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "657:0:48"
@@ -8921,7 +8921,7 @@
           },
           {
             "body": {
-              "id": 14171,
+              "id": 14403,
               "nodeType": "Block",
               "src": "816:118:48",
               "statements": [
@@ -8931,11 +8931,11 @@
                       {
                         "arguments": [
                           {
-                            "id": 14163,
+                            "id": 14395,
                             "name": "MINTER_ROLE",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 14146,
+                            "referencedDeclaration": 14378,
                             "src": "846:11:48",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bytes32",
@@ -8944,7 +8944,7 @@
                           },
                           {
                             "expression": {
-                              "id": 14164,
+                              "id": 14396,
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
@@ -8955,7 +8955,7 @@
                                 "typeString": "msg"
                               }
                             },
-                            "id": 14165,
+                            "id": 14397,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -8980,7 +8980,7 @@
                               "typeString": "address"
                             }
                           ],
-                          "id": 14162,
+                          "id": 14394,
                           "name": "hasRole",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
@@ -8991,7 +8991,7 @@
                             "typeString": "function (bytes32,address) view returns (bool)"
                           }
                         },
-                        "id": 14166,
+                        "id": 14398,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -9008,7 +9008,7 @@
                       },
                       {
                         "hexValue": "4c6f636b65643a3a69734d696e746572202d2043616c6c6572206973206e6f742061206d696e746572",
-                        "id": 14167,
+                        "id": 14399,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -9034,7 +9034,7 @@
                           "typeString": "literal_string \"Locked::isMinter - Caller is not a minter\""
                         }
                       ],
-                      "id": 14161,
+                      "id": 14393,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -9048,7 +9048,7 @@
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 14168,
+                    "id": 14400,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -9063,22 +9063,22 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 14169,
+                  "id": 14401,
                   "nodeType": "ExpressionStatement",
                   "src": "830:86:48"
                 },
                 {
-                  "id": 14170,
+                  "id": 14402,
                   "nodeType": "PlaceholderStatement",
                   "src": "926:1:48"
                 }
               ]
             },
-            "id": 14172,
+            "id": 14404,
             "name": "isMinter",
             "nodeType": "ModifierDefinition",
             "parameters": {
-              "id": 14160,
+              "id": 14392,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "816:0:48"
@@ -9089,13 +9089,13 @@
           },
           {
             "body": {
-              "id": 14203,
+              "id": 14435,
               "nodeType": "Block",
               "src": "1155:310:48",
               "statements": [
                 {
                   "condition": {
-                    "id": 14183,
+                    "id": 14415,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -9107,7 +9107,7 @@
                     "subExpression": {
                       "arguments": [
                         {
-                          "id": 14180,
+                          "id": 14412,
                           "name": "DEFAULT_ADMIN_ROLE",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
@@ -9119,11 +9119,11 @@
                           }
                         },
                         {
-                          "id": 14181,
+                          "id": 14413,
                           "name": "_from",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 14175,
+                          "referencedDeclaration": 14407,
                           "src": "1199:5:48",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
@@ -9142,7 +9142,7 @@
                             "typeString": "address"
                           }
                         ],
-                        "id": 14179,
+                        "id": 14411,
                         "name": "hasRole",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
@@ -9153,7 +9153,7 @@
                           "typeString": "function (bytes32,address) view returns (bool)"
                         }
                       },
-                      "id": 14182,
+                      "id": 14414,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -9173,11 +9173,11 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 14201,
+                  "id": 14433,
                   "nodeType": "IfStatement",
                   "src": "1166:282:48",
                   "trueBody": {
-                    "id": 14200,
+                    "id": 14432,
                     "nodeType": "Block",
                     "src": "1206:242:48",
                     "statements": [
@@ -9185,7 +9185,7 @@
                         "expression": {
                           "arguments": [
                             {
-                              "id": 14188,
+                              "id": 14420,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": false,
@@ -9196,24 +9196,24 @@
                               "src": "1299:18:48",
                               "subExpression": {
                                 "baseExpression": {
-                                  "id": 14185,
+                                  "id": 14417,
                                   "name": "lockedList",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 14128,
+                                  "referencedDeclaration": 14360,
                                   "src": "1300:10:48",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                                     "typeString": "mapping(address => bool)"
                                   }
                                 },
-                                "id": 14187,
+                                "id": 14419,
                                 "indexExpression": {
-                                  "id": 14186,
+                                  "id": 14418,
                                   "name": "_from",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 14175,
+                                  "referencedDeclaration": 14407,
                                   "src": "1311:5:48",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_address",
@@ -9238,7 +9238,7 @@
                             },
                             {
                               "hexValue": "4c6f636b65643a3a69734e6f744c6f636b6564202d2055736572206973206c6f636b6564",
-                              "id": 14189,
+                              "id": 14421,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
@@ -9264,7 +9264,7 @@
                                 "typeString": "literal_string \"Locked::isNotLocked - User is locked\""
                               }
                             ],
-                            "id": 14184,
+                            "id": 14416,
                             "name": "require",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [
@@ -9278,7 +9278,7 @@
                               "typeString": "function (bool,string memory) pure"
                             }
                           },
-                          "id": 14190,
+                          "id": 14422,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -9293,7 +9293,7 @@
                             "typeString": "tuple()"
                           }
                         },
-                        "id": 14191,
+                        "id": 14423,
                         "nodeType": "ExpressionStatement",
                         "src": "1291:67:48"
                       },
@@ -9301,7 +9301,7 @@
                         "expression": {
                           "arguments": [
                             {
-                              "id": 14196,
+                              "id": 14428,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": false,
@@ -9312,24 +9312,24 @@
                               "src": "1380:16:48",
                               "subExpression": {
                                 "baseExpression": {
-                                  "id": 14193,
+                                  "id": 14425,
                                   "name": "lockedList",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 14128,
+                                  "referencedDeclaration": 14360,
                                   "src": "1381:10:48",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                                     "typeString": "mapping(address => bool)"
                                   }
                                 },
-                                "id": 14195,
+                                "id": 14427,
                                 "indexExpression": {
-                                  "id": 14194,
+                                  "id": 14426,
                                   "name": "_to",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 14177,
+                                  "referencedDeclaration": 14409,
                                   "src": "1392:3:48",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_address",
@@ -9354,7 +9354,7 @@
                             },
                             {
                               "hexValue": "4c6f636b65643a3a69734e6f744c6f636b6564202d2055736572206973206c6f636b6564",
-                              "id": 14197,
+                              "id": 14429,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
@@ -9380,7 +9380,7 @@
                                 "typeString": "literal_string \"Locked::isNotLocked - User is locked\""
                               }
                             ],
-                            "id": 14192,
+                            "id": 14424,
                             "name": "require",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [
@@ -9394,7 +9394,7 @@
                               "typeString": "function (bool,string memory) pure"
                             }
                           },
-                          "id": 14198,
+                          "id": 14430,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -9409,7 +9409,7 @@
                             "typeString": "tuple()"
                           }
                         },
-                        "id": 14199,
+                        "id": 14431,
                         "nodeType": "ExpressionStatement",
                         "src": "1372:65:48"
                       }
@@ -9417,32 +9417,32 @@
                   }
                 },
                 {
-                  "id": 14202,
+                  "id": 14434,
                   "nodeType": "PlaceholderStatement",
                   "src": "1457:1:48"
                 }
               ]
             },
             "documentation": {
-              "id": 14173,
+              "id": 14405,
               "nodeType": "StructuredDocumentation",
               "src": "940:161:48",
               "text": "@dev terminate transaction if any of the participants is locked\n @param _from - user initiating process\n @param _to  - user involved in process"
             },
-            "id": 14204,
+            "id": 14436,
             "name": "isNotLocked",
             "nodeType": "ModifierDefinition",
             "parameters": {
-              "id": 14178,
+              "id": 14410,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14175,
+                  "id": 14407,
                   "mutability": "mutable",
                   "name": "_from",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14204,
+                  "scope": 14436,
                   "src": "1127:13:48",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -9451,7 +9451,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14174,
+                    "id": 14406,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1127:7:48",
@@ -9465,11 +9465,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 14177,
+                  "id": 14409,
                   "mutability": "mutable",
                   "name": "_to",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14204,
+                  "scope": 14436,
                   "src": "1142:11:48",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -9478,7 +9478,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14176,
+                    "id": 14408,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1142:7:48",
@@ -9499,31 +9499,31 @@
           },
           {
             "body": {
-              "id": 14216,
+              "id": 14448,
               "nodeType": "Block",
               "src": "1640:41:48",
               "statements": [
                 {
                   "expression": {
                     "baseExpression": {
-                      "id": 14212,
+                      "id": 14444,
                       "name": "lockedList",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14128,
+                      "referencedDeclaration": 14360,
                       "src": "1657:10:48",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                         "typeString": "mapping(address => bool)"
                       }
                     },
-                    "id": 14214,
+                    "id": 14446,
                     "indexExpression": {
-                      "id": 14213,
+                      "id": 14445,
                       "name": "_user",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14207,
+                      "referencedDeclaration": 14439,
                       "src": "1668:5:48",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -9541,37 +9541,37 @@
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 14211,
-                  "id": 14215,
+                  "functionReturnParameters": 14443,
+                  "id": 14447,
                   "nodeType": "Return",
                   "src": "1650:24:48"
                 }
               ]
             },
             "documentation": {
-              "id": 14205,
+              "id": 14437,
               "nodeType": "StructuredDocumentation",
               "src": "1471:104:48",
               "text": "@dev check if user has been locked\n @param _user - usr to check\n @return true or false"
             },
             "functionSelector": "4a4fbeec",
-            "id": 14217,
+            "id": 14449,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "isLocked",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 14208,
+              "id": 14440,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14207,
+                  "id": 14439,
                   "mutability": "mutable",
                   "name": "_user",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14217,
+                  "scope": 14449,
                   "src": "1598:13:48",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -9580,7 +9580,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14206,
+                    "id": 14438,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1598:7:48",
@@ -9596,16 +9596,16 @@
               "src": "1597:15:48"
             },
             "returnParameters": {
-              "id": 14211,
+              "id": 14443,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14210,
+                  "id": 14442,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14217,
+                  "scope": 14449,
                   "src": "1634:4:48",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -9614,7 +9614,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 14209,
+                    "id": 14441,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "1634:4:48",
@@ -9628,7 +9628,7 @@
               ],
               "src": "1633:6:48"
             },
-            "scope": 14317,
+            "scope": 14549,
             "src": "1580:101:48",
             "stateMutability": "view",
             "virtual": false,
@@ -9636,7 +9636,7 @@
           },
           {
             "body": {
-              "id": 14229,
+              "id": 14461,
               "nodeType": "Block",
               "src": "1806:40:48",
               "statements": [
@@ -9644,11 +9644,11 @@
                   "expression": {
                     "arguments": [
                       {
-                        "id": 14226,
+                        "id": 14458,
                         "name": "_user",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14220,
+                        "referencedDeclaration": 14452,
                         "src": "1833:5:48",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -9663,18 +9663,18 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 14225,
+                      "id": 14457,
                       "name": "_addLock",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14299,
+                      "referencedDeclaration": 14531,
                       "src": "1824:8:48",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 14227,
+                    "id": 14459,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -9689,31 +9689,31 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 14228,
+                  "id": 14460,
                   "nodeType": "ExpressionStatement",
                   "src": "1824:15:48"
                 }
               ]
             },
             "documentation": {
-              "id": 14218,
+              "id": 14450,
               "nodeType": "StructuredDocumentation",
               "src": "1691:54:48",
               "text": "@dev add user to lock\n @param _user to lock"
             },
             "functionSelector": "882f327b",
-            "id": 14230,
+            "id": 14462,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
                 "arguments": [],
-                "id": 14223,
+                "id": 14455,
                 "modifierName": {
-                  "id": 14222,
+                  "id": 14454,
                   "name": "isController",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 14159,
+                  "referencedDeclaration": 14391,
                   "src": "1791:12:48"
                 },
                 "nodeType": "ModifierInvocation",
@@ -9723,16 +9723,16 @@
             "name": "addLock",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 14221,
+              "id": 14453,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14220,
+                  "id": 14452,
                   "mutability": "mutable",
                   "name": "_user",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14230,
+                  "scope": 14462,
                   "src": "1768:13:48",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -9741,7 +9741,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14219,
+                    "id": 14451,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1768:7:48",
@@ -9757,12 +9757,12 @@
               "src": "1767:15:48"
             },
             "returnParameters": {
-              "id": 14224,
+              "id": 14456,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1806:0:48"
             },
-            "scope": 14317,
+            "scope": 14549,
             "src": "1750:96:48",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -9770,22 +9770,22 @@
           },
           {
             "body": {
-              "id": 14268,
+              "id": 14500,
               "nodeType": "Block",
               "src": "1924:210:48",
               "statements": [
                 {
                   "assignments": [
-                    14239
+                    14471
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 14239,
+                      "id": 14471,
                       "mutability": "mutable",
                       "name": "length",
                       "nodeType": "VariableDeclaration",
-                      "scope": 14268,
+                      "scope": 14500,
                       "src": "1934:14:48",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -9794,7 +9794,7 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
-                        "id": 14238,
+                        "id": 14470,
                         "name": "uint256",
                         "nodeType": "ElementaryTypeName",
                         "src": "1934:7:48",
@@ -9806,21 +9806,21 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 14242,
+                  "id": 14474,
                   "initialValue": {
                     "expression": {
-                      "id": 14240,
+                      "id": 14472,
                       "name": "_users",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14233,
+                      "referencedDeclaration": 14465,
                       "src": "1951:6:48",
                       "typeDescriptions": {
                         "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
                         "typeString": "address[] memory"
                       }
                     },
-                    "id": 14241,
+                    "id": 14473,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -9844,17 +9844,17 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 14246,
+                        "id": 14478,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
-                          "id": 14244,
+                          "id": 14476,
                           "name": "length",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 14239,
+                          "referencedDeclaration": 14471,
                           "src": "1982:6:48",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -9865,7 +9865,7 @@
                         "operator": "<=",
                         "rightExpression": {
                           "hexValue": "323536",
-                          "id": 14245,
+                          "id": 14477,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -9887,7 +9887,7 @@
                       },
                       {
                         "hexValue": "4c6f636b65642d6164644c6f636b4d756c7469706c653a204c69737420746f6f206c6f6e67",
-                        "id": 14247,
+                        "id": 14479,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -9913,7 +9913,7 @@
                           "typeString": "literal_string \"Locked-addLockMultiple: List too long\""
                         }
                       ],
-                      "id": 14243,
+                      "id": 14475,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -9927,7 +9927,7 @@
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 14248,
+                    "id": 14480,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -9942,13 +9942,13 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 14249,
+                  "id": 14481,
                   "nodeType": "ExpressionStatement",
                   "src": "1974:63:48"
                 },
                 {
                   "body": {
-                    "id": 14266,
+                    "id": 14498,
                     "nodeType": "Block",
                     "src": "2084:44:48",
                     "statements": [
@@ -9957,24 +9957,24 @@
                           "arguments": [
                             {
                               "baseExpression": {
-                                "id": 14261,
+                                "id": 14493,
                                 "name": "_users",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 14233,
+                                "referencedDeclaration": 14465,
                                 "src": "2107:6:48",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
                                   "typeString": "address[] memory"
                                 }
                               },
-                              "id": 14263,
+                              "id": 14495,
                               "indexExpression": {
-                                "id": 14262,
+                                "id": 14494,
                                 "name": "i",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 14251,
+                                "referencedDeclaration": 14483,
                                 "src": "2114:1:48",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
@@ -10000,18 +10000,18 @@
                                 "typeString": "address"
                               }
                             ],
-                            "id": 14260,
+                            "id": 14492,
                             "name": "_addLock",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 14299,
+                            "referencedDeclaration": 14531,
                             "src": "2098:8:48",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
                               "typeString": "function (address)"
                             }
                           },
-                          "id": 14264,
+                          "id": 14496,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -10026,7 +10026,7 @@
                             "typeString": "tuple()"
                           }
                         },
-                        "id": 14265,
+                        "id": 14497,
                         "nodeType": "ExpressionStatement",
                         "src": "2098:19:48"
                       }
@@ -10037,17 +10037,17 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 14256,
+                    "id": 14488,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
-                      "id": 14254,
+                      "id": 14486,
                       "name": "i",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14251,
+                      "referencedDeclaration": 14483,
                       "src": "2067:1:48",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -10057,11 +10057,11 @@
                     "nodeType": "BinaryOperation",
                     "operator": "<",
                     "rightExpression": {
-                      "id": 14255,
+                      "id": 14487,
                       "name": "length",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14239,
+                      "referencedDeclaration": 14471,
                       "src": "2071:6:48",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -10074,19 +10074,19 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 14267,
+                  "id": 14499,
                   "initializationExpression": {
                     "assignments": [
-                      14251
+                      14483
                     ],
                     "declarations": [
                       {
                         "constant": false,
-                        "id": 14251,
+                        "id": 14483,
                         "mutability": "mutable",
                         "name": "i",
                         "nodeType": "VariableDeclaration",
-                        "scope": 14267,
+                        "scope": 14499,
                         "src": "2052:9:48",
                         "stateVariable": false,
                         "storageLocation": "default",
@@ -10095,7 +10095,7 @@
                           "typeString": "uint256"
                         },
                         "typeName": {
-                          "id": 14250,
+                          "id": 14482,
                           "name": "uint256",
                           "nodeType": "ElementaryTypeName",
                           "src": "2052:7:48",
@@ -10107,10 +10107,10 @@
                         "visibility": "internal"
                       }
                     ],
-                    "id": 14253,
+                    "id": 14485,
                     "initialValue": {
                       "hexValue": "30",
-                      "id": 14252,
+                      "id": 14484,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -10129,7 +10129,7 @@
                   },
                   "loopExpression": {
                     "expression": {
-                      "id": 14258,
+                      "id": 14490,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -10139,11 +10139,11 @@
                       "prefix": false,
                       "src": "2079:3:48",
                       "subExpression": {
-                        "id": 14257,
+                        "id": 14489,
                         "name": "i",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14251,
+                        "referencedDeclaration": 14483,
                         "src": "2079:1:48",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -10155,7 +10155,7 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 14259,
+                    "id": 14491,
                     "nodeType": "ExpressionStatement",
                     "src": "2079:3:48"
                   },
@@ -10165,18 +10165,18 @@
               ]
             },
             "functionSelector": "8f557373",
-            "id": 14269,
+            "id": 14501,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
                 "arguments": [],
-                "id": 14236,
+                "id": 14468,
                 "modifierName": {
-                  "id": 14235,
+                  "id": 14467,
                   "name": "isController",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 14159,
+                  "referencedDeclaration": 14391,
                   "src": "1909:12:48"
                 },
                 "nodeType": "ModifierInvocation",
@@ -10186,16 +10186,16 @@
             "name": "addLockMultiple",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 14234,
+              "id": 14466,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14233,
+                  "id": 14465,
                   "mutability": "mutable",
                   "name": "_users",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14269,
+                  "scope": 14501,
                   "src": "1877:23:48",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -10205,7 +10205,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 14231,
+                      "id": 14463,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "1877:7:48",
@@ -10215,7 +10215,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 14232,
+                    "id": 14464,
                     "nodeType": "ArrayTypeName",
                     "src": "1877:9:48",
                     "typeDescriptions": {
@@ -10229,12 +10229,12 @@
               "src": "1876:25:48"
             },
             "returnParameters": {
-              "id": 14237,
+              "id": 14469,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1924:0:48"
             },
-            "scope": 14317,
+            "scope": 14549,
             "src": "1852:282:48",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -10242,7 +10242,7 @@
           },
           {
             "body": {
-              "id": 14281,
+              "id": 14513,
               "nodeType": "Block",
               "src": "2261:42:48",
               "statements": [
@@ -10250,11 +10250,11 @@
                   "expression": {
                     "arguments": [
                       {
-                        "id": 14278,
+                        "id": 14510,
                         "name": "_user",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14272,
+                        "referencedDeclaration": 14504,
                         "src": "2290:5:48",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -10269,18 +10269,18 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 14277,
+                      "id": 14509,
                       "name": "_removeLock",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14316,
+                      "referencedDeclaration": 14548,
                       "src": "2278:11:48",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 14279,
+                    "id": 14511,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -10295,31 +10295,31 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 14280,
+                  "id": 14512,
                   "nodeType": "ExpressionStatement",
                   "src": "2278:18:48"
                 }
               ]
             },
             "documentation": {
-              "id": 14270,
+              "id": 14502,
               "nodeType": "StructuredDocumentation",
               "src": "2140:58:48",
               "text": "@dev unlock user\n @param _user - user to unlock"
             },
             "functionSelector": "4a387bef",
-            "id": 14282,
+            "id": 14514,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
                 "arguments": [],
-                "id": 14275,
+                "id": 14507,
                 "modifierName": {
-                  "id": 14274,
+                  "id": 14506,
                   "name": "isController",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 14159,
+                  "referencedDeclaration": 14391,
                   "src": "2239:12:48"
                 },
                 "nodeType": "ModifierInvocation",
@@ -10329,16 +10329,16 @@
             "name": "removeLock",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 14273,
+              "id": 14505,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14272,
+                  "id": 14504,
                   "mutability": "mutable",
                   "name": "_user",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14282,
+                  "scope": 14514,
                   "src": "2224:13:48",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -10347,7 +10347,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14271,
+                    "id": 14503,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2224:7:48",
@@ -10363,12 +10363,12 @@
               "src": "2223:15:48"
             },
             "returnParameters": {
-              "id": 14276,
+              "id": 14508,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2261:0:48"
             },
-            "scope": 14317,
+            "scope": 14549,
             "src": "2203:100:48",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -10376,37 +10376,37 @@
           },
           {
             "body": {
-              "id": 14298,
+              "id": 14530,
               "nodeType": "Block",
               "src": "2430:72:48",
               "statements": [
                 {
                   "expression": {
-                    "id": 14292,
+                    "id": 14524,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "baseExpression": {
-                        "id": 14288,
+                        "id": 14520,
                         "name": "lockedList",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14128,
+                        "referencedDeclaration": 14360,
                         "src": "2440:10:48",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                           "typeString": "mapping(address => bool)"
                         }
                       },
-                      "id": 14290,
+                      "id": 14522,
                       "indexExpression": {
-                        "id": 14289,
+                        "id": 14521,
                         "name": "_user",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14285,
+                        "referencedDeclaration": 14517,
                         "src": "2451:5:48",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -10428,7 +10428,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "hexValue": "74727565",
-                      "id": 14291,
+                      "id": 14523,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -10448,7 +10448,7 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 14293,
+                  "id": 14525,
                   "nodeType": "ExpressionStatement",
                   "src": "2440:24:48"
                 },
@@ -10456,11 +10456,11 @@
                   "eventCall": {
                     "arguments": [
                       {
-                        "id": 14295,
+                        "id": 14527,
                         "name": "_user",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14285,
+                        "referencedDeclaration": 14517,
                         "src": "2489:5:48",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -10475,18 +10475,18 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 14294,
+                      "id": 14526,
                       "name": "AddedLock",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14132,
+                      "referencedDeclaration": 14364,
                       "src": "2479:9:48",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 14296,
+                    "id": 14528,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -10501,35 +10501,35 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 14297,
+                  "id": 14529,
                   "nodeType": "EmitStatement",
                   "src": "2474:21:48"
                 }
               ]
             },
             "documentation": {
-              "id": 14283,
+              "id": 14515,
               "nodeType": "StructuredDocumentation",
               "src": "2310:73:48",
               "text": "@dev add user to lock for internal needs\n @param _user to lock"
             },
-            "id": 14299,
+            "id": 14531,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "_addLock",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 14286,
+              "id": 14518,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14285,
+                  "id": 14517,
                   "mutability": "mutable",
                   "name": "_user",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14299,
+                  "scope": 14531,
                   "src": "2406:13:48",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -10538,7 +10538,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14284,
+                    "id": 14516,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2406:7:48",
@@ -10554,12 +10554,12 @@
               "src": "2405:15:48"
             },
             "returnParameters": {
-              "id": 14287,
+              "id": 14519,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2430:0:48"
             },
-            "scope": 14317,
+            "scope": 14549,
             "src": "2388:114:48",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -10567,37 +10567,37 @@
           },
           {
             "body": {
-              "id": 14315,
+              "id": 14547,
               "nodeType": "Block",
               "src": "2636:75:48",
               "statements": [
                 {
                   "expression": {
-                    "id": 14309,
+                    "id": 14541,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "baseExpression": {
-                        "id": 14305,
+                        "id": 14537,
                         "name": "lockedList",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14128,
+                        "referencedDeclaration": 14360,
                         "src": "2646:10:48",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                           "typeString": "mapping(address => bool)"
                         }
                       },
-                      "id": 14307,
+                      "id": 14539,
                       "indexExpression": {
-                        "id": 14306,
+                        "id": 14538,
                         "name": "_user",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14302,
+                        "referencedDeclaration": 14534,
                         "src": "2657:5:48",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -10619,7 +10619,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "hexValue": "66616c7365",
-                      "id": 14308,
+                      "id": 14540,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -10639,7 +10639,7 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 14310,
+                  "id": 14542,
                   "nodeType": "ExpressionStatement",
                   "src": "2646:25:48"
                 },
@@ -10647,11 +10647,11 @@
                   "eventCall": {
                     "arguments": [
                       {
-                        "id": 14312,
+                        "id": 14544,
                         "name": "_user",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14302,
+                        "referencedDeclaration": 14534,
                         "src": "2698:5:48",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -10666,18 +10666,18 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 14311,
+                      "id": 14543,
                       "name": "RemovedLock",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14136,
+                      "referencedDeclaration": 14368,
                       "src": "2686:11:48",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 14313,
+                    "id": 14545,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -10692,35 +10692,35 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 14314,
+                  "id": 14546,
                   "nodeType": "EmitStatement",
                   "src": "2681:23:48"
                 }
               ]
             },
             "documentation": {
-              "id": 14300,
+              "id": 14532,
               "nodeType": "StructuredDocumentation",
               "src": "2508:77:48",
               "text": "@dev unlock user for internal needs\n @param _user - user to unlock"
             },
-            "id": 14316,
+            "id": 14548,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "_removeLock",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 14303,
+              "id": 14535,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14302,
+                  "id": 14534,
                   "mutability": "mutable",
                   "name": "_user",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14316,
+                  "scope": 14548,
                   "src": "2612:13:48",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -10729,7 +10729,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14301,
+                    "id": 14533,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2612:7:48",
@@ -10745,19 +10745,19 @@
               "src": "2611:15:48"
             },
             "returnParameters": {
-              "id": 14304,
+              "id": 14536,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2636:0:48"
             },
-            "scope": 14317,
+            "scope": 14549,
             "src": "2590:121:48",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           }
         ],
-        "scope": 14318,
+        "scope": 14550,
         "src": "243:2471:48"
       }
     ],
@@ -10794,18 +10794,18 @@
         688
       ],
       "Locked": [
-        14317
+        14549
       ],
       "StringsUpgradeable": [
         3785
       ]
     },
-    "id": 14318,
+    "id": 14550,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 14120,
+        "id": 14352,
         "literals": [
           "solidity",
           "=",
@@ -10818,9 +10818,9 @@
       {
         "absolutePath": "@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgradeable.sol",
         "file": "@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgradeable.sol",
-        "id": 14121,
+        "id": 14353,
         "nodeType": "ImportDirective",
-        "scope": 14318,
+        "scope": 14550,
         "sourceUnit": 210,
         "src": "57:91:48",
         "symbolAliases": [],
@@ -10831,13 +10831,13 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 14123,
+              "id": 14355,
               "name": "AccessControlEnumerableUpgradeable",
               "nodeType": "IdentifierPath",
               "referencedDeclaration": 209,
               "src": "262:34:48"
             },
-            "id": 14124,
+            "id": 14356,
             "nodeType": "InheritanceSpecifier",
             "src": "262:34:48"
           }
@@ -10854,15 +10854,15 @@
         ],
         "contractKind": "contract",
         "documentation": {
-          "id": 14122,
+          "id": 14354,
           "nodeType": "StructuredDocumentation",
           "src": "150:93:48",
           "text": "@title Locked\n @dev Smart contract to enable locking and unlocking of token holders. "
         },
         "fullyImplemented": true,
-        "id": 14317,
+        "id": 14549,
         "linearizedBaseContracts": [
-          14317,
+          14549,
           209,
           544,
           3831,
@@ -10878,11 +10878,11 @@
           {
             "constant": false,
             "functionSelector": "1a921b3e",
-            "id": 14128,
+            "id": 14360,
             "mutability": "mutable",
             "name": "lockedList",
             "nodeType": "VariableDeclaration",
-            "scope": 14317,
+            "scope": 14549,
             "src": "304:43:48",
             "stateVariable": true,
             "storageLocation": "default",
@@ -10891,9 +10891,9 @@
               "typeString": "mapping(address => bool)"
             },
             "typeName": {
-              "id": 14127,
+              "id": 14359,
               "keyType": {
-                "id": 14125,
+                "id": 14357,
                 "name": "address",
                 "nodeType": "ElementaryTypeName",
                 "src": "313:7:48",
@@ -10909,7 +10909,7 @@
                 "typeString": "mapping(address => bool)"
               },
               "valueType": {
-                "id": 14126,
+                "id": 14358,
                 "name": "bool",
                 "nodeType": "ElementaryTypeName",
                 "src": "324:4:48",
@@ -10923,21 +10923,21 @@
           },
           {
             "anonymous": false,
-            "id": 14132,
+            "id": 14364,
             "name": "AddedLock",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 14131,
+              "id": 14363,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14130,
+                  "id": 14362,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "user",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14132,
+                  "scope": 14364,
                   "src": "370:12:48",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -10946,7 +10946,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14129,
+                    "id": 14361,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "370:7:48",
@@ -10965,21 +10965,21 @@
           },
           {
             "anonymous": false,
-            "id": 14136,
+            "id": 14368,
             "name": "RemovedLock",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 14135,
+              "id": 14367,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14134,
+                  "id": 14366,
                   "indexed": false,
                   "mutability": "mutable",
                   "name": "user",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14136,
+                  "scope": 14368,
                   "src": "407:12:48",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -10988,7 +10988,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14133,
+                    "id": 14365,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "407:7:48",
@@ -11008,11 +11008,11 @@
           {
             "constant": true,
             "functionSelector": "092c5b3b",
-            "id": 14141,
+            "id": 14373,
             "mutability": "constant",
             "name": "CONTROLLER_ROLE",
             "nodeType": "VariableDeclaration",
-            "scope": 14317,
+            "scope": 14549,
             "src": "487:70:48",
             "stateVariable": true,
             "storageLocation": "default",
@@ -11021,7 +11021,7 @@
               "typeString": "bytes32"
             },
             "typeName": {
-              "id": 14137,
+              "id": 14369,
               "name": "bytes32",
               "nodeType": "ElementaryTypeName",
               "src": "487:7:48",
@@ -11034,7 +11034,7 @@
               "arguments": [
                 {
                   "hexValue": "434f4e54524f4c4c45525f524f4c45",
-                  "id": 14139,
+                  "id": 14371,
                   "isConstant": false,
                   "isLValue": false,
                   "isPure": true,
@@ -11056,7 +11056,7 @@
                     "typeString": "literal_string \"CONTROLLER_ROLE\""
                   }
                 ],
-                "id": 14138,
+                "id": 14370,
                 "name": "keccak256",
                 "nodeType": "Identifier",
                 "overloadedDeclarations": [],
@@ -11067,7 +11067,7 @@
                   "typeString": "function (bytes memory) pure returns (bytes32)"
                 }
               },
-              "id": 14140,
+              "id": 14372,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -11087,11 +11087,11 @@
           {
             "constant": true,
             "functionSelector": "d5391393",
-            "id": 14146,
+            "id": 14378,
             "mutability": "constant",
             "name": "MINTER_ROLE",
             "nodeType": "VariableDeclaration",
-            "scope": 14317,
+            "scope": 14549,
             "src": "563:62:48",
             "stateVariable": true,
             "storageLocation": "default",
@@ -11100,7 +11100,7 @@
               "typeString": "bytes32"
             },
             "typeName": {
-              "id": 14142,
+              "id": 14374,
               "name": "bytes32",
               "nodeType": "ElementaryTypeName",
               "src": "563:7:48",
@@ -11113,7 +11113,7 @@
               "arguments": [
                 {
                   "hexValue": "4d494e5445525f524f4c45",
-                  "id": 14144,
+                  "id": 14376,
                   "isConstant": false,
                   "isLValue": false,
                   "isPure": true,
@@ -11135,7 +11135,7 @@
                     "typeString": "literal_string \"MINTER_ROLE\""
                   }
                 ],
-                "id": 14143,
+                "id": 14375,
                 "name": "keccak256",
                 "nodeType": "Identifier",
                 "overloadedDeclarations": [],
@@ -11146,7 +11146,7 @@
                   "typeString": "function (bytes memory) pure returns (bytes32)"
                 }
               },
-              "id": 14145,
+              "id": 14377,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -11165,7 +11165,7 @@
           },
           {
             "body": {
-              "id": 14158,
+              "id": 14390,
               "nodeType": "Block",
               "src": "657:131:48",
               "statements": [
@@ -11175,11 +11175,11 @@
                       {
                         "arguments": [
                           {
-                            "id": 14150,
+                            "id": 14382,
                             "name": "CONTROLLER_ROLE",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 14141,
+                            "referencedDeclaration": 14373,
                             "src": "687:15:48",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bytes32",
@@ -11188,7 +11188,7 @@
                           },
                           {
                             "expression": {
-                              "id": 14151,
+                              "id": 14383,
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
@@ -11199,7 +11199,7 @@
                                 "typeString": "msg"
                               }
                             },
-                            "id": 14152,
+                            "id": 14384,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -11224,7 +11224,7 @@
                               "typeString": "address"
                             }
                           ],
-                          "id": 14149,
+                          "id": 14381,
                           "name": "hasRole",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
@@ -11235,7 +11235,7 @@
                             "typeString": "function (bytes32,address) view returns (bool)"
                           }
                         },
-                        "id": 14153,
+                        "id": 14385,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -11252,7 +11252,7 @@
                       },
                       {
                         "hexValue": "4c6f636b65643a3a6973436f6e74726f6c6c6572202d2043616c6c6572206973206e6f74206120636f6e74726f6c6c6572",
-                        "id": 14154,
+                        "id": 14386,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -11278,7 +11278,7 @@
                           "typeString": "literal_string \"Locked::isController - Caller is not a controller\""
                         }
                       ],
-                      "id": 14148,
+                      "id": 14380,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -11292,7 +11292,7 @@
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 14155,
+                    "id": 14387,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -11307,22 +11307,22 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 14156,
+                  "id": 14388,
                   "nodeType": "ExpressionStatement",
                   "src": "671:98:48"
                 },
                 {
-                  "id": 14157,
+                  "id": 14389,
                   "nodeType": "PlaceholderStatement",
                   "src": "780:1:48"
                 }
               ]
             },
-            "id": 14159,
+            "id": 14391,
             "name": "isController",
             "nodeType": "ModifierDefinition",
             "parameters": {
-              "id": 14147,
+              "id": 14379,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "657:0:48"
@@ -11333,7 +11333,7 @@
           },
           {
             "body": {
-              "id": 14171,
+              "id": 14403,
               "nodeType": "Block",
               "src": "816:118:48",
               "statements": [
@@ -11343,11 +11343,11 @@
                       {
                         "arguments": [
                           {
-                            "id": 14163,
+                            "id": 14395,
                             "name": "MINTER_ROLE",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 14146,
+                            "referencedDeclaration": 14378,
                             "src": "846:11:48",
                             "typeDescriptions": {
                               "typeIdentifier": "t_bytes32",
@@ -11356,7 +11356,7 @@
                           },
                           {
                             "expression": {
-                              "id": 14164,
+                              "id": 14396,
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
@@ -11367,7 +11367,7 @@
                                 "typeString": "msg"
                               }
                             },
-                            "id": 14165,
+                            "id": 14397,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
@@ -11392,7 +11392,7 @@
                               "typeString": "address"
                             }
                           ],
-                          "id": 14162,
+                          "id": 14394,
                           "name": "hasRole",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
@@ -11403,7 +11403,7 @@
                             "typeString": "function (bytes32,address) view returns (bool)"
                           }
                         },
-                        "id": 14166,
+                        "id": 14398,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -11420,7 +11420,7 @@
                       },
                       {
                         "hexValue": "4c6f636b65643a3a69734d696e746572202d2043616c6c6572206973206e6f742061206d696e746572",
-                        "id": 14167,
+                        "id": 14399,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -11446,7 +11446,7 @@
                           "typeString": "literal_string \"Locked::isMinter - Caller is not a minter\""
                         }
                       ],
-                      "id": 14161,
+                      "id": 14393,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -11460,7 +11460,7 @@
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 14168,
+                    "id": 14400,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -11475,22 +11475,22 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 14169,
+                  "id": 14401,
                   "nodeType": "ExpressionStatement",
                   "src": "830:86:48"
                 },
                 {
-                  "id": 14170,
+                  "id": 14402,
                   "nodeType": "PlaceholderStatement",
                   "src": "926:1:48"
                 }
               ]
             },
-            "id": 14172,
+            "id": 14404,
             "name": "isMinter",
             "nodeType": "ModifierDefinition",
             "parameters": {
-              "id": 14160,
+              "id": 14392,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "816:0:48"
@@ -11501,13 +11501,13 @@
           },
           {
             "body": {
-              "id": 14203,
+              "id": 14435,
               "nodeType": "Block",
               "src": "1155:310:48",
               "statements": [
                 {
                   "condition": {
-                    "id": 14183,
+                    "id": 14415,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -11519,7 +11519,7 @@
                     "subExpression": {
                       "arguments": [
                         {
-                          "id": 14180,
+                          "id": 14412,
                           "name": "DEFAULT_ADMIN_ROLE",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
@@ -11531,11 +11531,11 @@
                           }
                         },
                         {
-                          "id": 14181,
+                          "id": 14413,
                           "name": "_from",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 14175,
+                          "referencedDeclaration": 14407,
                           "src": "1199:5:48",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
@@ -11554,7 +11554,7 @@
                             "typeString": "address"
                           }
                         ],
-                        "id": 14179,
+                        "id": 14411,
                         "name": "hasRole",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
@@ -11565,7 +11565,7 @@
                           "typeString": "function (bytes32,address) view returns (bool)"
                         }
                       },
-                      "id": 14182,
+                      "id": 14414,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -11585,11 +11585,11 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 14201,
+                  "id": 14433,
                   "nodeType": "IfStatement",
                   "src": "1166:282:48",
                   "trueBody": {
-                    "id": 14200,
+                    "id": 14432,
                     "nodeType": "Block",
                     "src": "1206:242:48",
                     "statements": [
@@ -11597,7 +11597,7 @@
                         "expression": {
                           "arguments": [
                             {
-                              "id": 14188,
+                              "id": 14420,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": false,
@@ -11608,24 +11608,24 @@
                               "src": "1299:18:48",
                               "subExpression": {
                                 "baseExpression": {
-                                  "id": 14185,
+                                  "id": 14417,
                                   "name": "lockedList",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 14128,
+                                  "referencedDeclaration": 14360,
                                   "src": "1300:10:48",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                                     "typeString": "mapping(address => bool)"
                                   }
                                 },
-                                "id": 14187,
+                                "id": 14419,
                                 "indexExpression": {
-                                  "id": 14186,
+                                  "id": 14418,
                                   "name": "_from",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 14175,
+                                  "referencedDeclaration": 14407,
                                   "src": "1311:5:48",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_address",
@@ -11650,7 +11650,7 @@
                             },
                             {
                               "hexValue": "4c6f636b65643a3a69734e6f744c6f636b6564202d2055736572206973206c6f636b6564",
-                              "id": 14189,
+                              "id": 14421,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
@@ -11676,7 +11676,7 @@
                                 "typeString": "literal_string \"Locked::isNotLocked - User is locked\""
                               }
                             ],
-                            "id": 14184,
+                            "id": 14416,
                             "name": "require",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [
@@ -11690,7 +11690,7 @@
                               "typeString": "function (bool,string memory) pure"
                             }
                           },
-                          "id": 14190,
+                          "id": 14422,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -11705,7 +11705,7 @@
                             "typeString": "tuple()"
                           }
                         },
-                        "id": 14191,
+                        "id": 14423,
                         "nodeType": "ExpressionStatement",
                         "src": "1291:67:48"
                       },
@@ -11713,7 +11713,7 @@
                         "expression": {
                           "arguments": [
                             {
-                              "id": 14196,
+                              "id": 14428,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": false,
@@ -11724,24 +11724,24 @@
                               "src": "1380:16:48",
                               "subExpression": {
                                 "baseExpression": {
-                                  "id": 14193,
+                                  "id": 14425,
                                   "name": "lockedList",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 14128,
+                                  "referencedDeclaration": 14360,
                                   "src": "1381:10:48",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                                     "typeString": "mapping(address => bool)"
                                   }
                                 },
-                                "id": 14195,
+                                "id": 14427,
                                 "indexExpression": {
-                                  "id": 14194,
+                                  "id": 14426,
                                   "name": "_to",
                                   "nodeType": "Identifier",
                                   "overloadedDeclarations": [],
-                                  "referencedDeclaration": 14177,
+                                  "referencedDeclaration": 14409,
                                   "src": "1392:3:48",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_address",
@@ -11766,7 +11766,7 @@
                             },
                             {
                               "hexValue": "4c6f636b65643a3a69734e6f744c6f636b6564202d2055736572206973206c6f636b6564",
-                              "id": 14197,
+                              "id": 14429,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
@@ -11792,7 +11792,7 @@
                                 "typeString": "literal_string \"Locked::isNotLocked - User is locked\""
                               }
                             ],
-                            "id": 14192,
+                            "id": 14424,
                             "name": "require",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [
@@ -11806,7 +11806,7 @@
                               "typeString": "function (bool,string memory) pure"
                             }
                           },
-                          "id": 14198,
+                          "id": 14430,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -11821,7 +11821,7 @@
                             "typeString": "tuple()"
                           }
                         },
-                        "id": 14199,
+                        "id": 14431,
                         "nodeType": "ExpressionStatement",
                         "src": "1372:65:48"
                       }
@@ -11829,32 +11829,32 @@
                   }
                 },
                 {
-                  "id": 14202,
+                  "id": 14434,
                   "nodeType": "PlaceholderStatement",
                   "src": "1457:1:48"
                 }
               ]
             },
             "documentation": {
-              "id": 14173,
+              "id": 14405,
               "nodeType": "StructuredDocumentation",
               "src": "940:161:48",
               "text": "@dev terminate transaction if any of the participants is locked\n @param _from - user initiating process\n @param _to  - user involved in process"
             },
-            "id": 14204,
+            "id": 14436,
             "name": "isNotLocked",
             "nodeType": "ModifierDefinition",
             "parameters": {
-              "id": 14178,
+              "id": 14410,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14175,
+                  "id": 14407,
                   "mutability": "mutable",
                   "name": "_from",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14204,
+                  "scope": 14436,
                   "src": "1127:13:48",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -11863,7 +11863,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14174,
+                    "id": 14406,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1127:7:48",
@@ -11877,11 +11877,11 @@
                 },
                 {
                   "constant": false,
-                  "id": 14177,
+                  "id": 14409,
                   "mutability": "mutable",
                   "name": "_to",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14204,
+                  "scope": 14436,
                   "src": "1142:11:48",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -11890,7 +11890,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14176,
+                    "id": 14408,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1142:7:48",
@@ -11911,31 +11911,31 @@
           },
           {
             "body": {
-              "id": 14216,
+              "id": 14448,
               "nodeType": "Block",
               "src": "1640:41:48",
               "statements": [
                 {
                   "expression": {
                     "baseExpression": {
-                      "id": 14212,
+                      "id": 14444,
                       "name": "lockedList",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14128,
+                      "referencedDeclaration": 14360,
                       "src": "1657:10:48",
                       "typeDescriptions": {
                         "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                         "typeString": "mapping(address => bool)"
                       }
                     },
-                    "id": 14214,
+                    "id": 14446,
                     "indexExpression": {
-                      "id": 14213,
+                      "id": 14445,
                       "name": "_user",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14207,
+                      "referencedDeclaration": 14439,
                       "src": "1668:5:48",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
@@ -11953,37 +11953,37 @@
                       "typeString": "bool"
                     }
                   },
-                  "functionReturnParameters": 14211,
-                  "id": 14215,
+                  "functionReturnParameters": 14443,
+                  "id": 14447,
                   "nodeType": "Return",
                   "src": "1650:24:48"
                 }
               ]
             },
             "documentation": {
-              "id": 14205,
+              "id": 14437,
               "nodeType": "StructuredDocumentation",
               "src": "1471:104:48",
               "text": "@dev check if user has been locked\n @param _user - usr to check\n @return true or false"
             },
             "functionSelector": "4a4fbeec",
-            "id": 14217,
+            "id": 14449,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "isLocked",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 14208,
+              "id": 14440,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14207,
+                  "id": 14439,
                   "mutability": "mutable",
                   "name": "_user",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14217,
+                  "scope": 14449,
                   "src": "1598:13:48",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -11992,7 +11992,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14206,
+                    "id": 14438,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1598:7:48",
@@ -12008,16 +12008,16 @@
               "src": "1597:15:48"
             },
             "returnParameters": {
-              "id": 14211,
+              "id": 14443,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14210,
+                  "id": 14442,
                   "mutability": "mutable",
                   "name": "",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14217,
+                  "scope": 14449,
                   "src": "1634:4:48",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -12026,7 +12026,7 @@
                     "typeString": "bool"
                   },
                   "typeName": {
-                    "id": 14209,
+                    "id": 14441,
                     "name": "bool",
                     "nodeType": "ElementaryTypeName",
                     "src": "1634:4:48",
@@ -12040,7 +12040,7 @@
               ],
               "src": "1633:6:48"
             },
-            "scope": 14317,
+            "scope": 14549,
             "src": "1580:101:48",
             "stateMutability": "view",
             "virtual": false,
@@ -12048,7 +12048,7 @@
           },
           {
             "body": {
-              "id": 14229,
+              "id": 14461,
               "nodeType": "Block",
               "src": "1806:40:48",
               "statements": [
@@ -12056,11 +12056,11 @@
                   "expression": {
                     "arguments": [
                       {
-                        "id": 14226,
+                        "id": 14458,
                         "name": "_user",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14220,
+                        "referencedDeclaration": 14452,
                         "src": "1833:5:48",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -12075,18 +12075,18 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 14225,
+                      "id": 14457,
                       "name": "_addLock",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14299,
+                      "referencedDeclaration": 14531,
                       "src": "1824:8:48",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 14227,
+                    "id": 14459,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -12101,31 +12101,31 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 14228,
+                  "id": 14460,
                   "nodeType": "ExpressionStatement",
                   "src": "1824:15:48"
                 }
               ]
             },
             "documentation": {
-              "id": 14218,
+              "id": 14450,
               "nodeType": "StructuredDocumentation",
               "src": "1691:54:48",
               "text": "@dev add user to lock\n @param _user to lock"
             },
             "functionSelector": "882f327b",
-            "id": 14230,
+            "id": 14462,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
                 "arguments": [],
-                "id": 14223,
+                "id": 14455,
                 "modifierName": {
-                  "id": 14222,
+                  "id": 14454,
                   "name": "isController",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 14159,
+                  "referencedDeclaration": 14391,
                   "src": "1791:12:48"
                 },
                 "nodeType": "ModifierInvocation",
@@ -12135,16 +12135,16 @@
             "name": "addLock",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 14221,
+              "id": 14453,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14220,
+                  "id": 14452,
                   "mutability": "mutable",
                   "name": "_user",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14230,
+                  "scope": 14462,
                   "src": "1768:13:48",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -12153,7 +12153,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14219,
+                    "id": 14451,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "1768:7:48",
@@ -12169,12 +12169,12 @@
               "src": "1767:15:48"
             },
             "returnParameters": {
-              "id": 14224,
+              "id": 14456,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1806:0:48"
             },
-            "scope": 14317,
+            "scope": 14549,
             "src": "1750:96:48",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -12182,22 +12182,22 @@
           },
           {
             "body": {
-              "id": 14268,
+              "id": 14500,
               "nodeType": "Block",
               "src": "1924:210:48",
               "statements": [
                 {
                   "assignments": [
-                    14239
+                    14471
                   ],
                   "declarations": [
                     {
                       "constant": false,
-                      "id": 14239,
+                      "id": 14471,
                       "mutability": "mutable",
                       "name": "length",
                       "nodeType": "VariableDeclaration",
-                      "scope": 14268,
+                      "scope": 14500,
                       "src": "1934:14:48",
                       "stateVariable": false,
                       "storageLocation": "default",
@@ -12206,7 +12206,7 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
-                        "id": 14238,
+                        "id": 14470,
                         "name": "uint256",
                         "nodeType": "ElementaryTypeName",
                         "src": "1934:7:48",
@@ -12218,21 +12218,21 @@
                       "visibility": "internal"
                     }
                   ],
-                  "id": 14242,
+                  "id": 14474,
                   "initialValue": {
                     "expression": {
-                      "id": 14240,
+                      "id": 14472,
                       "name": "_users",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14233,
+                      "referencedDeclaration": 14465,
                       "src": "1951:6:48",
                       "typeDescriptions": {
                         "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
                         "typeString": "address[] memory"
                       }
                     },
-                    "id": 14241,
+                    "id": 14473,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -12256,17 +12256,17 @@
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
                         },
-                        "id": 14246,
+                        "id": 14478,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
-                          "id": 14244,
+                          "id": 14476,
                           "name": "length",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 14239,
+                          "referencedDeclaration": 14471,
                           "src": "1982:6:48",
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
@@ -12277,7 +12277,7 @@
                         "operator": "<=",
                         "rightExpression": {
                           "hexValue": "323536",
-                          "id": 14245,
+                          "id": 14477,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -12299,7 +12299,7 @@
                       },
                       {
                         "hexValue": "4c6f636b65642d6164644c6f636b4d756c7469706c653a204c69737420746f6f206c6f6e67",
-                        "id": 14247,
+                        "id": 14479,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": true,
@@ -12325,7 +12325,7 @@
                           "typeString": "literal_string \"Locked-addLockMultiple: List too long\""
                         }
                       ],
-                      "id": 14243,
+                      "id": 14475,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -12339,7 +12339,7 @@
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 14248,
+                    "id": 14480,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -12354,13 +12354,13 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 14249,
+                  "id": 14481,
                   "nodeType": "ExpressionStatement",
                   "src": "1974:63:48"
                 },
                 {
                   "body": {
-                    "id": 14266,
+                    "id": 14498,
                     "nodeType": "Block",
                     "src": "2084:44:48",
                     "statements": [
@@ -12369,24 +12369,24 @@
                           "arguments": [
                             {
                               "baseExpression": {
-                                "id": 14261,
+                                "id": 14493,
                                 "name": "_users",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 14233,
+                                "referencedDeclaration": 14465,
                                 "src": "2107:6:48",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
                                   "typeString": "address[] memory"
                                 }
                               },
-                              "id": 14263,
+                              "id": 14495,
                               "indexExpression": {
-                                "id": 14262,
+                                "id": 14494,
                                 "name": "i",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 14251,
+                                "referencedDeclaration": 14483,
                                 "src": "2114:1:48",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_uint256",
@@ -12412,18 +12412,18 @@
                                 "typeString": "address"
                               }
                             ],
-                            "id": 14260,
+                            "id": 14492,
                             "name": "_addLock",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 14299,
+                            "referencedDeclaration": 14531,
                             "src": "2098:8:48",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
                               "typeString": "function (address)"
                             }
                           },
-                          "id": 14264,
+                          "id": 14496,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -12438,7 +12438,7 @@
                             "typeString": "tuple()"
                           }
                         },
-                        "id": 14265,
+                        "id": 14497,
                         "nodeType": "ExpressionStatement",
                         "src": "2098:19:48"
                       }
@@ -12449,17 +12449,17 @@
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     },
-                    "id": 14256,
+                    "id": 14488,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
-                      "id": 14254,
+                      "id": 14486,
                       "name": "i",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14251,
+                      "referencedDeclaration": 14483,
                       "src": "2067:1:48",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -12469,11 +12469,11 @@
                     "nodeType": "BinaryOperation",
                     "operator": "<",
                     "rightExpression": {
-                      "id": 14255,
+                      "id": 14487,
                       "name": "length",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14239,
+                      "referencedDeclaration": 14471,
                       "src": "2071:6:48",
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
@@ -12486,19 +12486,19 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 14267,
+                  "id": 14499,
                   "initializationExpression": {
                     "assignments": [
-                      14251
+                      14483
                     ],
                     "declarations": [
                       {
                         "constant": false,
-                        "id": 14251,
+                        "id": 14483,
                         "mutability": "mutable",
                         "name": "i",
                         "nodeType": "VariableDeclaration",
-                        "scope": 14267,
+                        "scope": 14499,
                         "src": "2052:9:48",
                         "stateVariable": false,
                         "storageLocation": "default",
@@ -12507,7 +12507,7 @@
                           "typeString": "uint256"
                         },
                         "typeName": {
-                          "id": 14250,
+                          "id": 14482,
                           "name": "uint256",
                           "nodeType": "ElementaryTypeName",
                           "src": "2052:7:48",
@@ -12519,10 +12519,10 @@
                         "visibility": "internal"
                       }
                     ],
-                    "id": 14253,
+                    "id": 14485,
                     "initialValue": {
                       "hexValue": "30",
-                      "id": 14252,
+                      "id": 14484,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -12541,7 +12541,7 @@
                   },
                   "loopExpression": {
                     "expression": {
-                      "id": 14258,
+                      "id": 14490,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -12551,11 +12551,11 @@
                       "prefix": false,
                       "src": "2079:3:48",
                       "subExpression": {
-                        "id": 14257,
+                        "id": 14489,
                         "name": "i",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14251,
+                        "referencedDeclaration": 14483,
                         "src": "2079:1:48",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -12567,7 +12567,7 @@
                         "typeString": "uint256"
                       }
                     },
-                    "id": 14259,
+                    "id": 14491,
                     "nodeType": "ExpressionStatement",
                     "src": "2079:3:48"
                   },
@@ -12577,18 +12577,18 @@
               ]
             },
             "functionSelector": "8f557373",
-            "id": 14269,
+            "id": 14501,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
                 "arguments": [],
-                "id": 14236,
+                "id": 14468,
                 "modifierName": {
-                  "id": 14235,
+                  "id": 14467,
                   "name": "isController",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 14159,
+                  "referencedDeclaration": 14391,
                   "src": "1909:12:48"
                 },
                 "nodeType": "ModifierInvocation",
@@ -12598,16 +12598,16 @@
             "name": "addLockMultiple",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 14234,
+              "id": 14466,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14233,
+                  "id": 14465,
                   "mutability": "mutable",
                   "name": "_users",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14269,
+                  "scope": 14501,
                   "src": "1877:23:48",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -12617,7 +12617,7 @@
                   },
                   "typeName": {
                     "baseType": {
-                      "id": 14231,
+                      "id": 14463,
                       "name": "address",
                       "nodeType": "ElementaryTypeName",
                       "src": "1877:7:48",
@@ -12627,7 +12627,7 @@
                         "typeString": "address"
                       }
                     },
-                    "id": 14232,
+                    "id": 14464,
                     "nodeType": "ArrayTypeName",
                     "src": "1877:9:48",
                     "typeDescriptions": {
@@ -12641,12 +12641,12 @@
               "src": "1876:25:48"
             },
             "returnParameters": {
-              "id": 14237,
+              "id": 14469,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "1924:0:48"
             },
-            "scope": 14317,
+            "scope": 14549,
             "src": "1852:282:48",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -12654,7 +12654,7 @@
           },
           {
             "body": {
-              "id": 14281,
+              "id": 14513,
               "nodeType": "Block",
               "src": "2261:42:48",
               "statements": [
@@ -12662,11 +12662,11 @@
                   "expression": {
                     "arguments": [
                       {
-                        "id": 14278,
+                        "id": 14510,
                         "name": "_user",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14272,
+                        "referencedDeclaration": 14504,
                         "src": "2290:5:48",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -12681,18 +12681,18 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 14277,
+                      "id": 14509,
                       "name": "_removeLock",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14316,
+                      "referencedDeclaration": 14548,
                       "src": "2278:11:48",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 14279,
+                    "id": 14511,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -12707,31 +12707,31 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 14280,
+                  "id": 14512,
                   "nodeType": "ExpressionStatement",
                   "src": "2278:18:48"
                 }
               ]
             },
             "documentation": {
-              "id": 14270,
+              "id": 14502,
               "nodeType": "StructuredDocumentation",
               "src": "2140:58:48",
               "text": "@dev unlock user\n @param _user - user to unlock"
             },
             "functionSelector": "4a387bef",
-            "id": 14282,
+            "id": 14514,
             "implemented": true,
             "kind": "function",
             "modifiers": [
               {
                 "arguments": [],
-                "id": 14275,
+                "id": 14507,
                 "modifierName": {
-                  "id": 14274,
+                  "id": 14506,
                   "name": "isController",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 14159,
+                  "referencedDeclaration": 14391,
                   "src": "2239:12:48"
                 },
                 "nodeType": "ModifierInvocation",
@@ -12741,16 +12741,16 @@
             "name": "removeLock",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 14273,
+              "id": 14505,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14272,
+                  "id": 14504,
                   "mutability": "mutable",
                   "name": "_user",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14282,
+                  "scope": 14514,
                   "src": "2224:13:48",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -12759,7 +12759,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14271,
+                    "id": 14503,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2224:7:48",
@@ -12775,12 +12775,12 @@
               "src": "2223:15:48"
             },
             "returnParameters": {
-              "id": 14276,
+              "id": 14508,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2261:0:48"
             },
-            "scope": 14317,
+            "scope": 14549,
             "src": "2203:100:48",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -12788,37 +12788,37 @@
           },
           {
             "body": {
-              "id": 14298,
+              "id": 14530,
               "nodeType": "Block",
               "src": "2430:72:48",
               "statements": [
                 {
                   "expression": {
-                    "id": 14292,
+                    "id": 14524,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "baseExpression": {
-                        "id": 14288,
+                        "id": 14520,
                         "name": "lockedList",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14128,
+                        "referencedDeclaration": 14360,
                         "src": "2440:10:48",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                           "typeString": "mapping(address => bool)"
                         }
                       },
-                      "id": 14290,
+                      "id": 14522,
                       "indexExpression": {
-                        "id": 14289,
+                        "id": 14521,
                         "name": "_user",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14285,
+                        "referencedDeclaration": 14517,
                         "src": "2451:5:48",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -12840,7 +12840,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "hexValue": "74727565",
-                      "id": 14291,
+                      "id": 14523,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -12860,7 +12860,7 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 14293,
+                  "id": 14525,
                   "nodeType": "ExpressionStatement",
                   "src": "2440:24:48"
                 },
@@ -12868,11 +12868,11 @@
                   "eventCall": {
                     "arguments": [
                       {
-                        "id": 14295,
+                        "id": 14527,
                         "name": "_user",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14285,
+                        "referencedDeclaration": 14517,
                         "src": "2489:5:48",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -12887,18 +12887,18 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 14294,
+                      "id": 14526,
                       "name": "AddedLock",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14132,
+                      "referencedDeclaration": 14364,
                       "src": "2479:9:48",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 14296,
+                    "id": 14528,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -12913,35 +12913,35 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 14297,
+                  "id": 14529,
                   "nodeType": "EmitStatement",
                   "src": "2474:21:48"
                 }
               ]
             },
             "documentation": {
-              "id": 14283,
+              "id": 14515,
               "nodeType": "StructuredDocumentation",
               "src": "2310:73:48",
               "text": "@dev add user to lock for internal needs\n @param _user to lock"
             },
-            "id": 14299,
+            "id": 14531,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "_addLock",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 14286,
+              "id": 14518,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14285,
+                  "id": 14517,
                   "mutability": "mutable",
                   "name": "_user",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14299,
+                  "scope": 14531,
                   "src": "2406:13:48",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -12950,7 +12950,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14284,
+                    "id": 14516,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2406:7:48",
@@ -12966,12 +12966,12 @@
               "src": "2405:15:48"
             },
             "returnParameters": {
-              "id": 14287,
+              "id": 14519,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2430:0:48"
             },
-            "scope": 14317,
+            "scope": 14549,
             "src": "2388:114:48",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -12979,37 +12979,37 @@
           },
           {
             "body": {
-              "id": 14315,
+              "id": 14547,
               "nodeType": "Block",
               "src": "2636:75:48",
               "statements": [
                 {
                   "expression": {
-                    "id": 14309,
+                    "id": 14541,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "baseExpression": {
-                        "id": 14305,
+                        "id": 14537,
                         "name": "lockedList",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14128,
+                        "referencedDeclaration": 14360,
                         "src": "2646:10:48",
                         "typeDescriptions": {
                           "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
                           "typeString": "mapping(address => bool)"
                         }
                       },
-                      "id": 14307,
+                      "id": 14539,
                       "indexExpression": {
-                        "id": 14306,
+                        "id": 14538,
                         "name": "_user",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14302,
+                        "referencedDeclaration": 14534,
                         "src": "2657:5:48",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -13031,7 +13031,7 @@
                     "operator": "=",
                     "rightHandSide": {
                       "hexValue": "66616c7365",
-                      "id": 14308,
+                      "id": 14540,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -13051,7 +13051,7 @@
                       "typeString": "bool"
                     }
                   },
-                  "id": 14310,
+                  "id": 14542,
                   "nodeType": "ExpressionStatement",
                   "src": "2646:25:48"
                 },
@@ -13059,11 +13059,11 @@
                   "eventCall": {
                     "arguments": [
                       {
-                        "id": 14312,
+                        "id": 14544,
                         "name": "_user",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 14302,
+                        "referencedDeclaration": 14534,
                         "src": "2698:5:48",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
@@ -13078,18 +13078,18 @@
                           "typeString": "address"
                         }
                       ],
-                      "id": 14311,
+                      "id": 14543,
                       "name": "RemovedLock",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 14136,
+                      "referencedDeclaration": 14368,
                       "src": "2686:11:48",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
                         "typeString": "function (address)"
                       }
                     },
-                    "id": 14313,
+                    "id": 14545,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -13104,35 +13104,35 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 14314,
+                  "id": 14546,
                   "nodeType": "EmitStatement",
                   "src": "2681:23:48"
                 }
               ]
             },
             "documentation": {
-              "id": 14300,
+              "id": 14532,
               "nodeType": "StructuredDocumentation",
               "src": "2508:77:48",
               "text": "@dev unlock user for internal needs\n @param _user - user to unlock"
             },
-            "id": 14316,
+            "id": 14548,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
             "name": "_removeLock",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 14303,
+              "id": 14535,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 14302,
+                  "id": 14534,
                   "mutability": "mutable",
                   "name": "_user",
                   "nodeType": "VariableDeclaration",
-                  "scope": 14316,
+                  "scope": 14548,
                   "src": "2612:13:48",
                   "stateVariable": false,
                   "storageLocation": "default",
@@ -13141,7 +13141,7 @@
                     "typeString": "address"
                   },
                   "typeName": {
-                    "id": 14301,
+                    "id": 14533,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
                     "src": "2612:7:48",
@@ -13157,19 +13157,19 @@
               "src": "2611:15:48"
             },
             "returnParameters": {
-              "id": 14304,
+              "id": 14536,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "2636:0:48"
             },
-            "scope": 14317,
+            "scope": 14549,
             "src": "2590:121:48",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "internal"
           }
         ],
-        "scope": 14318,
+        "scope": 14550,
         "src": "243:2471:48"
       }
     ],
@@ -13181,7 +13181,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.1",
-  "updatedAt": "2022-06-23T17:32:44.326Z",
+  "updatedAt": "2022-08-08T21:00:32.813Z",
   "devdoc": {
     "details": "Smart contract to enable locking and unlocking of token holders. ",
     "kind": "dev",

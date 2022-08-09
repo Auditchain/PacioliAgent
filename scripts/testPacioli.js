@@ -164,10 +164,16 @@ async function deploy() {
         const dataSubscriber1 = providerForUpdate.addresses[0];
         result = await saveToIpfs(reportURL);
 
+        let gasPrice = Number(await web3.eth.getGasPrice()) + 100000000 ;
+
+
+
+        
+
 
         let testHash = web3.utils.keccak256(reportURL + randomNum);
         console.log("Hash from deploy:", testHash);
-        await validation.methods.initValNoCohort(testHash, result[1], 0, "10000000000000000000").send({ from: dataSubscriber1, gas: 900000 });
+        await validation.methods.initValNoCohort(testHash, result[1], 0, "10000000000000000000").send({ from: dataSubscriber1, gas: 900000, maxFeePerGas: gasPrice, maxPriorityFeePerGas: gasPrice, });
         console.log("[" + run + "] Run completed");
         completed++ ;
 
@@ -177,5 +183,5 @@ async function deploy() {
     }
 }
 const MAX_RUNS = 5;
-setInterval(deploy, 4000);
+// setInterval(deploy, 4000);
 deploy();
