@@ -163,10 +163,10 @@ async function verifyPacioli(metadataUrl, trxHash) {
 
    
 
-    const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
-        .catch(error => console.log("ERROR: " + error));
-    // const reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
+    // const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
     //     .catch(error => console.log("ERROR: " + error));
+    const reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
+        .catch(error => console.log("ERROR: " + error));
 
 
     const  timePast = (Date.now() - queryingPacioliStart) / 1000/ 60;
@@ -654,7 +654,7 @@ async function initProcess() {
     const validationStruct = await nodeOperationsPreEvent.methods.nodeOpStruct(owner).call();
     const isNodeOperator = validationStruct.isNodeOperator;
     const isDelegating = validationStruct.isDelegating;
-    minValidatorCount = await nonCohortValidate.methods.maxValidators().call();
+    minValidatorCount = await nonCohortValidate.methods.minValidators().call();
 
     console.log("min validator count:", minValidatorCount);
 
