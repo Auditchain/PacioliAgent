@@ -34,7 +34,7 @@ const pacioli = function(){
          * @param {*} SaveToIPFS whether to save the resulting report to a IPFS directory
          * @returns Promise resolved with PacioliTrace.json payload, or rejected with a string error
          */
-        callLocal: async function(REPORT_URL,MY_ADDRESS='someAddress',SaveToIPFS=false){
+        callLocal: async function(REPORT_URL,MY_ADDRESS='someAddress',SaveToIPFS=false,IsLinkbase=false){
             const tmpFile = os.tmpdir()+"/"+process.pid+"_"+(fileCounter++)+".json";
             // hacky way to pass command line arguments... see these_parameters/2 in webapi.pl
             var ARGS = [
@@ -48,6 +48,7 @@ const pacioli = function(){
                 "\"url('"+REPORT_URL+"',[])\"",
                 "\"address('"+ MY_ADDRESS + "',[default('')])\"",
                 "'saveToIPFS("+SaveToIPFS+",[default(false)])'",
+                "'isLinkbase("+IsLinkbase+",[default(false)])'",
                 "'noXBRLvalidation(false,[default(false)])'",
                 "'autoloadReportingStyleAC(true,[default(false)])'",
                 "'valueAssertionsCanDerive(true,[default(false)])'",
@@ -86,11 +87,11 @@ const pacioli = function(){
          * @param {*} SaveToIPFS 
          * @returns Promise with PacioliTrace.json payload, or rejetion with a string error
          */
-        callRemote: async function(REPORT_URL,MY_ADDRESS='someAddress',SaveToIPFS=false){
+        callRemote: async function(REPORT_URL,MY_ADDRESS='someAddress',SaveToIPFS=false,IsLinkbase=false){
             var axiosToCall = ENV.PACIOLI_HOST+
                 "/analyseReport_?format=json&apiToken=dummyToken&isLinkbase=false&extendedJSON=true&generateHiddenHTML=true&address="+MY_ADDRESS+
-                "&autoloadSECvintageReportingStyle=true&valueAssertionsCanDerive=true&lastPeriodOnly=true"+
-                "&saveToIPFS="+SaveToIPFS+
+                "&autoloadReportingStyleAC=true&valueAssertionsCanDerive=true&lastPeriodOnly=true"+
+                "&saveToIPFS="+SaveToIPFS+"&isLinkbase="+IsLinkbase+
                 "&url="+REPORT_URL;
             const agent = new https.Agent({  
                 rejectUnauthorized: false // HACK to avoid certificate error
