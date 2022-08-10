@@ -20,7 +20,7 @@ const pacioli = function(){
         "IPFS_NODE":"https://ipfs.infura.io:5001",
         "IPFS_USER":"UU",
         "IPFS_PASSWORD":"PP",
-        "IPFS_GATEWAY":"https://ipfs.infura.io/ipfs/"
+        "IPFS_GATEWAY":"https://auditchain.infura-ipfs.io/ipfs/"
     }, process.env);
     const PUBLIC_URL_ROOT = ENV.PACIOLI_HOST;
 
