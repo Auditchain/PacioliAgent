@@ -69,6 +69,8 @@ async function uploadReportToIPFS(url) {
             }];
         const result = await ipfs.files.add(reportFile, { wrapWithDirectory: true });
         const reportIPFSUrl = ipfsBase + result[1].hash + '/' + result[0].path;
+
+        console.log("report url ipfs:", reportIPFSUrl)
         const reportHash = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(reportContent));
         return [reportIPFSUrl, reportHash];   // this is the correct call, but used line below because the same report is submitted multiple times
     } catch (e) {
@@ -182,6 +184,6 @@ async function deploy() {
         console.log(e)
     }
 }
-const MAX_RUNS = 5;
+const MAX_RUNS = 6;
 // setInterval(deploy, 4000);
 deploy();

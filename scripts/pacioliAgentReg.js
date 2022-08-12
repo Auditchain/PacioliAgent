@@ -28,7 +28,7 @@ const projectSecret = process.env.IPFS_PASSWORD;
 const auth = 'Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
 
 const ipfs = create({
-    host: 'ipfs.infura.io',
+    host: 'auditchain.infura-ipfs.io',
     port: 5001,
     protocol: 'https',
     headers: {
@@ -80,7 +80,9 @@ let sleepTime = 5000;
 let zeroTransaction = "0x0000000000000000000000000000000000000000000000000000000000000000";
 let setIntervalId;
 let setVoteIntervalId;
-let ipfsBase = 'https://ipfs.infura.io/ipfs/';
+let ipfsBasePrivate = 'https://auditchain.infura-ipfs.io/ipfs/';
+const ipfsBase = 'https://ipfs.infura.io/ipfs/';
+
 
 let nonCohortValidate;
 let nodeOperationsPreEvent;
@@ -91,9 +93,14 @@ let validationCount = 0;
 let web3;
 let minValidatorCount;
 
-let ipfs1 = ipfsAPI('ipfs.infura.io', 5001, {
-    protocol: 'https'
-}) // Connect to IPFS
+const ipfs1 = ipfsAPI({
+    host: 'ipfs.infura.io',
+    port: 5001,
+    protocol: 'https',
+    headers: {
+        authorization: auth
+    }
+})
 
 const GEO_CACHE_FILENAME = ".myLocation.json";
 // cf. https://www.ip2location.com/web-service/ip2location :
@@ -151,17 +158,23 @@ async function setUpContracts() {
  * @param  {blockchain transaction hash} trxHash
  * @returns {location of Pacioli report on IPFS and result of validation valid or not}
  */
-async function verifyPacioli(metadataUrl, trxHash) {
+ async function verifyPacioli(metadataUrl, trxHash) {
 
     console.log("metadataUrl:", metadataUrl)
 
-    const result = await ipfs1.files.cat(metadataUrl);
-    const reportUrl = JSON.parse(result)["reportUrl"];
+    const reportContent1 = (await axios.get(ipfsBasePrivate + metadataUrl)).data;
+    // const result = await ipfs.cat(metadataUrl);
 
+
+    // let content = [];
+    // for await (const chunk of result) {
+    //   content = [...content, ...chunk];
+    // }
+    // console.log("content", JSON.stringify(reportContent1));
+
+    const reportUrl = JSON.parse(JSON.stringify(reportContent1))["reportUrl"];
     const queryingPacioliStart = Date.now();
     console.log("[1 " + trxHash + "]" + "  Querying Pacioli " + reportUrl);
-
-
 
     const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
         .catch(error => console.log("ERROR: " + error));
@@ -186,14 +199,13 @@ async function verifyPacioli(metadataUrl, trxHash) {
             path: "Pacioli.json",
             content: bufRule
         }];
-    const resultPacioli = await ipfs.add(reportFile, { wrapWithDirectory: true });
-    const pacioliIPFS = resultPacioli.cid + '/' + "Pacioli.json"
+    const resultPacioli = await ipfs1.files.add(reportFile, { wrapWithDirectory: true });
+    const pacioliIPFS =  resultPacioli[1].hash + '/' + resultPacioli[0].path;
 
     console.log("[3 " + trxHash + "] Pacioli report saved at: " + ipfsBase + pacioliIPFS);
 
     return [pacioliIPFS, reportContent.isValid];
 }
-
 
 
 // TODO:  Use only for testing to bypass calling Pacioli
@@ -215,15 +227,15 @@ async function verifyPacioli(metadataUrl, trxHash) {
  */
 async function uploadMetadataToIpfs(url, reportPacioliIPFSUrl, trxHash, isValid) {
 
-    const reportContent = (await axios.get(ipfsBase + url)).data;
+    const reportContent = (await axios.get(ipfsBasePrivate + url)).data;
     const reportHash = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(reportContent));
 
     console.log("[4 " + trxHash + "] Creating metadata file.");
 
     let metaDataObject = {
-        reportUrl: ipfsBase + url,
+        reportUrl: ipfsBasePrivate + url,
         reportHash: reportHash,
-        reportPacioli: ipfsBase + reportPacioliIPFSUrl,
+        reportPacioli: ipfsBasePrivate + reportPacioliIPFSUrl,
         validatorDetails: validatorDetails,
         result: isValid
     };
@@ -236,7 +248,7 @@ async function uploadMetadataToIpfs(url, reportPacioliIPFSUrl, trxHash, isValid)
             content: buf
         }];
 
-    const result = await ipfs.add(metadataFile, { wrapWithDirectory: true });
+    const result = await ipfs1.files.add(metadataFile, { wrapWithDirectory: true });
     const urlMetadata = result.cid + '/' + "AuditchainMetadataReport.json";
 
     console.log("[5 " + trxHash + "] Metadata created: " + ipfsBase + urlMetadata);
@@ -455,7 +467,10 @@ async function checkValQueue() {
     clearInterval(setIntervalId);
     try {
 
+
         await checkVoteQueue();
+
+
         const queueSize = await queueContract.methods.returnQueueSize().call();
         console.log("Queue size from checkValQueue:", queueSize.toString());
         let validationHash;
@@ -490,7 +505,13 @@ async function checkValQueue() {
             const head = await queueContract.methods.head().call();
             console.log("head:", head);
 
-            if (tail == pos ){
+            const processedId = await nonCohortValidate.methods.processedId().call();
+            console.log("processedId:", processedId);
+
+            const posP = await nonCohortValidate.methods.regP(owner).call();
+            console.log("posP:", posP);
+
+            if (tail == posP) {
 
                 console.log("Queue called from checkValQueue and ignored. Already at the end of the queue");
                 setIntervalId = setInterval(
@@ -500,7 +521,7 @@ async function checkValQueue() {
             }
 
 
-                const data = await nonCohortValidate.methods.registerValidation().encodeABI();
+            const data = await nonCohortValidate.methods.registerValidation().encodeABI();
             const nonce = await web3.eth.getTransactionCount(owner);
             const signedMessage = (await axios.get(`${PROVIDER_MANAGER}/sign?data=${data}&nonce=${nonce}`)).data;
             let receipt;
@@ -542,6 +563,12 @@ async function checkValQueue() {
 
                         if (metaDataLink == undefined)
                             throw "Process aborted due to failed Pacioli response"
+
+                        // const metaDataLink = "https://auditchain.infura-ipfs.io/ipfs/QmRGueSKYrvGL9eH6rntNEnKxyEPtt3EShXQu2XzwmF6sQ/AuditchainReport.json";
+                        // const reportHash = "0x7e8e180b02c42522406d5079df82c04ca532e2ebe77094b145eb8ed17b780bd9";
+                        // const isValid = 1;
+
+
 
                         const hasExecuted = await validate(result.documentHash, result.initTime, isValid ? 1 : 2, trxHash, metaDataLink, reportHash, result.user);
 
