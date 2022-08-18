@@ -229,9 +229,22 @@
       ],
       "stateMutability": "view",
       "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "findTailId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"validationHash\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"documentHash\",\"type\":\"bytes32\"},{\"internalType\":\"string\",\"name\":\"url\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"initTime\",\"type\":\"uint256\"}],\"name\":\"addToQueue\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_validationHash\",\"type\":\"bytes32\"}],\"name\":\"findIdForValidationHash\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_id\",\"type\":\"uint256\"}],\"name\":\"findPrevId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_id\",\"type\":\"uint256\"}],\"name\":\"get\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"next\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"validationHash\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"documentHash\",\"type\":\"bytes32\"},{\"internalType\":\"string\",\"name\":\"url\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"initTime\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"executed\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"head\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"valHash\",\"type\":\"bytes32\"}],\"name\":\"removeFromQueue\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"newPrice\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"valHash\",\"type\":\"bytes32\"}],\"name\":\"replaceValidation\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"returnQueueSize\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"valHash\",\"type\":\"bytes32\"}],\"name\":\"setValidatedFlag\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Auditchain/IQueue.sol\":\"IQueue\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Auditchain/IQueue.sol\":{\"keccak256\":\"0x719d14dd6441920187bc4698e58efa41bf0805d7e29c47a2664f39d3e65343c5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5403a64683be1c50f443d33e30a6587e58c2802aaa04d10490cafdb8b22bf54b\",\"dweb:/ipfs/Qmb3n33aPNvLxtxarQkGxbK74uHDAvEgEJMyHFZoQ6FV6Z\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"validationHash\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"documentHash\",\"type\":\"bytes32\"},{\"internalType\":\"string\",\"name\":\"url\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"initTime\",\"type\":\"uint256\"}],\"name\":\"addToQueue\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_validationHash\",\"type\":\"bytes32\"}],\"name\":\"findIdForValidationHash\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_id\",\"type\":\"uint256\"}],\"name\":\"findPrevId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"findTailId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_id\",\"type\":\"uint256\"}],\"name\":\"get\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"id\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"next\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"price\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"validationHash\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"documentHash\",\"type\":\"bytes32\"},{\"internalType\":\"string\",\"name\":\"url\",\"type\":\"string\"},{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"initTime\",\"type\":\"uint256\"},{\"internalType\":\"bool\",\"name\":\"executed\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"head\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"valHash\",\"type\":\"bytes32\"}],\"name\":\"removeFromQueue\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"newPrice\",\"type\":\"uint256\"},{\"internalType\":\"bytes32\",\"name\":\"valHash\",\"type\":\"bytes32\"}],\"name\":\"replaceValidation\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"returnQueueSize\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"valHash\",\"type\":\"bytes32\"}],\"name\":\"setValidatedFlag\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Auditchain/IQueue.sol\":\"IQueue\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Auditchain/IQueue.sol\":{\"keccak256\":\"0xb7c84a3d6e4a74c0ebd3959834021fd0a0b28bc7ca3092675f3cc022aec23d01\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d32332e117d1f5e89aee8d5173498eff82b47438edba087efbcb77ae2db580c6\",\"dweb:/ipfs/QmV3A9iDSuwVXVb8gks1agKy17ggRvAX1FRgPebvH2chvH\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -239,16 +252,16 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\npragma solidity =0.8.0;    \n    \ninterface IQueue {\n\n    function addToQueue(uint256 price, bytes32 validationHash, bytes32 documentHash, string memory url, address user,  uint256 initTime) external returns(bool);\n    function removeFromQueue(bytes32 valHash) external returns (bool);\n    function setValidatedFlag(bytes32 valHash)  external returns(bool);\n    function replaceValidation(uint256 newPrice, bytes32 valHash) external returns(bool);\n    function returnQueueSize() external view returns(uint256);\n    function get(uint256 _id) external view returns\n    (uint256 id, uint256 next, uint256 price, bytes32 validationHash, bytes32 documentHash, string memory url, address user, uint256 initTime, bool executed);\n    function findPrevId(uint256 _id) external view returns (uint256);\n    function findIdForValidationHash(bytes32 _validationHash)external view returns (uint256);\n    function head() external view returns (uint256);\n}",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity =0.8.0;    \n    \ninterface IQueue {\n\n    function addToQueue(uint256 price, bytes32 validationHash, bytes32 documentHash, string memory url, address user,  uint256 initTime) external returns(bool);\n    function removeFromQueue(bytes32 valHash) external returns (bool);\n    function setValidatedFlag(bytes32 valHash)  external returns(bool);\n    function replaceValidation(uint256 newPrice, bytes32 valHash) external returns(bool);\n    function returnQueueSize() external view returns(uint256);\n    function get(uint256 _id) external view returns\n    (uint256 id, uint256 next, uint256 price, bytes32 validationHash, bytes32 documentHash, string memory url, address user, uint256 initTime, bool executed);\n    function findPrevId(uint256 _id) external view returns (uint256);\n    function findIdForValidationHash(bytes32 _validationHash)external view returns (uint256);\n    function head() external view returns (uint256);\n    function findTailId() external view returns (uint256);\n\n}",
   "sourcePath": "/home/win2win/eth/projects/AuditChain/Core-Smart-Contracts-v1-upgradable-release-candidate/contracts/Auditchain/IQueue.sol",
   "ast": {
     "absolutePath": "project:/contracts/Auditchain/IQueue.sol",
     "exportedSymbols": {
       "IQueue": [
-        6676
+        6681
       ]
     },
-    "id": 6677,
+    "id": 6682,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
@@ -269,9 +282,9 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 6676,
+        "id": 6681,
         "linearizedBaseContracts": [
-          6676
+          6681
         ],
         "name": "IQueue",
         "nodeType": "ContractDefinition",
@@ -481,7 +494,7 @@
               ],
               "src": "238:6:36"
             },
-            "scope": 6676,
+            "scope": 6681,
             "src": "89:156:36",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -561,7 +574,7 @@
               ],
               "src": "309:6:36"
             },
-            "scope": 6676,
+            "scope": 6681,
             "src": "250:66:36",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -641,7 +654,7 @@
               ],
               "src": "381:6:36"
             },
-            "scope": 6676,
+            "scope": 6681,
             "src": "321:67:36",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -747,7 +760,7 @@
               ],
               "src": "471:6:36"
             },
-            "scope": 6676,
+            "scope": 6681,
             "src": "393:85:36",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -800,7 +813,7 @@
               ],
               "src": "531:9:36"
             },
-            "scope": 6676,
+            "scope": 6681,
             "src": "483:58:36",
             "stateMutability": "view",
             "virtual": false,
@@ -1089,7 +1102,7 @@
               ],
               "src": "598:153:36"
             },
-            "scope": 6676,
+            "scope": 6681,
             "src": "546:206:36",
             "stateMutability": "view",
             "virtual": false,
@@ -1169,7 +1182,7 @@
               ],
               "src": "812:9:36"
             },
-            "scope": 6676,
+            "scope": 6681,
             "src": "757:65:36",
             "stateMutability": "view",
             "virtual": false,
@@ -1249,7 +1262,7 @@
               ],
               "src": "906:9:36"
             },
-            "scope": 6676,
+            "scope": 6681,
             "src": "827:89:36",
             "stateMutability": "view",
             "virtual": false,
@@ -1302,27 +1315,80 @@
               ],
               "src": "959:9:36"
             },
-            "scope": 6676,
+            "scope": 6681,
             "src": "921:48:36",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "7108614a",
+            "id": 6680,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "findTailId",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6676,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "993:2:36"
+            },
+            "returnParameters": {
+              "id": 6679,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6678,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6680,
+                  "src": "1019:7:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6677,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1019:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1018:9:36"
+            },
+            "scope": 6681,
+            "src": "974:54:36",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 6677,
-        "src": "65:906:36"
+        "scope": 6682,
+        "src": "65:966:36"
       }
     ],
-    "src": "32:939:36"
+    "src": "32:999:36"
   },
   "legacyAST": {
     "absolutePath": "project:/contracts/Auditchain/IQueue.sol",
     "exportedSymbols": {
       "IQueue": [
-        6676
+        6681
       ]
     },
-    "id": 6677,
+    "id": 6682,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
@@ -1343,9 +1409,9 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 6676,
+        "id": 6681,
         "linearizedBaseContracts": [
-          6676
+          6681
         ],
         "name": "IQueue",
         "nodeType": "ContractDefinition",
@@ -1555,7 +1621,7 @@
               ],
               "src": "238:6:36"
             },
-            "scope": 6676,
+            "scope": 6681,
             "src": "89:156:36",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -1635,7 +1701,7 @@
               ],
               "src": "309:6:36"
             },
-            "scope": 6676,
+            "scope": 6681,
             "src": "250:66:36",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -1715,7 +1781,7 @@
               ],
               "src": "381:6:36"
             },
-            "scope": 6676,
+            "scope": 6681,
             "src": "321:67:36",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -1821,7 +1887,7 @@
               ],
               "src": "471:6:36"
             },
-            "scope": 6676,
+            "scope": 6681,
             "src": "393:85:36",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -1874,7 +1940,7 @@
               ],
               "src": "531:9:36"
             },
-            "scope": 6676,
+            "scope": 6681,
             "src": "483:58:36",
             "stateMutability": "view",
             "virtual": false,
@@ -2163,7 +2229,7 @@
               ],
               "src": "598:153:36"
             },
-            "scope": 6676,
+            "scope": 6681,
             "src": "546:206:36",
             "stateMutability": "view",
             "virtual": false,
@@ -2243,7 +2309,7 @@
               ],
               "src": "812:9:36"
             },
-            "scope": 6676,
+            "scope": 6681,
             "src": "757:65:36",
             "stateMutability": "view",
             "virtual": false,
@@ -2323,7 +2389,7 @@
               ],
               "src": "906:9:36"
             },
-            "scope": 6676,
+            "scope": 6681,
             "src": "827:89:36",
             "stateMutability": "view",
             "virtual": false,
@@ -2376,18 +2442,71 @@
               ],
               "src": "959:9:36"
             },
-            "scope": 6676,
+            "scope": 6681,
             "src": "921:48:36",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "7108614a",
+            "id": 6680,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "findTailId",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6676,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "993:2:36"
+            },
+            "returnParameters": {
+              "id": 6679,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6678,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6680,
+                  "src": "1019:7:36",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6677,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1019:7:36",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1018:9:36"
+            },
+            "scope": 6681,
+            "src": "974:54:36",
             "stateMutability": "view",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 6677,
-        "src": "65:906:36"
+        "scope": 6682,
+        "src": "65:966:36"
       }
     ],
-    "src": "32:939:36"
+    "src": "32:999:36"
   },
   "compiler": {
     "name": "solc",
@@ -2395,7 +2514,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.1",
-  "updatedAt": "2022-08-10T21:25:19.973Z",
+  "updatedAt": "2022-08-17T21:59:45.027Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
