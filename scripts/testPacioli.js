@@ -184,6 +184,6 @@ async function deploy() {
         console.log(e)
     }
 }
-const MAX_RUNS = 6;
+const MAX_RUNS = 2;
 // setInterval(deploy, 4000);
 deploy();

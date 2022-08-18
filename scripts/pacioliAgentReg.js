@@ -13,7 +13,7 @@ const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 const { create } = require("ipfs-http-client");
 
 const SECRETS_PATH = process.env.SECRETS_PATH ? process.env.SECRETS_PATH : '/secrets';
-const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : 'http://localhost:3334';
+const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : 'http://localhost:3335';
 
 // update process.env with variables not yet defined outside
 if (fs.existsSync(SECRETS_PATH)) {
@@ -75,7 +75,7 @@ const queue = process.env.QUEUE_ADDRESS;
 
 let validatorDetails = null;
 let agentBornAT;
-let intervalSize = 4000;
+let intervalSize = 10000;
 let sleepTime = 5000;
 let zeroTransaction = "0x0000000000000000000000000000000000000000000000000000000000000000";
 let setIntervalId;
@@ -249,7 +249,9 @@ async function uploadMetadataToIpfs(url, reportPacioliIPFSUrl, trxHash, isValid)
         }];
 
     const result = await ipfs1.files.add(metadataFile, { wrapWithDirectory: true });
-    const urlMetadata = result.cid + '/' + "AuditchainMetadataReport.json";
+
+    const urlMetadata =  result[1].hash + '/' + result[0].path;
+    // const urlMetadata = result.cid + '/' + "AuditchainMetadataReport.json";
 
     console.log("[5 " + trxHash + "] Metadata created: " + ipfsBase + urlMetadata);
     return [urlMetadata, reportHash];
@@ -269,13 +271,16 @@ async function uploadMetadataToIpfs(url, reportPacioliIPFSUrl, trxHash, isValid)
  */
 async function handlePacioliIPFS(url, trxHash) {
 
-    const [reportPacioliIPFSUrl, isValid] = await verifyPacioli(url, trxHash);
+    let [reportPacioliIPFSUrl, isValid] = await verifyPacioli(url, trxHash);
 
     if (!reportPacioliIPFSUrl) {
         console.log("FAILED execution of verifyPacioli for " + url);
 
         //TODO: what to do here?
-        return [undefined, undefined, undefined];
+        // return [undefined, undefined, undefined];
+        reportPacioliIPFSUrl ="Pacioli-failed";
+        isValid = false;
+        
     }
 
     const [metaDataLink, reportHash] = await uploadMetadataToIpfs(url, reportPacioliIPFSUrl, trxHash, isValid);
@@ -522,6 +527,8 @@ async function checkValQueue() {
 
 
             const data = await nonCohortValidate.methods.registerValidation().encodeABI();
+
+            console.log("data....:", data );
             const nonce = await web3.eth.getTransactionCount(owner);
             const signedMessage = (await axios.get(`${PROVIDER_MANAGER}/sign?data=${data}&nonce=${nonce}`)).data;
             let receipt;
@@ -617,7 +624,7 @@ async function checkValQueue() {
             intervalSize);
         await checkVoteQueue();
 
-        console.log(error)
+        console.log("catcth" , error)
     }
 
 }

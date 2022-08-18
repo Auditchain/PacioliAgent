@@ -1,7 +1,5 @@
 "use strict";
-let contract = require('truffle-contract');
 let Web3 = require('web3');
-let Web3WsProvider = require('web3-providers-ws');
 let ethers = require('ethers');
 let axios = require("axios");
 let ipfsAPI = require("ipfs-api");
@@ -9,36 +7,34 @@ const fs = require('fs');
 var readline = require('readline');
 var Writable = require('stream').Writable;
 const prompt = require('prompt-sync')({ sigint: true });
+const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
+
 
 const { create } = require("ipfs-http-client");
 
-
-let privateKeyMain;
-
 const SECRETS_PATH = process.env.SECRETS_PATH ? process.env.SECRETS_PATH : '/secrets';
+const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : 'http://localhost:3333';
 
 // update process.env with variables not yet defined outside
 if (fs.existsSync(SECRETS_PATH)) {
     require('dotenv').config({ path: 'PacioliNode.env' });
-    privateKeyMain = fs.readFileSync(`${SECRETS_PATH}/account.txt`, 'utf8').trim();
 } else if (process.env.PACIOLI_ENV)
     require('dotenv').config({ path: process.env.PACIOLI_ENV });
-  else
-    require('dotenv').config({ path: './.env' }); 
+else
+    require('dotenv').config({ path: './.env' });
 
 const projectId = process.env.IPFS_USER;
 const projectSecret = process.env.IPFS_PASSWORD;
 const auth = 'Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
 
 const ipfs = create({
-    host: 'ipfs.infura.io',
+    host: 'auditchain.infura-ipfs.io',
     port: 5001,
     protocol: 'https',
     headers: {
         authorization: auth
     }
 })
-
 
 var mutableStdout = new Writable({
     write: function (chunk, encoding, callback) {
@@ -56,8 +52,6 @@ var rl = readline.createInterface({
     terminal: true
 });
 
-let HDWalletProvider = require('@truffle/hdwallet-provider');
-
 const NON_COHORT = require('../build/contracts/ValidationsNoCohort.json');
 const NODE_OPERATIONS = require('../build/contracts/NodeOperations.json')
 const MEMBERS = require('../build/contracts/Members.json');
@@ -66,17 +60,11 @@ const QUEUE = require('../build/contracts/Queue.json');
 //TODO: this module is still copied from https://github.com/Auditchain/Reporting-Validation-Engine/tree/main/clientExamples/pacioliClient:
 const pacioli = require('./pacioliClient');
 const { throwError } = require('ethers/errors');
+const { exit } = require('process');
 
 // import ethereum connection strings.
-const ropsten_infura_server = process.env.ROPSTEN_INFURA_SERVER;
-const rinkeby_infura_server = process.env.RINKEBY_INFURA_SERVER;
-const main_infura_server = process.env.MAINNET_INFURA_SERVER;
-const goerli_infura_server = process.env.GOERLI_INFURA_SERVER
-const mumbai_server = process.env.MUMBAI_SERVER;
-const local_host = process.env.LOCAL;
-const mnemonic = process.env.MNEMONIC;
-
-// process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0; // required only for accessing Pacioli via callRemote(..)
+const endPoint = process.env.MUMBAI_SERVER;
+console.log("end point:", endPoint)
 
 
 // Address for smart contracts
@@ -87,29 +75,32 @@ const queue = process.env.QUEUE_ADDRESS;
 
 let validatorDetails = null;
 let agentBornAT;
-let intervalSize = 7000;
-let sleepTime = 7000;
+let intervalSize = 10000;
+let sleepTime = 5000;
 let zeroTransaction = "0x0000000000000000000000000000000000000000000000000000000000000000";
-let mutex = true;
 let setIntervalId;
 let setVoteIntervalId;
-let ipfsBase = 'https://ipfs.infura.io/ipfs/';
-
+let ipfsBasePrivate = 'https://auditchain.infura-ipfs.io/ipfs/';
+const ipfsBase = 'https://ipfs.infura.io/ipfs/';
 
 
 let nonCohortValidate;
-let providerForUpdate;
 let nodeOperationsPreEvent;
 let membersContract;
 let queueContract
 let owner;
 let validationCount = 0;
 let web3;
-let provider;
+let minValidatorCount;
 
-let ipfs1 = ipfsAPI('ipfs.infura.io', 5001, {
-    protocol: 'https'
-}) // Connect to IPFS
+const ipfs1 = ipfsAPI({
+    host: 'ipfs.infura.io',
+    port: 5001,
+    protocol: 'https',
+    headers: {
+        authorization: auth
+    }
+})
 
 const GEO_CACHE_FILENAME = ".myLocation.json";
 // cf. https://www.ip2location.com/web-service/ip2location :
@@ -117,9 +108,7 @@ const ipLocatorURL = `https://api.ip2location.com/v2/?key=${process.env.LOCATION
 
 async function fetchValidatorDetails() {
     const web3_reader = web3;
-    // const owner = providerForUpdate.addresses[0];
 
-    //const entityName = await membersContract.methods.user(owner, 1).call();
     var entityName;
     try { entityName = await membersContract.methods.user(owner, 1).call() }
     catch (ex) { console.log("EXCEPTION in fetchValidatorDetails:" + ex) };
@@ -159,8 +148,8 @@ async function setUpContracts() {
     nodeOperationsPreEvent = new web3.eth.Contract(NODE_OPERATIONS["abi"], nodeOperationsAddress);
     membersContract = new web3.eth.Contract(MEMBERS["abi"], members);
     queueContract = new web3.eth.Contract(QUEUE["abi"], queue);
-
 }
+
 
 
 /** 
@@ -169,16 +158,33 @@ async function setUpContracts() {
  * @param  {blockchain transaction hash} trxHash
  * @returns {location of Pacioli report on IPFS and result of validation valid or not}
  */
-async function verifyPacioli(metadataUrl, trxHash) {
+ async function verifyPacioli(metadataUrl, trxHash) {
 
-    const result = await ipfs1.files.cat(metadataUrl);
-    const reportUrl = JSON.parse(result)["reportUrl"];
+    console.log("metadataUrl:", metadataUrl)
+
+    const reportContent1 = (await axios.get(ipfsBasePrivate + metadataUrl)).data;
+    // const result = await ipfs.cat(metadataUrl);
+
+
+    // let content = [];
+    // for await (const chunk of result) {
+    //   content = [...content, ...chunk];
+    // }
+    // console.log("content", JSON.stringify(reportContent1));
+
+    const reportUrl = JSON.parse(JSON.stringify(reportContent1))["reportUrl"];
+    const queryingPacioliStart = Date.now();
     console.log("[1 " + trxHash + "]" + "  Querying Pacioli " + reportUrl);
+
     // const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
     //     .catch(error => console.log("ERROR: " + error));
     const reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
-         .catch(error => console.log("ERROR: " + error));
+        .catch(error => console.log("ERROR: " + error));
 
+
+    const timePast = (Date.now() - queryingPacioliStart) / 1000 / 60;
+
+    console.log("It took " + timePast + "  minutes to query Pacioli");
 
     if (!reportContent)
         return [null, false];
@@ -193,23 +199,26 @@ async function verifyPacioli(metadataUrl, trxHash) {
             path: "Pacioli.json",
             content: bufRule
         }];
-    const resultPacioli = await ipfs.add(reportFile, { wrapWithDirectory: true });
-    const pacioliIPFS = resultPacioli.cid + '/' + "Pacioli.json"
+    const resultPacioli = await ipfs1.files.add(reportFile, { wrapWithDirectory: true });
+    const pacioliIPFS =  resultPacioli[1].hash + '/' + resultPacioli[0].path;
 
     console.log("[3 " + trxHash + "] Pacioli report saved at: " + ipfsBase + pacioliIPFS);
 
     return [pacioliIPFS, reportContent.isValid];
 }
 
+
 // TODO:  Use only for testing to bypass calling Pacioli
 // async function verifyPacioli(metadatatUrl, trxHash) {
 
-//     return ["QmSNQetWJuvwahuQbxJwEMoa5yPprfWdSqhJUZaSTKJ4Mg/AuditchainMetadataReport.json", 0]
+//     return ["QmP9Wo6XmJs1b3ciPe8dH54qFfCTYxL35R3m5WG3WrU5sr/AuditchainMetadataReport", 0]
 // }
 
 
+
+
 /**
- *  @dev {Store the metadata file on IPFS}
+ * @dev {Store the metadata file on IPFS}
  * @param {url of the report to validate} url 
  * @param {IFPS link of pacioli report} reportPacioliIPFSUrl 
  * @param {blockchain transaction hash} trxHash 
@@ -218,15 +227,15 @@ async function verifyPacioli(metadataUrl, trxHash) {
  */
 async function uploadMetadataToIpfs(url, reportPacioliIPFSUrl, trxHash, isValid) {
 
-    const reportContent = (await axios.get(ipfsBase + url)).data;
+    const reportContent = (await axios.get(ipfsBasePrivate + url)).data;
     const reportHash = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(reportContent));
 
     console.log("[4 " + trxHash + "] Creating metadata file.");
 
     let metaDataObject = {
-        reportUrl: ipfsBase + url,
+        reportUrl: ipfsBasePrivate + url,
         reportHash: reportHash,
-        reportPacioli: ipfsBase + reportPacioliIPFSUrl,
+        reportPacioli: ipfsBasePrivate + reportPacioliIPFSUrl,
         validatorDetails: validatorDetails,
         result: isValid
     };
@@ -239,12 +248,16 @@ async function uploadMetadataToIpfs(url, reportPacioliIPFSUrl, trxHash, isValid)
             content: buf
         }];
 
-    const result = await ipfs.add(metadataFile, { wrapWithDirectory: true });
-    const urlMetadata = result.cid + '/' + "AuditchainMetadataReport.json";
+    const result = await ipfs1.files.add(metadataFile, { wrapWithDirectory: true });
+
+    const urlMetadata =  result[1].hash + '/' + result[0].path;
+    // const urlMetadata = result.cid + '/' + "AuditchainMetadataReport.json";
 
     console.log("[5 " + trxHash + "] Metadata created: " + ipfsBase + urlMetadata);
     return [urlMetadata, reportHash];
 }
+
+
 
 
 /**
@@ -258,13 +271,16 @@ async function uploadMetadataToIpfs(url, reportPacioliIPFSUrl, trxHash, isValid)
  */
 async function handlePacioliIPFS(url, trxHash) {
 
-    const [reportPacioliIPFSUrl, isValid] = await verifyPacioli(url, trxHash);
+    let [reportPacioliIPFSUrl, isValid] = await verifyPacioli(url, trxHash);
 
     if (!reportPacioliIPFSUrl) {
         console.log("FAILED execution of verifyPacioli for " + url);
 
         //TODO: what to do here?
-        return [undefined, undefined, undefined];
+        // return [undefined, undefined, undefined];
+        reportPacioliIPFSUrl ="Pacioli-failed";
+        isValid = false;
+        
     }
 
     const [metaDataLink, reportHash] = await uploadMetadataToIpfs(url, reportPacioliIPFSUrl, trxHash, isValid);
@@ -273,6 +289,8 @@ async function handlePacioliIPFS(url, trxHash) {
     return [metaDataLink, reportHash, isValid]
 
 }
+
+
 
 
 /**
@@ -288,28 +306,36 @@ async function validate(documentHash, initTime, choice, trxHash, valUrl, reportH
     const nonce = await web3.eth.getTransactionCount(owner);
 
     try {
+        const data = nonCohortValidate.methods.validate(documentHash, initTime, subscriber, choice, valUrl, reportHash).encodeABI();
 
-        const receipt = await nonCohortValidate.methods
-            .validate(documentHash, initTime, subscriber, choice, valUrl, reportHash)
-            .send({ from: owner, gas: 900000, nonce: nonce });
+        const nonce = await web3.eth.getTransactionCount(owner, 'latest');
+        const signedMessage = (await axios.get(`${PROVIDER_MANAGER}/sign?data=${data}&nonce=${nonce}`)).data;
 
-        const event = receipt.events.ValidatorValidated.returnValues;
-        let msg;
+        if (signedMessage != "Not approved call") {
 
-        if (choice == 1)
-            console.log("[7 " + trxHash + "] Request has been validated as acceptable.")
-        else
-            console.log("[7 " + trxHash + "] Request has been validated as adverse");
+            const receipt = await web3.eth.sendSignedTransaction(signedMessage);
 
-        validationCount++
-        console.log("Total validation count:" + validationCount);
-        return true;
+            if (choice == 1)
+                console.log("[7 " + receipt.transactionHash + "] Request has been validated as acceptable.")
+            else
+                console.log("[7 " + receipt.transactionHash + "] Request has been validated as adverse");
+
+            validationCount++
+            console.log("Total validation count:" + validationCount);
+            return true;
+        } else {
+            console.log("This call is not approved.  nonCohortValidate.methods.validate(documentHash, initTime, subscriber, choice, valUrl, reportHash).encodeABI()");
+            return false;
+        }
     }
     catch (error) {
-        console.log("An error occurred in [validate] for transaction " + trxHash + "  ", error);
+        console.log("An error occurred in event[validate] for transaction " + trxHash + "  ", error);
+        // locked = false;
         return false
     }
 }
+
+
 
 
 /**
@@ -323,6 +349,9 @@ function sleep(ms) {
     });
 }
 
+
+
+
 /**
  * @dev {Verify if hashes match. Validator checks hash of their own validation with the hashes of winners}
  * @param {list of validators} validators
@@ -332,7 +361,6 @@ function sleep(ms) {
  */
 
 async function checkHash(validators, valHash) {
-
 
     const count = validators.length;
     const winnerSelected = Math.floor((Math.random() * count));
@@ -356,7 +384,7 @@ async function checkHash(validators, valHash) {
             winnerHashFound = true;
         }
 
-        if (validation[0][i].toLowerCase() == owner) {
+        if (validation[0][i].toLowerCase() == owner.toLowerCase()) {
             myReportUrl = validation[4][i];
             myReportHash = validation[5][i];
             ownerHashFound = true;
@@ -367,27 +395,23 @@ async function checkHash(validators, valHash) {
                 i = validation[0].length;
                 console.log("[8. " + times + " ] Gave up on waiting for results of validation. Limit of retries reached.");
                 return [null, null];
-
-
             }
             else {
 
                 console.log("[8. " + times + "] It will wait for 5 sec");
                 await sleep(sleepTime);
                 validation = await nonCohortValidate.methods.collectValidationResults(valHash).call();
-                console.log("[8. " + times +  " Attempting Validation again");
+                console.log("[8. " + times + " Attempting search again");
                 i = -1;
             }
         }
 
         if (ownerHashFound && winnerHashFound)
             i = validation[0].length;
-
     }
     // owner has voted and can verify
 
     let vote = false;
-
     if (winnerReportHash == myReportHash)
         vote = true;
 
@@ -395,6 +419,8 @@ async function checkHash(validators, valHash) {
 
     return [vote, winnerAddress];
 }
+
+
 
 
 /**
@@ -407,25 +433,33 @@ async function voteWinner(winners, votes, validationHash, trxHash) {
 
     const nonce = await web3.eth.getTransactionCount(owner);
     try {
-        const receipt = await nonCohortValidate.methods.voteWinner(winners, votes, validationHash)
-            .send({ from: owner, gas: 800000, nonce: nonce })
+        const data = nonCohortValidate.methods.voteWinner(winners, votes, validationHash).encodeABI();
 
-        console.log("[11 " + receipt.transactionHash + "] Verification of winners completed...  ");
-        return true;
+        const nonce = await web3.eth.getTransactionCount(owner);
+        const signedMessage = (await axios.get(`${PROVIDER_MANAGER}/sign?data=${data}&nonce=${nonce}`)).data;
+
+        if (signedMessage != "Not approved call") {
+
+            const receipt = await web3.eth.sendSignedTransaction(signedMessage);
+            let completed = await nonCohortValidate.methods.returnValidationRecord(validationHash).call();
+            console.log("completed ", completed);
+            console.log("[11 " + receipt.transactionHash + "] Verification of winners completed...  ");
+            return true;
+        } else {
+            console.log("This call is not approved. nonCohortValidate.methods.voteWinner(winners, votes, validationHash).encodeABI()")
+            return false;
+        }
     } catch (error) {
 
-        console.log("An error occurred in voteWinner  for validation hash:", validationHash, error);
+        console.log("An error occurred in voteWinner for validation hash:", validationHash, error);
         return false;
     }
 
 }
 
+async function storeRequests() {
 
-async function getBlockNumber() {
 
-    const blockNumber = await web3.eth.getBlockNumber() - 3495;
-    // console.log("block number:", blockNumber);
-    return blockNumber;
 }
 
 
@@ -433,72 +467,147 @@ async function getBlockNumber() {
  * @dev checks if there is any request in queue for validation
  * @param {last processed validation hash } vHash 
  */
-async function checkValQueue(vHash) {
+async function checkValQueue() {
 
     clearInterval(setIntervalId);
     try {
 
+
+        await checkVoteQueue();
+
+
         const queueSize = await queueContract.methods.returnQueueSize().call();
         console.log("Queue size from checkValQueue:", queueSize.toString());
         let validationHash;
-    
+
+
+
 
         if (Number(queueSize) > 0) {
 
-            let result = await queueContract.methods.getNextValidation().call();
-            let validationHash = result[0];
-            let documentHash = result[1]
-            let url =  result[2];
-            let user = result[3];
-            let initTime = result[4];
-            if (vHash != validationHash && validationHash != zeroTransaction) {
-                console.log("from checkValQueue", validationHash);
-                let isValidated = await nonCohortValidate.methods.isValidated(validationHash).call({ from: owner });
 
-                if (isValidated == 0) {
+            // const canValidate = await nonCohortValidate.methods.canValidate().call({ from: owner });
+            // const valResult = await nonCohortValidate.methods.isValidated(canValidate[0]).call({ from: owner });
+
+            // console.log("can validate:", canValidate);
+            // if (canValidate[0] == zeroTransaction || valResult[0] >) {
+
+            //     console.log("Queue called from checkValQueue and ignored. Nothing to process");
+            //     setIntervalId = setInterval(
+            //         () => (checkValQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
+            //         intervalSize);
+            //     return false;
+            // }
+
+
+            const tail = await queueContract.methods.findTailId().call();
+            console.log("tail:", tail);
+
+
+            const pos = await nonCohortValidate.methods.reg(owner).call();
+            console.log("pos:", pos);
+
+            const head = await queueContract.methods.head().call();
+            console.log("head:", head);
+
+            const processedId = await nonCohortValidate.methods.processedId().call();
+            console.log("processedId:", processedId);
+
+            const posP = await nonCohortValidate.methods.regP(owner).call();
+            console.log("posP:", posP);
+
+            if (tail == posP) {
+
+                console.log("Queue called from checkValQueue and ignored. Already at the end of the queue");
+                setIntervalId = setInterval(
+                    () => (checkValQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
+                    intervalSize);
+                return false;
+            }
+
+
+            const data = await nonCohortValidate.methods.registerValidation().encodeABI();
+
+            console.log("data....:", data );
+            const nonce = await web3.eth.getTransactionCount(owner);
+            const signedMessage = (await axios.get(`${PROVIDER_MANAGER}/sign?data=${data}&nonce=${nonce}`)).data;
+            let receipt;
+
+            if (signedMessage != "Not approved call") {
+
+                receipt = await web3.eth.sendSignedTransaction(signedMessage);
+                console.log("receipt:", receipt.logs[0]);
+                console.log("[11 " + receipt.transactionHash + "] Queue position registered...  ");
+            } else {
+                console.log("This call is not approved. nonCohortValidate.methods.registerValidation().encodeABI()")
+                return false;
+            }
+
+            console.log("validation hash:", receipt.logs[0].data);
+            let id = await queueContract.methods.findIdForValidationHash(receipt.logs[0].data).call();
+            console.log("Id:", id);
+            let result = await queueContract.methods.get(id).call();
+
+
+            console.log("result from checkValQueue:", result);
+
+            let validationHash = receipt.logs[0].data;
+
+            if (validationHash != zeroTransaction) {
+                let valResult = await nonCohortValidate.methods.isValidated(validationHash).call({ from: owner });
+
+                console.log("is validated:", valResult[0]);
+                console.log("number of validations:", valResult[1]);
+
+                console.log("from checkValQueue", validationHash);
+                if (valResult[0] == 0 && valResult[1] < minValidatorCount) {
 
                     try {
 
-                        let trxHash= "0x"
+                        let trxHash = "0x"
 
-                        const [metaDataLink, reportHash, isValid] = await handlePacioliIPFS(url, trxHash);
-    
+                        const [metaDataLink, reportHash, isValid] = await handlePacioliIPFS(result.url, trxHash);
+
                         if (metaDataLink == undefined)
                             throw "Process aborted due to failed Pacioli response"
 
-                        const hasExecuted = await validate(documentHash, initTime, isValid ? 1 : 2, trxHash, metaDataLink, reportHash, user);
-                        console.log("has executed in checkValQueue", hasExecuted);
+                        // const metaDataLink = "https://auditchain.infura-ipfs.io/ipfs/QmRGueSKYrvGL9eH6rntNEnKxyEPtt3EShXQu2XzwmF6sQ/AuditchainReport.json";
+                        // const reportHash = "0x7e8e180b02c42522406d5079df82c04ca532e2ebe77094b145eb8ed17b780bd9";
+                        // const isValid = 1;
+
+
+
+                        const hasExecuted = await validate(result.documentHash, result.initTime, isValid ? 1 : 2, trxHash, metaDataLink, reportHash, result.user);
 
                         if (hasExecuted) {
-                            console.log("validation executed")
-                            await checkVoteQueue();
-                            await checkValQueue(validationHash);
+                            console.log("validation executed");
+                            await checkValQueue();
                         }
                         else {
                             console.log("validation failed")
-                            await checkValQueue();
+                            setIntervalId = setInterval(
+                                () => (checkValQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
+                                intervalSize);
                         }
                     }
 
                     catch (error) {
                         setIntervalId = setInterval(
-                            () => (checkValQueue(vHash).then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
+                            () => (checkValQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
                             intervalSize);
                         console.log("after reading events or Pacioli bad response", error);
                     }
-                }
-    
-                else {
-                    console.log("Queue called from checkValQueue and ignored");
+                } else {
+                    console.log("Queue called from checkValQueue and ignored.");
                     setIntervalId = setInterval(
-                        () => (checkValQueue(validationHash).then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
+                        () => (checkValQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
                         intervalSize);
                 }
 
             } else {
                 console.log("Queue called from checkValQueue and ignored");
                 setIntervalId = setInterval(
-                    () => (checkValQueue(validationHash).then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
+                    () => (checkValQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
                     intervalSize);
             }
         } else {
@@ -515,17 +624,51 @@ async function checkValQueue(vHash) {
             intervalSize);
         await checkVoteQueue();
 
-        console.log(error)
+        console.log("catch" , error);
     }
 
 }
 
+async function getNextValidationToVote() {
+
+    let validationHash = await queueContract.methods.getNextValidationToVote().call();
+    console.log("validationHash from getNextValidationToVote():", validationHash);
+
+
+
+    let found = false;
+
+    while (!found) {
+
+        if (validationHash == zeroTransaction)
+            found = true;
+
+        let hasVoted = await nonCohortValidate.methods.hasVoted(validationHash).call({ from: owner });
+        let isValidated = await nonCohortValidate.methods.isValidated(validationHash).call({ from: owner });
+
+
+        if (!hasVoted && (isValidated[0] != 0 && isValidated[1] >= minValidatorCount))
+            found = true
+
+        if (!found) {
+            validationHash = await queueContract.methods.getValidationToVote(validationHash).call();
+            console.log("validationHash from getNextValidationToVote() in while:", validationHash);
+
+
+        }
+
+    }
+
+    return validationHash;
+
+}
+
+
 /**
  * @dev checks if there is any request in queue for a vote of winning validator
- * @param {last processed validation hash } vHash 
  */
-async function checkVoteQueue(vHash) {
-    
+async function checkVoteQueue() {
+
     clearInterval(setVoteIntervalId);
     try {
 
@@ -534,49 +677,41 @@ async function checkVoteQueue(vHash) {
         let validationHash;
 
         if (Number(queueSize) > 0) {
-            validationHash = await queueContract.methods.getNextValidationToVote().call();
+            // validationHash = await queueContract.methods.getNextValidationToVote().call();
+            let validationHash = await getNextValidationToVote();
 
-            if (vHash != validationHash && validationHash != zeroTransaction) {
+            if (validationHash != zeroTransaction) {
 
-                let hasVoted = await nonCohortValidate.methods.hasVoted(validationHash).call({ from: owner });
-                if (!hasVoted) {
+                // let hasVoted = await nonCohortValidate.methods.hasVoted(validationHash).call({ from: owner });
+                // let isValidated = await nonCohortValidate.methods.isValidated(validationHash).call({ from: owner });
 
-                    console.log("check vote queue", validationHash);
-                  
-                    const trxHash = "0x";
+                // console.log("is validated from check vote queue:", isValidated)
 
-                    const executed = await executeVote(validationHash, trxHash);
-                    if (!executed)
-                        await checkVoteQueue();
-                }
-                else {
-                    console.log("Queue called from checkVoteQueue and ignored");
-                    setVoteIntervalId = setInterval(
-                        () => (checkVoteQueue(validationHash).then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
-                        intervalSize);
-                }
+                // if (!hasVoted && (isValidated[0] != 0 && isValidated[1] >= minValidatorCount)) {
 
-            } else {
-                console.log("Queue called from checkVoteQueue and ignored");
-                setVoteIntervalId = setInterval(
-                    () => (checkVoteQueue(validationHash).then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
-                    intervalSize);
+                //     console.log("check vote queue", validationHash);
+
+                const trxHash = "0x";
+                const executed = await executeVote(validationHash, trxHash);
+
             }
+            else {
+                console.log("Nothing to vote on.")
+            }
+
         } else {
-            console.log("Queue called from checkVoteQueue and is empty");
-            setVoteIntervalId = setInterval(
-                () => (checkVoteQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
-                intervalSize);
+            console.log("vote queue is empty.")
         }
+
     } catch (error) {
-        setVoteIntervalId = setInterval(
-            () => (checkVoteQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
-            intervalSize);
+
 
         console.log(error)
     }
 
 }
+
+
 
 /**
  * @dev It will execute vote on the winners
@@ -602,27 +737,23 @@ async function executeVote(valHash, trxHash) {
     let hasVoted = await nonCohortValidate.methods.hasVoted(valHash).call({ from: owner });
     let executed = true;
 
-    if (!hasVoted)
+    if (!hasVoted) {
+        console.log("calling execution for:", valHash)
         executed = await voteWinner(winners, votes, valHash, trxHash);
+    }
 
     return executed;
 
 }
 
 
+/**
+ * @dev Initiate all variables and start checking queue
+ */
 
-async function getFileAtr() {
+async function initProcess() {
 
-    let stats = fs.statSync("scripts/pacioliAgent.js");
-    return stats.atimeMs + stats.size;
-}
-
-async function initProcess(privateKey) {
-
-    owner = provider.addresses[0];
-    web3 = new Web3(provider);
-
-    setUpContracts(privateKey);
+    await setUpContracts();
     validatorDetails = await fetchValidatorDetails();
     console.log("Details known about this node:");
     console.log(validatorDetails);
@@ -630,13 +761,18 @@ async function initProcess(privateKey) {
     const validationStruct = await nodeOperationsPreEvent.methods.nodeOpStruct(owner).call();
     const isNodeOperator = validationStruct.isNodeOperator;
     const isDelegating = validationStruct.isDelegating;
+    minValidatorCount = await nonCohortValidate.methods.maxValidators().call();
+
+    console.log("min validator count:", minValidatorCount);
+
 
     if (isNodeOperator && !isDelegating) {
         console.log("Process started.");
+
         agentBornAT = Date.now();
 
         checkValQueue();
-        checkVoteQueue();
+        // checkVoteQueue();
 
     }
     else if (isDelegating)
@@ -647,139 +783,127 @@ async function initProcess(privateKey) {
 
 }
 
-async function storePrivateKey(PROVIDER_MANAGER,privateKey){
-    const pass = await getFileAtr();
+async function storePrivateKey(PROVIDER_MANAGER, privateKey) {
 
     try {
-        await axios.get(`${PROVIDER_MANAGER}/storePrivateKey?user=admin&pass=` + pass + "&privateKey=" + privateKey);
+        await axios.get(`${PROVIDER_MANAGER}/storePrivateKey?privateKey=` + privateKey);
     } catch (error) {
 
-        console.log("WARNING  - Password manager is not running: "+error)
+        console.log("WARNING  - Signer Manager is not running: " + error);
     }
 }
 
+
 /**
- * @dev Setup the environment and schedule processes 
+ * @dev {in case user wants to use keystore file trigger this function}
+ * @param {location of keystore file} ans 
  */
+async function handleKeyStoreLogin(ans) {
 
-async function startProcess() {
-
-    const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : 'http://localhost:3333';
     try {
-        // console.clear();
+        let keyStore = fs.readFileSync(ans, 'utf8');
+        const keyStoreObject = JSON.parse(keyStore);
+        mutableStdout.muted = false;
 
-        if (privateKeyMain){ 
-            // simplified path, using unencrypted key obtained from (hopefully secure) /secrets directory
-            provider = new HDWalletProvider(privateKeyMain, mumbai_server);
-            initProcess(privateKeyMain);
-        } else {
-            // more secure path, uses encrypted keystore object, and auxiliary server with password to decrypt it
-            let web3Pass = new Web3(mumbai_server);
-            let keyStoreObject
-
+        rl.question('Password: ', async function (password) { // Promises variant available only on node 17
             try {
-                const pass = await getFileAtr();
-                privateKeyMain = (await axios.get(`${PROVIDER_MANAGER}/getPrivateKey?user=admin&pass=` + pass)).data;
+
+                console.log('\n');
+
+                let decryptedKeyStore = web3.eth.accounts.decrypt(keyStoreObject, password);
+                const { privateKey } = decryptedKeyStore;
+
+                storePrivateKey(PROVIDER_MANAGER, privateKey);
+                owner = (await axios.get(`${PROVIDER_MANAGER}/getPublicKey`)).data;
+
+                readline.moveCursor(process.stdout, 0, -3);
+                readline.clearScreenDown(process.stdout);
+
+                console.log("Login successful");
+
+                mutableStdout.muted = true;
+                rl.close();
+                initProcess();
 
             } catch (error) {
-                privateKeyMain == "not authorized"
+                console.log("Check your password and try again. ");
+                console.log(error);
+                process.exit(1);
             }
+        });
 
-            // password manager is not running or hasn't been initialized 
-            if (privateKeyMain == "not authorized" || privateKeyMain == undefined) {
+    } catch (error) {
 
-                // handle keystore file or private key
-                try {
-                    let ans = prompt('Enter location of your Keystore file (OR JUST THE PRIVATE KEY):  ').trim();
-                    if (ans.startsWith('key')) {
-                        let keyStore = fs.readFileSync(ans, 'utf8');
-                        keyStoreObject = JSON.parse(keyStore);
-                    } else {
-                        privateKeyMain = ans.trim();
-                        if (privateKeyMain.startsWith("0x"))
-                            privateKeyMain = privateKeyMain.slice(2);
-                    }
-                } catch (error) {
-
-                    console.log("Your keystore file couldn't be opened. Please check your file location and try again.");
-                    process.exit(1);
-                }
-                
+        console.log("Your keystore file couldn't be opened. Please check your file location and try again.");
+        process.exit(1);
+    }
+}
 
 
-                if (privateKeyMain == "not authorized" || privateKeyMain == undefined) {
-                    //handle password
-                    mutableStdout.muted = false;
-                    rl.question('Password: ',function(password){ // Promises variant avaialble only on node 17
-                        try {
-                            console.log('\n');
-    
-                            let decryptedKeyStore = web3Pass.eth.accounts.decrypt(keyStoreObject, password);
-                            const { privateKey } = decryptedKeyStore;
-    
-                            privateKeyMain = privateKey;
-                        } catch (error) {
-                            console.log("Check your password and try again. ");
-                            console.log(error);
-                            process.exit(1);
-                        }
-                        console.log("Login successful");
-                        rl.close();
-                        mutableStdout.muted = true;
+/**
+ * @dev Request private key and initialize Signing manager
+ */
+async function startProcess() {
 
-                        //let's go:
-                        storePrivateKey(PROVIDER_MANAGER,privateKeyMain);
-                        provider = new HDWalletProvider(privateKeyMain, mumbai_server);
-                        initProcess(privateKeyMain);        
-    
-                    });
-                } else {
-                    //let's go:
-                    storePrivateKey(PROVIDER_MANAGER,privateKeyMain);
-                    provider = new HDWalletProvider(privateKeyMain, mumbai_server);
-                    initProcess(privateKeyMain);
-                }
+    // handle keystore file or private key
+    let privateKey;
+    try {
 
+        web3 = new Web3(endPoint);
+        // web3 = createAlchemyWeb3(endPoint);
+        owner = (await axios.get(`${PROVIDER_MANAGER}/getPublicKey`)).data;
+
+        if (!owner || owner == "Not initialized") {
+
+            let ans = prompt('Enter location of your Keystore file (OR JUST THE PRIVATE KEY):  ').trim();
+
+            if (ans.startsWith('key') || ans.startsWith('/')) {
+                await handleKeyStoreLogin(ans);
+            } else if (ans.startsWith('0x') || ans.length == 64) {
+                privateKey = ans;
+                if (!privateKey.startsWith('0x'))
+                    privateKey = '0x' + privateKey;
+                storePrivateKey(PROVIDER_MANAGER, privateKey);
+                owner = (await axios.get(`${PROVIDER_MANAGER}/getPublicKey`)).data;
+                initProcess();
             } else {
-
-                // used during restart 
-                try {
-                    provider = new HDWalletProvider(privateKeyMain, mumbai_server);
-                    initProcess(privateKeyMain);
-
-                } catch (error) {
-                    console.log("No password manager running.")
-                }
+                console.log("No private key provided.");
+                exit(0);
             }
+        } else {
+            console.log("Owner already known, ready for operation")
+            initProcess();
         }
 
     } catch (error) {
 
-        console.log(error);
+        if (JSON.stringify(error).indexOf("connect ECONNREFUSED 127.0.0.1:3333") > -1) {
+            console.log("Signer Manager is not running. Ensure that Signer Manager is running before you run Pacioli Manager");
+            exit(0)
+        }
     }
-
 }
 
-if (process.env.TEST_RUNS){
+
+if (process.env.TEST_RUNS) {
     const reports = [
         "https://xbrlsite.azurewebsites.net/2021/reporting-scheme/proof/reference-implementation/instance.xml",
         "https://www.sec.gov/Archives/edgar/data/1318605/000095017021000046/tsla-20210331.htm",
         "https://www.sec.gov/Archives/edgar/data/789019/000156459020034944/msft-10k_20200630_htm.xml",
         "https://www.sec.gov/Archives/edgar/data/1108524/000110852417000040/crm-20171031.xml",
     ];
-    
-    let N = parseInt(process.env.TEST_RUNS);
-    if (N<1||N>20) throw("Bad TEST_RUNS");
 
-    for(var i=0; i<N; i++){
-        const reportURL = reports[i%reports.length];
+    let N = parseInt(process.env.TEST_RUNS);
+    if (N < 1 || N > 20) throw ("Bad TEST_RUNS");
+
+    for (var i = 0; i < N; i++) {
+        const reportURL = reports[i % reports.length];
         console.log(`Calling Pacioli with ${reportURL} (${i})`);
-        pacioli.callLocal(reportURL, "dummyTx"+i, true).then(function(result){
-            console.log("Result for "+reportURL+": "+result.ipfs);
-        }).catch(function(error){
-            console.log("Error for "+reportURL+": "+JSON.stringify(error));
+        pacioli.callLocal(reportURL, "dummyTx" + i, true).then(function (result) {
+            console.log("Result for " + reportURL + ": " + JSON.stringify(result));
+        }).catch(function (error) {
+            console.log("Error for " + reportURL + ": " + JSON.stringify(error));
         });
     }
 
 } else startProcess();
-

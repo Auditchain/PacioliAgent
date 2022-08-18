@@ -60,13 +60,23 @@ async function sign(data, nonce) {
         if (data.startsWith("0x42d47412") || data.startsWith("0xd4632bcf") || data.startsWith("0x87c77617")) {
 
             let gasPrice = Number(await web3.eth.getGasPrice()) + 100000000; //add extra 5% to ensure validation
+            let gas;
+            try {
+                gas = await web3.eth.estimateGas({
+                    to: nonCohortAddress,
+                    data: data,
+                    from: publicKey,
+                })
+            } catch (error) {
+
+                console.log("gas error:", error);
+                console.log("to:", nonCohortAddress);
+                console.log("data", data);
+                console.log("from", publicKey);
 
 
-            let gas = await web3.eth.estimateGas({
-                to: nonCohortAddress,
-                data: data,
-                from: publicKey,
-            })
+                
+            }
 
             console.log("gasPrice ", gasPrice);
             console.log("gas ", gas);
@@ -146,7 +156,7 @@ app.get('/sign', async function (req, res) {
     }
 })
 
-let server = app.listen(3335, function () {
+let server = app.listen(3333, function () {
     let host = server.address().address
     let port = server.address().port
     console.log("Example app listening at http://%s:%s", host, port)
