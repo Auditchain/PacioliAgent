@@ -81,8 +81,8 @@ async function sign(data, nonce) {
             console.log("gasPrice ", gasPrice);
             console.log("gas ", gas);
 
-            if (gasPrice < 60000000000)
-                gasPrice = 60000000000
+            // if (gasPrice < 60000000000)
+            //     gasPrice = 60000000000
 
 
             const transaction = {
