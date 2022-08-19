@@ -7,8 +7,6 @@ const fs = require('fs');
 var readline = require('readline');
 var Writable = require('stream').Writable;
 const prompt = require('prompt-sync')({ sigint: true });
-const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
-
 
 const { create } = require("ipfs-http-client");
 
@@ -59,7 +57,6 @@ const QUEUE = require('../build/contracts/Queue.json');
 
 //TODO: this module is still copied from https://github.com/Auditchain/Reporting-Validation-Engine/tree/main/clientExamples/pacioliClient:
 const pacioli = require('./pacioliClient');
-const { throwError } = require('ethers/errors');
 const { exit } = require('process');
 
 // import ethereum connection strings.
@@ -289,7 +286,6 @@ async function handlePacioliIPFS(url, trxHash) {
     return [metaDataLink, reportHash, isValid]
 
 }
-
 
 
 
@@ -850,7 +846,6 @@ async function startProcess() {
     try {
 
         web3 = new Web3(endPoint);
-        // web3 = createAlchemyWeb3(endPoint);
         owner = (await axios.get(`${PROVIDER_MANAGER}/getPublicKey`)).data;
 
         if (!owner || owner == "Not initialized") {
