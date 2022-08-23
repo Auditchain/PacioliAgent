@@ -155,7 +155,7 @@ async function setUpContracts() {
  * @param  {blockchain transaction hash} trxHash
  * @returns {location of Pacioli report on IPFS and result of validation valid or not}
  */
- async function verifyPacioli(metadataUrl, trxHash) {
+async function verifyPacioli(metadataUrl, trxHash) {
 
     console.log("metadataUrl:", metadataUrl)
 
@@ -197,7 +197,7 @@ async function setUpContracts() {
             content: bufRule
         }];
     const resultPacioli = await ipfs1.files.add(reportFile, { wrapWithDirectory: true });
-    const pacioliIPFS =  resultPacioli[1].hash + '/' + resultPacioli[0].path;
+    const pacioliIPFS = resultPacioli[1].hash + '/' + resultPacioli[0].path;
 
     console.log("[3 " + trxHash + "] Pacioli report saved at: " + ipfsBase + pacioliIPFS);
 
@@ -247,7 +247,7 @@ async function uploadMetadataToIpfs(url, reportPacioliIPFSUrl, trxHash, isValid)
 
     const result = await ipfs1.files.add(metadataFile, { wrapWithDirectory: true });
 
-    const urlMetadata =  result[1].hash + '/' + result[0].path;
+    const urlMetadata = result[1].hash + '/' + result[0].path;
     // const urlMetadata = result.cid + '/' + "AuditchainMetadataReport.json";
 
     console.log("[5 " + trxHash + "] Metadata created: " + ipfsBase + urlMetadata);
@@ -275,9 +275,9 @@ async function handlePacioliIPFS(url, trxHash) {
 
         //TODO: what to do here?
         // return [undefined, undefined, undefined];
-        reportPacioliIPFSUrl ="Pacioli-failed";
+        reportPacioliIPFSUrl = "Pacioli-failed";
         isValid = false;
-        
+
     }
 
     const [metaDataLink, reportHash] = await uploadMetadataToIpfs(url, reportPacioliIPFSUrl, trxHash, isValid);
@@ -299,10 +299,14 @@ async function handlePacioliIPFS(url, trxHash) {
 async function validate(documentHash, initTime, choice, trxHash, valUrl, reportHash, subscriber) {
 
     console.log("[6 " + trxHash + "] Waiting for validation transaction to complete... ");
-    const nonce = await web3.eth.getTransactionCount(owner);
+    // const nonce = await web3.eth.getTransactionCount(owner);
 
     try {
         const data = nonCohortValidate.methods.validate(documentHash, initTime, subscriber, choice, valUrl, reportHash).encodeABI();
+
+        console.log("documentHash:", documentHash);
+        console.log("url:", valUrl);
+
 
         const nonce = await web3.eth.getTransactionCount(owner, 'latest');
         const signedMessage = (await axios.get(`${PROVIDER_MANAGER}/sign?data=${data}&nonce=${nonce}`)).data;
@@ -431,6 +435,10 @@ async function voteWinner(winners, votes, validationHash, trxHash) {
     try {
         const data = nonCohortValidate.methods.voteWinner(winners, votes, validationHash).encodeABI();
 
+        console.log("winners:", winners);
+        console.log("validation hash", validationHash)
+
+
         const nonce = await web3.eth.getTransactionCount(owner);
         const signedMessage = (await axios.get(`${PROVIDER_MANAGER}/sign?data=${data}&nonce=${nonce}`)).data;
 
@@ -453,7 +461,49 @@ async function voteWinner(winners, votes, validationHash, trxHash) {
 
 }
 
-async function storeRequests() {
+
+async function isAnythingToProcess() {
+
+    let queueElement = (await queueContract.methods.getNextValidation().call())[0];
+
+    console.log("first validation", queueElement)
+
+    let done;
+
+    while (!done) {
+
+
+
+        const data = await nonCohortValidate.methods.validations(queueElement).call();
+
+        const tail = await queueContract.methods.findTailId().call();
+        console.log("tail:", tail);
+
+
+
+        const processedId = await nonCohortValidate.methods.processedId().call();
+        console.log("processedId:", processedId);
+
+        // console.log("data", data)
+
+        if (queueElement == zeroTransaction) {
+            queueElement = zeroTransaction;
+            done = true;
+        }
+        else if (data[10] >= 2) {
+            queueElement = (await queueContract.methods.getValidationToProcess(queueElement).call())[0];
+        }
+        else {
+            done = true;
+        }
+
+        console.log("In loop isAnythingToProcess");
+        console.log("transaction:", queueElement);
+    }
+
+    return queueElement;
+
+
 
 
 }
@@ -463,7 +513,7 @@ async function storeRequests() {
  * @dev checks if there is any request in queue for validation
  * @param {last processed validation hash } vHash 
  */
-async function checkValQueue() {
+async function checkValQueue(error) {
 
     clearInterval(setIntervalId);
     try {
@@ -480,6 +530,18 @@ async function checkValQueue() {
 
 
         if (Number(queueSize) > 0) {
+
+            if (isAnythingToProcess() == zeroTransaction) {
+
+
+                setIntervalId = setInterval(
+                    () => (checkValQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
+                    intervalSize);
+                return false;
+            }
+
+
+
 
 
             // const canValidate = await nonCohortValidate.methods.canValidate().call({ from: owner });
@@ -512,42 +574,58 @@ async function checkValQueue() {
             const posP = await nonCohortValidate.methods.regP(owner).call();
             console.log("posP:", posP);
 
-            if (tail == posP) {
+            // if (tail == posP && !error) {
 
-                console.log("Queue called from checkValQueue and ignored. Already at the end of the queue");
-                setIntervalId = setInterval(
-                    () => (checkValQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
-                    intervalSize);
-                return false;
-            }
+            //     console.log("Queue called from checkValQueue and ignored. Already at the end of the queue");
+            //     setIntervalId = setInterval(
+            //         () => (checkValQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
+            //         intervalSize);
+            //     return false;
+            // }
+
+            let validationHash;
+            let result;
+
+            if (error) {
+
+                // let result = await queueContract.methods.get(posP).call();
+                result = await queueContract.methods.get(posP).call();
+                validationHash = result.validationHash;
+
+                console.log("queue after error", result);
 
 
-            const data = await nonCohortValidate.methods.registerValidation().encodeABI();
-
-            console.log("data....:", data );
-            const nonce = await web3.eth.getTransactionCount(owner);
-            const signedMessage = (await axios.get(`${PROVIDER_MANAGER}/sign?data=${data}&nonce=${nonce}`)).data;
-            let receipt;
-
-            if (signedMessage != "Not approved call") {
-
-                receipt = await web3.eth.sendSignedTransaction(signedMessage);
-                console.log("receipt:", receipt.logs[0]);
-                console.log("[11 " + receipt.transactionHash + "] Queue position registered...  ");
             } else {
-                console.log("This call is not approved. nonCohortValidate.methods.registerValidation().encodeABI()")
-                return false;
+
+                const data = await nonCohortValidate.methods.registerValidation().encodeABI();
+
+                // console.log("data....:", data);
+                const nonce = await web3.eth.getTransactionCount(owner);
+                const signedMessage = (await axios.get(`${PROVIDER_MANAGER}/sign?data=${data}&nonce=${nonce}`)).data;
+                let receipt;
+
+                if (signedMessage != "Not approved call") {
+
+                    receipt = await web3.eth.sendSignedTransaction(signedMessage);
+                    console.log("receipt:", receipt.logs[0]);
+                    console.log("[11 " + receipt.transactionHash + "] Queue position registered...  ");
+                } else {
+                    console.log("This call is not approved. nonCohortValidate.methods.registerValidation().encodeABI()")
+                    return false;
+                }
+
+                console.log("validation hash:", receipt.logs[0].data);
+                let id = await queueContract.methods.findIdForValidationHash(receipt.logs[0].data).call();
+                console.log("Id:", id);
+                result = await queueContract.methods.get(id).call();
+
+
+                validationHash = receipt.logs[0].data;
+
+                if(validationHash != zeroTransaction)
+                    console.log("result from checkValQueue:", result);
+
             }
-
-            console.log("validation hash:", receipt.logs[0].data);
-            let id = await queueContract.methods.findIdForValidationHash(receipt.logs[0].data).call();
-            console.log("Id:", id);
-            let result = await queueContract.methods.get(id).call();
-
-
-            console.log("result from checkValQueue:", result);
-
-            let validationHash = receipt.logs[0].data;
 
             if (validationHash != zeroTransaction) {
                 let valResult = await nonCohortValidate.methods.isValidated(validationHash).call({ from: owner });
@@ -582,7 +660,7 @@ async function checkValQueue() {
                         else {
                             console.log("validation failed")
                             setIntervalId = setInterval(
-                                () => (checkValQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
+                                () => (checkValQueue(true).then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
                                 intervalSize);
                         }
                     }
@@ -620,7 +698,7 @@ async function checkValQueue() {
             intervalSize);
         await checkVoteQueue();
 
-        console.log("catch" , error);
+        console.log("catch", error);
     }
 
 }
@@ -641,6 +719,11 @@ async function getNextValidationToVote() {
 
         let hasVoted = await nonCohortValidate.methods.hasVoted(validationHash).call({ from: owner });
         let isValidated = await nonCohortValidate.methods.isValidated(validationHash).call({ from: owner });
+
+        console.log("hasVoted", hasVoted)
+        console.log("isValidated[0] ", isValidated[0])
+        console.log("isValidated[1] ", isValidated[1])
+        console.log("minValidatorCount", minValidatorCount)
 
 
         if (!hasVoted && (isValidated[0] != 0 && isValidated[1] >= minValidatorCount))
