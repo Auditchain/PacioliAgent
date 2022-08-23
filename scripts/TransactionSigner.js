@@ -10,7 +10,9 @@ const nonCohortAddress = process.env.VALIDATIONS_NO_COHORT_ADDRESS;
 const endPoint = process.env.MUMBAI_SERVER;
 
 
-const web3 = createAlchemyWeb3(endPoint);
+// const web3 = createAlchemyWeb3(endPoint);
+let web3 = new Web3(endPoint);
+
 
 const fs = require('fs');
 
@@ -77,12 +79,16 @@ async function sign(data, nonce) {
 
                 
             }
+            // if (data.startsWith("0x42d47412")   || data.startsWith("0xd4632bcf") )
+            //     gas = 900000;
+            // else 
+            //     gas = 900000;
 
             console.log("gasPrice ", gasPrice);
             console.log("gas ", gas);
 
-            // if (gasPrice < 60000000000)
-            //     gasPrice = 60000000000
+            if (gasPrice < 33000000000)
+                gasPrice = 33000000000
 
 
             const transaction = {
