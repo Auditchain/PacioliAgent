@@ -490,9 +490,12 @@ async function isAnythingToProcess() {
 
         const id = await queueContract.methods.findIdForValidationHash(queueElement).call();
 
+        console.log("id:", id);
+
         if (id == posP) {
 
             let valResult = await nonCohortValidate.methods.isValidated(queueElement).call({ from: owner });
+            console.log("valResult:", valResult);
             if (valResult[0] == 0)
                 return queueElement;
         }
@@ -507,7 +510,7 @@ async function isAnythingToProcess() {
         if (queueElement == zeroTransaction) {
             done = true;
         }
-        else if (posP == processedId && id == posP) {
+        else if (posP == processedId ) {
             queueElement = (await queueContract.methods.getValidationToProcess(queueElement).call())[0];
             data = await nonCohortValidate.methods.validations(queueElement).call();
 
@@ -648,7 +651,7 @@ async function checkValQueue() {
                     console.log("number of validations:", valResult[1]);
 
                     console.log("from checkValQueue", validationHash);
-                    if (valResult[0] == 0 && valResult[1] < minValidatorCount) {
+                    if (valResult[0] == 0 && valResult[1] <= minValidatorCount) {
 
                         try {
 
