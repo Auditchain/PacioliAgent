@@ -33,7 +33,6 @@ const ipfs = create({
         authorization: auth
     }
 })
-
 var mutableStdout = new Writable({
     write: function (chunk, encoding, callback) {
         if (!this.muted)
@@ -465,41 +464,80 @@ async function isAnythingToProcess() {
     console.log("first validation in isAnythingToProcess", queueElement)
 
     let done;
-    const tail = await queueContract.methods.findTailId().call();
-    console.log("tail:", tail);
+    let data
 
-    const processedId = await nonCohortValidate.methods.processedId().call();
-    console.log("processedId:", processedId);
 
+    data = await nonCohortValidate.methods.validations(queueElement).call();
+
+    if (queueElement == 0)
+        done = true;
+    else {
+
+        let valResult = await nonCohortValidate.methods.isValidated(queueElement).call({ from: owner });
+    }
 
     while (!done) {
 
 
+        const tail = await queueContract.methods.findTailId().call();
+        console.log("tail:", tail);
 
-        const data = await nonCohortValidate.methods.validations(queueElement).call();
+        const processedId = await nonCohortValidate.methods.processedId().call();
+        console.log("processedId:", processedId);
 
-       
-        if (processedId == tail){
+        const posP = await nonCohortValidate.methods.regP(owner).call();
+        console.log("posP:", posP);
 
-            queueElement = zeroTransaction;
+        const id = await queueContract.methods.findIdForValidationHash(queueElement).call();
+
+        if (id == posP) {
+
+            let valResult = await nonCohortValidate.methods.isValidated(queueElement).call({ from: owner });
+            if (valResult[0] == 0)
+                return queueElement;
+        }
+
+
+        if (processedId == tail) {
+
+            // queueElement = zeroTransaction;
             done = true;
         }
 
-        // console.log("data", data)
-
-        else if (queueElement == zeroTransaction) {
+        if (queueElement == zeroTransaction) {
             done = true;
         }
-        else if (data[10] >= 2) {
+        else if (posP == processedId && id == posP) {
             queueElement = (await queueContract.methods.getValidationToProcess(queueElement).call())[0];
+            data = await nonCohortValidate.methods.validations(queueElement).call();
+
+            // queueElement = zeroTransaction;
+            done = true;
+        }
+        else if (data[10] > 2) {
+            queueElement = (await queueContract.methods.getValidationToProcess(queueElement).call())[0];
+            data = await nonCohortValidate.methods.validations(queueElement).call();
+
         }
         else {
             done = true;
         }
 
+
+
+
         console.log("In loop isAnythingToProcess");
         console.log("transaction:", queueElement);
+        console.log("data[10]", data[10]);
     }
+
+    if (Number(data[10]) == Number(minValidatorCount) + 1)
+        queueElement = zeroTransaction;
+
+    console.log("queueElement", queueElement);
+
+
+
 
     return queueElement;
 
@@ -513,7 +551,7 @@ async function isAnythingToProcess() {
  * @dev checks if there is any request in queue for validation
  * @param {last processed validation hash } vHash 
  */
-async function checkValQueue(error) {
+async function checkValQueue() {
 
     clearInterval(setIntervalId);
     try {
@@ -524,17 +562,13 @@ async function checkValQueue(error) {
 
         const queueSize = await queueContract.methods.returnQueueSize().call();
         console.log("Queue size from checkValQueue:", queueSize.toString());
-        let validationHash;
-
-
-
+        // let validationHash;
 
         if (Number(queueSize) > 0) {
 
             let valTx = await isAnythingToProcess();
 
             if (valTx == zeroTransaction) {
-
 
                 setIntervalId = setInterval(
                     () => (checkValQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
@@ -560,21 +594,21 @@ async function checkValQueue(error) {
                 let validationHash;
                 let result;
 
-                if (error) {
+                // if (error) {
 
-                    // let result = await queueContract.methods.get(posP).call();
-                    result = await queueContract.methods.get(posP).call();
-                    validationHash = result.validationHash;
+                //     // let result = await queueContract.methods.get(posP).call();
+                //     result = await queueContract.methods.get(posP).call();
+                //     validationHash = result.validationHash;
 
-                    console.log("queue after error", result);
+                //     console.log("queue after error", result);
 
 
-                } else {
+                // } else {
 
                     const data = await nonCohortValidate.methods.registerValidation().encodeABI();
 
                     // console.log("data....:", data);
-                    console.log("[11.1 Attempting to register for processing.... ");
+                    console.log("[11.1 Attempting to register for validation.... ");
 
                     const nonce = await web3.eth.getTransactionCount(owner);
                     const signedMessage = (await axios.get(`${PROVIDER_MANAGER}/sign?data=${data}&nonce=${nonce}`)).data;
@@ -605,7 +639,7 @@ async function checkValQueue(error) {
                     if (validationHash != zeroTransaction)
                         console.log("result from checkValQueue:", result);
 
-                }
+                // }
 
                 if (validationHash != zeroTransaction) {
                     let valResult = await nonCohortValidate.methods.isValidated(validationHash).call({ from: owner });
