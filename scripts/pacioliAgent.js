@@ -457,98 +457,72 @@ async function voteWinner(winners, votes, validationHash, trxHash) {
 }
 
 
+
 async function isAnythingToProcess() {
 
-    let queueElement = (await queueContract.methods.getNextValidation().call())[0];
-
-    console.log("first validation in isAnythingToProcess", queueElement)
 
     let done;
-    let data
 
+    let prevVal = await queueContract.methods.head().call();
+    console.log("Head:", prevVal);
+    const tail = await queueContract.methods.findTailId().call();
+    console.log("tail:", tail);
 
-    data = await nonCohortValidate.methods.validations(queueElement).call();
+    const posP = await nonCohortValidate.methods.regP(owner).call();
+    console.log("posP:", posP);
 
-    if (queueElement == 0)
-        done = true;
-    else {
+    const pos = await nonCohortValidate.methods.reg(owner).call();
+    console.log("pos:", pos);
 
-        let valResult = await nonCohortValidate.methods.isValidated(queueElement).call({ from: owner });
+    if (pos > 0) {
+
+        let queueElement = await queueContract.methods.get(pos).call();
+        if (queueElement[3] != zeroTransaction) {
+
+            let valResult = await nonCohortValidate.methods.isValidated(queueElement[3]).call({ from: owner });
+
+            console.log("is validated:", valResult[0]);
+            console.log("number of validations:", valResult[1]);
+
+            if (!valResult[0])
+                return [queueElement[3], false];
+        }
+
     }
+
+    let queueElement = await queueContract.methods.get(prevVal).call();
+    console.log("valHash:", queueElement[3]);
+
 
     while (!done) {
 
+        let val = await nonCohortValidate.methods.validations(queueElement[3]).call();
+        let processedId = await nonCohortValidate.methods.processedId().call();
 
-        const tail = await queueContract.methods.findTailId().call();
-        console.log("tail:", tail);
+        console.log("processed Id:", processedId);
+        console.log("val[10]", val[10]);
+        console.log("queueElement[3]", queueElement[3]);
 
-        const processedId = await nonCohortValidate.methods.processedId().call();
-        console.log("processedId:", processedId);
+        if (Number(val[10]) > minValidatorCount ) {
 
-        const posP = await nonCohortValidate.methods.regP(owner).call();
-        console.log("posP:", posP);
+            queueElement = await queueContract.methods.get(prevVal).call();
+            prevVal = queueElement[1];
+            //get next element from the queue
+            queueElement = await queueContract.methods.get(prevVal).call();
+            console.log("isAnythingToProcess - looping through queue:", queueElement)
 
-        const id = await queueContract.methods.findIdForValidationHash(queueElement).call();
 
-        console.log("id:", id);
+        } else if (val[10] <= minValidatorCount && queueElement[3] != 0x0 && posP != prevVal) {
 
-        if (id == posP) {
+            console.log("isAnythingToProcess - return hash:", queueElement[3])
 
-            let valResult = await nonCohortValidate.methods.isValidated(queueElement).call({ from: owner });
-            console.log("valResult:", valResult);
-            if (valResult[0] == 0)
-                return queueElement;
+            return [queueElement[3], true]
+        } else {
+            console.log("isAnythingToProcess - return hash forced to 0x0:", zeroTransaction)
+            return [zeroTransaction, true];
         }
-
-
-        if (processedId == tail) {
-
-            // queueElement = zeroTransaction;
-            done = true;
-        }
-
-        if (queueElement == zeroTransaction) {
-            done = true;
-        }
-        else if (posP == processedId ) {
-            queueElement = (await queueContract.methods.getValidationToProcess(queueElement).call())[0];
-            data = await nonCohortValidate.methods.validations(queueElement).call();
-
-            // queueElement = zeroTransaction;
-            done = true;
-        }
-        else if (data[10] > 2) {
-            queueElement = (await queueContract.methods.getValidationToProcess(queueElement).call())[0];
-            data = await nonCohortValidate.methods.validations(queueElement).call();
-
-        }
-        else {
-            done = true;
-        }
-
-
-
-
-        console.log("In loop isAnythingToProcess");
-        console.log("transaction:", queueElement);
-        console.log("data[10]", data[10]);
     }
-
-    if (Number(data[10]) == Number(minValidatorCount) + 1)
-        queueElement = zeroTransaction;
-
-    console.log("queueElement", queueElement);
-
-
-
-
-    return queueElement;
-
-
-
-
 }
-
 
 /**
  * @dev checks if there is any request in queue for validation
@@ -558,59 +532,29 @@ async function checkValQueue() {
 
     clearInterval(setIntervalId);
     try {
-
-
         await checkVoteQueue();
-
-
         const queueSize = await queueContract.methods.returnQueueSize().call();
         console.log("Queue size from checkValQueue:", queueSize.toString());
-        // let validationHash;
 
         if (Number(queueSize) > 0) {
 
             let valTx = await isAnythingToProcess();
 
-            if (valTx == zeroTransaction) {
+            console.log("valTx", valTx);
+
+            if (valTx[0] == zeroTransaction) {
 
                 setIntervalId = setInterval(
                     () => (checkValQueue().then(console.log(`ran ${(Date.now() - agentBornAT) / 1000} seconds`))),
                     intervalSize);
             } else {
 
-                const tail = await queueContract.methods.findTailId().call();
-                console.log("tail:", tail);
-
-
-                const pos = await nonCohortValidate.methods.reg(owner).call();
-                console.log("pos:", pos);
-
-                const head = await queueContract.methods.head().call();
-                console.log("head:", head);
-
-                const processedId = await nonCohortValidate.methods.processedId().call();
-                console.log("processedId:", processedId);
-
-                const posP = await nonCohortValidate.methods.regP(owner).call();
-                console.log("posP:", posP);
-
                 let validationHash;
                 let result;
 
-                // if (error) {
-
-                //     // let result = await queueContract.methods.get(posP).call();
-                //     result = await queueContract.methods.get(posP).call();
-                //     validationHash = result.validationHash;
-
-                //     console.log("queue after error", result);
-
-
-                // } else {
-
+                if (valTx[1]) {
                     const data = await nonCohortValidate.methods.registerValidation().encodeABI();
 
-                    // console.log("data....:", data);
                     console.log("[11.1 Attempting to register for validation.... ");
 
                     const nonce = await web3.eth.getTransactionCount(owner);
@@ -641,8 +585,11 @@ async function checkValQueue() {
 
                     if (validationHash != zeroTransaction)
                         console.log("result from checkValQueue:", result);
-
-                // }
+                } else {
+                    validationHash = valTx[0];
+                    const pos = await nonCohortValidate.methods.reg(owner).call();
+                    result = await queueContract.methods.get(pos).call();
+                }
 
                 if (validationHash != zeroTransaction) {
                     let valResult = await nonCohortValidate.methods.isValidated(validationHash).call({ from: owner });
@@ -775,19 +722,9 @@ async function checkVoteQueue() {
         let validationHash;
 
         if (Number(queueSize) > 0) {
-            // validationHash = await queueContract.methods.getNextValidationToVote().call();
             let validationHash = await getNextValidationToVote();
 
             if (validationHash != zeroTransaction) {
-
-                // let hasVoted = await nonCohortValidate.methods.hasVoted(validationHash).call({ from: owner });
-                // let isValidated = await nonCohortValidate.methods.isValidated(validationHash).call({ from: owner });
-
-                // console.log("is validated from check vote queue:", isValidated)
-
-                // if (!hasVoted && (isValidated[0] != 0 && isValidated[1] >= minValidatorCount)) {
-
-                //     console.log("check vote queue", validationHash);
 
                 const trxHash = "0x";
                 const executed = await executeVote(validationHash, trxHash);
