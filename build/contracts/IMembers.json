@@ -63,9 +63,22 @@
       ],
       "stateMutability": "nonpayable",
       "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "maxValidators",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"amountTokensPerValidation\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"enterpriseMatch\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"requiredQuorum\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"enum IMembers.UserType\",\"name\":\"userType\",\"type\":\"uint8\"}],\"name\":\"userMap\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Auditchain/IMembers.sol\":\"IMembers\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Auditchain/IMembers.sol\":{\"keccak256\":\"0x1ed1d70bc47049199268d3f5814ed83c82d860f91020b43a431605d140cc2329\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a3c6a590eb5b55e702885b5c065d2b0ab42de1d78f7b358d26dca4bb8c3cc563\",\"dweb:/ipfs/QmXd6MYdsZLLwqa2Uwrubr8tZhe7w7WJ8zdDrtgmGg43QR\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"amountTokensPerValidation\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"enterpriseMatch\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"maxValidators\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"requiredQuorum\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"enum IMembers.UserType\",\"name\":\"userType\",\"type\":\"uint8\"}],\"name\":\"userMap\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/Auditchain/IMembers.sol\":\"IMembers\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/Auditchain/IMembers.sol\":{\"keccak256\":\"0x33a6ec73573318a03f91938b69f25d52e95766ffc2d66d2f1bf0bb8283814385\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://671e663611ddc87a990903d1b6400300b91c6ebbab6dc6619b32dc4018a5a327\",\"dweb:/ipfs/QmeK9CqEZPsLMHuFWGaA4mP3dffCRHktHag27bEoMBHNWd\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -73,16 +86,16 @@
   "deployedGeneratedSources": [],
   "sourceMap": "",
   "deployedSourceMap": "",
-  "source": "// SPDX-License-Identifier: MIT\npragma solidity =0.8.0;    \n    \ninterface IMembers {\n\n    enum UserType {Enterprise, Validator, DataSubscriber}  \n    function userMap(address user, UserType userType) external returns (bool);\n    function requiredQuorum() external returns (uint256);\n    function enterpriseMatch() external returns (uint256);\n    function amountTokensPerValidation() external returns (uint256);\n\n}\n",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity =0.8.0;    \n    \ninterface IMembers {\n\n    enum UserType {Enterprise, Validator, DataSubscriber}  \n    function userMap(address user, UserType userType) external returns (bool);\n    function requiredQuorum() external returns (uint256);\n    function enterpriseMatch() external returns (uint256);\n    function amountTokensPerValidation() external returns (uint256);\n    function maxValidators() external returns (uint256);\n\n\n}\n",
   "sourcePath": "/home/win2win/eth/projects/AuditChain/Core-Smart-Contracts-v1-upgradable-release-candidate/contracts/Auditchain/IMembers.sol",
   "ast": {
     "absolutePath": "project:/contracts/Auditchain/IMembers.sol",
     "exportedSymbols": {
       "IMembers": [
-        6535
+        6540
       ]
     },
-    "id": 6536,
+    "id": 6541,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
@@ -103,9 +116,9 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 6535,
+        "id": 6540,
         "linearizedBaseContracts": [
-          6535
+          6540
         ],
         "name": "IMembers",
         "nodeType": "ContractDefinition",
@@ -245,7 +258,7 @@
               ],
               "src": "218:6:34"
             },
-            "scope": 6535,
+            "scope": 6540,
             "src": "151:74:34",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -298,7 +311,7 @@
               ],
               "src": "273:9:34"
             },
-            "scope": 6535,
+            "scope": 6540,
             "src": "230:53:34",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -351,7 +364,7 @@
               ],
               "src": "332:9:34"
             },
-            "scope": 6535,
+            "scope": 6540,
             "src": "288:54:34",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -404,27 +417,80 @@
               ],
               "src": "401:9:34"
             },
-            "scope": 6535,
+            "scope": 6540,
             "src": "347:64:34",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "08ac5256",
+            "id": 6539,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "maxValidators",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6535,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "438:2:34"
+            },
+            "returnParameters": {
+              "id": 6538,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6537,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6539,
+                  "src": "459:7:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6536,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "459:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "458:9:34"
+            },
+            "scope": 6540,
+            "src": "416:52:34",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 6536,
-        "src": "65:349:34"
+        "scope": 6541,
+        "src": "65:407:34"
       }
     ],
-    "src": "32:383:34"
+    "src": "32:441:34"
   },
   "legacyAST": {
     "absolutePath": "project:/contracts/Auditchain/IMembers.sol",
     "exportedSymbols": {
       "IMembers": [
-        6535
+        6540
       ]
     },
-    "id": 6536,
+    "id": 6541,
     "license": "MIT",
     "nodeType": "SourceUnit",
     "nodes": [
@@ -445,9 +511,9 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 6535,
+        "id": 6540,
         "linearizedBaseContracts": [
-          6535
+          6540
         ],
         "name": "IMembers",
         "nodeType": "ContractDefinition",
@@ -587,7 +653,7 @@
               ],
               "src": "218:6:34"
             },
-            "scope": 6535,
+            "scope": 6540,
             "src": "151:74:34",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -640,7 +706,7 @@
               ],
               "src": "273:9:34"
             },
-            "scope": 6535,
+            "scope": 6540,
             "src": "230:53:34",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -693,7 +759,7 @@
               ],
               "src": "332:9:34"
             },
-            "scope": 6535,
+            "scope": 6540,
             "src": "288:54:34",
             "stateMutability": "nonpayable",
             "virtual": false,
@@ -746,18 +812,71 @@
               ],
               "src": "401:9:34"
             },
-            "scope": 6535,
+            "scope": 6540,
             "src": "347:64:34",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "functionSelector": "08ac5256",
+            "id": 6539,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "maxValidators",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6535,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "438:2:34"
+            },
+            "returnParameters": {
+              "id": 6538,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6537,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6539,
+                  "src": "459:7:34",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6536,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "459:7:34",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "458:9:34"
+            },
+            "scope": 6540,
+            "src": "416:52:34",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 6536,
-        "src": "65:349:34"
+        "scope": 6541,
+        "src": "65:407:34"
       }
     ],
-    "src": "32:383:34"
+    "src": "32:441:34"
   },
   "compiler": {
     "name": "solc",
@@ -765,7 +884,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.1",
-  "updatedAt": "2022-08-24T20:31:29.210Z",
+  "updatedAt": "2022-09-06T01:12:56.882Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},

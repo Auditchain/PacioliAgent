@@ -198,7 +198,7 @@ async function verifyPacioli(metadataUrl, trxHash) {
     const resultPacioli = await ipfs1.files.add(reportFile, { wrapWithDirectory: true });
     const pacioliIPFS = resultPacioli[1].hash + '/' + resultPacioli[0].path;
 
-    console.log("[3 " + trxHash + "] Pacioli report saved at: " + ipfsBase + pacioliIPFS);
+    console.log("[3 " + trxHash + "] Pacioli report saved at: " + ipfsBasePrivate + pacioliIPFS);
 
     return [pacioliIPFS, reportContent.isValid];
 }
@@ -249,7 +249,7 @@ async function uploadMetadataToIpfs(url, reportPacioliIPFSUrl, trxHash, isValid)
     const urlMetadata = result[1].hash + '/' + result[0].path;
     // const urlMetadata = result.cid + '/' + "AuditchainMetadataReport.json";
 
-    console.log("[5 " + trxHash + "] Metadata created: " + ipfsBase + urlMetadata);
+    console.log("[5 " + trxHash + "] Metadata created: " + ipfsBasePrivate + urlMetadata);
     return [urlMetadata, reportHash];
 }
 
@@ -497,9 +497,9 @@ async function isAnythingToProcess() {
     while (!done) {
 
         let val = await nonCohortValidate.methods.validations(queueElement[3]).call();
-        let processedId = await nonCohortValidate.methods.processedId().call();
+        // let processedId = await nonCohortValidate.methods.processedId().call();
 
-        console.log("processed Id:", processedId);
+        // console.log("processed Id:", processedId);
         console.log("val[10]", val[10]);
         console.log("queueElement[3]", queueElement[3]);
 
@@ -796,7 +796,7 @@ async function initProcess() {
     const validationStruct = await nodeOperationsPreEvent.methods.nodeOpStruct(owner).call();
     const isNodeOperator = validationStruct.isNodeOperator;
     const isDelegating = validationStruct.isDelegating;
-    minValidatorCount = await nonCohortValidate.methods.maxValidators().call();
+    minValidatorCount = await membersContract.methods.maxValidators().call();
 
     console.log("min validator count:", minValidatorCount);
 
