@@ -82,7 +82,7 @@ async function sign(data, nonce) {
             // if (data.startsWith("0x42d47412")   || data.startsWith("0xd4632bcf") )
             //     gas = 900000;
             // else 
-            //     gas = 900000;
+                // gas = 900000;
 
             console.log("gasPrice ", gasPrice);
             console.log("gas ", gas);
@@ -157,12 +157,12 @@ app.get('/sign', async function (req, res) {
         res.end(JSON.stringify(signedTx));
 
     } catch (err) {
-        console.log(err);
+        console.log(err)
         res.end(err)
     }
 })
 
-let server = app.listen(3333, function () {
+let server = app.listen(3336, function () {
     let host = server.address().address
     let port = server.address().port
     console.log("Example app listening at http://%s:%s", host, port)

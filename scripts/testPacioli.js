@@ -134,9 +134,13 @@ let dataSubscriber1 = "0xd431134b507d3B6F2742687e14cD9CbA5b6BE0F4"; // 2
 
 const reports = [
     "https://xbrlsite.azurewebsites.net/2021/reporting-scheme/proof/reference-implementation/instance.xml",
-    "https://www.sec.gov/Archives/edgar/data/1318605/000095017021000046/tsla-20210331.htm",
-    "https://www.sec.gov/Archives/edgar/data/789019/000156459020034944/msft-10k_20200630_htm.xml",
-    "https://www.sec.gov/Archives/edgar/data/1108524/000110852417000040/crm-20171031.xml",
+    "https://xbrlsite.azurewebsites.net/2021/reporting-scheme/proof/reference-implementation/instance.xml",
+    "https://xbrlsite.azurewebsites.net/2021/reporting-scheme/proof/reference-implementation/instance.xml",
+    "https://xbrlsite.azurewebsites.net/2021/reporting-scheme/proof/reference-implementation/instance.xml",
+
+    // "https://www.sec.gov/Archives/edgar/data/1318605/000095017021000046/tsla-20210331.htm",
+    // "https://www.sec.gov/Archives/edgar/data/789019/000156459020034944/msft-10k_20200630_htm.xml",
+    // "https://www.sec.gov/Archives/edgar/data/1108524/000110852417000040/crm-20171031.xml",
 ];
 
 var completed = 0;
@@ -175,7 +179,7 @@ async function deploy() {
 
         let testHash = web3.utils.keccak256(reportURL + randomNum);
         console.log("Hash from deploy:", testHash);
-        await validation.methods.initValNoCohort(testHash, result[1], 0, "10000000000000000000").send({ from: dataSubscriber1, gas: 900000, maxFeePerGas: gasPrice, maxPriorityFeePerGas: gasPrice, });
+        await validation.methods.initValNoCohort(testHash, result[1], 0, "25000000000000000000").send({ from: dataSubscriber1, gas: 900001, maxFeePerGas: gasPrice, maxPriorityFeePerGas: gasPrice, });
         console.log("[" + run + "] Run completed");
         completed++ ;
 
@@ -184,6 +188,6 @@ async function deploy() {
         console.log(e)
     }
 }
-const MAX_RUNS = 2;
+const MAX_RUNS = 10;
 // setInterval(deploy, 4000);
 deploy();
