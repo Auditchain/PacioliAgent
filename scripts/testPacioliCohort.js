@@ -43,12 +43,12 @@ const mnemonic = process.env.MNEMONIC;
 // Address for smart contracts
 const memberAddress = process.env.MEMBER_ADDRESS;
 const tokenAddress = process.env.AUDT_TOKEN_ADDRESS;
-const validationAddress = process.env.VALIDATIONS_NO_COHORT_ADDRESS;
+const validationAddress = process.env.VALIDATIONS_COHORT_ADDRESS;
 let providerForUpdate;
 
 const Members = require('../build/contracts/Members.json');
 const Token = require('../build/contracts/AuditToken.json');
-const Validation = require('../build/contracts/ValidationsNoCohort.json');
+const Validation = require('../build/contracts/ValCohort.json');
 
 
 let members, token, web3, validation, owner;
@@ -130,7 +130,7 @@ async function setUpContracts(account) {
     }
 }
 
-let dataSubscriber1 = "0xd431134b507d3B6F2742687e14cD9CbA5b6BE0F4"; // 2
+let enterprise1 = "0x9596a77DA1d79Cde87E1a499188E1dA8e5A4Fc20"; // 2
 
 const reports = [
     "https://xbrlsite.azurewebsites.net/2021/reporting-scheme/proof/reference-implementation/instance.xml",
@@ -166,8 +166,8 @@ async function deploy() {
 
         let result
 
-        await setUpContracts("0x9ca184fa913e7ca5f49b0c89a2665beac582c12cce4308473ef65f4166d58dfa");
-        const dataSubscriber1 = providerForUpdate.addresses[0];
+        await setUpContracts("0xb598deda69a57e900343fd393089d588a6c52950ee60a8a529d2350403e4e9e7");
+        const enterprise1 = providerForUpdate.addresses[0];
         result = await saveToIpfs(reportURL);
 
         let gasPrice = Number(await web3.eth.getGasPrice()) + 100000000 ;
@@ -179,7 +179,7 @@ async function deploy() {
 
         let testHash = web3.utils.keccak256(reportURL + randomNum);
         console.log("Hash from deploy:", testHash);
-        await validation.methods.initValNoCohort(testHash, result[1], 1, "25000000000000000000").send({ from: dataSubscriber1, gas: 900001, maxFeePerGas: gasPrice, maxPriorityFeePerGas: gasPrice, });
+        await validation.methods.initValNoCohort(testHash, result[1], 1, "25000000000000000000").send({ from: enterprise1, gas: 900001, maxFeePerGas: gasPrice, maxPriorityFeePerGas: gasPrice, });
         console.log("[" + run + "] Run completed");
         completed++ ;
 

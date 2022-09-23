@@ -49,7 +49,7 @@ var rl = readline.createInterface({
     terminal: true
 });
 
-const COHORT = require('../build/contracts/ValNoCohort.json');
+const COHORT = require('../build/contracts/ValCohort.json');
 const COHORT_FACTORY = require('../build/contracts/CohortFactory.json');
 const NODE_OPERATIONS = require('../build/contracts/NodeOperations.json')
 const MEMBERS = require('../build/contracts/Members.json');
@@ -69,11 +69,11 @@ const validation = process.env.VALIDATIONS_COHORT_ADDRESS;
 const nodeOperations = process.env.NODE_OPERATIONS_ADDRESS;
 const members = process.env.MEMBER_ADDRESS;
 const queue = process.env.QUEUE_COHORT_ADDRESS;
-const cohortFactory = process.env.COHORT_FACTORY_
+const cohortFactory = process.env.COHORT_FACTORY_ADDRESS
 
 let validatorDetails = null;
 let agentBornAT;
-let intervalSize = 10000;
+let intervalSize = 4000;
 let sleepTime = 5000;
 let zeroTransaction = "0x0000000000000000000000000000000000000000000000000000000000000000";
 let setIntervalId;
@@ -479,10 +479,15 @@ async function isAnythingToProcess() {
     const pos = await CohortValidate.methods.reg(owner).call();
     console.log("pos:", pos);
 
+    let enterprise;
+    let auditType;
+
     if (pos > 0) {
 
         let queueElement = await queueContract.methods.get(pos).call();
-        let enterprise = queueElement[6];
+        enterprise = queueElement.user;
+        auditType = queueElement.auditType;
+
         if (queueElement[3] != zeroTransaction) {
 
             let valResult = await CohortValidate.methods.isValidated(queueElement[3]).call({ from: owner });
@@ -507,26 +512,41 @@ async function isAnythingToProcess() {
 
         // console.log("processed Id:", processedId);
         console.log("val[10]", val[10]);
-        console.log("queueElement[3]", queueElement[3]);
+        console.log("queueElement.hash", queueElement.validationHash);
 
-        const isInCohort = await cohortFactoryContract.methods.validatorCohortList(enterprise, owner).call();
+        // console.log(queueElement);
 
-        if (isInCohort == 0 ) {
-
-            queueElement = await queueContract.methods.get(prevVal).call();
-            prevVal = queueElement[1];
-            //get next element from the queue
-            queueElement = await queueContract.methods.get(prevVal).call();
-            console.log("isAnythingToProcess - looping through queue:", queueElement)
+        const list = await cohortFactoryContract.methods.returnValidatorCohortsList(owner, queueElement.user).call();
+        console.log("list length:", list);
 
 
-        } else if (isInCohort > 0 && queueElement[3] != 0x0 && posP != prevVal) {
+        if (list.length > 0) {
 
-            console.log("isAnythingToProcess - return hash:", queueElement[3])
+            for (let i = 0; i < list.length; i++) {
+                console.log("within for")
+                const auditTypeFound = list[i]
 
-            return [queueElement[3], true]
+                console.log("auditTypeFound", auditTypeFound)
+                if (queueElement.auditType != auditTypeFound) {
+
+                    queueElement = await queueContract.methods.get(prevVal).call();
+                    // prevVal = queueElement[1];
+                    //get next element from the queue
+                    queueElement = await queueContract.methods.get(queueElement.next).call();
+                    console.log("isAnythingToProcess - looping through queue:", queueElement)
+
+
+                } else if (queueElement.validationHash != 0x0 && posP != prevVal) {
+
+                    console.log("isAnythingToProcess - return hash:", queueElement[3])
+
+                    return [queueElement[3], true]
+                } else {
+                    console.log("isAnythingToProcess - return hash forced to 0x0:", zeroTransaction)
+                    return [zeroTransaction, true];
+                }
+            }
         } else {
-            console.log("isAnythingToProcess - return hash forced to 0x0:", zeroTransaction)
             return [zeroTransaction, true];
         }
     }
