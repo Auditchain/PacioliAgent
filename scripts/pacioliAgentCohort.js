@@ -11,7 +11,7 @@ const prompt = require('prompt-sync')({ sigint: true });
 const { create } = require("ipfs-http-client");
 
 const SECRETS_PATH = process.env.SECRETS_PATH ? process.env.SECRETS_PATH : '/secrets';
-const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : 'http://localhost:3333';
+const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : 'http://localhost:3336';
 
 // update process.env with variables not yet defined outside
 if (fs.existsSync(SECRETS_PATH)) {
@@ -19,7 +19,7 @@ if (fs.existsSync(SECRETS_PATH)) {
 } else if (process.env.PACIOLI_ENV)
     require('dotenv').config({ path: process.env.PACIOLI_ENV });
 else
-    require('dotenv').config({ path: './.env' });
+    require('dotenv').config({ path: './.env' }); 
 
 const projectId = process.env.IPFS_USER;
 const projectSecret = process.env.IPFS_PASSWORD;
@@ -177,10 +177,10 @@ async function verifyPacioli(metadataUrl, trxHash) {
     const queryingPacioliStart = Date.now();
     console.log("[1 " + trxHash + "]" + "  Querying Pacioli " + reportUrl);
 
-    // const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
-    //     .catch(error => console.log("ERROR: " + error));
-    const reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
+    const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
         .catch(error => console.log("ERROR: " + error));
+    // const reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
+    //     .catch(error => console.log("ERROR: " + error));
 
 
     const timePast = (Date.now() - queryingPacioliStart) / 1000 / 60;
@@ -267,7 +267,7 @@ async function uploadMetadataToIpfs(url, reportPacioliIPFSUrl, trxHash, isValid)
  * @param {transaction hash in question} trxHash 
  * @param {hash of document in question} documentHash 
  * @param {block time transaction was initiated} initTime 
- * @param {data subscriber who initiated transaction} subscriber 
+ * @param {data subscriber who initiated transaction} ^Csubscriber 
  * @returns {to be determined based on Pacioli error TODO:}
  */
 async function handlePacioliIPFS(url, trxHash) {
@@ -445,7 +445,7 @@ async function voteWinner(winners, votes, validationHash, trxHash) {
         if (signedMessage != "Not approved call") {
 
             const receipt = await web3.eth.sendSignedTransaction(signedMessage);
-            let completed = await CohortValidate.methods.returnValidationRecord(validationHash).call();
+            let completed = await CohortValidate.methods.validations(validationHash).call();
             console.log("completed ", completed);
             console.log("[11 " + receipt.transactionHash + "] Verification of winners completed...  ");
             return true;
@@ -505,50 +505,68 @@ async function isAnythingToProcess() {
     console.log("valHash:", queueElement[3]);
 
 
-    while (!done) {
 
-        let val = await CohortValidate.methods.validations(queueElement[3]).call();
-        // let processedId = await CohortValidate.methods.processedId().call();
+    let val = await CohortValidate.methods.validations(queueElement[3]).call();
+    // let processedId = await CohortValidate.methods.processedId().call();
 
-        // console.log("processed Id:", processedId);
-        console.log("val[10]", val[10]);
-        console.log("queueElement.hash", queueElement.validationHash);
+    // console.log("processed Id:", processedId);
+    console.log("val[10]", val[10]);
+    console.log("queueElement.hash", queueElement.validationHash);
 
-        // console.log(queueElement);
+    console.log(queueElement);
 
-        const list = await cohortFactoryContract.methods.returnValidatorCohortsList(owner, queueElement.user).call();
-        console.log("list length:", list);
+    const list = await cohortFactoryContract.methods.returnValidatorCohortsList(owner, queueElement.user).call();
+    console.log("list length:", list);
 
 
-        if (list.length > 0) {
+    if (list.length > 0) {
 
-            for (let i = 0; i < list.length; i++) {
-                console.log("within for")
-                const auditTypeFound = list[i]
+        for (let i = 0; i < list.length; i++) {
+            console.log("within for")
+            const auditTypeFound = list[i]
 
-                console.log("auditTypeFound", auditTypeFound)
-                if (queueElement.auditType != auditTypeFound) {
+            console.log("auditTypeFound", auditTypeFound)
+
+
+            while (!done) {
+
+                
+                if (queueElement.validationHash != 0x0 && (posP != prevVal || pos == prevVal)) {
+                    
+                    console.log("isAnythingToProcess - return hash:", queueElement[3])
+                    
+                    return [queueElement[3], true, auditTypeFound]
+                }
+                
+                
+                else if (queueElement.auditType == auditTypeFound && posP == prevVal) {
+                    
+                    console.log("second else if")
+                    console.log("prev value 1", prevVal);
 
                     queueElement = await queueContract.methods.get(prevVal).call();
-                    // prevVal = queueElement[1];
+                    console.log("isAnythingToProcess 11111 - looping through queue:", queueElement)
+
+                    
+                    
+                    prevVal = queueElement.next;
                     //get next element from the queue
-                    queueElement = await queueContract.methods.get(queueElement.next).call();
+                    queueElement = await queueContract.methods.get(prevVal).call();
                     console.log("isAnythingToProcess - looping through queue:", queueElement)
+                    
+                    console.log("prev value 2", prevVal);
+                    // return ;
 
 
-                } else if (queueElement.validationHash != 0x0 && posP != prevVal) {
-
-                    console.log("isAnythingToProcess - return hash:", queueElement[3])
-
-                    return [queueElement[3], true]
-                } else {
-                    console.log("isAnythingToProcess - return hash forced to 0x0:", zeroTransaction)
-                    return [zeroTransaction, true];
+                }
+                else if (prevVal == tail || prevVal == 0) {
+                    console.log("isAnythingToProcess - Nothing to process")
+                    return [zeroTransaction, true, 0];
                 }
             }
-        } else {
-            return [zeroTransaction, true];
         }
+    } else {
+        return [zeroTransaction, true, 0];
     }
 }
 
@@ -583,9 +601,11 @@ async function checkValQueue() {
                 if (valTx[1]) {
                     const data = await CohortValidate.methods.registerValidation().encodeABI();
 
+
                     console.log("[11.1 Attempting to register for validation.... ");
 
                     const nonce = await web3.eth.getTransactionCount(owner);
+                    console.log("data:", `${PROVIDER_MANAGER}/sign?data=${data}&nonce=${nonce}`);
                     const signedMessage = (await axios.get(`${PROVIDER_MANAGER}/sign?data=${data}&nonce=${nonce}`)).data;
                     let receipt;
 
