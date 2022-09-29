@@ -10,16 +10,21 @@ const prompt = require('prompt-sync')({ sigint: true });
 
 const { create } = require("ipfs-http-client");
 
+
 const SECRETS_PATH = process.env.SECRETS_PATH ? process.env.SECRETS_PATH : '/secrets';
-const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : 'http://localhost:3333';
 
 // update process.env with variables not yet defined outside
 if (fs.existsSync(SECRETS_PATH)) {
     require('dotenv').config({ path: 'PacioliNode.env' });
 } else if (process.env.PACIOLI_ENV)
-    require('dotenv').config({ path: process.env.PACIOLI_ENV });
+require('dotenv').config({ path: process.env.PACIOLI_ENV });
 else
-    require('dotenv').config({ path: './.env' });
+require('dotenv').config({ path: './.env' });
+
+const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : process.env.TRANSACTION_SIGNER;
+
+console.log("transactin signer:", process.env.TRANSACTION_SIGNER);
+
 
 const projectId = process.env.IPFS_USER;
 const projectSecret = process.env.IPFS_PASSWORD;
@@ -49,10 +54,11 @@ var rl = readline.createInterface({
     terminal: true
 });
 
-const NON_COHORT = require('../build/contracts/ValidationsNoCohort.json');
+const NON_COHORT = require('../build/contracts/ValNoCohort.json');
 const NODE_OPERATIONS = require('../build/contracts/NodeOperations.json')
 const MEMBERS = require('../build/contracts/Members.json');
 const QUEUE = require('../build/contracts/Queue.json');
+const VAL_HELPERS = require('../build/contracts/ValidationHelpers.json');
 
 //TODO: this module is still copied from https://github.com/Auditchain/Reporting-Validation-Engine/tree/main/clientExamples/pacioliClient:
 const pacioli = require('./pacioliClient');
@@ -68,10 +74,11 @@ const nonCohortAddress = process.env.VALIDATIONS_NO_COHORT_ADDRESS;
 const nodeOperationsAddress = process.env.NODE_OPERATIONS_ADDRESS;
 const members = process.env.MEMBER_ADDRESS;
 const queue = process.env.QUEUE_ADDRESS;
+const valHelpers = process.env.VALIDATIONS_HELPERS_ADDRESS;
 
 let validatorDetails = null;
 let agentBornAT;
-let intervalSize = 10000;
+let intervalSize = 4000;
 let sleepTime = 5000;
 let zeroTransaction = "0x0000000000000000000000000000000000000000000000000000000000000000";
 let setIntervalId;
@@ -80,10 +87,11 @@ let ipfsBasePrivate = 'https://auditchain.infura-ipfs.io/ipfs/';
 const ipfsBase = 'https://ipfs.infura.io/ipfs/';
 
 
-let nonCohortValidate;
+let validations;
 let nodeOperationsPreEvent;
 let membersContract;
 let queueContract
+let valHelperContract;
 let owner;
 let validationCount = 0;
 let web3;
@@ -140,10 +148,11 @@ async function fetchValidatorDetails() {
 */
 async function setUpContracts() {
 
-    nonCohortValidate = new web3.eth.Contract(NON_COHORT["abi"], nonCohortAddress);
+    validations = new web3.eth.Contract(NON_COHORT["abi"], nonCohortAddress);
     nodeOperationsPreEvent = new web3.eth.Contract(NODE_OPERATIONS["abi"], nodeOperationsAddress);
     membersContract = new web3.eth.Contract(MEMBERS["abi"], members);
     queueContract = new web3.eth.Contract(QUEUE["abi"], queue);
+    valHelperContract = new web3.eth.Contract(VAL_HELPERS['abi'], valHelpers);
 }
 
 
@@ -301,7 +310,7 @@ async function validate(documentHash, initTime, choice, trxHash, valUrl, reportH
     // const nonce = await web3.eth.getTransactionCount(owner);
 
     try {
-        const data = nonCohortValidate.methods.validate(documentHash, initTime, subscriber, choice, valUrl, reportHash).encodeABI();
+        const data = validations.methods.validate(documentHash, initTime, subscriber, choice, valUrl, reportHash).encodeABI();
 
         const nonce = await web3.eth.getTransactionCount(owner, 'latest');
         const signedMessage = (await axios.get(`${PROVIDER_MANAGER}/sign?data=${data}&nonce=${nonce}`)).data;
@@ -319,7 +328,7 @@ async function validate(documentHash, initTime, choice, trxHash, valUrl, reportH
             console.log("Total validation count:" + validationCount);
             return true;
         } else {
-            console.log("This call is not approved.  nonCohortValidate.methods.validate(documentHash, initTime, subscriber, choice, valUrl, reportHash).encodeABI()");
+            console.log("This call is not approved.  validations.methods.validate(documentHash, initTime, subscriber, choice, valUrl, reportHash).encodeABI()");
             return false;
         }
     }
@@ -363,7 +372,7 @@ async function checkHash(validators, valHash) {
 
     console.log("[8 " + "0x" + "] Verifying winner validation for account:" + winnerAddress)
 
-    let validation = await nonCohortValidate.methods.collectValidationResults(valHash).call();
+    let validation = await validations.methods.collectValidationResults(valHash).call();
 
     let winnerReportUrl, myReportUrl, winnerReportHash, myReportHash = 0;
     let times = 0;
@@ -395,7 +404,7 @@ async function checkHash(validators, valHash) {
 
                 console.log("[8. " + times + "] It will wait for 5 sec");
                 await sleep(sleepTime);
-                validation = await nonCohortValidate.methods.collectValidationResults(valHash).call();
+                validation = await validations.methods.collectValidationResults(valHash).call();
                 console.log("[8. " + times + " Attempting search again");
                 i = -1;
             }
@@ -428,7 +437,7 @@ async function voteWinner(winners, votes, validationHash, trxHash) {
 
     const nonce = await web3.eth.getTransactionCount(owner);
     try {
-        const data = nonCohortValidate.methods.voteWinner(winners, votes, validationHash).encodeABI();
+        const data = validations.methods.voteWinner(winners, votes, validationHash).encodeABI();
 
         console.log("winners:", winners);
         console.log("validation hash", validationHash)
@@ -440,12 +449,12 @@ async function voteWinner(winners, votes, validationHash, trxHash) {
         if (signedMessage != "Not approved call") {
 
             const receipt = await web3.eth.sendSignedTransaction(signedMessage);
-            let completed = await nonCohortValidate.methods.returnValidationRecord(validationHash).call();
+            let completed = await validations.methods.validations(validationHash).call();
             console.log("completed ", completed);
             console.log("[11 " + receipt.transactionHash + "] Verification of winners completed...  ");
             return true;
         } else {
-            console.log("This call is not approved. nonCohortValidate.methods.voteWinner(winners, votes, validationHash).encodeABI()")
+            console.log("This call is not approved. validations.methods.voteWinner(winners, votes, validationHash).encodeABI()")
             return false;
         }
     } catch (error) {
@@ -468,10 +477,10 @@ async function isAnythingToProcess() {
     const tail = await queueContract.methods.findTailId().call();
     console.log("tail:", tail);
 
-    const posP = await nonCohortValidate.methods.regP(owner).call();
+    const posP = await validations.methods.regP(owner).call();
     console.log("posP:", posP);
 
-    const pos = await nonCohortValidate.methods.reg(owner).call();
+    const pos = await validations.methods.reg(owner).call();
     console.log("pos:", pos);
 
     if (pos > 0) {
@@ -479,7 +488,7 @@ async function isAnythingToProcess() {
         let queueElement = await queueContract.methods.get(pos).call();
         if (queueElement[3] != zeroTransaction) {
 
-            let valResult = await nonCohortValidate.methods.isValidated(queueElement[3]).call({ from: owner });
+            let valResult = await validations.methods.isValidated(queueElement[3]).call({ from: owner });
 
             console.log("is validated:", valResult[0]);
             console.log("number of validations:", valResult[1]);
@@ -496,8 +505,8 @@ async function isAnythingToProcess() {
 
     while (!done) {
 
-        let val = await nonCohortValidate.methods.validations(queueElement[3]).call();
-        // let processedId = await nonCohortValidate.methods.processedId().call();
+        let val = await validations.methods.validations(queueElement[3]).call();
+        // let processedId = await validations.methods.processedId().call();
 
         // console.log("processed Id:", processedId);
         console.log("val[10]", val[10]);
@@ -553,7 +562,7 @@ async function checkValQueue() {
                 let result;
 
                 if (valTx[1]) {
-                    const data = await nonCohortValidate.methods.registerValidation().encodeABI();
+                    const data = await validations.methods.registerValidation().encodeABI();
 
                     console.log("[11.1 Attempting to register for validation.... ");
 
@@ -571,7 +580,7 @@ async function checkValQueue() {
                         else
                             console.log("[11 " + receipt.transactionHash + "] Queue position registered and will process...  ");
                     } else {
-                        console.log("This call is not approved. nonCohortValidate.methods.registerValidation().encodeABI()")
+                        console.log("This call is not approved. validations.methods.registerValidation().encodeABI()")
                         return false;
                     }
 
@@ -587,12 +596,12 @@ async function checkValQueue() {
                         console.log("result from checkValQueue:", result);
                 } else {
                     validationHash = valTx[0];
-                    const pos = await nonCohortValidate.methods.reg(owner).call();
+                    const pos = await validations.methods.reg(owner).call();
                     result = await queueContract.methods.get(pos).call();
                 }
 
                 if (validationHash != zeroTransaction) {
-                    let valResult = await nonCohortValidate.methods.isValidated(validationHash).call({ from: owner });
+                    let valResult = await validations.methods.isValidated(validationHash).call({ from: owner });
 
                     console.log("is validated:", valResult[0]);
                     console.log("number of validations:", valResult[1]);
@@ -684,8 +693,8 @@ async function getNextValidationToVote() {
         if (validationHash == zeroTransaction)
             found = true;
 
-        let hasVoted = await nonCohortValidate.methods.hasVoted(validationHash).call({ from: owner });
-        let isValidated = await nonCohortValidate.methods.isValidated(validationHash).call({ from: owner });
+        let hasVoted = await validations.methods.hasVoted(validationHash).call({ from: owner });
+        let isValidated = await validations.methods.isValidated(validationHash).call({ from: owner });
 
         console.log("hasVoted", hasVoted)
         console.log("isValidated[0] ", isValidated[0])
@@ -758,7 +767,13 @@ async function executeVote(valHash, trxHash) {
     let winners = [];
     let votes = [];
 
-    let results = await nonCohortValidate.methods.collectValidationResults(valHash).call();
+    
+    // let results = await validations.methods.collectValidationResults(valHash).call();
+
+    let results = await valHelperContract.methods.determineWinners(valHash, nonCohortAddress).call();
+    
+    console.log("execute vote:", results);
+
 
     for (let i = 0; i < results[0].length; i++) {
         const [vote, winner] = await checkHash(results[0], valHash);
@@ -769,7 +784,7 @@ async function executeVote(valHash, trxHash) {
         }
     }
 
-    let hasVoted = await nonCohortValidate.methods.hasVoted(valHash).call({ from: owner });
+    let hasVoted = await validations.methods.hasVoted(valHash).call({ from: owner });
     let executed = true;
 
     if (!hasVoted) {
