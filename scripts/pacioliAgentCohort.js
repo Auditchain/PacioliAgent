@@ -54,6 +54,8 @@ const COHORT_FACTORY = require('../build/contracts/CohortFactory.json');
 const NODE_OPERATIONS = require('../build/contracts/NodeOperations.json')
 const MEMBERS = require('../build/contracts/Members.json');
 const QUEUE = require('../build/contracts/Queue.json');
+const VAL_HELPERS = require('../build/contracts/ValidationHelpers.json');
+
 
 //TODO: this module is still copied from https://github.com/Auditchain/Reporting-Validation-Engine/tree/main/clientExamples/pacioliClient:
 const pacioli = require('./pacioliClient');
@@ -70,6 +72,8 @@ const nodeOperations = process.env.NODE_OPERATIONS_ADDRESS;
 const members = process.env.MEMBER_ADDRESS;
 const queue = process.env.QUEUE_COHORT_ADDRESS;
 const cohortFactory = process.env.COHORT_FACTORY_ADDRESS
+const valHelpers = process.env.VALIDATIONS_HELPERS_ADDRESS;
+
 
 let validatorDetails = null;
 let agentBornAT;
@@ -82,7 +86,7 @@ let ipfsBasePrivate = 'https://auditchain.infura-ipfs.io/ipfs/';
 const ipfsBase = 'https://ipfs.infura.io/ipfs/';
 
 
-let CohortValidate;
+let validations;
 let nodeOperationsPreEvent;
 let membersContract;
 let queueContract;
@@ -143,12 +147,12 @@ async function fetchValidatorDetails() {
 */
 async function setUpContracts() {
 
-    CohortValidate = new web3.eth.Contract(COHORT["abi"], validation);
+    validations = new web3.eth.Contract(COHORT["abi"], validation);
     nodeOperationsPreEvent = new web3.eth.Contract(NODE_OPERATIONS["abi"], nodeOperations);
     membersContract = new web3.eth.Contract(MEMBERS["abi"], members);
     queueContract = new web3.eth.Contract(QUEUE["abi"], queue);
     cohortFactoryContract = new web3.eth.Contract(COHORT_FACTORY["abi"], cohortFactory);
-
+    valHelperContract = new web3.eth.Contract(VAL_HELPERS['abi'], valHelpers);
 }
 
 
@@ -267,7 +271,7 @@ async function uploadMetadataToIpfs(url, reportPacioliIPFSUrl, trxHash, isValid)
  * @param {transaction hash in question} trxHash 
  * @param {hash of document in question} documentHash 
  * @param {block time transaction was initiated} initTime 
- * @param {data subscriber who initiated transaction} ^Csubscriber 
+ * @param {data subscriber who initiated transaction} subscriber 
  * @returns {to be determined based on Pacioli error TODO:}
  */
 async function handlePacioliIPFS(url, trxHash) {
@@ -306,7 +310,7 @@ async function validate(documentHash, initTime, choice, trxHash, valUrl, reportH
     // const nonce = await web3.eth.getTransactionCount(owner);
 
     try {
-        const data = CohortValidate.methods.validate(documentHash, initTime, subscriber, choice, valUrl, reportHash).encodeABI();
+        const data = validations.methods.validate(documentHash, initTime, subscriber, choice, valUrl, reportHash).encodeABI();
 
         const nonce = await web3.eth.getTransactionCount(owner, 'latest');
         const signedMessage = (await axios.get(`${PROVIDER_MANAGER}/sign?data=${data}&nonce=${nonce}`)).data;
@@ -324,7 +328,7 @@ async function validate(documentHash, initTime, choice, trxHash, valUrl, reportH
             console.log("Total validation count:" + validationCount);
             return true;
         } else {
-            console.log("This call is not approved.  CohortValidate.methods.validate(documentHash, initTime, subscriber, choice, valUrl, reportHash).encodeABI()");
+            console.log("This call is not approved.  validations.methods.validate(documentHash, initTime, subscriber, choice, valUrl, reportHash).encodeABI()");
             return false;
         }
     }
@@ -368,7 +372,7 @@ async function checkHash(validators, valHash) {
 
     console.log("[8 " + "0x" + "] Verifying winner validation for account:" + winnerAddress)
 
-    let validation = await CohortValidate.methods.collectValidationResults(valHash).call();
+    let validation = await validations.methods.collectValidationResults(valHash).call();
 
     let winnerReportUrl, myReportUrl, winnerReportHash, myReportHash = 0;
     let times = 0;
@@ -400,7 +404,7 @@ async function checkHash(validators, valHash) {
 
                 console.log("[8. " + times + "] It will wait for 5 sec");
                 await sleep(sleepTime);
-                validation = await CohortValidate.methods.collectValidationResults(valHash).call();
+                validation = await validations.methods.collectValidationResults(valHash).call();
                 console.log("[8. " + times + " Attempting search again");
                 i = -1;
             }
@@ -433,7 +437,7 @@ async function voteWinner(winners, votes, validationHash, trxHash) {
 
     const nonce = await web3.eth.getTransactionCount(owner);
     try {
-        const data = CohortValidate.methods.voteWinner(winners, votes, validationHash).encodeABI();
+        const data = validations.methods.voteWinner(winners, votes, validationHash).encodeABI();
 
         console.log("winners:", winners);
         console.log("validation hash", validationHash)
@@ -445,12 +449,12 @@ async function voteWinner(winners, votes, validationHash, trxHash) {
         if (signedMessage != "Not approved call") {
 
             const receipt = await web3.eth.sendSignedTransaction(signedMessage);
-            let completed = await CohortValidate.methods.validations(validationHash).call();
+            let completed = await validations.methods.validations(validationHash).call();
             console.log("completed ", completed);
             console.log("[11 " + receipt.transactionHash + "] Verification of winners completed...  ");
             return true;
         } else {
-            console.log("This call is not approved. CohortValidate.methods.voteWinner(winners, votes, validationHash).encodeABI()")
+            console.log("This call is not approved. validations.methods.voteWinner(winners, votes, validationHash).encodeABI()")
             return false;
         }
     } catch (error) {
@@ -473,10 +477,10 @@ async function isAnythingToProcess() {
     const tail = await queueContract.methods.findTailId().call();
     console.log("tail:", tail);
 
-    const posP = await CohortValidate.methods.regP(owner).call();
+    const posP = await validations.methods.regP(owner).call();
     console.log("posP:", posP);
 
-    const pos = await CohortValidate.methods.reg(owner).call();
+    const pos = await validations.methods.reg(owner).call();
     console.log("pos:", pos);
 
     let enterprise;
@@ -490,7 +494,7 @@ async function isAnythingToProcess() {
 
         if (queueElement[3] != zeroTransaction) {
 
-            let valResult = await CohortValidate.methods.isValidated(queueElement[3]).call({ from: owner });
+            let valResult = await validations.methods.isValidated(queueElement[3]).call({ from: owner });
 
             console.log("is validated:", valResult[0]);
             console.log("number of validations:", valResult[1]);
@@ -506,8 +510,8 @@ async function isAnythingToProcess() {
 
 
 
-    let val = await CohortValidate.methods.validations(queueElement[3]).call();
-    // let processedId = await CohortValidate.methods.processedId().call();
+    let val = await validations.methods.validations(queueElement[3]).call();
+    // let processedId = await validations.methods.processedId().call();
 
     // console.log("processed Id:", processedId);
     console.log("val[10]", val[10]);
@@ -599,7 +603,7 @@ async function checkValQueue() {
                 let result;
 
                 if (valTx[1]) {
-                    const data = await CohortValidate.methods.registerValidation().encodeABI();
+                    const data = await validations.methods.registerValidation().encodeABI();
 
 
                     console.log("[11.1 Attempting to register for validation.... ");
@@ -619,7 +623,7 @@ async function checkValQueue() {
                         else
                             console.log("[11 " + receipt.transactionHash + "] Queue position registered and will process...  ");
                     } else {
-                        console.log("This call is not approved. CohortValidate.methods.registerValidation().encodeABI()")
+                        console.log("This call is not approved. validations.methods.registerValidation().encodeABI()")
                         return false;
                     }
 
@@ -635,12 +639,12 @@ async function checkValQueue() {
                         console.log("result from checkValQueue:", result);
                 } else {
                     validationHash = valTx[0];
-                    const pos = await CohortValidate.methods.reg(owner).call();
+                    const pos = await validations.methods.reg(owner).call();
                     result = await queueContract.methods.get(pos).call();
                 }
 
                 if (validationHash != zeroTransaction) {
-                    let valResult = await CohortValidate.methods.isValidated(validationHash).call({ from: owner });
+                    let valResult = await validations.methods.isValidated(validationHash).call({ from: owner });
 
                     console.log("is validated:", valResult[0]);
                     console.log("number of validations:", valResult[1]);
@@ -732,8 +736,8 @@ async function getNextValidationToVote() {
         if (validationHash == zeroTransaction)
             found = true;
 
-        let hasVoted = await CohortValidate.methods.hasVoted(validationHash).call({ from: owner });
-        let isValidated = await CohortValidate.methods.isValidated(validationHash).call({ from: owner });
+        let hasVoted = await validations.methods.hasVoted(validationHash).call({ from: owner });
+        let isValidated = await validations.methods.isValidated(validationHash).call({ from: owner });
 
         console.log("hasVoted", hasVoted)
         console.log("isValidated[0] ", isValidated[0])
@@ -806,7 +810,10 @@ async function executeVote(valHash, trxHash) {
     let winners = [];
     let votes = [];
 
-    let results = await CohortValidate.methods.collectValidationResults(valHash).call();
+    // let results = await validations.methods.collectValidationResults(valHash).call();
+
+    let results = await valHelperContract.methods.determineWinners(valHash, validation).call();
+
 
     for (let i = 0; i < results[0].length; i++) {
         const [vote, winner] = await checkHash(results[0], valHash);
@@ -817,7 +824,7 @@ async function executeVote(valHash, trxHash) {
         }
     }
 
-    let hasVoted = await CohortValidate.methods.hasVoted(valHash).call({ from: owner });
+    let hasVoted = await validations.methods.hasVoted(valHash).call({ from: owner });
     let executed = true;
 
     if (!hasVoted) {
