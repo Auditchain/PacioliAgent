@@ -7082,7 +7082,7 @@
                           }
                         ],
                         "functionName": {
-                          "name": "convert_t_contract$_MemberHelpers_$9107_to_t_address",
+                          "name": "convert_t_contract$_MemberHelpers_$9111_to_t_address",
                           "nodeType": "YulIdentifier",
                           "src": "10484:52:56"
                         },
@@ -7103,7 +7103,7 @@
                 }
               ]
             },
-            "name": "abi_encode_t_contract$_MemberHelpers_$9107_to_t_address_fromStack",
+            "name": "abi_encode_t_contract$_MemberHelpers_$9111_to_t_address_fromStack",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -7143,7 +7143,7 @@
                           }
                         ],
                         "functionName": {
-                          "name": "convert_t_contract$_Members_$9608_to_t_address",
+                          "name": "convert_t_contract$_Members_$9612_to_t_address",
                           "nodeType": "YulIdentifier",
                           "src": "10659:46:56"
                         },
@@ -7164,7 +7164,7 @@
                 }
               ]
             },
-            "name": "abi_encode_t_contract$_Members_$9608_to_t_address_fromStack",
+            "name": "abi_encode_t_contract$_Members_$9612_to_t_address_fromStack",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -7204,7 +7204,7 @@
                           }
                         ],
                         "functionName": {
-                          "name": "convert_t_enum$_UserType_$9186_to_t_uint8",
+                          "name": "convert_t_enum$_UserType_$9190_to_t_uint8",
                           "nodeType": "YulIdentifier",
                           "src": "10823:41:56"
                         },
@@ -7225,7 +7225,7 @@
                 }
               ]
             },
-            "name": "abi_encode_t_enum$_UserType_$9186_to_t_uint8_fromStack",
+            "name": "abi_encode_t_enum$_UserType_$9190_to_t_uint8_fromStack",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -11744,7 +11744,7 @@
                       }
                     ],
                     "functionName": {
-                      "name": "abi_encode_t_enum$_UserType_$9186_to_t_uint8_fromStack",
+                      "name": "abi_encode_t_enum$_UserType_$9190_to_t_uint8_fromStack",
                       "nodeType": "YulIdentifier",
                       "src": "21218:54:56"
                     },
@@ -11756,7 +11756,7 @@
                 }
               ]
             },
-            "name": "abi_encode_tuple_t_address_t_enum$_UserType_$9186__to_t_address_t_uint8__fromStack_reversed",
+            "name": "abi_encode_tuple_t_address_t_enum$_UserType_$9190__to_t_address_t_uint8__fromStack_reversed",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -12618,7 +12618,7 @@
                       }
                     ],
                     "functionName": {
-                      "name": "abi_encode_t_contract$_MemberHelpers_$9107_to_t_address_fromStack",
+                      "name": "abi_encode_t_contract$_MemberHelpers_$9111_to_t_address_fromStack",
                       "nodeType": "YulIdentifier",
                       "src": "23142:65:56"
                     },
@@ -12630,7 +12630,7 @@
                 }
               ]
             },
-            "name": "abi_encode_tuple_t_contract$_MemberHelpers_$9107__to_t_address__fromStack_reversed",
+            "name": "abi_encode_tuple_t_contract$_MemberHelpers_$9111__to_t_address__fromStack_reversed",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -12728,7 +12728,7 @@
                       }
                     ],
                     "functionName": {
-                      "name": "abi_encode_t_contract$_Members_$9608_to_t_address_fromStack",
+                      "name": "abi_encode_t_contract$_Members_$9612_to_t_address_fromStack",
                       "nodeType": "YulIdentifier",
                       "src": "23408:59:56"
                     },
@@ -12740,7 +12740,7 @@
                 }
               ]
             },
-            "name": "abi_encode_tuple_t_contract$_Members_$9608__to_t_address__fromStack_reversed",
+            "name": "abi_encode_tuple_t_contract$_Members_$9612__to_t_address__fromStack_reversed",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -17497,7 +17497,7 @@
                       }
                     ],
                     "functionName": {
-                      "name": "validator_assert_t_enum$_UserType_$9186",
+                      "name": "validator_assert_t_enum$_UserType_$9190",
                       "nodeType": "YulIdentifier",
                       "src": "34914:39:56"
                     },
@@ -17509,7 +17509,7 @@
                 }
               ]
             },
-            "name": "cleanup_t_enum$_UserType_$9186",
+            "name": "cleanup_t_enum$_UserType_$9190",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -17927,7 +17927,7 @@
                       }
                     ],
                     "functionName": {
-                      "name": "convert_t_contract$_MemberHelpers_$9107_to_t_uint160",
+                      "name": "convert_t_contract$_MemberHelpers_$9111_to_t_uint160",
                       "nodeType": "YulIdentifier",
                       "src": "36027:52:56"
                     },
@@ -17944,7 +17944,7 @@
                 }
               ]
             },
-            "name": "convert_t_contract$_MemberHelpers_$9107_to_t_address",
+            "name": "convert_t_contract$_MemberHelpers_$9111_to_t_address",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -17998,7 +17998,7 @@
                 }
               ]
             },
-            "name": "convert_t_contract$_MemberHelpers_$9107_to_t_uint160",
+            "name": "convert_t_contract$_MemberHelpers_$9111_to_t_uint160",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -18035,7 +18035,7 @@
                       }
                     ],
                     "functionName": {
-                      "name": "convert_t_contract$_Members_$9608_to_t_uint160",
+                      "name": "convert_t_contract$_Members_$9612_to_t_uint160",
                       "nodeType": "YulIdentifier",
                       "src": "36338:46:56"
                     },
@@ -18052,7 +18052,7 @@
                 }
               ]
             },
-            "name": "convert_t_contract$_Members_$9608_to_t_address",
+            "name": "convert_t_contract$_Members_$9612_to_t_address",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -18106,7 +18106,7 @@
                 }
               ]
             },
-            "name": "convert_t_contract$_Members_$9608_to_t_uint160",
+            "name": "convert_t_contract$_Members_$9612_to_t_uint160",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -18143,7 +18143,7 @@
                       }
                     ],
                     "functionName": {
-                      "name": "cleanup_t_enum$_UserType_$9186",
+                      "name": "cleanup_t_enum$_UserType_$9190",
                       "nodeType": "YulIdentifier",
                       "src": "36632:30:56"
                     },
@@ -18160,7 +18160,7 @@
                 }
               ]
             },
-            "name": "convert_t_enum$_UserType_$9186_to_t_uint8",
+            "name": "convert_t_enum$_UserType_$9190_to_t_uint8",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -19265,7 +19265,7 @@
                 }
               ]
             },
-            "name": "validator_assert_t_enum$_UserType_$9186",
+            "name": "validator_assert_t_enum$_UserType_$9190",
             "nodeType": "YulFunctionDefinition",
             "parameters": [
               {
@@ -19885,7 +19885,7 @@
           }
         ]
       },
-      "contents": "{\n\n    // address[]\n    function abi_decode_available_length_t_array$_t_address_$dyn_memory_ptr(offset, length, end) -> array {\n        array := allocateMemory(array_allocation_size_t_array$_t_address_$dyn_memory_ptr(length))\n        let dst := array\n        mstore(array, length) dst := add(array, 0x20)\n        let src := offset\n        if gt(add(src, mul(length, 0x20)), end) { revert(0, 0) }\n        for { let i := 0 } lt(i, length) { i := add(i, 1) }\n        {\n            let elementPos := src\n            mstore(dst, abi_decode_t_address(elementPos, end))\n            dst := add(dst, 0x20)\n            src := add(src, 0x20)\n        }\n    }\n\n    // address[]\n    function abi_decode_available_length_t_array$_t_address_$dyn_memory_ptr_fromMemory(offset, length, end) -> array {\n        array := allocateMemory(array_allocation_size_t_array$_t_address_$dyn_memory_ptr(length))\n        let dst := array\n        mstore(array, length) dst := add(array, 0x20)\n        let src := offset\n        if gt(add(src, mul(length, 0x20)), end) { revert(0, 0) }\n        for { let i := 0 } lt(i, length) { i := add(i, 1) }\n        {\n            let elementPos := src\n            mstore(dst, abi_decode_t_address_fromMemory(elementPos, end))\n            dst := add(dst, 0x20)\n            src := add(src, 0x20)\n        }\n    }\n\n    // uint8[]\n    function abi_decode_available_length_t_array$_t_uint8_$dyn_memory_ptr(offset, length, end) -> array {\n        array := allocateMemory(array_allocation_size_t_array$_t_uint8_$dyn_memory_ptr(length))\n        let dst := array\n        mstore(array, length) dst := add(array, 0x20)\n        let src := offset\n        if gt(add(src, mul(length, 0x20)), end) { revert(0, 0) }\n        for { let i := 0 } lt(i, length) { i := add(i, 1) }\n        {\n            let elementPos := src\n            mstore(dst, abi_decode_t_uint8(elementPos, end))\n            dst := add(dst, 0x20)\n            src := add(src, 0x20)\n        }\n    }\n\n    function abi_decode_t_address(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_address(value)\n    }\n\n    function abi_decode_t_address_fromMemory(offset, end) -> value {\n        value := mload(offset)\n        validator_revert_t_address(value)\n    }\n\n    // address[]\n    function abi_decode_t_array$_t_address_$dyn_memory_ptr(offset, end) -> array {\n        if iszero(slt(add(offset, 0x1f), end)) { revert(0, 0) }\n        let length := calldataload(offset)\n        array := abi_decode_available_length_t_array$_t_address_$dyn_memory_ptr(add(offset, 0x20), length, end)\n    }\n\n    // address[]\n    function abi_decode_t_array$_t_address_$dyn_memory_ptr_fromMemory(offset, end) -> array {\n        if iszero(slt(add(offset, 0x1f), end)) { revert(0, 0) }\n        let length := mload(offset)\n        array := abi_decode_available_length_t_array$_t_address_$dyn_memory_ptr_fromMemory(add(offset, 0x20), length, end)\n    }\n\n    // uint8[]\n    function abi_decode_t_array$_t_uint8_$dyn_memory_ptr(offset, end) -> array {\n        if iszero(slt(add(offset, 0x1f), end)) { revert(0, 0) }\n        let length := calldataload(offset)\n        array := abi_decode_available_length_t_array$_t_uint8_$dyn_memory_ptr(add(offset, 0x20), length, end)\n    }\n\n    function abi_decode_t_bool_fromMemory(offset, end) -> value {\n        value := mload(offset)\n        validator_revert_t_bool(value)\n    }\n\n    function abi_decode_t_bytes32(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_bytes32(value)\n    }\n\n    function abi_decode_t_bytes4(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_bytes4(value)\n    }\n\n    function abi_decode_t_uint256(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_uint256(value)\n    }\n\n    function abi_decode_t_uint256_fromMemory(offset, end) -> value {\n        value := mload(offset)\n        validator_revert_t_uint256(value)\n    }\n\n    function abi_decode_t_uint8(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_uint8(value)\n    }\n\n    function abi_decode_tuple_t_address_fromMemory(headStart, dataEnd) -> value0 {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_address_fromMemory(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_addresst_addresst_addresst_addresst_address(headStart, dataEnd) -> value0, value1, value2, value3, value4 {\n        if slt(sub(dataEnd, headStart), 160) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 32\n\n            value1 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 64\n\n            value2 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 96\n\n            value3 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 128\n\n            value4 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_addresst_addresst_uint256(headStart, dataEnd) -> value0, value1, value2 {\n        if slt(sub(dataEnd, headStart), 96) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 32\n\n            value1 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 64\n\n            value2 := abi_decode_t_uint256(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_addresst_uint8(headStart, dataEnd) -> value0, value1 {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 32\n\n            value1 := abi_decode_t_uint8(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_array$_t_address_$dyn_memory_ptr_fromMemory(headStart, dataEnd) -> value0 {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n\n        {\n\n            let offset := mload(add(headStart, 0))\n            if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n\n            value0 := abi_decode_t_array$_t_address_$dyn_memory_ptr_fromMemory(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_array$_t_address_$dyn_memory_ptrt_array$_t_uint8_$dyn_memory_ptr(headStart, dataEnd) -> value0, value1 {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n\n        {\n\n            let offset := calldataload(add(headStart, 0))\n            if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n\n            value0 := abi_decode_t_array$_t_address_$dyn_memory_ptr(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := calldataload(add(headStart, 32))\n            if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n\n            value1 := abi_decode_t_array$_t_uint8_$dyn_memory_ptr(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_bool_fromMemory(headStart, dataEnd) -> value0 {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_bool_fromMemory(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_bytes32(headStart, dataEnd) -> value0 {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_bytes32(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_bytes32t_address(headStart, dataEnd) -> value0, value1 {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_bytes32(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 32\n\n            value1 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_bytes32t_uint256(headStart, dataEnd) -> value0, value1 {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_bytes32(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 32\n\n            value1 := abi_decode_t_uint256(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_bytes4(headStart, dataEnd) -> value0 {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_bytes4(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_uint256_fromMemory(headStart, dataEnd) -> value0 {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_uint256_fromMemory(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_encode_t_address_to_t_address_fromStack(value, pos) {\n        mstore(pos, cleanup_t_address(value))\n    }\n\n    function abi_encode_t_bool_to_t_bool_fromStack(value, pos) {\n        mstore(pos, cleanup_t_bool(value))\n    }\n\n    function abi_encode_t_bytes32_to_t_bytes32_fromStack(value, pos) {\n        mstore(pos, cleanup_t_bytes32(value))\n    }\n\n    function abi_encode_t_bytes_memory_ptr_to_t_bytes_memory_ptr_nonPadded_inplace_fromStack(value, pos) -> end {\n        let length := array_length_t_bytes_memory_ptr(value)\n        pos := array_storeLengthForEncoding_t_bytes_memory_ptr_nonPadded_inplace_fromStack(pos, length)\n        copy_memory_to_memory(add(value, 0x20), pos, length)\n        end := add(pos, length)\n    }\n\n    function abi_encode_t_contract$_ICohortFactory_$8145_to_t_address_fromStack(value, pos) {\n        mstore(pos, convert_t_contract$_ICohortFactory_$8145_to_t_address(value))\n    }\n\n    function abi_encode_t_contract$_INodeOperations_$8311_to_t_address_fromStack(value, pos) {\n        mstore(pos, convert_t_contract$_INodeOperations_$8311_to_t_address(value))\n    }\n\n    function abi_encode_t_contract$_MemberHelpers_$9107_to_t_address_fromStack(value, pos) {\n        mstore(pos, convert_t_contract$_MemberHelpers_$9107_to_t_address(value))\n    }\n\n    function abi_encode_t_contract$_Members_$9608_to_t_address_fromStack(value, pos) {\n        mstore(pos, convert_t_contract$_Members_$9608_to_t_address(value))\n    }\n\n    function abi_encode_t_enum$_UserType_$9186_to_t_uint8_fromStack(value, pos) {\n        mstore(pos, convert_t_enum$_UserType_$9186_to_t_uint8(value))\n    }\n\n    function abi_encode_t_string_memory_ptr_to_t_string_memory_ptr_fromStack(value, pos) -> end {\n        let length := array_length_t_string_memory_ptr(value)\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, length)\n        copy_memory_to_memory(add(value, 0x20), pos, length)\n        end := add(pos, round_up_to_mul_of_32(length))\n    }\n\n    function abi_encode_t_string_memory_ptr_to_t_string_memory_ptr_nonPadded_inplace_fromStack(value, pos) -> end {\n        let length := array_length_t_string_memory_ptr(value)\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_nonPadded_inplace_fromStack(pos, length)\n        copy_memory_to_memory(add(value, 0x20), pos, length)\n        end := add(pos, length)\n    }\n\n    function abi_encode_t_stringliteral_0207e9fde55ef8967d1356560c8d70cceaa60b4603bfc805a9de26613cfdd2e3_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 48)\n\n        mstore(add(pos, 0), \"DM:dataSubscriberPaymentMultiple\")\n\n        mstore(add(pos, 32), \" - List too long\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_04fc88320d7c9f639317c75102c103ff0044d3075a5c627e24e76e5bbb2733c2_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 32)\n\n        mstore(add(pos, 0), \"Strings: hex length insufficient\")\n\n        end := add(pos, 32)\n    }\n\n    function abi_encode_t_stringliteral_176d255de13bec989e9cbaab522a3b6613d72cba539db8b7107b159eda2eea14_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 41)\n\n        mstore(add(pos, 0), \"DM:initialize - Cohort Factory c\")\n\n        mstore(add(pos, 32), \"an't be 0\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_1c0c4f7f0fbbb03f7a246345757130d35aacdc1a720c67ed4faabeb0b28612ae_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 38)\n\n        mstore(add(pos, 0), \"DM:initialize - Audit Token can'\")\n\n        mstore(add(pos, 32), \"t be 0\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_383ef7bb0f0c64c4b726370c2499f6ed9a1770983f6330d6fe3cc6220aa3996c_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 41)\n\n        mstore(add(pos, 0), \"DM:initialize - Member Helpers c\")\n\n        mstore(add(pos, 32), \"an't be 0\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_38fc5eb3833545d097f0eb31776b477c4683967e4aefa544a3138ef46aa5ce24_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 66)\n\n        mstore(add(pos, 0), \"DM:dataSubscriberPayment - Audit\")\n\n        mstore(add(pos, 32), \" type is not in the required ran\")\n\n        mstore(add(pos, 64), \"ge\")\n\n        end := add(pos, 96)\n    }\n\n    function abi_encode_t_stringliteral_565f1a77334fc4792800921178c71e4521acffab18ff9e7885b49377ee80ab4c_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 38)\n\n        mstore(add(pos, 0), \"Address: insufficient balance fo\")\n\n        mstore(add(pos, 32), \"r call\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_632b4041acc6da8f81fe0866e59d819d0f3c298d8f40a2f1c68edd9fb917e11a_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 33)\n\n        mstore(add(pos, 0), \"DM:initialize - Member can't be \")\n\n        mstore(add(pos, 32), \"0\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_73d8979dbfcacfaba84f48da3e7377ea821ae7b9ada6967a9f35d5140d310c18_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 42)\n\n        mstore(add(pos, 0), \"DM:initialize - Node Operations \")\n\n        mstore(add(pos, 32), \"can't be 0\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_8cd87e0dab6c5d16c27395d05924818d33e306b29c0aaf1a6c5a4aa592553074_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 56)\n\n        mstore(add(pos, 0), \"DM:dataSubscriberPayment - Enter\")\n\n        mstore(add(pos, 32), \"prise address can't be 0\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_c09b1aa7e07ab29f529630b1c9082a567dad4977cefd5d10dc9b67a4aa726e4f_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 53)\n\n        mstore(add(pos, 0), \"DM:dataSubscriberPayment - You a\")\n\n        mstore(add(pos, 32), \"re subscribed already\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_cc2e4e38850b7c0a3e942cfed89b71c77302df25bcb2ec297a0c4ff9ff6b90ad_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 29)\n\n        mstore(add(pos, 0), \"Address: call to non-contract\")\n\n        end := add(pos, 32)\n    }\n\n    function abi_encode_t_stringliteral_d24ca26f680fd308d22853b7a418997ae07013c46bdcc29f8efc20a8a572ce22_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 60)\n\n        mstore(add(pos, 0), \"DM:dataSubscriberPayment - Regis\")\n\n        mstore(add(pos, 32), \"ter as data subscriber first\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_da0d07ce4a2849fbfc4cb9d6f939e9bd93016c372ca4a5ff14fe06caf3d67874_to_t_string_memory_ptr_nonPadded_inplace_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_nonPadded_inplace_fromStack(pos, 23)\n\n        mstore(add(pos, 0), \"AccessControl: account \")\n\n        end := add(pos, 23)\n    }\n\n    function abi_encode_t_stringliteral_da1dd653fcc250e1254bc242ee66695f47e48f0c871a992b0240af5296a04650_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 54)\n\n        mstore(add(pos, 0), \"DM:dataSubscriberPayment - You d\")\n\n        mstore(add(pos, 32), \"on't have enough AUDT.\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_e11ad79d1e4a7f2e5f376964cb99e8e8f7904e3fc16a109f7a7ecb9aa7956dcd_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 42)\n\n        mstore(add(pos, 0), \"SafeERC20: ERC20 operation did n\")\n\n        mstore(add(pos, 32), \"ot succeed\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_ebf73bba305590e4764d5cb53b69bffd6d4d092d1a67551cb346f8cfcdab8619_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 31)\n\n        mstore(add(pos, 0), \"ReentrancyGuard: reentrant call\")\n\n        end := add(pos, 32)\n    }\n\n    function abi_encode_t_stringliteral_f986ce851518a691bccd44ea42a5a185d1b866ef6cb07984a09b81694d20ab69_to_t_string_memory_ptr_nonPadded_inplace_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_nonPadded_inplace_fromStack(pos, 17)\n\n        mstore(add(pos, 0), \" is missing role \")\n\n        end := add(pos, 17)\n    }\n\n    function abi_encode_t_stringliteral_fb06fa8ff2141e8ed74502f6792273793f25f0e9d3cf15344f3f5a0d4948fd4b_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 47)\n\n        mstore(add(pos, 0), \"AccessControl: can only renounce\")\n\n        mstore(add(pos, 32), \" roles for self\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_uint256_to_t_uint256_fromStack(value, pos) {\n        mstore(pos, cleanup_t_uint256(value))\n    }\n\n    function abi_encode_t_uint8_to_t_uint8_fromStack(value, pos) {\n        mstore(pos, cleanup_t_uint8(value))\n    }\n\n    function abi_encode_tuple_packed_t_bytes_memory_ptr__to_t_bytes_memory_ptr__nonPadded_inplace_fromStack_reversed(pos , value0) -> end {\n\n        pos := abi_encode_t_bytes_memory_ptr_to_t_bytes_memory_ptr_nonPadded_inplace_fromStack(value0,  pos)\n\n        end := pos\n    }\n\n    function abi_encode_tuple_packed_t_stringliteral_da0d07ce4a2849fbfc4cb9d6f939e9bd93016c372ca4a5ff14fe06caf3d67874_t_string_memory_ptr_t_stringliteral_f986ce851518a691bccd44ea42a5a185d1b866ef6cb07984a09b81694d20ab69_t_string_memory_ptr__to_t_string_memory_ptr_t_string_memory_ptr_t_string_memory_ptr_t_string_memory_ptr__nonPadded_inplace_fromStack_reversed(pos , value1, value0) -> end {\n\n        pos := abi_encode_t_stringliteral_da0d07ce4a2849fbfc4cb9d6f939e9bd93016c372ca4a5ff14fe06caf3d67874_to_t_string_memory_ptr_nonPadded_inplace_fromStack( pos)\n\n        pos := abi_encode_t_string_memory_ptr_to_t_string_memory_ptr_nonPadded_inplace_fromStack(value0,  pos)\n\n        pos := abi_encode_t_stringliteral_f986ce851518a691bccd44ea42a5a185d1b866ef6cb07984a09b81694d20ab69_to_t_string_memory_ptr_nonPadded_inplace_fromStack( pos)\n\n        pos := abi_encode_t_string_memory_ptr_to_t_string_memory_ptr_nonPadded_inplace_fromStack(value1,  pos)\n\n        end := pos\n    }\n\n    function abi_encode_tuple_t_address__to_t_address__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_address_to_t_address_fromStack(value0,  add(headStart, 0))\n\n    }\n\n    function abi_encode_tuple_t_address_t_address_t_uint256__to_t_address_t_address_t_uint256__fromStack_reversed(headStart , value2, value1, value0) -> tail {\n        tail := add(headStart, 96)\n\n        abi_encode_t_address_to_t_address_fromStack(value0,  add(headStart, 0))\n\n        abi_encode_t_address_to_t_address_fromStack(value1,  add(headStart, 32))\n\n        abi_encode_t_uint256_to_t_uint256_fromStack(value2,  add(headStart, 64))\n\n    }\n\n    function abi_encode_tuple_t_address_t_enum$_UserType_$9186__to_t_address_t_uint8__fromStack_reversed(headStart , value1, value0) -> tail {\n        tail := add(headStart, 64)\n\n        abi_encode_t_address_to_t_address_fromStack(value0,  add(headStart, 0))\n\n        abi_encode_t_enum$_UserType_$9186_to_t_uint8_fromStack(value1,  add(headStart, 32))\n\n    }\n\n    function abi_encode_tuple_t_address_t_uint256__to_t_address_t_uint256__fromStack_reversed(headStart , value1, value0) -> tail {\n        tail := add(headStart, 64)\n\n        abi_encode_t_address_to_t_address_fromStack(value0,  add(headStart, 0))\n\n        abi_encode_t_uint256_to_t_uint256_fromStack(value1,  add(headStart, 32))\n\n    }\n\n    function abi_encode_tuple_t_address_t_uint8__to_t_address_t_uint8__fromStack_reversed(headStart , value1, value0) -> tail {\n        tail := add(headStart, 64)\n\n        abi_encode_t_address_to_t_address_fromStack(value0,  add(headStart, 0))\n\n        abi_encode_t_uint8_to_t_uint8_fromStack(value1,  add(headStart, 32))\n\n    }\n\n    function abi_encode_tuple_t_bool__to_t_bool__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_bool_to_t_bool_fromStack(value0,  add(headStart, 0))\n\n    }\n\n    function abi_encode_tuple_t_bytes32__to_t_bytes32__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_bytes32_to_t_bytes32_fromStack(value0,  add(headStart, 0))\n\n    }\n\n    function abi_encode_tuple_t_contract$_ICohortFactory_$8145__to_t_address__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_contract$_ICohortFactory_$8145_to_t_address_fromStack(value0,  add(headStart, 0))\n\n    }\n\n    function abi_encode_tuple_t_contract$_INodeOperations_$8311__to_t_address__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_contract$_INodeOperations_$8311_to_t_address_fromStack(value0,  add(headStart, 0))\n\n    }\n\n    function abi_encode_tuple_t_contract$_MemberHelpers_$9107__to_t_address__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_contract$_MemberHelpers_$9107_to_t_address_fromStack(value0,  add(headStart, 0))\n\n    }\n\n    function abi_encode_tuple_t_contract$_Members_$9608__to_t_address__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_contract$_Members_$9608_to_t_address_fromStack(value0,  add(headStart, 0))\n\n    }\n\n    function abi_encode_tuple_t_string_memory_ptr__to_t_string_memory_ptr__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_string_memory_ptr_to_t_string_memory_ptr_fromStack(value0,  tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_0207e9fde55ef8967d1356560c8d70cceaa60b4603bfc805a9de26613cfdd2e3__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_0207e9fde55ef8967d1356560c8d70cceaa60b4603bfc805a9de26613cfdd2e3_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_04fc88320d7c9f639317c75102c103ff0044d3075a5c627e24e76e5bbb2733c2__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_04fc88320d7c9f639317c75102c103ff0044d3075a5c627e24e76e5bbb2733c2_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_176d255de13bec989e9cbaab522a3b6613d72cba539db8b7107b159eda2eea14__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_176d255de13bec989e9cbaab522a3b6613d72cba539db8b7107b159eda2eea14_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_1c0c4f7f0fbbb03f7a246345757130d35aacdc1a720c67ed4faabeb0b28612ae__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_1c0c4f7f0fbbb03f7a246345757130d35aacdc1a720c67ed4faabeb0b28612ae_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_383ef7bb0f0c64c4b726370c2499f6ed9a1770983f6330d6fe3cc6220aa3996c__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_383ef7bb0f0c64c4b726370c2499f6ed9a1770983f6330d6fe3cc6220aa3996c_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_38fc5eb3833545d097f0eb31776b477c4683967e4aefa544a3138ef46aa5ce24__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_38fc5eb3833545d097f0eb31776b477c4683967e4aefa544a3138ef46aa5ce24_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_565f1a77334fc4792800921178c71e4521acffab18ff9e7885b49377ee80ab4c__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_565f1a77334fc4792800921178c71e4521acffab18ff9e7885b49377ee80ab4c_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_632b4041acc6da8f81fe0866e59d819d0f3c298d8f40a2f1c68edd9fb917e11a__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_632b4041acc6da8f81fe0866e59d819d0f3c298d8f40a2f1c68edd9fb917e11a_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_73d8979dbfcacfaba84f48da3e7377ea821ae7b9ada6967a9f35d5140d310c18__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_73d8979dbfcacfaba84f48da3e7377ea821ae7b9ada6967a9f35d5140d310c18_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_8cd87e0dab6c5d16c27395d05924818d33e306b29c0aaf1a6c5a4aa592553074__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_8cd87e0dab6c5d16c27395d05924818d33e306b29c0aaf1a6c5a4aa592553074_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_c09b1aa7e07ab29f529630b1c9082a567dad4977cefd5d10dc9b67a4aa726e4f__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_c09b1aa7e07ab29f529630b1c9082a567dad4977cefd5d10dc9b67a4aa726e4f_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_cc2e4e38850b7c0a3e942cfed89b71c77302df25bcb2ec297a0c4ff9ff6b90ad__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_cc2e4e38850b7c0a3e942cfed89b71c77302df25bcb2ec297a0c4ff9ff6b90ad_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_d24ca26f680fd308d22853b7a418997ae07013c46bdcc29f8efc20a8a572ce22__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_d24ca26f680fd308d22853b7a418997ae07013c46bdcc29f8efc20a8a572ce22_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_da1dd653fcc250e1254bc242ee66695f47e48f0c871a992b0240af5296a04650__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_da1dd653fcc250e1254bc242ee66695f47e48f0c871a992b0240af5296a04650_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_e11ad79d1e4a7f2e5f376964cb99e8e8f7904e3fc16a109f7a7ecb9aa7956dcd__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_e11ad79d1e4a7f2e5f376964cb99e8e8f7904e3fc16a109f7a7ecb9aa7956dcd_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_ebf73bba305590e4764d5cb53b69bffd6d4d092d1a67551cb346f8cfcdab8619__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_ebf73bba305590e4764d5cb53b69bffd6d4d092d1a67551cb346f8cfcdab8619_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_fb06fa8ff2141e8ed74502f6792273793f25f0e9d3cf15344f3f5a0d4948fd4b__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_fb06fa8ff2141e8ed74502f6792273793f25f0e9d3cf15344f3f5a0d4948fd4b_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_uint256__to_t_uint256__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_uint256_to_t_uint256_fromStack(value0,  add(headStart, 0))\n\n    }\n\n    function abi_encode_tuple_t_uint256_t_address_t_uint256__to_t_uint256_t_address_t_uint256__fromStack_reversed(headStart , value2, value1, value0) -> tail {\n        tail := add(headStart, 96)\n\n        abi_encode_t_uint256_to_t_uint256_fromStack(value0,  add(headStart, 0))\n\n        abi_encode_t_address_to_t_address_fromStack(value1,  add(headStart, 32))\n\n        abi_encode_t_uint256_to_t_uint256_fromStack(value2,  add(headStart, 64))\n\n    }\n\n    function allocateMemory(size) -> memPtr {\n        memPtr := mload(64)\n        let newFreePtr := add(memPtr, size)\n        // protect against overflow\n        if or(gt(newFreePtr, 0xffffffffffffffff), lt(newFreePtr, memPtr)) { panic_error_0x41() }\n        mstore(64, newFreePtr)\n    }\n\n    function array_allocation_size_t_array$_t_address_$dyn_memory_ptr(length) -> size {\n        // Make sure we can allocate memory without overflow\n        if gt(length, 0xffffffffffffffff) { panic_error_0x41() }\n\n        size := mul(length, 0x20)\n\n        // add length slot\n        size := add(size, 0x20)\n\n    }\n\n    function array_allocation_size_t_array$_t_uint8_$dyn_memory_ptr(length) -> size {\n        // Make sure we can allocate memory without overflow\n        if gt(length, 0xffffffffffffffff) { panic_error_0x41() }\n\n        size := mul(length, 0x20)\n\n        // add length slot\n        size := add(size, 0x20)\n\n    }\n\n    function array_length_t_bytes_memory_ptr(value) -> length {\n\n        length := mload(value)\n\n    }\n\n    function array_length_t_string_memory_ptr(value) -> length {\n\n        length := mload(value)\n\n    }\n\n    function array_storeLengthForEncoding_t_bytes_memory_ptr_nonPadded_inplace_fromStack(pos, length) -> updated_pos {\n        updated_pos := pos\n    }\n\n    function array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, length) -> updated_pos {\n        mstore(pos, length)\n        updated_pos := add(pos, 0x20)\n    }\n\n    function array_storeLengthForEncoding_t_string_memory_ptr_nonPadded_inplace_fromStack(pos, length) -> updated_pos {\n        updated_pos := pos\n    }\n\n    function checked_add_t_uint256(x, y) -> sum {\n        x := cleanup_t_uint256(x)\n        y := cleanup_t_uint256(y)\n\n        // overflow, if x > (maxValue - y)\n        if gt(x, sub(0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, y)) { panic_error_0x11() }\n\n        sum := add(x, y)\n    }\n\n    function checked_div_t_uint256(x, y) -> r {\n        x := cleanup_t_uint256(x)\n        y := cleanup_t_uint256(y)\n        if iszero(y) { panic_error_0x12() }\n\n        r := div(x, y)\n    }\n\n    function checked_mul_t_uint256(x, y) -> product {\n        x := cleanup_t_uint256(x)\n        y := cleanup_t_uint256(y)\n\n        // overflow, if x != 0 and y > (maxValue / x)\n        if and(iszero(iszero(x)), gt(y, div(0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, x))) { panic_error_0x11() }\n\n        product := mul(x, y)\n    }\n\n    function checked_sub_t_uint256(x, y) -> diff {\n        x := cleanup_t_uint256(x)\n        y := cleanup_t_uint256(y)\n\n        if lt(x, y) { panic_error_0x11() }\n\n        diff := sub(x, y)\n    }\n\n    function cleanup_t_address(value) -> cleaned {\n        cleaned := cleanup_t_uint160(value)\n    }\n\n    function cleanup_t_bool(value) -> cleaned {\n        cleaned := iszero(iszero(value))\n    }\n\n    function cleanup_t_bytes32(value) -> cleaned {\n        cleaned := value\n    }\n\n    function cleanup_t_bytes4(value) -> cleaned {\n        cleaned := and(value, 0xffffffff00000000000000000000000000000000000000000000000000000000)\n    }\n\n    function cleanup_t_enum$_UserType_$9186(value) -> cleaned {\n        cleaned := value validator_assert_t_enum$_UserType_$9186(value)\n    }\n\n    function cleanup_t_uint160(value) -> cleaned {\n        cleaned := and(value, 0xffffffffffffffffffffffffffffffffffffffff)\n    }\n\n    function cleanup_t_uint256(value) -> cleaned {\n        cleaned := value\n    }\n\n    function cleanup_t_uint8(value) -> cleaned {\n        cleaned := and(value, 0xff)\n    }\n\n    function convert_t_contract$_ICohortFactory_$8145_to_t_address(value) -> converted {\n        converted := convert_t_contract$_ICohortFactory_$8145_to_t_uint160(value)\n    }\n\n    function convert_t_contract$_ICohortFactory_$8145_to_t_uint160(value) -> converted {\n        converted := cleanup_t_uint160(value)\n    }\n\n    function convert_t_contract$_INodeOperations_$8311_to_t_address(value) -> converted {\n        converted := convert_t_contract$_INodeOperations_$8311_to_t_uint160(value)\n    }\n\n    function convert_t_contract$_INodeOperations_$8311_to_t_uint160(value) -> converted {\n        converted := cleanup_t_uint160(value)\n    }\n\n    function convert_t_contract$_MemberHelpers_$9107_to_t_address(value) -> converted {\n        converted := convert_t_contract$_MemberHelpers_$9107_to_t_uint160(value)\n    }\n\n    function convert_t_contract$_MemberHelpers_$9107_to_t_uint160(value) -> converted {\n        converted := cleanup_t_uint160(value)\n    }\n\n    function convert_t_contract$_Members_$9608_to_t_address(value) -> converted {\n        converted := convert_t_contract$_Members_$9608_to_t_uint160(value)\n    }\n\n    function convert_t_contract$_Members_$9608_to_t_uint160(value) -> converted {\n        converted := cleanup_t_uint160(value)\n    }\n\n    function convert_t_enum$_UserType_$9186_to_t_uint8(value) -> converted {\n        converted := cleanup_t_enum$_UserType_$9186(value)\n    }\n\n    function copy_memory_to_memory(src, dst, length) {\n        let i := 0\n        for { } lt(i, length) { i := add(i, 32) }\n        {\n            mstore(add(dst, i), mload(add(src, i)))\n        }\n        if gt(i, length)\n        {\n            // clear end\n            mstore(add(dst, length), 0)\n        }\n    }\n\n    function decrement_t_uint256(value) -> ret {\n        value := cleanup_t_uint256(value)\n        if eq(value, 0x00) { panic_error_0x11() }\n        ret := sub(value, 1)\n    }\n\n    function increment_t_uint256(value) -> ret {\n        value := cleanup_t_uint256(value)\n        if eq(value, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff) { panic_error_0x11() }\n        ret := add(value, 1)\n    }\n\n    function panic_error_0x11() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x11)\n        revert(0, 0x24)\n    }\n\n    function panic_error_0x12() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x12)\n        revert(0, 0x24)\n    }\n\n    function panic_error_0x21() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x21)\n        revert(0, 0x24)\n    }\n\n    function panic_error_0x41() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x41)\n        revert(0, 0x24)\n    }\n\n    function round_up_to_mul_of_32(value) -> result {\n        result := and(add(value, 31), not(31))\n    }\n\n    function validator_assert_t_enum$_UserType_$9186(value) {\n        if iszero(lt(value, 3)) { panic_error_0x21() }\n    }\n\n    function validator_revert_t_address(value) {\n        if iszero(eq(value, cleanup_t_address(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_bool(value) {\n        if iszero(eq(value, cleanup_t_bool(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_bytes32(value) {\n        if iszero(eq(value, cleanup_t_bytes32(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_bytes4(value) {\n        if iszero(eq(value, cleanup_t_bytes4(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_uint256(value) {\n        if iszero(eq(value, cleanup_t_uint256(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_uint8(value) {\n        if iszero(eq(value, cleanup_t_uint8(value))) { revert(0, 0) }\n    }\n\n}\n",
+      "contents": "{\n\n    // address[]\n    function abi_decode_available_length_t_array$_t_address_$dyn_memory_ptr(offset, length, end) -> array {\n        array := allocateMemory(array_allocation_size_t_array$_t_address_$dyn_memory_ptr(length))\n        let dst := array\n        mstore(array, length) dst := add(array, 0x20)\n        let src := offset\n        if gt(add(src, mul(length, 0x20)), end) { revert(0, 0) }\n        for { let i := 0 } lt(i, length) { i := add(i, 1) }\n        {\n            let elementPos := src\n            mstore(dst, abi_decode_t_address(elementPos, end))\n            dst := add(dst, 0x20)\n            src := add(src, 0x20)\n        }\n    }\n\n    // address[]\n    function abi_decode_available_length_t_array$_t_address_$dyn_memory_ptr_fromMemory(offset, length, end) -> array {\n        array := allocateMemory(array_allocation_size_t_array$_t_address_$dyn_memory_ptr(length))\n        let dst := array\n        mstore(array, length) dst := add(array, 0x20)\n        let src := offset\n        if gt(add(src, mul(length, 0x20)), end) { revert(0, 0) }\n        for { let i := 0 } lt(i, length) { i := add(i, 1) }\n        {\n            let elementPos := src\n            mstore(dst, abi_decode_t_address_fromMemory(elementPos, end))\n            dst := add(dst, 0x20)\n            src := add(src, 0x20)\n        }\n    }\n\n    // uint8[]\n    function abi_decode_available_length_t_array$_t_uint8_$dyn_memory_ptr(offset, length, end) -> array {\n        array := allocateMemory(array_allocation_size_t_array$_t_uint8_$dyn_memory_ptr(length))\n        let dst := array\n        mstore(array, length) dst := add(array, 0x20)\n        let src := offset\n        if gt(add(src, mul(length, 0x20)), end) { revert(0, 0) }\n        for { let i := 0 } lt(i, length) { i := add(i, 1) }\n        {\n            let elementPos := src\n            mstore(dst, abi_decode_t_uint8(elementPos, end))\n            dst := add(dst, 0x20)\n            src := add(src, 0x20)\n        }\n    }\n\n    function abi_decode_t_address(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_address(value)\n    }\n\n    function abi_decode_t_address_fromMemory(offset, end) -> value {\n        value := mload(offset)\n        validator_revert_t_address(value)\n    }\n\n    // address[]\n    function abi_decode_t_array$_t_address_$dyn_memory_ptr(offset, end) -> array {\n        if iszero(slt(add(offset, 0x1f), end)) { revert(0, 0) }\n        let length := calldataload(offset)\n        array := abi_decode_available_length_t_array$_t_address_$dyn_memory_ptr(add(offset, 0x20), length, end)\n    }\n\n    // address[]\n    function abi_decode_t_array$_t_address_$dyn_memory_ptr_fromMemory(offset, end) -> array {\n        if iszero(slt(add(offset, 0x1f), end)) { revert(0, 0) }\n        let length := mload(offset)\n        array := abi_decode_available_length_t_array$_t_address_$dyn_memory_ptr_fromMemory(add(offset, 0x20), length, end)\n    }\n\n    // uint8[]\n    function abi_decode_t_array$_t_uint8_$dyn_memory_ptr(offset, end) -> array {\n        if iszero(slt(add(offset, 0x1f), end)) { revert(0, 0) }\n        let length := calldataload(offset)\n        array := abi_decode_available_length_t_array$_t_uint8_$dyn_memory_ptr(add(offset, 0x20), length, end)\n    }\n\n    function abi_decode_t_bool_fromMemory(offset, end) -> value {\n        value := mload(offset)\n        validator_revert_t_bool(value)\n    }\n\n    function abi_decode_t_bytes32(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_bytes32(value)\n    }\n\n    function abi_decode_t_bytes4(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_bytes4(value)\n    }\n\n    function abi_decode_t_uint256(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_uint256(value)\n    }\n\n    function abi_decode_t_uint256_fromMemory(offset, end) -> value {\n        value := mload(offset)\n        validator_revert_t_uint256(value)\n    }\n\n    function abi_decode_t_uint8(offset, end) -> value {\n        value := calldataload(offset)\n        validator_revert_t_uint8(value)\n    }\n\n    function abi_decode_tuple_t_address_fromMemory(headStart, dataEnd) -> value0 {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_address_fromMemory(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_addresst_addresst_addresst_addresst_address(headStart, dataEnd) -> value0, value1, value2, value3, value4 {\n        if slt(sub(dataEnd, headStart), 160) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 32\n\n            value1 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 64\n\n            value2 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 96\n\n            value3 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 128\n\n            value4 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_addresst_addresst_uint256(headStart, dataEnd) -> value0, value1, value2 {\n        if slt(sub(dataEnd, headStart), 96) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 32\n\n            value1 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 64\n\n            value2 := abi_decode_t_uint256(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_addresst_uint8(headStart, dataEnd) -> value0, value1 {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 32\n\n            value1 := abi_decode_t_uint8(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_array$_t_address_$dyn_memory_ptr_fromMemory(headStart, dataEnd) -> value0 {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n\n        {\n\n            let offset := mload(add(headStart, 0))\n            if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n\n            value0 := abi_decode_t_array$_t_address_$dyn_memory_ptr_fromMemory(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_array$_t_address_$dyn_memory_ptrt_array$_t_uint8_$dyn_memory_ptr(headStart, dataEnd) -> value0, value1 {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n\n        {\n\n            let offset := calldataload(add(headStart, 0))\n            if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n\n            value0 := abi_decode_t_array$_t_address_$dyn_memory_ptr(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := calldataload(add(headStart, 32))\n            if gt(offset, 0xffffffffffffffff) { revert(0, 0) }\n\n            value1 := abi_decode_t_array$_t_uint8_$dyn_memory_ptr(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_bool_fromMemory(headStart, dataEnd) -> value0 {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_bool_fromMemory(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_bytes32(headStart, dataEnd) -> value0 {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_bytes32(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_bytes32t_address(headStart, dataEnd) -> value0, value1 {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_bytes32(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 32\n\n            value1 := abi_decode_t_address(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_bytes32t_uint256(headStart, dataEnd) -> value0, value1 {\n        if slt(sub(dataEnd, headStart), 64) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_bytes32(add(headStart, offset), dataEnd)\n        }\n\n        {\n\n            let offset := 32\n\n            value1 := abi_decode_t_uint256(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_bytes4(headStart, dataEnd) -> value0 {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_bytes4(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_decode_tuple_t_uint256_fromMemory(headStart, dataEnd) -> value0 {\n        if slt(sub(dataEnd, headStart), 32) { revert(0, 0) }\n\n        {\n\n            let offset := 0\n\n            value0 := abi_decode_t_uint256_fromMemory(add(headStart, offset), dataEnd)\n        }\n\n    }\n\n    function abi_encode_t_address_to_t_address_fromStack(value, pos) {\n        mstore(pos, cleanup_t_address(value))\n    }\n\n    function abi_encode_t_bool_to_t_bool_fromStack(value, pos) {\n        mstore(pos, cleanup_t_bool(value))\n    }\n\n    function abi_encode_t_bytes32_to_t_bytes32_fromStack(value, pos) {\n        mstore(pos, cleanup_t_bytes32(value))\n    }\n\n    function abi_encode_t_bytes_memory_ptr_to_t_bytes_memory_ptr_nonPadded_inplace_fromStack(value, pos) -> end {\n        let length := array_length_t_bytes_memory_ptr(value)\n        pos := array_storeLengthForEncoding_t_bytes_memory_ptr_nonPadded_inplace_fromStack(pos, length)\n        copy_memory_to_memory(add(value, 0x20), pos, length)\n        end := add(pos, length)\n    }\n\n    function abi_encode_t_contract$_ICohortFactory_$8145_to_t_address_fromStack(value, pos) {\n        mstore(pos, convert_t_contract$_ICohortFactory_$8145_to_t_address(value))\n    }\n\n    function abi_encode_t_contract$_INodeOperations_$8311_to_t_address_fromStack(value, pos) {\n        mstore(pos, convert_t_contract$_INodeOperations_$8311_to_t_address(value))\n    }\n\n    function abi_encode_t_contract$_MemberHelpers_$9111_to_t_address_fromStack(value, pos) {\n        mstore(pos, convert_t_contract$_MemberHelpers_$9111_to_t_address(value))\n    }\n\n    function abi_encode_t_contract$_Members_$9612_to_t_address_fromStack(value, pos) {\n        mstore(pos, convert_t_contract$_Members_$9612_to_t_address(value))\n    }\n\n    function abi_encode_t_enum$_UserType_$9190_to_t_uint8_fromStack(value, pos) {\n        mstore(pos, convert_t_enum$_UserType_$9190_to_t_uint8(value))\n    }\n\n    function abi_encode_t_string_memory_ptr_to_t_string_memory_ptr_fromStack(value, pos) -> end {\n        let length := array_length_t_string_memory_ptr(value)\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, length)\n        copy_memory_to_memory(add(value, 0x20), pos, length)\n        end := add(pos, round_up_to_mul_of_32(length))\n    }\n\n    function abi_encode_t_string_memory_ptr_to_t_string_memory_ptr_nonPadded_inplace_fromStack(value, pos) -> end {\n        let length := array_length_t_string_memory_ptr(value)\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_nonPadded_inplace_fromStack(pos, length)\n        copy_memory_to_memory(add(value, 0x20), pos, length)\n        end := add(pos, length)\n    }\n\n    function abi_encode_t_stringliteral_0207e9fde55ef8967d1356560c8d70cceaa60b4603bfc805a9de26613cfdd2e3_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 48)\n\n        mstore(add(pos, 0), \"DM:dataSubscriberPaymentMultiple\")\n\n        mstore(add(pos, 32), \" - List too long\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_04fc88320d7c9f639317c75102c103ff0044d3075a5c627e24e76e5bbb2733c2_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 32)\n\n        mstore(add(pos, 0), \"Strings: hex length insufficient\")\n\n        end := add(pos, 32)\n    }\n\n    function abi_encode_t_stringliteral_176d255de13bec989e9cbaab522a3b6613d72cba539db8b7107b159eda2eea14_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 41)\n\n        mstore(add(pos, 0), \"DM:initialize - Cohort Factory c\")\n\n        mstore(add(pos, 32), \"an't be 0\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_1c0c4f7f0fbbb03f7a246345757130d35aacdc1a720c67ed4faabeb0b28612ae_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 38)\n\n        mstore(add(pos, 0), \"DM:initialize - Audit Token can'\")\n\n        mstore(add(pos, 32), \"t be 0\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_383ef7bb0f0c64c4b726370c2499f6ed9a1770983f6330d6fe3cc6220aa3996c_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 41)\n\n        mstore(add(pos, 0), \"DM:initialize - Member Helpers c\")\n\n        mstore(add(pos, 32), \"an't be 0\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_38fc5eb3833545d097f0eb31776b477c4683967e4aefa544a3138ef46aa5ce24_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 66)\n\n        mstore(add(pos, 0), \"DM:dataSubscriberPayment - Audit\")\n\n        mstore(add(pos, 32), \" type is not in the required ran\")\n\n        mstore(add(pos, 64), \"ge\")\n\n        end := add(pos, 96)\n    }\n\n    function abi_encode_t_stringliteral_565f1a77334fc4792800921178c71e4521acffab18ff9e7885b49377ee80ab4c_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 38)\n\n        mstore(add(pos, 0), \"Address: insufficient balance fo\")\n\n        mstore(add(pos, 32), \"r call\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_632b4041acc6da8f81fe0866e59d819d0f3c298d8f40a2f1c68edd9fb917e11a_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 33)\n\n        mstore(add(pos, 0), \"DM:initialize - Member can't be \")\n\n        mstore(add(pos, 32), \"0\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_73d8979dbfcacfaba84f48da3e7377ea821ae7b9ada6967a9f35d5140d310c18_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 42)\n\n        mstore(add(pos, 0), \"DM:initialize - Node Operations \")\n\n        mstore(add(pos, 32), \"can't be 0\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_8cd87e0dab6c5d16c27395d05924818d33e306b29c0aaf1a6c5a4aa592553074_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 56)\n\n        mstore(add(pos, 0), \"DM:dataSubscriberPayment - Enter\")\n\n        mstore(add(pos, 32), \"prise address can't be 0\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_c09b1aa7e07ab29f529630b1c9082a567dad4977cefd5d10dc9b67a4aa726e4f_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 53)\n\n        mstore(add(pos, 0), \"DM:dataSubscriberPayment - You a\")\n\n        mstore(add(pos, 32), \"re subscribed already\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_cc2e4e38850b7c0a3e942cfed89b71c77302df25bcb2ec297a0c4ff9ff6b90ad_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 29)\n\n        mstore(add(pos, 0), \"Address: call to non-contract\")\n\n        end := add(pos, 32)\n    }\n\n    function abi_encode_t_stringliteral_d24ca26f680fd308d22853b7a418997ae07013c46bdcc29f8efc20a8a572ce22_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 60)\n\n        mstore(add(pos, 0), \"DM:dataSubscriberPayment - Regis\")\n\n        mstore(add(pos, 32), \"ter as data subscriber first\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_da0d07ce4a2849fbfc4cb9d6f939e9bd93016c372ca4a5ff14fe06caf3d67874_to_t_string_memory_ptr_nonPadded_inplace_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_nonPadded_inplace_fromStack(pos, 23)\n\n        mstore(add(pos, 0), \"AccessControl: account \")\n\n        end := add(pos, 23)\n    }\n\n    function abi_encode_t_stringliteral_da1dd653fcc250e1254bc242ee66695f47e48f0c871a992b0240af5296a04650_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 54)\n\n        mstore(add(pos, 0), \"DM:dataSubscriberPayment - You d\")\n\n        mstore(add(pos, 32), \"on't have enough AUDT.\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_e11ad79d1e4a7f2e5f376964cb99e8e8f7904e3fc16a109f7a7ecb9aa7956dcd_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 42)\n\n        mstore(add(pos, 0), \"SafeERC20: ERC20 operation did n\")\n\n        mstore(add(pos, 32), \"ot succeed\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_stringliteral_ebf73bba305590e4764d5cb53b69bffd6d4d092d1a67551cb346f8cfcdab8619_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 31)\n\n        mstore(add(pos, 0), \"ReentrancyGuard: reentrant call\")\n\n        end := add(pos, 32)\n    }\n\n    function abi_encode_t_stringliteral_f986ce851518a691bccd44ea42a5a185d1b866ef6cb07984a09b81694d20ab69_to_t_string_memory_ptr_nonPadded_inplace_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_nonPadded_inplace_fromStack(pos, 17)\n\n        mstore(add(pos, 0), \" is missing role \")\n\n        end := add(pos, 17)\n    }\n\n    function abi_encode_t_stringliteral_fb06fa8ff2141e8ed74502f6792273793f25f0e9d3cf15344f3f5a0d4948fd4b_to_t_string_memory_ptr_fromStack(pos) -> end {\n        pos := array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, 47)\n\n        mstore(add(pos, 0), \"AccessControl: can only renounce\")\n\n        mstore(add(pos, 32), \" roles for self\")\n\n        end := add(pos, 64)\n    }\n\n    function abi_encode_t_uint256_to_t_uint256_fromStack(value, pos) {\n        mstore(pos, cleanup_t_uint256(value))\n    }\n\n    function abi_encode_t_uint8_to_t_uint8_fromStack(value, pos) {\n        mstore(pos, cleanup_t_uint8(value))\n    }\n\n    function abi_encode_tuple_packed_t_bytes_memory_ptr__to_t_bytes_memory_ptr__nonPadded_inplace_fromStack_reversed(pos , value0) -> end {\n\n        pos := abi_encode_t_bytes_memory_ptr_to_t_bytes_memory_ptr_nonPadded_inplace_fromStack(value0,  pos)\n\n        end := pos\n    }\n\n    function abi_encode_tuple_packed_t_stringliteral_da0d07ce4a2849fbfc4cb9d6f939e9bd93016c372ca4a5ff14fe06caf3d67874_t_string_memory_ptr_t_stringliteral_f986ce851518a691bccd44ea42a5a185d1b866ef6cb07984a09b81694d20ab69_t_string_memory_ptr__to_t_string_memory_ptr_t_string_memory_ptr_t_string_memory_ptr_t_string_memory_ptr__nonPadded_inplace_fromStack_reversed(pos , value1, value0) -> end {\n\n        pos := abi_encode_t_stringliteral_da0d07ce4a2849fbfc4cb9d6f939e9bd93016c372ca4a5ff14fe06caf3d67874_to_t_string_memory_ptr_nonPadded_inplace_fromStack( pos)\n\n        pos := abi_encode_t_string_memory_ptr_to_t_string_memory_ptr_nonPadded_inplace_fromStack(value0,  pos)\n\n        pos := abi_encode_t_stringliteral_f986ce851518a691bccd44ea42a5a185d1b866ef6cb07984a09b81694d20ab69_to_t_string_memory_ptr_nonPadded_inplace_fromStack( pos)\n\n        pos := abi_encode_t_string_memory_ptr_to_t_string_memory_ptr_nonPadded_inplace_fromStack(value1,  pos)\n\n        end := pos\n    }\n\n    function abi_encode_tuple_t_address__to_t_address__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_address_to_t_address_fromStack(value0,  add(headStart, 0))\n\n    }\n\n    function abi_encode_tuple_t_address_t_address_t_uint256__to_t_address_t_address_t_uint256__fromStack_reversed(headStart , value2, value1, value0) -> tail {\n        tail := add(headStart, 96)\n\n        abi_encode_t_address_to_t_address_fromStack(value0,  add(headStart, 0))\n\n        abi_encode_t_address_to_t_address_fromStack(value1,  add(headStart, 32))\n\n        abi_encode_t_uint256_to_t_uint256_fromStack(value2,  add(headStart, 64))\n\n    }\n\n    function abi_encode_tuple_t_address_t_enum$_UserType_$9190__to_t_address_t_uint8__fromStack_reversed(headStart , value1, value0) -> tail {\n        tail := add(headStart, 64)\n\n        abi_encode_t_address_to_t_address_fromStack(value0,  add(headStart, 0))\n\n        abi_encode_t_enum$_UserType_$9190_to_t_uint8_fromStack(value1,  add(headStart, 32))\n\n    }\n\n    function abi_encode_tuple_t_address_t_uint256__to_t_address_t_uint256__fromStack_reversed(headStart , value1, value0) -> tail {\n        tail := add(headStart, 64)\n\n        abi_encode_t_address_to_t_address_fromStack(value0,  add(headStart, 0))\n\n        abi_encode_t_uint256_to_t_uint256_fromStack(value1,  add(headStart, 32))\n\n    }\n\n    function abi_encode_tuple_t_address_t_uint8__to_t_address_t_uint8__fromStack_reversed(headStart , value1, value0) -> tail {\n        tail := add(headStart, 64)\n\n        abi_encode_t_address_to_t_address_fromStack(value0,  add(headStart, 0))\n\n        abi_encode_t_uint8_to_t_uint8_fromStack(value1,  add(headStart, 32))\n\n    }\n\n    function abi_encode_tuple_t_bool__to_t_bool__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_bool_to_t_bool_fromStack(value0,  add(headStart, 0))\n\n    }\n\n    function abi_encode_tuple_t_bytes32__to_t_bytes32__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_bytes32_to_t_bytes32_fromStack(value0,  add(headStart, 0))\n\n    }\n\n    function abi_encode_tuple_t_contract$_ICohortFactory_$8145__to_t_address__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_contract$_ICohortFactory_$8145_to_t_address_fromStack(value0,  add(headStart, 0))\n\n    }\n\n    function abi_encode_tuple_t_contract$_INodeOperations_$8311__to_t_address__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_contract$_INodeOperations_$8311_to_t_address_fromStack(value0,  add(headStart, 0))\n\n    }\n\n    function abi_encode_tuple_t_contract$_MemberHelpers_$9111__to_t_address__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_contract$_MemberHelpers_$9111_to_t_address_fromStack(value0,  add(headStart, 0))\n\n    }\n\n    function abi_encode_tuple_t_contract$_Members_$9612__to_t_address__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_contract$_Members_$9612_to_t_address_fromStack(value0,  add(headStart, 0))\n\n    }\n\n    function abi_encode_tuple_t_string_memory_ptr__to_t_string_memory_ptr__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_string_memory_ptr_to_t_string_memory_ptr_fromStack(value0,  tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_0207e9fde55ef8967d1356560c8d70cceaa60b4603bfc805a9de26613cfdd2e3__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_0207e9fde55ef8967d1356560c8d70cceaa60b4603bfc805a9de26613cfdd2e3_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_04fc88320d7c9f639317c75102c103ff0044d3075a5c627e24e76e5bbb2733c2__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_04fc88320d7c9f639317c75102c103ff0044d3075a5c627e24e76e5bbb2733c2_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_176d255de13bec989e9cbaab522a3b6613d72cba539db8b7107b159eda2eea14__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_176d255de13bec989e9cbaab522a3b6613d72cba539db8b7107b159eda2eea14_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_1c0c4f7f0fbbb03f7a246345757130d35aacdc1a720c67ed4faabeb0b28612ae__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_1c0c4f7f0fbbb03f7a246345757130d35aacdc1a720c67ed4faabeb0b28612ae_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_383ef7bb0f0c64c4b726370c2499f6ed9a1770983f6330d6fe3cc6220aa3996c__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_383ef7bb0f0c64c4b726370c2499f6ed9a1770983f6330d6fe3cc6220aa3996c_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_38fc5eb3833545d097f0eb31776b477c4683967e4aefa544a3138ef46aa5ce24__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_38fc5eb3833545d097f0eb31776b477c4683967e4aefa544a3138ef46aa5ce24_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_565f1a77334fc4792800921178c71e4521acffab18ff9e7885b49377ee80ab4c__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_565f1a77334fc4792800921178c71e4521acffab18ff9e7885b49377ee80ab4c_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_632b4041acc6da8f81fe0866e59d819d0f3c298d8f40a2f1c68edd9fb917e11a__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_632b4041acc6da8f81fe0866e59d819d0f3c298d8f40a2f1c68edd9fb917e11a_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_73d8979dbfcacfaba84f48da3e7377ea821ae7b9ada6967a9f35d5140d310c18__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_73d8979dbfcacfaba84f48da3e7377ea821ae7b9ada6967a9f35d5140d310c18_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_8cd87e0dab6c5d16c27395d05924818d33e306b29c0aaf1a6c5a4aa592553074__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_8cd87e0dab6c5d16c27395d05924818d33e306b29c0aaf1a6c5a4aa592553074_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_c09b1aa7e07ab29f529630b1c9082a567dad4977cefd5d10dc9b67a4aa726e4f__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_c09b1aa7e07ab29f529630b1c9082a567dad4977cefd5d10dc9b67a4aa726e4f_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_cc2e4e38850b7c0a3e942cfed89b71c77302df25bcb2ec297a0c4ff9ff6b90ad__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_cc2e4e38850b7c0a3e942cfed89b71c77302df25bcb2ec297a0c4ff9ff6b90ad_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_d24ca26f680fd308d22853b7a418997ae07013c46bdcc29f8efc20a8a572ce22__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_d24ca26f680fd308d22853b7a418997ae07013c46bdcc29f8efc20a8a572ce22_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_da1dd653fcc250e1254bc242ee66695f47e48f0c871a992b0240af5296a04650__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_da1dd653fcc250e1254bc242ee66695f47e48f0c871a992b0240af5296a04650_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_e11ad79d1e4a7f2e5f376964cb99e8e8f7904e3fc16a109f7a7ecb9aa7956dcd__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_e11ad79d1e4a7f2e5f376964cb99e8e8f7904e3fc16a109f7a7ecb9aa7956dcd_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_ebf73bba305590e4764d5cb53b69bffd6d4d092d1a67551cb346f8cfcdab8619__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_ebf73bba305590e4764d5cb53b69bffd6d4d092d1a67551cb346f8cfcdab8619_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_stringliteral_fb06fa8ff2141e8ed74502f6792273793f25f0e9d3cf15344f3f5a0d4948fd4b__to_t_string_memory_ptr__fromStack_reversed(headStart ) -> tail {\n        tail := add(headStart, 32)\n\n        mstore(add(headStart, 0), sub(tail, headStart))\n        tail := abi_encode_t_stringliteral_fb06fa8ff2141e8ed74502f6792273793f25f0e9d3cf15344f3f5a0d4948fd4b_to_t_string_memory_ptr_fromStack( tail)\n\n    }\n\n    function abi_encode_tuple_t_uint256__to_t_uint256__fromStack_reversed(headStart , value0) -> tail {\n        tail := add(headStart, 32)\n\n        abi_encode_t_uint256_to_t_uint256_fromStack(value0,  add(headStart, 0))\n\n    }\n\n    function abi_encode_tuple_t_uint256_t_address_t_uint256__to_t_uint256_t_address_t_uint256__fromStack_reversed(headStart , value2, value1, value0) -> tail {\n        tail := add(headStart, 96)\n\n        abi_encode_t_uint256_to_t_uint256_fromStack(value0,  add(headStart, 0))\n\n        abi_encode_t_address_to_t_address_fromStack(value1,  add(headStart, 32))\n\n        abi_encode_t_uint256_to_t_uint256_fromStack(value2,  add(headStart, 64))\n\n    }\n\n    function allocateMemory(size) -> memPtr {\n        memPtr := mload(64)\n        let newFreePtr := add(memPtr, size)\n        // protect against overflow\n        if or(gt(newFreePtr, 0xffffffffffffffff), lt(newFreePtr, memPtr)) { panic_error_0x41() }\n        mstore(64, newFreePtr)\n    }\n\n    function array_allocation_size_t_array$_t_address_$dyn_memory_ptr(length) -> size {\n        // Make sure we can allocate memory without overflow\n        if gt(length, 0xffffffffffffffff) { panic_error_0x41() }\n\n        size := mul(length, 0x20)\n\n        // add length slot\n        size := add(size, 0x20)\n\n    }\n\n    function array_allocation_size_t_array$_t_uint8_$dyn_memory_ptr(length) -> size {\n        // Make sure we can allocate memory without overflow\n        if gt(length, 0xffffffffffffffff) { panic_error_0x41() }\n\n        size := mul(length, 0x20)\n\n        // add length slot\n        size := add(size, 0x20)\n\n    }\n\n    function array_length_t_bytes_memory_ptr(value) -> length {\n\n        length := mload(value)\n\n    }\n\n    function array_length_t_string_memory_ptr(value) -> length {\n\n        length := mload(value)\n\n    }\n\n    function array_storeLengthForEncoding_t_bytes_memory_ptr_nonPadded_inplace_fromStack(pos, length) -> updated_pos {\n        updated_pos := pos\n    }\n\n    function array_storeLengthForEncoding_t_string_memory_ptr_fromStack(pos, length) -> updated_pos {\n        mstore(pos, length)\n        updated_pos := add(pos, 0x20)\n    }\n\n    function array_storeLengthForEncoding_t_string_memory_ptr_nonPadded_inplace_fromStack(pos, length) -> updated_pos {\n        updated_pos := pos\n    }\n\n    function checked_add_t_uint256(x, y) -> sum {\n        x := cleanup_t_uint256(x)\n        y := cleanup_t_uint256(y)\n\n        // overflow, if x > (maxValue - y)\n        if gt(x, sub(0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, y)) { panic_error_0x11() }\n\n        sum := add(x, y)\n    }\n\n    function checked_div_t_uint256(x, y) -> r {\n        x := cleanup_t_uint256(x)\n        y := cleanup_t_uint256(y)\n        if iszero(y) { panic_error_0x12() }\n\n        r := div(x, y)\n    }\n\n    function checked_mul_t_uint256(x, y) -> product {\n        x := cleanup_t_uint256(x)\n        y := cleanup_t_uint256(y)\n\n        // overflow, if x != 0 and y > (maxValue / x)\n        if and(iszero(iszero(x)), gt(y, div(0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff, x))) { panic_error_0x11() }\n\n        product := mul(x, y)\n    }\n\n    function checked_sub_t_uint256(x, y) -> diff {\n        x := cleanup_t_uint256(x)\n        y := cleanup_t_uint256(y)\n\n        if lt(x, y) { panic_error_0x11() }\n\n        diff := sub(x, y)\n    }\n\n    function cleanup_t_address(value) -> cleaned {\n        cleaned := cleanup_t_uint160(value)\n    }\n\n    function cleanup_t_bool(value) -> cleaned {\n        cleaned := iszero(iszero(value))\n    }\n\n    function cleanup_t_bytes32(value) -> cleaned {\n        cleaned := value\n    }\n\n    function cleanup_t_bytes4(value) -> cleaned {\n        cleaned := and(value, 0xffffffff00000000000000000000000000000000000000000000000000000000)\n    }\n\n    function cleanup_t_enum$_UserType_$9190(value) -> cleaned {\n        cleaned := value validator_assert_t_enum$_UserType_$9190(value)\n    }\n\n    function cleanup_t_uint160(value) -> cleaned {\n        cleaned := and(value, 0xffffffffffffffffffffffffffffffffffffffff)\n    }\n\n    function cleanup_t_uint256(value) -> cleaned {\n        cleaned := value\n    }\n\n    function cleanup_t_uint8(value) -> cleaned {\n        cleaned := and(value, 0xff)\n    }\n\n    function convert_t_contract$_ICohortFactory_$8145_to_t_address(value) -> converted {\n        converted := convert_t_contract$_ICohortFactory_$8145_to_t_uint160(value)\n    }\n\n    function convert_t_contract$_ICohortFactory_$8145_to_t_uint160(value) -> converted {\n        converted := cleanup_t_uint160(value)\n    }\n\n    function convert_t_contract$_INodeOperations_$8311_to_t_address(value) -> converted {\n        converted := convert_t_contract$_INodeOperations_$8311_to_t_uint160(value)\n    }\n\n    function convert_t_contract$_INodeOperations_$8311_to_t_uint160(value) -> converted {\n        converted := cleanup_t_uint160(value)\n    }\n\n    function convert_t_contract$_MemberHelpers_$9111_to_t_address(value) -> converted {\n        converted := convert_t_contract$_MemberHelpers_$9111_to_t_uint160(value)\n    }\n\n    function convert_t_contract$_MemberHelpers_$9111_to_t_uint160(value) -> converted {\n        converted := cleanup_t_uint160(value)\n    }\n\n    function convert_t_contract$_Members_$9612_to_t_address(value) -> converted {\n        converted := convert_t_contract$_Members_$9612_to_t_uint160(value)\n    }\n\n    function convert_t_contract$_Members_$9612_to_t_uint160(value) -> converted {\n        converted := cleanup_t_uint160(value)\n    }\n\n    function convert_t_enum$_UserType_$9190_to_t_uint8(value) -> converted {\n        converted := cleanup_t_enum$_UserType_$9190(value)\n    }\n\n    function copy_memory_to_memory(src, dst, length) {\n        let i := 0\n        for { } lt(i, length) { i := add(i, 32) }\n        {\n            mstore(add(dst, i), mload(add(src, i)))\n        }\n        if gt(i, length)\n        {\n            // clear end\n            mstore(add(dst, length), 0)\n        }\n    }\n\n    function decrement_t_uint256(value) -> ret {\n        value := cleanup_t_uint256(value)\n        if eq(value, 0x00) { panic_error_0x11() }\n        ret := sub(value, 1)\n    }\n\n    function increment_t_uint256(value) -> ret {\n        value := cleanup_t_uint256(value)\n        if eq(value, 0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff) { panic_error_0x11() }\n        ret := add(value, 1)\n    }\n\n    function panic_error_0x11() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x11)\n        revert(0, 0x24)\n    }\n\n    function panic_error_0x12() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x12)\n        revert(0, 0x24)\n    }\n\n    function panic_error_0x21() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x21)\n        revert(0, 0x24)\n    }\n\n    function panic_error_0x41() {\n        mstore(0, 35408467139433450592217433187231851964531694900788300625387963629091585785856)\n        mstore(4, 0x41)\n        revert(0, 0x24)\n    }\n\n    function round_up_to_mul_of_32(value) -> result {\n        result := and(add(value, 31), not(31))\n    }\n\n    function validator_assert_t_enum$_UserType_$9190(value) {\n        if iszero(lt(value, 3)) { panic_error_0x21() }\n    }\n\n    function validator_revert_t_address(value) {\n        if iszero(eq(value, cleanup_t_address(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_bool(value) {\n        if iszero(eq(value, cleanup_t_bool(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_bytes32(value) {\n        if iszero(eq(value, cleanup_t_bytes32(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_bytes4(value) {\n        if iszero(eq(value, cleanup_t_bytes4(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_uint256(value) {\n        if iszero(eq(value, cleanup_t_uint256(value))) { revert(0, 0) }\n    }\n\n    function validator_revert_t_uint8(value) {\n        if iszero(eq(value, cleanup_t_uint8(value))) { revert(0, 0) }\n    }\n\n}\n",
       "id": 56,
       "language": "Yul",
       "name": "#utility.yul"
@@ -19926,7 +19926,7 @@
         642
       ],
       "IAuditToken": [
-        16384
+        16397
       ],
       "ICohortFactory": [
         8145
@@ -19941,16 +19941,16 @@
         8311
       ],
       "IValidations": [
-        8593
+        8597
       ],
       "Initializable": [
         688
       ],
       "MemberHelpers": [
-        9107
+        9111
       ],
       "Members": [
-        9608
+        9612
       ],
       "ReentrancyGuardUpgradeable": [
         746
@@ -20039,7 +20039,7 @@
         "id": 7533,
         "nodeType": "ImportDirective",
         "scope": 8123,
-        "sourceUnit": 9609,
+        "sourceUnit": 9613,
         "src": "438:23:34",
         "symbolAliases": [],
         "unitAlias": ""
@@ -20050,7 +20050,7 @@
         "id": 7534,
         "nodeType": "ImportDirective",
         "scope": 8123,
-        "sourceUnit": 9108,
+        "sourceUnit": 9112,
         "src": "462:29:34",
         "symbolAliases": [],
         "unitAlias": ""
@@ -20231,7 +20231,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_Members_$9608",
+              "typeIdentifier": "t_contract$_Members_$9612",
               "typeString": "contract Members"
             },
             "typeName": {
@@ -20241,13 +20241,13 @@
                 "id": 7551,
                 "name": "Members",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 9608,
+                "referencedDeclaration": 9612,
                 "src": "893:7:34"
               },
-              "referencedDeclaration": 9608,
+              "referencedDeclaration": 9612,
               "src": "893:7:34",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Members_$9608",
+                "typeIdentifier": "t_contract$_Members_$9612",
                 "typeString": "contract Members"
               }
             },
@@ -20265,7 +20265,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+              "typeIdentifier": "t_contract$_MemberHelpers_$9111",
               "typeString": "contract MemberHelpers"
             },
             "typeName": {
@@ -20275,13 +20275,13 @@
                 "id": 7554,
                 "name": "MemberHelpers",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 9107,
+                "referencedDeclaration": 9111,
                 "src": "921:13:34"
               },
-              "referencedDeclaration": 9107,
+              "referencedDeclaration": 9111,
               "src": "921:13:34",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+                "typeIdentifier": "t_contract$_MemberHelpers_$9111",
                 "typeString": "contract MemberHelpers"
               }
             },
@@ -22033,7 +22033,7 @@
                       "referencedDeclaration": 7553,
                       "src": "2581:7:34",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_Members_$9608",
+                        "typeIdentifier": "t_contract$_Members_$9612",
                         "typeString": "contract Members"
                       }
                     },
@@ -22065,10 +22065,10 @@
                         "name": "Members",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9608,
+                        "referencedDeclaration": 9612,
                         "src": "2591:7:34",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_Members_$9608_$",
+                          "typeIdentifier": "t_type$_t_contract$_Members_$9612_$",
                           "typeString": "type(contract Members)"
                         }
                       },
@@ -22083,13 +22083,13 @@
                       "src": "2591:17:34",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_Members_$9608",
+                        "typeIdentifier": "t_contract$_Members_$9612",
                         "typeString": "contract Members"
                       }
                     },
                     "src": "2581:27:34",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_Members_$9608",
+                      "typeIdentifier": "t_contract$_Members_$9612",
                       "typeString": "contract Members"
                     }
                   },
@@ -22155,7 +22155,7 @@
                       "referencedDeclaration": 7556,
                       "src": "2652:13:34",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+                        "typeIdentifier": "t_contract$_MemberHelpers_$9111",
                         "typeString": "contract MemberHelpers"
                       }
                     },
@@ -22187,10 +22187,10 @@
                         "name": "MemberHelpers",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9107,
+                        "referencedDeclaration": 9111,
                         "src": "2668:13:34",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_MemberHelpers_$9107_$",
+                          "typeIdentifier": "t_type$_t_contract$_MemberHelpers_$9111_$",
                           "typeString": "type(contract MemberHelpers)"
                         }
                       },
@@ -22205,13 +22205,13 @@
                       "src": "2668:29:34",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+                        "typeIdentifier": "t_contract$_MemberHelpers_$9111",
                         "typeString": "contract MemberHelpers"
                       }
                     },
                     "src": "2652:45:34",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+                      "typeIdentifier": "t_contract$_MemberHelpers_$9111",
                       "typeString": "contract MemberHelpers"
                     }
                   },
@@ -23516,10 +23516,10 @@
                                 "name": "Members",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 9608,
+                                "referencedDeclaration": 9612,
                                 "src": "3874:7:34",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_type$_t_contract$_Members_$9608_$",
+                                  "typeIdentifier": "t_type$_t_contract$_Members_$9612_$",
                                   "typeString": "type(contract Members)"
                                 }
                               },
@@ -23530,10 +23530,10 @@
                               "lValueRequested": false,
                               "memberName": "UserType",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 9186,
+                              "referencedDeclaration": 9190,
                               "src": "3874:16:34",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_type$_t_enum$_UserType_$9186_$",
+                                "typeIdentifier": "t_type$_t_enum$_UserType_$9190_$",
                                 "typeString": "type(enum Members.UserType)"
                               }
                             },
@@ -23548,7 +23548,7 @@
                             "src": "3874:19:34",
                             "tryCall": false,
                             "typeDescriptions": {
-                              "typeIdentifier": "t_enum$_UserType_$9186",
+                              "typeIdentifier": "t_enum$_UserType_$9190",
                               "typeString": "enum Members.UserType"
                             }
                           }
@@ -23560,7 +23560,7 @@
                               "typeString": "address"
                             },
                             {
-                              "typeIdentifier": "t_enum$_UserType_$9186",
+                              "typeIdentifier": "t_enum$_UserType_$9190",
                               "typeString": "enum Members.UserType"
                             }
                           ],
@@ -23572,7 +23572,7 @@
                             "referencedDeclaration": 7553,
                             "src": "3846:7:34",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_Members_$9608",
+                              "typeIdentifier": "t_contract$_Members_$9612",
                               "typeString": "contract Members"
                             }
                           },
@@ -23583,10 +23583,10 @@
                           "lValueRequested": false,
                           "memberName": "userMap",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 9173,
+                          "referencedDeclaration": 9177,
                           "src": "3846:15:34",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_function_external_view$_t_address_$_t_enum$_UserType_$9186_$returns$_t_bool_$",
+                            "typeIdentifier": "t_function_external_view$_t_address_$_t_enum$_UserType_$9190_$returns$_t_bool_$",
                             "typeString": "function (address,enum Members.UserType) view external returns (bool)"
                           }
                         },
@@ -23847,7 +23847,7 @@
                         "referencedDeclaration": 7553,
                         "src": "4070:7:34",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_Members_$9608",
+                          "typeIdentifier": "t_contract$_Members_$9612",
                           "typeString": "contract Members"
                         }
                       },
@@ -23858,7 +23858,7 @@
                       "lValueRequested": false,
                       "memberName": "accessFee",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 9141,
+                      "referencedDeclaration": 9145,
                       "src": "4070:17:34",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -23940,7 +23940,7 @@
                               "referencedDeclaration": 7556,
                               "src": "4108:13:34",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+                                "typeIdentifier": "t_contract$_MemberHelpers_$9111",
                                 "typeString": "contract MemberHelpers"
                               }
                             },
@@ -23951,7 +23951,7 @@
                             "lValueRequested": false,
                             "memberName": "returnDepositAmount",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 8785,
+                            "referencedDeclaration": 8789,
                             "src": "4108:33:34",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -24295,7 +24295,7 @@
                             "referencedDeclaration": 7553,
                             "src": "4410:7:34",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_Members_$9608",
+                              "typeIdentifier": "t_contract$_Members_$9612",
                               "typeString": "contract Members"
                             }
                           },
@@ -24306,7 +24306,7 @@
                           "lValueRequested": false,
                           "memberName": "validatorShareSubscriber",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 9145,
+                          "referencedDeclaration": 9149,
                           "src": "4410:32:34",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -24350,7 +24350,7 @@
                                 "referencedDeclaration": 7553,
                                 "src": "4369:7:34",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_Members_$9608",
+                                  "typeIdentifier": "t_contract$_Members_$9612",
                                   "typeString": "contract Members"
                                 }
                               },
@@ -24361,7 +24361,7 @@
                               "lValueRequested": false,
                               "memberName": "enterpriseShareSubscriber",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 9143,
+                              "referencedDeclaration": 9147,
                               "src": "4369:33:34",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -24543,7 +24543,7 @@
                             "referencedDeclaration": 7553,
                             "src": "4498:7:34",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_Members_$9608",
+                              "typeIdentifier": "t_contract$_Members_$9612",
                               "typeString": "contract Members"
                             }
                           },
@@ -24554,7 +24554,7 @@
                           "lValueRequested": false,
                           "memberName": "platformAddress",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 9147,
+                          "referencedDeclaration": 9151,
                           "src": "4498:23:34",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
@@ -24857,10 +24857,10 @@
                               "name": "Members",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 9608,
+                              "referencedDeclaration": 9612,
                               "src": "4606:7:34",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_type$_t_contract$_Members_$9608_$",
+                                "typeIdentifier": "t_type$_t_contract$_Members_$9612_$",
                                 "typeString": "type(contract Members)"
                               }
                             },
@@ -24871,10 +24871,10 @@
                             "lValueRequested": false,
                             "memberName": "UserType",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9186,
+                            "referencedDeclaration": 9190,
                             "src": "4606:16:34",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_enum$_UserType_$9186_$",
+                              "typeIdentifier": "t_type$_t_enum$_UserType_$9190_$",
                               "typeString": "type(enum Members.UserType)"
                             }
                           },
@@ -24889,7 +24889,7 @@
                           "src": "4606:19:34",
                           "tryCall": false,
                           "typeDescriptions": {
-                            "typeIdentifier": "t_enum$_UserType_$9186",
+                            "typeIdentifier": "t_enum$_UserType_$9190",
                             "typeString": "enum Members.UserType"
                           }
                         }
@@ -24901,7 +24901,7 @@
                             "typeString": "address"
                           },
                           {
-                            "typeIdentifier": "t_enum$_UserType_$9186",
+                            "typeIdentifier": "t_enum$_UserType_$9190",
                             "typeString": "enum Members.UserType"
                           }
                         ],
@@ -24913,7 +24913,7 @@
                           "referencedDeclaration": 7553,
                           "src": "4578:7:34",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_Members_$9608",
+                            "typeIdentifier": "t_contract$_Members_$9612",
                             "typeString": "contract Members"
                           }
                         },
@@ -24924,10 +24924,10 @@
                         "lValueRequested": false,
                         "memberName": "userMap",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 9173,
+                        "referencedDeclaration": 9177,
                         "src": "4578:15:34",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_function_external_view$_t_address_$_t_enum$_UserType_$9186_$returns$_t_bool_$",
+                          "typeIdentifier": "t_function_external_view$_t_address_$_t_enum$_UserType_$9190_$returns$_t_bool_$",
                           "typeString": "function (address,enum Members.UserType) view external returns (bool)"
                         }
                       },
@@ -25007,10 +25007,10 @@
                               "name": "Members",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 9608,
+                              "referencedDeclaration": 9612,
                               "src": "4658:7:34",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_type$_t_contract$_Members_$9608_$",
+                                "typeIdentifier": "t_type$_t_contract$_Members_$9612_$",
                                 "typeString": "type(contract Members)"
                               }
                             },
@@ -25021,10 +25021,10 @@
                             "lValueRequested": false,
                             "memberName": "UserType",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9186,
+                            "referencedDeclaration": 9190,
                             "src": "4658:16:34",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_enum$_UserType_$9186_$",
+                              "typeIdentifier": "t_type$_t_enum$_UserType_$9190_$",
                               "typeString": "type(enum Members.UserType)"
                             }
                           },
@@ -25039,7 +25039,7 @@
                           "src": "4658:19:34",
                           "tryCall": false,
                           "typeDescriptions": {
-                            "typeIdentifier": "t_enum$_UserType_$9186",
+                            "typeIdentifier": "t_enum$_UserType_$9190",
                             "typeString": "enum Members.UserType"
                           }
                         }
@@ -25051,7 +25051,7 @@
                             "typeString": "address"
                           },
                           {
-                            "typeIdentifier": "t_enum$_UserType_$9186",
+                            "typeIdentifier": "t_enum$_UserType_$9190",
                             "typeString": "enum Members.UserType"
                           }
                         ],
@@ -25063,7 +25063,7 @@
                           "referencedDeclaration": 7553,
                           "src": "4630:7:34",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_Members_$9608",
+                            "typeIdentifier": "t_contract$_Members_$9612",
                             "typeString": "contract Members"
                           }
                         },
@@ -25074,10 +25074,10 @@
                         "lValueRequested": false,
                         "memberName": "userMap",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 9173,
+                        "referencedDeclaration": 9177,
                         "src": "4630:15:34",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_function_external_view$_t_address_$_t_enum$_UserType_$9186_$returns$_t_bool_$",
+                          "typeIdentifier": "t_function_external_view$_t_address_$_t_enum$_UserType_$9190_$returns$_t_bool_$",
                           "typeString": "function (address,enum Members.UserType) view external returns (bool)"
                         }
                       },
@@ -25173,7 +25173,7 @@
                                   "referencedDeclaration": 7556,
                                   "src": "4700:13:34",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+                                    "typeIdentifier": "t_contract$_MemberHelpers_$9111",
                                     "typeString": "contract MemberHelpers"
                                   }
                                 },
@@ -25184,7 +25184,7 @@
                                 "lValueRequested": false,
                                 "memberName": "decreaseDeposit",
                                 "nodeType": "MemberAccess",
-                                "referencedDeclaration": 8837,
+                                "referencedDeclaration": 8841,
                                 "src": "4700:29:34",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -25320,7 +25320,7 @@
                                 "referencedDeclaration": 7553,
                                 "src": "4814:7:34",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_Members_$9608",
+                                  "typeIdentifier": "t_contract$_Members_$9612",
                                   "typeString": "contract Members"
                                 }
                               },
@@ -25331,7 +25331,7 @@
                               "lValueRequested": false,
                               "memberName": "enterpriseShareSubscriber",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 9143,
+                              "referencedDeclaration": 9147,
                               "src": "4814:33:34",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -25483,7 +25483,7 @@
                             "referencedDeclaration": 7556,
                             "src": "4876:13:34",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+                              "typeIdentifier": "t_contract$_MemberHelpers_$9111",
                               "typeString": "contract MemberHelpers"
                             }
                           },
@@ -25494,7 +25494,7 @@
                           "lValueRequested": false,
                           "memberName": "increaseDeposit",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 8811,
+                          "referencedDeclaration": 8815,
                           "src": "4876:29:34",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -25621,7 +25621,7 @@
                                     "referencedDeclaration": 7553,
                                     "src": "5029:7:34",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_contract$_Members_$9608",
+                                      "typeIdentifier": "t_contract$_Members_$9612",
                                       "typeString": "contract Members"
                                     }
                                   },
@@ -25632,7 +25632,7 @@
                                   "lValueRequested": false,
                                   "memberName": "validatorShareSubscriber",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 9145,
+                                  "referencedDeclaration": 9149,
                                   "src": "5029:32:34",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -26259,7 +26259,7 @@
                                     "referencedDeclaration": 7556,
                                     "src": "5823:13:34",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+                                      "typeIdentifier": "t_contract$_MemberHelpers_$9111",
                                       "typeString": "contract MemberHelpers"
                                     }
                                   },
@@ -26270,7 +26270,7 @@
                                   "lValueRequested": false,
                                   "memberName": "returnDepositAmount",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 8785,
+                                  "referencedDeclaration": 8789,
                                   "src": "5823:33:34",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -26641,7 +26641,7 @@
                                           "referencedDeclaration": 7556,
                                           "src": "5995:13:34",
                                           "typeDescriptions": {
-                                            "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+                                            "typeIdentifier": "t_contract$_MemberHelpers_$9111",
                                             "typeString": "contract MemberHelpers"
                                           }
                                         },
@@ -26652,7 +26652,7 @@
                                         "lValueRequested": false,
                                         "memberName": "returnDepositAmount",
                                         "nodeType": "MemberAccess",
-                                        "referencedDeclaration": 8785,
+                                        "referencedDeclaration": 8789,
                                         "src": "5995:33:34",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -26993,7 +26993,7 @@
                                   "referencedDeclaration": 7556,
                                   "src": "6191:13:34",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+                                    "typeIdentifier": "t_contract$_MemberHelpers_$9111",
                                     "typeString": "contract MemberHelpers"
                                   }
                                 },
@@ -27004,7 +27004,7 @@
                                 "lValueRequested": false,
                                 "memberName": "increaseDeposit",
                                 "nodeType": "MemberAccess",
-                                "referencedDeclaration": 8811,
+                                "referencedDeclaration": 8815,
                                 "src": "6191:29:34",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -28107,7 +28107,7 @@
         642
       ],
       "IAuditToken": [
-        16384
+        16397
       ],
       "ICohortFactory": [
         8145
@@ -28122,16 +28122,16 @@
         8311
       ],
       "IValidations": [
-        8593
+        8597
       ],
       "Initializable": [
         688
       ],
       "MemberHelpers": [
-        9107
+        9111
       ],
       "Members": [
-        9608
+        9612
       ],
       "ReentrancyGuardUpgradeable": [
         746
@@ -28220,7 +28220,7 @@
         "id": 7533,
         "nodeType": "ImportDirective",
         "scope": 8123,
-        "sourceUnit": 9609,
+        "sourceUnit": 9613,
         "src": "438:23:34",
         "symbolAliases": [],
         "unitAlias": ""
@@ -28231,7 +28231,7 @@
         "id": 7534,
         "nodeType": "ImportDirective",
         "scope": 8123,
-        "sourceUnit": 9108,
+        "sourceUnit": 9112,
         "src": "462:29:34",
         "symbolAliases": [],
         "unitAlias": ""
@@ -28412,7 +28412,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_Members_$9608",
+              "typeIdentifier": "t_contract$_Members_$9612",
               "typeString": "contract Members"
             },
             "typeName": {
@@ -28422,13 +28422,13 @@
                 "id": 7551,
                 "name": "Members",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 9608,
+                "referencedDeclaration": 9612,
                 "src": "893:7:34"
               },
-              "referencedDeclaration": 9608,
+              "referencedDeclaration": 9612,
               "src": "893:7:34",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_Members_$9608",
+                "typeIdentifier": "t_contract$_Members_$9612",
                 "typeString": "contract Members"
               }
             },
@@ -28446,7 +28446,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+              "typeIdentifier": "t_contract$_MemberHelpers_$9111",
               "typeString": "contract MemberHelpers"
             },
             "typeName": {
@@ -28456,13 +28456,13 @@
                 "id": 7554,
                 "name": "MemberHelpers",
                 "nodeType": "IdentifierPath",
-                "referencedDeclaration": 9107,
+                "referencedDeclaration": 9111,
                 "src": "921:13:34"
               },
-              "referencedDeclaration": 9107,
+              "referencedDeclaration": 9111,
               "src": "921:13:34",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+                "typeIdentifier": "t_contract$_MemberHelpers_$9111",
                 "typeString": "contract MemberHelpers"
               }
             },
@@ -30214,7 +30214,7 @@
                       "referencedDeclaration": 7553,
                       "src": "2581:7:34",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_Members_$9608",
+                        "typeIdentifier": "t_contract$_Members_$9612",
                         "typeString": "contract Members"
                       }
                     },
@@ -30246,10 +30246,10 @@
                         "name": "Members",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9608,
+                        "referencedDeclaration": 9612,
                         "src": "2591:7:34",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_Members_$9608_$",
+                          "typeIdentifier": "t_type$_t_contract$_Members_$9612_$",
                           "typeString": "type(contract Members)"
                         }
                       },
@@ -30264,13 +30264,13 @@
                       "src": "2591:17:34",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_Members_$9608",
+                        "typeIdentifier": "t_contract$_Members_$9612",
                         "typeString": "contract Members"
                       }
                     },
                     "src": "2581:27:34",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_Members_$9608",
+                      "typeIdentifier": "t_contract$_Members_$9612",
                       "typeString": "contract Members"
                     }
                   },
@@ -30336,7 +30336,7 @@
                       "referencedDeclaration": 7556,
                       "src": "2652:13:34",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+                        "typeIdentifier": "t_contract$_MemberHelpers_$9111",
                         "typeString": "contract MemberHelpers"
                       }
                     },
@@ -30368,10 +30368,10 @@
                         "name": "MemberHelpers",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 9107,
+                        "referencedDeclaration": 9111,
                         "src": "2668:13:34",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_MemberHelpers_$9107_$",
+                          "typeIdentifier": "t_type$_t_contract$_MemberHelpers_$9111_$",
                           "typeString": "type(contract MemberHelpers)"
                         }
                       },
@@ -30386,13 +30386,13 @@
                       "src": "2668:29:34",
                       "tryCall": false,
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+                        "typeIdentifier": "t_contract$_MemberHelpers_$9111",
                         "typeString": "contract MemberHelpers"
                       }
                     },
                     "src": "2652:45:34",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+                      "typeIdentifier": "t_contract$_MemberHelpers_$9111",
                       "typeString": "contract MemberHelpers"
                     }
                   },
@@ -31697,10 +31697,10 @@
                                 "name": "Members",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 9608,
+                                "referencedDeclaration": 9612,
                                 "src": "3874:7:34",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_type$_t_contract$_Members_$9608_$",
+                                  "typeIdentifier": "t_type$_t_contract$_Members_$9612_$",
                                   "typeString": "type(contract Members)"
                                 }
                               },
@@ -31711,10 +31711,10 @@
                               "lValueRequested": false,
                               "memberName": "UserType",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 9186,
+                              "referencedDeclaration": 9190,
                               "src": "3874:16:34",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_type$_t_enum$_UserType_$9186_$",
+                                "typeIdentifier": "t_type$_t_enum$_UserType_$9190_$",
                                 "typeString": "type(enum Members.UserType)"
                               }
                             },
@@ -31729,7 +31729,7 @@
                             "src": "3874:19:34",
                             "tryCall": false,
                             "typeDescriptions": {
-                              "typeIdentifier": "t_enum$_UserType_$9186",
+                              "typeIdentifier": "t_enum$_UserType_$9190",
                               "typeString": "enum Members.UserType"
                             }
                           }
@@ -31741,7 +31741,7 @@
                               "typeString": "address"
                             },
                             {
-                              "typeIdentifier": "t_enum$_UserType_$9186",
+                              "typeIdentifier": "t_enum$_UserType_$9190",
                               "typeString": "enum Members.UserType"
                             }
                           ],
@@ -31753,7 +31753,7 @@
                             "referencedDeclaration": 7553,
                             "src": "3846:7:34",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_Members_$9608",
+                              "typeIdentifier": "t_contract$_Members_$9612",
                               "typeString": "contract Members"
                             }
                           },
@@ -31764,10 +31764,10 @@
                           "lValueRequested": false,
                           "memberName": "userMap",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 9173,
+                          "referencedDeclaration": 9177,
                           "src": "3846:15:34",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_function_external_view$_t_address_$_t_enum$_UserType_$9186_$returns$_t_bool_$",
+                            "typeIdentifier": "t_function_external_view$_t_address_$_t_enum$_UserType_$9190_$returns$_t_bool_$",
                             "typeString": "function (address,enum Members.UserType) view external returns (bool)"
                           }
                         },
@@ -32028,7 +32028,7 @@
                         "referencedDeclaration": 7553,
                         "src": "4070:7:34",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_Members_$9608",
+                          "typeIdentifier": "t_contract$_Members_$9612",
                           "typeString": "contract Members"
                         }
                       },
@@ -32039,7 +32039,7 @@
                       "lValueRequested": false,
                       "memberName": "accessFee",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 9141,
+                      "referencedDeclaration": 9145,
                       "src": "4070:17:34",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -32121,7 +32121,7 @@
                               "referencedDeclaration": 7556,
                               "src": "4108:13:34",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+                                "typeIdentifier": "t_contract$_MemberHelpers_$9111",
                                 "typeString": "contract MemberHelpers"
                               }
                             },
@@ -32132,7 +32132,7 @@
                             "lValueRequested": false,
                             "memberName": "returnDepositAmount",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 8785,
+                            "referencedDeclaration": 8789,
                             "src": "4108:33:34",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -32476,7 +32476,7 @@
                             "referencedDeclaration": 7553,
                             "src": "4410:7:34",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_Members_$9608",
+                              "typeIdentifier": "t_contract$_Members_$9612",
                               "typeString": "contract Members"
                             }
                           },
@@ -32487,7 +32487,7 @@
                           "lValueRequested": false,
                           "memberName": "validatorShareSubscriber",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 9145,
+                          "referencedDeclaration": 9149,
                           "src": "4410:32:34",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -32531,7 +32531,7 @@
                                 "referencedDeclaration": 7553,
                                 "src": "4369:7:34",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_Members_$9608",
+                                  "typeIdentifier": "t_contract$_Members_$9612",
                                   "typeString": "contract Members"
                                 }
                               },
@@ -32542,7 +32542,7 @@
                               "lValueRequested": false,
                               "memberName": "enterpriseShareSubscriber",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 9143,
+                              "referencedDeclaration": 9147,
                               "src": "4369:33:34",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -32724,7 +32724,7 @@
                             "referencedDeclaration": 7553,
                             "src": "4498:7:34",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_Members_$9608",
+                              "typeIdentifier": "t_contract$_Members_$9612",
                               "typeString": "contract Members"
                             }
                           },
@@ -32735,7 +32735,7 @@
                           "lValueRequested": false,
                           "memberName": "platformAddress",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 9147,
+                          "referencedDeclaration": 9151,
                           "src": "4498:23:34",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
@@ -33038,10 +33038,10 @@
                               "name": "Members",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 9608,
+                              "referencedDeclaration": 9612,
                               "src": "4606:7:34",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_type$_t_contract$_Members_$9608_$",
+                                "typeIdentifier": "t_type$_t_contract$_Members_$9612_$",
                                 "typeString": "type(contract Members)"
                               }
                             },
@@ -33052,10 +33052,10 @@
                             "lValueRequested": false,
                             "memberName": "UserType",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9186,
+                            "referencedDeclaration": 9190,
                             "src": "4606:16:34",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_enum$_UserType_$9186_$",
+                              "typeIdentifier": "t_type$_t_enum$_UserType_$9190_$",
                               "typeString": "type(enum Members.UserType)"
                             }
                           },
@@ -33070,7 +33070,7 @@
                           "src": "4606:19:34",
                           "tryCall": false,
                           "typeDescriptions": {
-                            "typeIdentifier": "t_enum$_UserType_$9186",
+                            "typeIdentifier": "t_enum$_UserType_$9190",
                             "typeString": "enum Members.UserType"
                           }
                         }
@@ -33082,7 +33082,7 @@
                             "typeString": "address"
                           },
                           {
-                            "typeIdentifier": "t_enum$_UserType_$9186",
+                            "typeIdentifier": "t_enum$_UserType_$9190",
                             "typeString": "enum Members.UserType"
                           }
                         ],
@@ -33094,7 +33094,7 @@
                           "referencedDeclaration": 7553,
                           "src": "4578:7:34",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_Members_$9608",
+                            "typeIdentifier": "t_contract$_Members_$9612",
                             "typeString": "contract Members"
                           }
                         },
@@ -33105,10 +33105,10 @@
                         "lValueRequested": false,
                         "memberName": "userMap",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 9173,
+                        "referencedDeclaration": 9177,
                         "src": "4578:15:34",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_function_external_view$_t_address_$_t_enum$_UserType_$9186_$returns$_t_bool_$",
+                          "typeIdentifier": "t_function_external_view$_t_address_$_t_enum$_UserType_$9190_$returns$_t_bool_$",
                           "typeString": "function (address,enum Members.UserType) view external returns (bool)"
                         }
                       },
@@ -33188,10 +33188,10 @@
                               "name": "Members",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 9608,
+                              "referencedDeclaration": 9612,
                               "src": "4658:7:34",
                               "typeDescriptions": {
-                                "typeIdentifier": "t_type$_t_contract$_Members_$9608_$",
+                                "typeIdentifier": "t_type$_t_contract$_Members_$9612_$",
                                 "typeString": "type(contract Members)"
                               }
                             },
@@ -33202,10 +33202,10 @@
                             "lValueRequested": false,
                             "memberName": "UserType",
                             "nodeType": "MemberAccess",
-                            "referencedDeclaration": 9186,
+                            "referencedDeclaration": 9190,
                             "src": "4658:16:34",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_enum$_UserType_$9186_$",
+                              "typeIdentifier": "t_type$_t_enum$_UserType_$9190_$",
                               "typeString": "type(enum Members.UserType)"
                             }
                           },
@@ -33220,7 +33220,7 @@
                           "src": "4658:19:34",
                           "tryCall": false,
                           "typeDescriptions": {
-                            "typeIdentifier": "t_enum$_UserType_$9186",
+                            "typeIdentifier": "t_enum$_UserType_$9190",
                             "typeString": "enum Members.UserType"
                           }
                         }
@@ -33232,7 +33232,7 @@
                             "typeString": "address"
                           },
                           {
-                            "typeIdentifier": "t_enum$_UserType_$9186",
+                            "typeIdentifier": "t_enum$_UserType_$9190",
                             "typeString": "enum Members.UserType"
                           }
                         ],
@@ -33244,7 +33244,7 @@
                           "referencedDeclaration": 7553,
                           "src": "4630:7:34",
                           "typeDescriptions": {
-                            "typeIdentifier": "t_contract$_Members_$9608",
+                            "typeIdentifier": "t_contract$_Members_$9612",
                             "typeString": "contract Members"
                           }
                         },
@@ -33255,10 +33255,10 @@
                         "lValueRequested": false,
                         "memberName": "userMap",
                         "nodeType": "MemberAccess",
-                        "referencedDeclaration": 9173,
+                        "referencedDeclaration": 9177,
                         "src": "4630:15:34",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_function_external_view$_t_address_$_t_enum$_UserType_$9186_$returns$_t_bool_$",
+                          "typeIdentifier": "t_function_external_view$_t_address_$_t_enum$_UserType_$9190_$returns$_t_bool_$",
                           "typeString": "function (address,enum Members.UserType) view external returns (bool)"
                         }
                       },
@@ -33354,7 +33354,7 @@
                                   "referencedDeclaration": 7556,
                                   "src": "4700:13:34",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+                                    "typeIdentifier": "t_contract$_MemberHelpers_$9111",
                                     "typeString": "contract MemberHelpers"
                                   }
                                 },
@@ -33365,7 +33365,7 @@
                                 "lValueRequested": false,
                                 "memberName": "decreaseDeposit",
                                 "nodeType": "MemberAccess",
-                                "referencedDeclaration": 8837,
+                                "referencedDeclaration": 8841,
                                 "src": "4700:29:34",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -33501,7 +33501,7 @@
                                 "referencedDeclaration": 7553,
                                 "src": "4814:7:34",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_Members_$9608",
+                                  "typeIdentifier": "t_contract$_Members_$9612",
                                   "typeString": "contract Members"
                                 }
                               },
@@ -33512,7 +33512,7 @@
                               "lValueRequested": false,
                               "memberName": "enterpriseShareSubscriber",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 9143,
+                              "referencedDeclaration": 9147,
                               "src": "4814:33:34",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -33664,7 +33664,7 @@
                             "referencedDeclaration": 7556,
                             "src": "4876:13:34",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+                              "typeIdentifier": "t_contract$_MemberHelpers_$9111",
                               "typeString": "contract MemberHelpers"
                             }
                           },
@@ -33675,7 +33675,7 @@
                           "lValueRequested": false,
                           "memberName": "increaseDeposit",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 8811,
+                          "referencedDeclaration": 8815,
                           "src": "4876:29:34",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -33802,7 +33802,7 @@
                                     "referencedDeclaration": 7553,
                                     "src": "5029:7:34",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_contract$_Members_$9608",
+                                      "typeIdentifier": "t_contract$_Members_$9612",
                                       "typeString": "contract Members"
                                     }
                                   },
@@ -33813,7 +33813,7 @@
                                   "lValueRequested": false,
                                   "memberName": "validatorShareSubscriber",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 9145,
+                                  "referencedDeclaration": 9149,
                                   "src": "5029:32:34",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -34440,7 +34440,7 @@
                                     "referencedDeclaration": 7556,
                                     "src": "5823:13:34",
                                     "typeDescriptions": {
-                                      "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+                                      "typeIdentifier": "t_contract$_MemberHelpers_$9111",
                                       "typeString": "contract MemberHelpers"
                                     }
                                   },
@@ -34451,7 +34451,7 @@
                                   "lValueRequested": false,
                                   "memberName": "returnDepositAmount",
                                   "nodeType": "MemberAccess",
-                                  "referencedDeclaration": 8785,
+                                  "referencedDeclaration": 8789,
                                   "src": "5823:33:34",
                                   "typeDescriptions": {
                                     "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -34822,7 +34822,7 @@
                                           "referencedDeclaration": 7556,
                                           "src": "5995:13:34",
                                           "typeDescriptions": {
-                                            "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+                                            "typeIdentifier": "t_contract$_MemberHelpers_$9111",
                                             "typeString": "contract MemberHelpers"
                                           }
                                         },
@@ -34833,7 +34833,7 @@
                                         "lValueRequested": false,
                                         "memberName": "returnDepositAmount",
                                         "nodeType": "MemberAccess",
-                                        "referencedDeclaration": 8785,
+                                        "referencedDeclaration": 8789,
                                         "src": "5995:33:34",
                                         "typeDescriptions": {
                                           "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -35174,7 +35174,7 @@
                                   "referencedDeclaration": 7556,
                                   "src": "6191:13:34",
                                   "typeDescriptions": {
-                                    "typeIdentifier": "t_contract$_MemberHelpers_$9107",
+                                    "typeIdentifier": "t_contract$_MemberHelpers_$9111",
                                     "typeString": "contract MemberHelpers"
                                   }
                                 },
@@ -35185,7 +35185,7 @@
                                 "lValueRequested": false,
                                 "memberName": "increaseDeposit",
                                 "nodeType": "MemberAccess",
-                                "referencedDeclaration": 8811,
+                                "referencedDeclaration": 8815,
                                 "src": "6191:29:34",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
@@ -36263,7 +36263,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.1",
-  "updatedAt": "2022-09-27T22:44:52.603Z",
+  "updatedAt": "2022-09-28T21:50:48.743Z",
   "devdoc": {
     "kind": "dev",
     "methods": {

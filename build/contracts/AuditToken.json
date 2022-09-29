@@ -213,7 +213,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -226,7 +227,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -239,7 +241,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -252,7 +255,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -265,7 +269,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -315,7 +320,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -358,7 +364,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -387,7 +394,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -400,7 +408,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -443,7 +452,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -462,7 +472,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -486,7 +497,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -505,7 +517,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -547,7 +560,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -590,7 +604,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -609,7 +624,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -622,7 +638,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -641,7 +658,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -660,7 +678,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -728,7 +747,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -741,7 +761,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [],
@@ -754,7 +775,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -907,7 +929,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -931,7 +954,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.0+commit.c7dfd78e\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"AddedLock\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegator\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"fromDelegate\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"toDelegate\",\"type\":\"address\"}],\"name\":\"DelegateChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"delegate\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"previousBalance\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"newBalance\",\"type\":\"uint256\"}],\"name\":\"DelegateVotesChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"}],\"name\":\"RemovedLock\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"previousAdminRole\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"newAdminRole\",\"type\":\"bytes32\"}],\"name\":\"RoleAdminChanged\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleGranted\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"}],\"name\":\"RoleRevoked\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"CONTROLLER_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"DEFAULT_ADMIN_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"DELEGATION_TYPEHASH\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"DOMAIN_TYPEHASH\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"MINTER_ROLE\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"}],\"name\":\"addLock\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"_users\",\"type\":\"address[]\"}],\"name\":\"addLockMultiple\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"burn\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"burnFrom\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"name\":\"checkpoints\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"fromBlock\",\"type\":\"uint32\"},{\"internalType\":\"uint96\",\"name\":\"votes\",\"type\":\"uint96\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"subtractedValue\",\"type\":\"uint256\"}],\"name\":\"decreaseAllowance\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"delegatee\",\"type\":\"address\"}],\"name\":\"delegate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"delegates\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"getCurrentVotes\",\"outputs\":[{\"internalType\":\"uint96\",\"name\":\"\",\"type\":\"uint96\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"blockNumber\",\"type\":\"uint256\"}],\"name\":\"getPriorVotes\",\"outputs\":[{\"internalType\":\"uint96\",\"name\":\"\",\"type\":\"uint96\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"}],\"name\":\"getRoleAdmin\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"}],\"name\":\"getRoleMember\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"}],\"name\":\"getRoleMemberCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"grantRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"hasRole\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"addedValue\",\"type\":\"uint256\"}],\"name\":\"increaseAllowance\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"initialize\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"}],\"name\":\"isLocked\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"lockedList\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"mint\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"nonces\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"numCheckpoints\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_user\",\"type\":\"address\"}],\"name\":\"removeLock\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"renounceRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"role\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"revokeRole\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes4\",\"name\":\"interfaceId\",\"type\":\"bytes4\"}],\"name\":\"supportsInterface\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"addLock(address)\":{\"details\":\"add user to lock\",\"params\":{\"_user\":\"to lock\"}},\"allowance(address,address)\":{\"details\":\"See {IERC20-allowance}.\"},\"approve(address,uint256)\":{\"details\":\"See {IERC20-approve}. Requirements: - `spender` cannot be the zero address.\"},\"balanceOf(address)\":{\"details\":\"See {IERC20-balanceOf}.\"},\"decimals()\":{\"details\":\"Returns the number of decimals used to get its user representation. For example, if `decimals` equals `2`, a balance of `505` tokens should be displayed to a user as `5.05` (`505 / 10 ** 2`). Tokens usually opt for a value of 18, imitating the relationship between Ether and Wei. This is the value {ERC20} uses, unless this function is overridden; NOTE: This information is only used for _display_ purposes: it in no way affects any of the arithmetic of the contract, including {IERC20-balanceOf} and {IERC20-transfer}.\"},\"decreaseAllowance(address,uint256)\":{\"details\":\"Atomically decreases the allowance granted to `spender` by the caller. This is an alternative to {approve} that can be used as a mitigation for problems described in {IERC20-approve}. Emits an {Approval} event indicating the updated allowance. Requirements: - `spender` cannot be the zero address. - `spender` must have allowance for the caller of at least `subtractedValue`.\"},\"delegate(address)\":{\"params\":{\"delegatee\":\"The address to delegate votes to\"}},\"getCurrentVotes(address)\":{\"params\":{\"account\":\"The address to get votes balance\"},\"returns\":{\"_0\":\"The number of current votes for `account`\"}},\"getPriorVotes(address,uint256)\":{\"details\":\"Block number must be a finalized block or else this function will revert to prevent misinformation.\",\"params\":{\"account\":\"The address of the account to check\",\"blockNumber\":\"The block number to get the vote balance at\"},\"returns\":{\"_0\":\"The number of votes the account had as of the given block\"}},\"getRoleAdmin(bytes32)\":{\"details\":\"Returns the admin role that controls `role`. See {grantRole} and {revokeRole}. To change a role's admin, use {_setRoleAdmin}.\"},\"getRoleMember(bytes32,uint256)\":{\"details\":\"Returns one of the accounts that have `role`. `index` must be a value between 0 and {getRoleMemberCount}, non-inclusive. Role bearers are not sorted in any particular way, and their ordering may change at any point. WARNING: When using {getRoleMember} and {getRoleMemberCount}, make sure you perform all queries on the same block. See the following https://forum.openzeppelin.com/t/iterating-over-elements-on-enumerableset-in-openzeppelin-contracts/2296[forum post] for more information.\"},\"getRoleMemberCount(bytes32)\":{\"details\":\"Returns the number of accounts that have `role`. Can be used together with {getRoleMember} to enumerate all bearers of a role.\"},\"grantRole(bytes32,address)\":{\"details\":\"Overload {grantRole} to track enumerable memberships\"},\"hasRole(bytes32,address)\":{\"details\":\"Returns `true` if `account` has been granted `role`.\"},\"increaseAllowance(address,uint256)\":{\"details\":\"Atomically increases the allowance granted to `spender` by the caller. This is an alternative to {approve} that can be used as a mitigation for problems described in {IERC20-approve}. Emits an {Approval} event indicating the updated allowance. Requirements: - `spender` cannot be the zero address.\"},\"initialize(address)\":{\"details\":\"Initialize.\"},\"isLocked(address)\":{\"details\":\"check if user has been locked\",\"params\":{\"_user\":\"- usr to check\"},\"returns\":{\"_0\":\"true or false\"}},\"mint(address,uint256)\":{\"params\":{\"amount\":\"of tokens to send \",\"to\":\"address to which new minted tokens are sent\"},\"returns\":{\"_0\":\"A boolean that indicates if the operation was successful.\"}},\"name()\":{\"details\":\"Returns the name of the token.\"},\"removeLock(address)\":{\"details\":\"unlock user\",\"params\":{\"_user\":\"- user to unlock\"}},\"renounceRole(bytes32,address)\":{\"details\":\"Overload {renounceRole} to track enumerable memberships\"},\"revokeRole(bytes32,address)\":{\"details\":\"Overload {revokeRole} to track enumerable memberships\"},\"supportsInterface(bytes4)\":{\"details\":\"See {IERC165-supportsInterface}.\"},\"symbol()\":{\"details\":\"Returns the symbol of the token, usually a shorter version of the name.\"},\"totalSupply()\":{\"details\":\"See {IERC20-totalSupply}.\"}},\"version\":1},\"userdoc\":{\"events\":{\"DelegateChanged(address,address,address)\":{\"notice\":\"An event thats emitted when an account changes its delegate\"},\"DelegateVotesChanged(address,uint256,uint256)\":{\"notice\":\"An event thats emitted when a delegate account's vote balance changes\"}},\"kind\":\"user\",\"methods\":{\"DELEGATION_TYPEHASH()\":{\"notice\":\"The EIP-712 typehash for the delegation struct used by the contract\"},\"DOMAIN_TYPEHASH()\":{\"notice\":\"The EIP-712 typehash for the contract's domain\"},\"burn(uint256)\":{\"notice\":\"Overwrite parent implementation to add locked verification \"},\"burnFrom(address,uint256)\":{\"notice\":\"Overwrite parent implementation to add locked verification \"},\"checkpoints(address,uint32)\":{\"notice\":\"A record of votes checkpoints for each account, by index\"},\"delegate(address)\":{\"notice\":\"Delegate votes from `msg.sender` to `delegatee`\"},\"delegates(address)\":{\"notice\":\"A record of each accounts delegate\"},\"getCurrentVotes(address)\":{\"notice\":\"Gets the current votes balance for `account`\"},\"getPriorVotes(address,uint256)\":{\"notice\":\"Determine the prior number of votes for an account as of a block number\"},\"mint(address,uint256)\":{\"notice\":\"Function to mint tokens\"},\"nonces(address)\":{\"notice\":\"A record of states for signing / validating signatures\"},\"numCheckpoints(address)\":{\"notice\":\"The number of checkpoints for each account\"},\"transfer(address,uint256)\":{\"notice\":\"Overwrite parent implementation to add locked verification, notSelf modifiers and call to moveDelegates\"},\"transferFrom(address,address,uint256)\":{\"notice\":\"Overwrite parent implementation to add locked verification, notSelf modifiers and call to moveDelegates\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/AuditToken.sol\":\"AuditToken\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts-upgradeable/access/AccessControlEnumerableUpgradeable.sol\":{\"keccak256\":\"0x2d8b1825d587f3384d6d87655f3cb66f0d71fe8dda7d98f2f9267a4bb842927d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8945bed088c14e24899682ba822b7a2d5fae922690cbd1fc389ccb42cc786a00\",\"dweb:/ipfs/Qmcwq64K3kNQ2Ww9VujpV6SU1Skdqr4x7aG5mtfRiJvsKT\"]},\"@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol\":{\"keccak256\":\"0x29d96f28c0dfcd25ddffef02e56438bde20e1135df9745d7eeb196f08665da6d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e67c1874bc55f3ee5172d3afc4c0147988f1631765265d5b8cf0049b765fabc1\",\"dweb:/ipfs/QmeoguEaHHaSRQy6oCwNkzhn2wxyjtpqD4FxjiCPiU2zEW\"]},\"@openzeppelin/contracts-upgradeable/access/IAccessControlEnumerableUpgradeable.sol\":{\"keccak256\":\"0xf87bd7a150c81aad67bb354413fe55cb005e922c6e48d3580a63e32efa913c74\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5d5dc34384422b8a1a2ab76ef28f285112bb01cf705a7f630ba0b5d5e366b26b\",\"dweb:/ipfs/Qmd8RJWMPDHxgKjm4Mqaqibu1g1ZG6BaHhswASVZ7orfzu\"]},\"@openzeppelin/contracts-upgradeable/access/IAccessControlUpgradeable.sol\":{\"keccak256\":\"0xb138a22255a0c28ffa169cd269120bbfa27711cefe14b531462b22560cf374fc\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5ab0cfbd365e95b4655e4e68ad5220e5ecd61753a8fef9c382a0e63085fec019\",\"dweb:/ipfs/QmVz7Pn84K9waKKg15zXpgHBxD6qqAVoTcKUQE3nzoTBPU\"]},\"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol\":{\"keccak256\":\"0x8b2abd85d0ece7e866e100e9d47ca9cbec93c87cf71a8d267b2b93eb81f7d5e9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fe9fa1beb63e4a09637701f783982ba80380d630d600c9cafe26b68bf58be1b2\",\"dweb:/ipfs/QmRA3GXhTWys88joD9x8xYhdjzvGwmDGLMMzGw3LxbSEge\"]},\"@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol\":{\"keccak256\":\"0x891fbf39ac5b9524f417db912d33684f239195a0fc5c11db439659676e51aab6\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7373c505e45d8c4c204a7a59837efa39003b305e1a1f2690849694fec928ce27\",\"dweb:/ipfs/QmSmELVaAzb9a167vfGKqpAfjbws36AkvsZ45FaSThKgDL\"]},\"@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol\":{\"keccak256\":\"0xf449ca0a763d4b1b4462cf8706857074492f324020a2b9d099181b5383055ad3\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c5ec4671e17a3a805bc75e989180616001f5fad2043da849e9e8c1dae2805ed3\",\"dweb:/ipfs/QmeVryqLgUYRDJhFgv957unYkEg8pqNENsUZnmvm176Fno\"]},\"@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC20BurnableUpgradeable.sol\":{\"keccak256\":\"0x5321bbe08dd6e82e85222024dc300d4959ff8615742ad63135759883a19e02a4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ac67566d96065490f06a13c7eed1ced109726be00bbcebb8d8d6f4f834eb0057\",\"dweb:/ipfs/QmbEVufXMJRP4QZLGyfcbSHoZbRRYeNCfu3fo9ur9L14LW\"]},\"@openzeppelin/contracts-upgradeable/token/ERC20/extensions/IERC20MetadataUpgradeable.sol\":{\"keccak256\":\"0x6795c369a4eefa78468e38966f7851fbc2dda5e5b9ccd3fa2b45970e2e4d3abd\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://91e63b32b515ec23a00d2370e838079bc94093524435b08e41cda6725d827470\",\"dweb:/ipfs/Qmdji5aKmdbLq26sGFXFko5PQUtokdJPT23QtKVGKsX9mw\"]},\"@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol\":{\"keccak256\":\"0x062b5a0f7cc6b0528fa350033759f3a15ba42afb57423d7c593753860f2c82e0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b3c8b4ec819fc9648ef5ae6b8edc474b2a631389fa73add4c4545e1918abe034\",\"dweb:/ipfs/Qmc8GzvTtCxR3mg3QuLRzycSMfsSjjZPyPALmLBjMxSGv6\"]},\"@openzeppelin/contracts-upgradeable/utils/StringsUpgradeable.sol\":{\"keccak256\":\"0xc7af08df3d3e818ce36f95aa879c13245772fed21b553e6033292ea4edc2a9f3\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://639c22bcf1ba4c783016c3eed1d9b546444feecb917a67201d66b6762df0b8a2\",\"dweb:/ipfs/QmebyzSijf6BPXaXLHcJPZnPpLk48UW1esmUTEoGd4hHkv\"]},\"@openzeppelin/contracts-upgradeable/utils/introspection/ERC165Upgradeable.sol\":{\"keccak256\":\"0x17c9c5d2d6b56527215ee7b3da6dde66b6f23f1b3d5c66cc436e753ef349a97a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://dd7c775bc6000f44c048796b5e013dbb3ec7592986bc289868b19ff9439ee31d\",\"dweb:/ipfs/QmSuBfTT9z9sEpmEcGihEc5DJGsXery8QyyuNfvub875ej\"]},\"@openzeppelin/contracts-upgradeable/utils/introspection/IERC165Upgradeable.sol\":{\"keccak256\":\"0x1c4860acd323e34a67b3e97faab9aaa55fe8e92b1dcf08b5f47f3468d58ce75c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3c2746f8ebb4bfb6b8e8a768296c7f85f11b36f4873daabb91933c3602f00590\",\"dweb:/ipfs/QmdumDez8WEdk9FDuP7Jp5pDSJiQeFtFSJw3B5CEHJL4KU\"]},\"@openzeppelin/contracts-upgradeable/utils/structs/EnumerableSetUpgradeable.sol\":{\"keccak256\":\"0x9dc1ad66ada6a503bef1ffde62ac688c58eac660fe50c054f6e49e3b27ae295d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://a73542094b2d0c4a2b1f2b38b40a81fe6b9d3b15e7979b4f2395e78dd29a30e8\",\"dweb:/ipfs/QmSgtQv7JGbzmZkgBjrvoxY5ofiuaLxYkre9WWgZ8qApLW\"]},\"project:/contracts/AuditToken.sol\":{\"keccak256\":\"0x8eb6c94dca809547442779e7e34bc40708d1f2570dc78fd70c0d668d9ef6d199\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b1777ed34f7391695a06e878e47993f511c01e7da5a6a69a0a1da10f5290a4da\",\"dweb:/ipfs/QmWLMYZYu4x8qbf5T1sJkesv4NZLqadFv7JrE7irTvNSxf\"]},\"project:/contracts/Locked.sol\":{\"keccak256\":\"0xfea16998cb323dfba6d4f2962cb8862b700cf1c29d0d435f027a12b99ad75a3e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6c5703b2535f5e2c178c90e8f3faf3f32e3501099d70c8239b87e03e62eabd11\",\"dweb:/ipfs/QmeM6HYqG3aMD8YWzdDo7ygmU7qp4Qr8MXYU93ybAvaXAo\"]}},\"version\":1}",
@@ -18443,7 +18467,7 @@
         688
       ],
       "Locked": [
-        16583
+        16596
       ],
       "StringsUpgradeable": [
         3785
@@ -18501,7 +18525,7 @@
         "id": 5713,
         "nodeType": "ImportDirective",
         "scope": 6471,
-        "sourceUnit": 16584,
+        "sourceUnit": 16597,
         "src": "269:22:32",
         "symbolAliases": [],
         "unitAlias": ""
@@ -18514,7 +18538,7 @@
               "id": 5714,
               "name": "Locked",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 16583,
+              "referencedDeclaration": 16596,
               "src": "316:6:32"
             },
             "id": 5715,
@@ -18559,7 +18583,7 @@
           3582,
           3831,
           3843,
-          16583
+          16596
         ],
         "contractKind": "contract",
         "fullyImplemented": true,
@@ -18570,7 +18594,7 @@
           1319,
           1509,
           1397,
-          16583,
+          16596,
           209,
           544,
           3831,
@@ -20412,7 +20436,7 @@
                   "id": 5849,
                   "name": "isNotLocked",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 16470,
+                  "referencedDeclaration": 16483,
                   "src": "2806:11:32"
                 },
                 "nodeType": "ModifierInvocation",
@@ -20886,7 +20910,7 @@
                   "id": 5891,
                   "name": "isNotLocked",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 16470,
+                  "referencedDeclaration": 16483,
                   "src": "3241:11:32"
                 },
                 "nodeType": "ModifierInvocation",
@@ -21170,7 +21194,7 @@
                   "id": 5929,
                   "name": "isMinter",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 16438,
+                  "referencedDeclaration": 16451,
                   "src": "3705:8:32"
                 },
                 "nodeType": "ModifierInvocation",
@@ -21428,7 +21452,7 @@
                   "id": 5948,
                   "name": "isNotLocked",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 16470,
+                  "referencedDeclaration": 16483,
                   "src": "3923:11:32"
                 },
                 "nodeType": "ModifierInvocation",
@@ -21654,7 +21678,7 @@
                   "id": 5970,
                   "name": "isNotLocked",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 16470,
+                  "referencedDeclaration": 16483,
                   "src": "4142:11:32"
                 },
                 "nodeType": "ModifierInvocation",
@@ -27985,7 +28009,7 @@
         688
       ],
       "Locked": [
-        16583
+        16596
       ],
       "StringsUpgradeable": [
         3785
@@ -28043,7 +28067,7 @@
         "id": 5713,
         "nodeType": "ImportDirective",
         "scope": 6471,
-        "sourceUnit": 16584,
+        "sourceUnit": 16597,
         "src": "269:22:32",
         "symbolAliases": [],
         "unitAlias": ""
@@ -28056,7 +28080,7 @@
               "id": 5714,
               "name": "Locked",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 16583,
+              "referencedDeclaration": 16596,
               "src": "316:6:32"
             },
             "id": 5715,
@@ -28101,7 +28125,7 @@
           3582,
           3831,
           3843,
-          16583
+          16596
         ],
         "contractKind": "contract",
         "fullyImplemented": true,
@@ -28112,7 +28136,7 @@
           1319,
           1509,
           1397,
-          16583,
+          16596,
           209,
           544,
           3831,
@@ -29954,7 +29978,7 @@
                   "id": 5849,
                   "name": "isNotLocked",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 16470,
+                  "referencedDeclaration": 16483,
                   "src": "2806:11:32"
                 },
                 "nodeType": "ModifierInvocation",
@@ -30428,7 +30452,7 @@
                   "id": 5891,
                   "name": "isNotLocked",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 16470,
+                  "referencedDeclaration": 16483,
                   "src": "3241:11:32"
                 },
                 "nodeType": "ModifierInvocation",
@@ -30712,7 +30736,7 @@
                   "id": 5929,
                   "name": "isMinter",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 16438,
+                  "referencedDeclaration": 16451,
                   "src": "3705:8:32"
                 },
                 "nodeType": "ModifierInvocation",
@@ -30970,7 +30994,7 @@
                   "id": 5948,
                   "name": "isNotLocked",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 16470,
+                  "referencedDeclaration": 16483,
                   "src": "3923:11:32"
                 },
                 "nodeType": "ModifierInvocation",
@@ -31196,7 +31220,7 @@
                   "id": 5970,
                   "name": "isNotLocked",
                   "nodeType": "IdentifierPath",
-                  "referencedDeclaration": 16470,
+                  "referencedDeclaration": 16483,
                   "src": "4142:11:32"
                 },
                 "nodeType": "ModifierInvocation",
@@ -38522,12 +38546,637 @@
         }
       },
       "links": {},
+      "address": "0x0Adf1fb8CcD0b793ca644C25D0e4aC13D5b15a6F",
+      "transactionHash": "0x5532b4d26ec489bdf740b915fedb9942e4a2071b9b12be8405ec3f3e3ebb8ed9"
+    },
+    "1664393507352": {
+      "events": {
+        "0x1b6f28dfffb89ba40ba9067329c3c0e8bd926256b970cf7d060cd48b1cd0e44e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "user",
+              "type": "address"
+            }
+          ],
+          "name": "AddedLock",
+          "type": "event"
+        },
+        "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "spender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Approval",
+          "type": "event"
+        },
+        "0x3134e8a2e6d97e929a7e54011ea5485d7d196dd5f0ba4d4ef95803e8e3fc257f": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "delegator",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "fromDelegate",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "toDelegate",
+              "type": "address"
+            }
+          ],
+          "name": "DelegateChanged",
+          "type": "event"
+        },
+        "0xdec2bacdd2f05b59de34da9b523dff8be42e5e38e818c82fdb0bae774387a724": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "delegate",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "previousBalance",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "newBalance",
+              "type": "uint256"
+            }
+          ],
+          "name": "DelegateVotesChanged",
+          "type": "event"
+        },
+        "0x6134e30ca79f58d7566528b3768c7d33c9c30815c63cfeae3b69f52cf31dd61a": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "user",
+              "type": "address"
+            }
+          ],
+          "name": "RemovedLock",
+          "type": "event"
+        },
+        "0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "previousAdminRole",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "newAdminRole",
+              "type": "bytes32"
+            }
+          ],
+          "name": "RoleAdminChanged",
+          "type": "event"
+        },
+        "0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleGranted",
+          "type": "event"
+        },
+        "0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleRevoked",
+          "type": "event"
+        },
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Transfer",
+          "type": "event"
+        }
+      },
+      "links": {},
       "address": "0xB251eD18802E0bA9424f70Eb43ecE6664B9A9d9a",
+      "transactionHash": "0x5532b4d26ec489bdf740b915fedb9942e4a2071b9b12be8405ec3f3e3ebb8ed9"
+    },
+    "1664394782939": {
+      "events": {
+        "0x1b6f28dfffb89ba40ba9067329c3c0e8bd926256b970cf7d060cd48b1cd0e44e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "user",
+              "type": "address"
+            }
+          ],
+          "name": "AddedLock",
+          "type": "event"
+        },
+        "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "spender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Approval",
+          "type": "event"
+        },
+        "0x3134e8a2e6d97e929a7e54011ea5485d7d196dd5f0ba4d4ef95803e8e3fc257f": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "delegator",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "fromDelegate",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "toDelegate",
+              "type": "address"
+            }
+          ],
+          "name": "DelegateChanged",
+          "type": "event"
+        },
+        "0xdec2bacdd2f05b59de34da9b523dff8be42e5e38e818c82fdb0bae774387a724": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "delegate",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "previousBalance",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "newBalance",
+              "type": "uint256"
+            }
+          ],
+          "name": "DelegateVotesChanged",
+          "type": "event"
+        },
+        "0x6134e30ca79f58d7566528b3768c7d33c9c30815c63cfeae3b69f52cf31dd61a": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "user",
+              "type": "address"
+            }
+          ],
+          "name": "RemovedLock",
+          "type": "event"
+        },
+        "0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "previousAdminRole",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "newAdminRole",
+              "type": "bytes32"
+            }
+          ],
+          "name": "RoleAdminChanged",
+          "type": "event"
+        },
+        "0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleGranted",
+          "type": "event"
+        },
+        "0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleRevoked",
+          "type": "event"
+        },
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Transfer",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0xB251eD18802E0bA9424f70Eb43ecE6664B9A9d9a",
+      "transactionHash": "0x5532b4d26ec489bdf740b915fedb9942e4a2071b9b12be8405ec3f3e3ebb8ed9"
+    },
+    "1664395625382": {
+      "events": {
+        "0x1b6f28dfffb89ba40ba9067329c3c0e8bd926256b970cf7d060cd48b1cd0e44e": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "user",
+              "type": "address"
+            }
+          ],
+          "name": "AddedLock",
+          "type": "event"
+        },
+        "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "spender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Approval",
+          "type": "event"
+        },
+        "0x3134e8a2e6d97e929a7e54011ea5485d7d196dd5f0ba4d4ef95803e8e3fc257f": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "delegator",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "fromDelegate",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "toDelegate",
+              "type": "address"
+            }
+          ],
+          "name": "DelegateChanged",
+          "type": "event"
+        },
+        "0xdec2bacdd2f05b59de34da9b523dff8be42e5e38e818c82fdb0bae774387a724": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "delegate",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "previousBalance",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "newBalance",
+              "type": "uint256"
+            }
+          ],
+          "name": "DelegateVotesChanged",
+          "type": "event"
+        },
+        "0x6134e30ca79f58d7566528b3768c7d33c9c30815c63cfeae3b69f52cf31dd61a": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "user",
+              "type": "address"
+            }
+          ],
+          "name": "RemovedLock",
+          "type": "event"
+        },
+        "0xbd79b86ffe0ab8e8776151514217cd7cacd52c909f66475c3af44e129f0b00ff": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "previousAdminRole",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "newAdminRole",
+              "type": "bytes32"
+            }
+          ],
+          "name": "RoleAdminChanged",
+          "type": "event"
+        },
+        "0x2f8788117e7eff1d82e926ec794901d17c78024a50270940304540a733656f0d": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleGranted",
+          "type": "event"
+        },
+        "0xf6391f5c32d9c69d2a47ea670b442974b53935d1edc7fd64eb21e047a839171b": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "role",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "RoleRevoked",
+          "type": "event"
+        },
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Transfer",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x3F2E02f1bD4842F16A88Bf82f5845A8ED831Bc0d",
       "transactionHash": "0x5532b4d26ec489bdf740b915fedb9942e4a2071b9b12be8405ec3f3e3ebb8ed9"
     }
   },
   "schemaVersion": "3.4.1",
-  "updatedAt": "2022-09-27T22:44:52.565Z",
+  "updatedAt": "2022-09-28T21:51:02.285Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {
