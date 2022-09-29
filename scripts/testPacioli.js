@@ -48,7 +48,7 @@ let providerForUpdate;
 
 const Members = require('../build/contracts/Members.json');
 const Token = require('../build/contracts/AuditToken.json');
-const Validation = require('../build/contracts/ValidationsNoCohort.json');
+const Validation = require('../build/contracts/ValNoCohort.json');
 
 
 let members, token, web3, validation, owner;
@@ -179,7 +179,7 @@ async function deploy() {
 
         let testHash = web3.utils.keccak256(reportURL + randomNum);
         console.log("Hash from deploy:", testHash);
-        await validation.methods.initVal(testHash, result[1], 1, "25000000000000000000").send({ from: dataSubscriber1, gas: 900001, maxFeePerGas: gasPrice, maxPriorityFeePerGas: gasPrice, });
+        await validation.methods.initVal(testHash, result[1], 0, "25000000000000000000").send({ from: dataSubscriber1, gas: 900001, maxFeePerGas: gasPrice, maxPriorityFeePerGas: gasPrice, });
         console.log("[" + run + "] Run completed");
         completed++ ;
 
@@ -188,6 +188,6 @@ async function deploy() {
         console.log(e)
     }
 }
-const MAX_RUNS = 10;
-// setInterval(deploy, 4000);
+const MAX_RUNS = 5;
+setInterval(deploy, 4000);
 deploy();
