@@ -11,7 +11,6 @@ const prompt = require('prompt-sync')({ sigint: true });
 const { create } = require("ipfs-http-client");
 
 const SECRETS_PATH = process.env.SECRETS_PATH ? process.env.SECRETS_PATH : '/secrets';
-const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : 'http://localhost:3336';
 
 // update process.env with variables not yet defined outside
 if (fs.existsSync(SECRETS_PATH)) {
@@ -19,7 +18,9 @@ if (fs.existsSync(SECRETS_PATH)) {
 } else if (process.env.PACIOLI_ENV)
     require('dotenv').config({ path: process.env.PACIOLI_ENV });
 else
-    require('dotenv').config({ path: './.env' }); 
+    require('dotenv').config({ path: './.env' });
+const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : process.env.TRANSACTION_SIGNER;
+
 
 const projectId = process.env.IPFS_USER;
 const projectSecret = process.env.IPFS_PASSWORD;
@@ -91,6 +92,7 @@ let nodeOperationsPreEvent;
 let membersContract;
 let queueContract;
 let cohortFactoryContract;
+let valHelperContract;
 let owner;
 let validationCount = 0;
 let web3;
@@ -534,30 +536,30 @@ async function isAnythingToProcess() {
 
             while (!done) {
 
-                
+
                 if (queueElement.validationHash != 0x0 && (posP != prevVal || pos == prevVal)) {
-                    
+
                     console.log("isAnythingToProcess - return hash:", queueElement[3])
-                    
+
                     return [queueElement[3], true, auditTypeFound]
                 }
-                
-                
+
+
                 else if (queueElement.auditType == auditTypeFound && posP == prevVal) {
-                    
+
                     console.log("second else if")
                     console.log("prev value 1", prevVal);
 
                     queueElement = await queueContract.methods.get(prevVal).call();
                     console.log("isAnythingToProcess 11111 - looping through queue:", queueElement)
 
-                    
-                    
+
+
                     prevVal = queueElement.next;
                     //get next element from the queue
                     queueElement = await queueContract.methods.get(prevVal).call();
                     console.log("isAnythingToProcess - looping through queue:", queueElement)
-                    
+
                     console.log("prev value 2", prevVal);
                     // return ;
 
