@@ -8,6 +8,7 @@ require('dotenv').config({ path: '.env' }); // update process.env.
 
 const cohortAddress = process.env.VALIDATIONS_COHORT_ADDRESS;
 const endPoint = process.env.MUMBAI_SERVER;
+const transactionSignerPort = process.env.TRANSACTION_SIGNER_PORT
 
 
 // const web3 = createAlchemyWeb3(endPoint);
@@ -162,7 +163,7 @@ app.get('/sign', async function (req, res) {
     }
 })
 
-let server = app.listen(3336, function () {
+let server = app.listen(transactionSignerPort, function () {
     let host = server.address().address
     let port = server.address().port
     console.log("Example app listening at http://%s:%s", host, port)
