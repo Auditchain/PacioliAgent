@@ -19,7 +19,8 @@ if (fs.existsSync(SECRETS_PATH)) {
     require('dotenv').config({ path: process.env.PACIOLI_ENV });
 else
     require('dotenv').config({ path: './.env' });
-const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : "http://localhost:" +process.env.TRANSACTION_SIGNER_PORT;
+const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : process.env.TRANSACTION_SIGNER_URL +process.env.TRANSACTION_SIGNER_PORT;
+
 
 
 const projectId = process.env.IPFS_USER;
@@ -183,10 +184,10 @@ async function verifyPacioli(metadataUrl, trxHash) {
     const queryingPacioliStart = Date.now();
     console.log("[1 " + trxHash + "]" + "  Querying Pacioli " + reportUrl);
 
-    // const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
-    //     .catch(error => console.log("ERROR: " + error));
-    const reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
+    const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
         .catch(error => console.log("ERROR: " + error));
+    // const reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
+    //     .catch(error => console.log("ERROR: " + error));
 
 
     const timePast = (Date.now() - queryingPacioliStart) / 1000 / 60;
