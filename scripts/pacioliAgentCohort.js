@@ -999,3 +999,5 @@ if (process.env.TEST_RUNS) {
     }
 
 } else startProcess();
+
+console.log("Hello, I am pacioliAgentCohort!");

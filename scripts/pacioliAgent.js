@@ -21,9 +21,9 @@ require('dotenv').config({ path: process.env.PACIOLI_ENV });
 else
 require('dotenv').config({ path: './.env' });
 
-const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : process.env.TRANSACTION_SIGNER;
+const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : process.env.TRANSACTION_SIGNER_URL + ":"+ process.env.TRANSACTION_SIGNER_PORT;
 
-console.log("transactin signer:", process.env.TRANSACTION_SIGNER);
+console.log("transactin signer:", PROVIDER_MANAGER);
 
 
 const projectId = process.env.IPFS_USER;
@@ -930,6 +930,7 @@ async function startProcess() {
             console.log("Signer Manager is not running. Ensure that Signer Manager is running before you run Pacioli Manager");
             exit(0)
         }
+        console.log(error);
     }
 }
 
