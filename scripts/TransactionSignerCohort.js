@@ -6,7 +6,16 @@ const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 require('dotenv').config({ path: '.env' }); // update process.env.
 
 
-const cohortAddress = process.env.VALIDATIONS_COHORT_ADDRESS;
+const mode = process.env.MODE;
+let validationAddress;
+
+if (mode == "cohort")
+    validationAddress = process.env.VALIDATIONS_COHORT_ADDRESS;
+else 
+    validationAddress = process.env.VALIDATIONS_NO_COHORT_ADDRESS;
+
+
+
 const endPoint = process.env.MUMBAI_SERVER;
 const transactionSignerPort = process.env.TRANSACTION_SIGNER_PORT
 
@@ -66,14 +75,14 @@ async function sign(data, nonce) {
             let gas;
             try {
                 gas = await web3.eth.estimateGas({
-                    to: cohortAddress,
+                    to: validationAddress,
                     data: data,
                     from: publicKey,
                 })
             } catch (error) {
 
                 console.log("gas error:", error);
-                console.log("to:", cohortAddress);
+                console.log("to:", validationAddress);
                 console.log("data", data);
                 console.log("from", publicKey);
 
@@ -93,7 +102,7 @@ async function sign(data, nonce) {
 
 
             const transaction = {
-                'to': cohortAddress,
+                'to': validationAddress,
                 'value': 0,
                 'gas': gas,
                 'maxFeePerGas': gasPrice,
