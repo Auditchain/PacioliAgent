@@ -19,7 +19,7 @@ if (fs.existsSync(SECRETS_PATH)) {
     require('dotenv').config({ path: process.env.PACIOLI_ENV });
 else
     require('dotenv').config({ path: './.env' });
-const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : process.env.TRANSACTION_SIGNER_URL +process.env.TRANSACTION_SIGNER_PORT;
+const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : process.env.TRANSACTION_SIGNER_URL + ":"+ process.env.TRANSACTION_SIGNER_PORT;
 
 
 
