@@ -50,7 +50,7 @@ const pacioli = function(){
                 "'saveToIPFS("+SaveToIPFS+",[default(false)])'",
                 "'isLinkbase("+IsLinkbase+",[default(false)])'",
                 "'noXBRLvalidation(false,[default(false)])'",
-                "'autoloadReportingStyleAC(true,[default(false)])'",
+                "'autoloadIFRSorUSGAAPrules(true,[default(false)])'",
                 "'valueAssertionsCanDerive(true,[default(false)])'",
                 "'lastPeriodOnly(true,[default(false)])'",
                 "'lastPeriodOnlyAllDimensions(true,[default(false)])'",
