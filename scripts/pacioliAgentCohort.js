@@ -19,8 +19,7 @@ if (fs.existsSync(SECRETS_PATH)) {
     require('dotenv').config({ path: process.env.PACIOLI_ENV });
 else
     require('dotenv').config({ path: './.env' });
-const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : process.env.TRANSACTION_SIGNER_URL +process.env.TRANSACTION_SIGNER_PORT;
-
+const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : process.env.TRANSACTION_SIGNER_URL + ":"+ process.env.TRANSACTION_SIGNER_PORT;
 
 
 const projectId = process.env.IPFS_USER;
@@ -79,7 +78,7 @@ const valHelpers = process.env.VALIDATIONS_HELPERS_ADDRESS;
 
 let validatorDetails = null;
 let agentBornAT;
-let intervalSize = 4000;
+let intervalSize = 10000;
 let sleepTime = 5000;
 let zeroTransaction = "0x0000000000000000000000000000000000000000000000000000000000000000";
 let setIntervalId;
@@ -486,9 +485,6 @@ async function isAnythingToProcess() {
     const pos = await validations.methods.reg(owner).call();
     console.log("pos:", pos);
 
-    let enterprise;
-    let auditType;
-
     if (pos > 0) {
 
         let queueElement = await queueContract.methods.get(pos).call();
@@ -511,70 +507,47 @@ async function isAnythingToProcess() {
     let queueElement = await queueContract.methods.get(prevVal).call();
     console.log("valHash:", queueElement[3]);
 
-
-
     let val = await validations.methods.validations(queueElement[3]).call();
-    // let processedId = await validations.methods.processedId().call();
 
-    // console.log("processed Id:", processedId);
     console.log("val[10]", val[10]);
     console.log("queueElement.hash", queueElement.validationHash);
 
-    console.log(queueElement);
+    while (!done) {
 
-    const list = await cohortFactoryContract.methods.returnValidatorCohortsList(owner, queueElement.user).call();
-    console.log("list length:", list);
-
-
-    if (list.length > 0) {
-
-        for (let i = 0; i < list.length; i++) {
-            console.log("within for")
-            const auditTypeFound = list[i]
-
-            console.log("auditTypeFound", auditTypeFound)
+        const list = await cohortFactoryContract.methods.returnValidatorCohortsList(owner, queueElement.user).call();
+        console.log("list length:", list);
 
 
-            while (!done) {
+        if (queueElement.validationHash != 0x0 && (posP != prevVal || pos == prevVal) && list.includes(queueElement.auditType) && list.length > 0) {
 
+            console.log("isAnythingToProcess - return hash:", queueElement[3])
 
-                if (queueElement.validationHash != 0x0 && (posP != prevVal || pos == prevVal)) {
-
-                    console.log("isAnythingToProcess - return hash:", queueElement[3])
-
-                    return [queueElement[3], true, auditTypeFound]
-                }
-
-
-                else if (queueElement.auditType == auditTypeFound && posP == prevVal) {
-
-                    console.log("second else if")
-                    console.log("prev value 1", prevVal);
-
-                    queueElement = await queueContract.methods.get(prevVal).call();
-                    console.log("isAnythingToProcess 11111 - looping through queue:", queueElement)
-
-
-
-                    prevVal = queueElement.next;
-                    //get next element from the queue
-                    queueElement = await queueContract.methods.get(prevVal).call();
-                    console.log("isAnythingToProcess - looping through queue:", queueElement)
-
-                    console.log("prev value 2", prevVal);
-                    // return ;
-
-
-                }
-                else if (prevVal == tail || prevVal == 0) {
-                    console.log("isAnythingToProcess - Nothing to process")
-                    return [zeroTransaction, true, 0];
-                }
-            }
+            return [queueElement[3], true]
         }
-    } else {
-        return [zeroTransaction, true, 0];
+
+
+        else if (prevVal != 0 &&  (posP == prevVal || list.length  == 0)) {
+
+            console.log("second else if")
+            console.log("prev value 1", prevVal);
+
+            queueElement = await queueContract.methods.get(prevVal).call();
+            console.log("isAnythingToProcess 1 - looping through queue:")
+
+            prevVal = queueElement.next;
+            //get next element from the queue
+            queueElement = await queueContract.methods.get(prevVal).call();
+            // console.log("isAnythingToProcess - looping through queue:", queueElement)
+
+            console.log("prev value 2", prevVal);
+            // return ;
+        }
+        else if (prevVal == tail || prevVal == 0) {
+            console.log("isAnythingToProcess 2 - Nothing to process")
+            return [zeroTransaction, true];
+        }
     }
+   
 }
 
 /**
