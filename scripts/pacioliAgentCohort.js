@@ -22,6 +22,7 @@ else
 const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : process.env.TRANSACTION_SIGNER_URL + ":"+ process.env.TRANSACTION_SIGNER_PORT;
 
 
+
 const projectId = process.env.IPFS_USER;
 const projectSecret = process.env.IPFS_PASSWORD;
 const auth = 'Basic ' + Buffer.from(projectId + ':' + projectSecret).toString('base64');
@@ -972,3 +973,5 @@ if (process.env.TEST_RUNS) {
     }
 
 } else startProcess();
+
+console.log("Hello, I am pacioliAgentCohort!");
