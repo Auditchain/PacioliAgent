@@ -19,7 +19,7 @@ if (fs.existsSync(SECRETS_PATH)) {
     require('dotenv').config({ path: process.env.PACIOLI_ENV });
 else
     require('dotenv').config({ path: './.env' });
-const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : process.env.TRANSACTION_SIGNER_URL + ":"+ process.env.TRANSACTION_SIGNER_PORT;
+const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : process.env.TRANSACTION_SIGNER_URL + ":" + process.env.TRANSACTION_SIGNER_PORT;
 
 
 
@@ -183,11 +183,14 @@ async function verifyPacioli(metadataUrl, trxHash) {
     const reportUrl = JSON.parse(JSON.stringify(reportContent1))["reportUrl"];
     const queryingPacioliStart = Date.now();
     console.log("[1 " + trxHash + "]" + "  Querying Pacioli " + reportUrl);
+    let reportContent;
 
-    const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
-        .catch(error => console.log("ERROR: " + error));
-    // const reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
-    //     .catch(error => console.log("ERROR: " + error));
+    if (process.env.ENV == "remote")
+        reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
+            .catch(error => console.log("ERROR: " + error));
+    else
+        reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
+            .catch(error => console.log("ERROR: " + error));
 
 
     const timePast = (Date.now() - queryingPacioliStart) / 1000 / 60;
@@ -489,9 +492,6 @@ async function isAnythingToProcess() {
     if (pos > 0) {
 
         let queueElement = await queueContract.methods.get(pos).call();
-        enterprise = queueElement.user;
-        auditType = queueElement.auditType;
-
         if (queueElement[3] != zeroTransaction) {
 
             let valResult = await validations.methods.isValidated(queueElement[3]).call({ from: owner });
@@ -527,7 +527,7 @@ async function isAnythingToProcess() {
         }
 
 
-        else if (prevVal != 0 &&  (posP == prevVal || list.length  == 0)) {
+        else if (prevVal != 0 && (posP == prevVal || list.length == 0)) {
 
             console.log("second else if")
             console.log("prev value 1", prevVal);
@@ -548,7 +548,6 @@ async function isAnythingToProcess() {
             return [zeroTransaction, true];
         }
     }
-   
 }
 
 /**
