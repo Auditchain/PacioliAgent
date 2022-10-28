@@ -515,11 +515,15 @@ async function isAnythingToProcess() {
 
     while (!done) {
 
-        const list = await cohortFactoryContract.methods.returnValidatorCohortsList(owner, queueElement.user).call();
-        console.log("list length:", list);
+        const isInvited = await cohortFactoryContract.methods.isValidatorInvited(queueElement.user, owner, queueElement.auditType).call();
+        console.log("is invited:", isInvited[1]);
 
+        let valResult = await validations.methods.isValidated(queueElement.validationHash).call({ from: owner });
 
-        if (queueElement.validationHash != 0x0 && (posP != prevVal || pos == prevVal) && list.includes(queueElement.auditType) && list.length > 0) {
+        console.log("is validated:", valResult[0]);
+        console.log("number of validations:", valResult[1]);
+
+        if (valResult[0] == 0  && queueElement.validationHash != 0x0 && (posP != prevVal || pos == prevVal) && isInvited[1]) {
 
             console.log("isAnythingToProcess - return hash:", queueElement[3])
 
@@ -527,7 +531,7 @@ async function isAnythingToProcess() {
         }
 
 
-        else if (prevVal != 0 && (posP == prevVal || list.length == 0)) {
+        else if (prevVal != 0 && (posP == prevVal || !isInvited[1] ) ) {
 
             console.log("second else if")
             console.log("prev value 1", prevVal);
