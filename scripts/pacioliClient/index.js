@@ -44,7 +44,7 @@ const pacioli = function(){
                 "--peer myIP",
                 "--jsonResultFile", tmpFile,
                 "--",
-                "'generateHiddenHTML(true,[default(false)])'",
+                "'generateHiddenHTML(false,[default(false)])'", // generate HTML technical report?
                 "\"url('"+REPORT_URL+"',[])\"",
                 "\"address('"+ MY_ADDRESS + "',[default('')])\"",
                 "'saveToIPFS("+SaveToIPFS+",[default(false)])'",
