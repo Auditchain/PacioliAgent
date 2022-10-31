@@ -531,7 +531,7 @@ async function isAnythingToProcess() {
         }
 
 
-        else if (prevVal != 0 && (posP == prevVal || !isInvited[1] ) ) {
+        else if (prevVal != 0 && (posP == prevVal || !isInvited[1] || valResult[0]) ) {
 
             console.log("second else if")
             console.log("prev value 1", prevVal);
@@ -630,7 +630,7 @@ async function checkValQueue() {
                     console.log("number of validations:", valResult[1]);
 
                     console.log("from checkValQueue", validationHash);
-                    if (valResult[0] == 0 && valResult[1] <= minValidatorCount) {
+                    if (valResult[0] == 0) {
 
                         try {
 
