@@ -6,8 +6,18 @@ const { createAlchemyWeb3 } = require("@alch/alchemy-web3");
 require('dotenv').config({ path: '.env' }); // update process.env.
 
 
-const nonCohortAddress = process.env.VALIDATIONS_NO_COHORT_ADDRESS;
+const mode = process.env.MODE;
+let validationAddress;
+
+if (mode == "cohort")
+    validationAddress = process.env.VALIDATIONS_COHORT_ADDRESS;
+else 
+    validationAddress = process.env.VALIDATIONS_NO_COHORT_ADDRESS;
+
+
+
 const endPoint = process.env.MUMBAI_SERVER;
+const transactionSignerPort = process.env.TRANSACTION_SIGNER_PORT
 
 
 // const web3 = createAlchemyWeb3(endPoint);
@@ -59,20 +69,20 @@ async function sign(data, nonce) {
 
     try {
 
-        if (data.startsWith("0x42d47412") || data.startsWith("0xd4632bcf") || data.startsWith("0x87c77617")) {
+        if (data.startsWith("0x42d47412") || data.startsWith("0xd4632bcf") || data.startsWith("0x87c77617") || data.startsWith('0xbe5d7aef')) {
 
             let gasPrice = Number(await web3.eth.getGasPrice()) + 100000000; //add extra 5% to ensure validation
             let gas;
             try {
                 gas = await web3.eth.estimateGas({
-                    to: nonCohortAddress,
+                    to: validationAddress,
                     data: data,
                     from: publicKey,
                 })
             } catch (error) {
 
                 console.log("gas error:", error);
-                console.log("to:", nonCohortAddress);
+                console.log("to:", validationAddress);
                 console.log("data", data);
                 console.log("from", publicKey);
 
@@ -92,7 +102,7 @@ async function sign(data, nonce) {
 
 
             const transaction = {
-                'to': nonCohortAddress,
+                'to': validationAddress,
                 'value': 0,
                 'gas': gas,
                 'maxFeePerGas': gasPrice,
@@ -157,12 +167,12 @@ app.get('/sign', async function (req, res) {
         res.end(JSON.stringify(signedTx));
 
     } catch (err) {
-        console.log(err);
+        console.log(err)
         res.end(err)
     }
 })
 
-let server = app.listen(3333, function () {
+let server = app.listen(transactionSignerPort, function () {
     let host = server.address().address
     let port = server.address().port
     console.log("Example app listening at http://%s:%s", host, port)

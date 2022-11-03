@@ -10,7 +10,6 @@ const prompt = require('prompt-sync')({ sigint: true });
 
 const { create } = require("ipfs-http-client");
 
-
 const SECRETS_PATH = process.env.SECRETS_PATH ? process.env.SECRETS_PATH : '/secrets';
 
 // update process.env with variables not yet defined outside
@@ -20,10 +19,8 @@ if (fs.existsSync(SECRETS_PATH)) {
     require('dotenv').config({ path: process.env.PACIOLI_ENV });
 else
     require('dotenv').config({ path: './.env' });
-
 const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : process.env.TRANSACTION_SIGNER_URL + ":" + process.env.TRANSACTION_SIGNER_PORT;
 
-console.log("transactin signer:", PROVIDER_MANAGER);
 
 
 const projectId = process.env.IPFS_USER;
@@ -54,11 +51,13 @@ var rl = readline.createInterface({
     terminal: true
 });
 
-const NON_COHORT = require('../build/contracts/ValNoCohort.json');
+const COHORT = require('../build/contracts/ValCohort.json');
+const COHORT_FACTORY = require('../build/contracts/CohortFactory.json');
 const NODE_OPERATIONS = require('../build/contracts/NodeOperations.json')
 const MEMBERS = require('../build/contracts/Members.json');
 const QUEUE = require('../build/contracts/Queue.json');
 const VAL_HELPERS = require('../build/contracts/ValidationHelpers.json');
+
 
 //TODO: this module is still copied from https://github.com/Auditchain/Reporting-Validation-Engine/tree/main/clientExamples/pacioliClient:
 const pacioli = require('./pacioliClient');
@@ -70,15 +69,17 @@ console.log("end point:", endPoint)
 
 
 // Address for smart contracts
-const nonCohortAddress = process.env.VALIDATIONS_NO_COHORT_ADDRESS;
-const nodeOperationsAddress = process.env.NODE_OPERATIONS_ADDRESS;
+const validation = process.env.VALIDATIONS_COHORT_ADDRESS;
+const nodeOperations = process.env.NODE_OPERATIONS_ADDRESS;
 const members = process.env.MEMBER_ADDRESS;
-const queue = process.env.QUEUE_ADDRESS;
+const queue = process.env.QUEUE_COHORT_ADDRESS;
+const cohortFactory = process.env.COHORT_FACTORY_ADDRESS
 const valHelpers = process.env.VALIDATIONS_HELPERS_ADDRESS;
+
 
 let validatorDetails = null;
 let agentBornAT;
-let intervalSize = 4000;
+let intervalSize = 10000;
 let sleepTime = 5000;
 let zeroTransaction = "0x0000000000000000000000000000000000000000000000000000000000000000";
 let setIntervalId;
@@ -90,7 +91,8 @@ const ipfsBase = 'https://ipfs.infura.io/ipfs/';
 let validations;
 let nodeOperationsPreEvent;
 let membersContract;
-let queueContract
+let queueContract;
+let cohortFactoryContract;
 let valHelperContract;
 let owner;
 let validationCount = 0;
@@ -148,13 +150,13 @@ async function fetchValidatorDetails() {
 */
 async function setUpContracts() {
 
-    validations = new web3.eth.Contract(NON_COHORT["abi"], nonCohortAddress);
-    nodeOperationsPreEvent = new web3.eth.Contract(NODE_OPERATIONS["abi"], nodeOperationsAddress);
+    validations = new web3.eth.Contract(COHORT["abi"], validation);
+    nodeOperationsPreEvent = new web3.eth.Contract(NODE_OPERATIONS["abi"], nodeOperations);
     membersContract = new web3.eth.Contract(MEMBERS["abi"], members);
     queueContract = new web3.eth.Contract(QUEUE["abi"], queue);
+    cohortFactoryContract = new web3.eth.Contract(COHORT_FACTORY["abi"], cohortFactory);
     valHelperContract = new web3.eth.Contract(VAL_HELPERS['abi'], valHelpers);
 }
-
 
 
 
@@ -164,11 +166,20 @@ async function setUpContracts() {
  * @param  {blockchain transaction hash} trxHash
  * @returns {location of Pacioli report on IPFS and result of validation valid or not}
  */
- async function verifyPacioli(metadataUrl, trxHash) {
+async function verifyPacioli(metadataUrl, trxHash) {
 
     console.log("metadataUrl:", metadataUrl)
 
     const reportContent1 = (await axios.get(ipfsBasePrivate + metadataUrl)).data;
+    // const result = await ipfs.cat(metadataUrl);
+
+
+    // let content = [];
+    // for await (const chunk of result) {
+    //   content = [...content, ...chunk];
+    // }
+    // console.log("content", JSON.stringify(reportContent1));
+
     const reportUrl = JSON.parse(JSON.stringify(reportContent1))["reportUrl"];
     const queryingPacioliStart = Date.now();
     console.log("[1 " + trxHash + "]" + "  Querying Pacioli " + reportUrl);
@@ -497,32 +508,47 @@ async function isAnythingToProcess() {
     let queueElement = await queueContract.methods.get(prevVal).call();
     console.log("valHash:", queueElement[3]);
 
+    let val = await validations.methods.validations(queueElement[3]).call();
+
+    console.log("val[10]", val[10]);
+    console.log("queueElement.hash", queueElement.validationHash);
 
     while (!done) {
 
-        let val = await validations.methods.validations(queueElement[3]).call();
-        // let processedId = await validations.methods.processedId().call();
+        const isInvited = await cohortFactoryContract.methods.isValidatorInvited(queueElement.user, owner, queueElement.auditType).call();
+        console.log("is invited:", isInvited[1]);
 
-        // console.log("processed Id:", processedId);
-        console.log("val[10]", val[10]);
-        console.log("queueElement[3]", queueElement[3]);
+        let valResult = await validations.methods.isValidated(queueElement.validationHash).call({ from: owner });
 
-        if (Number(val[10]) > minValidatorCount) {
+        console.log("is validated:", valResult[0]);
+        console.log("number of validations:", valResult[1]);
 
-            queueElement = await queueContract.methods.get(prevVal).call();
-            prevVal = queueElement[1];
-            //get next element from the queue
-            queueElement = await queueContract.methods.get(prevVal).call();
-            console.log("isAnythingToProcess - looping through queue:", queueElement)
-
-
-        } else if (val[10] <= minValidatorCount && queueElement[3] != 0x0 && posP != prevVal) {
+        if (valResult[0] == 0  && queueElement.validationHash != 0x0 && (posP != prevVal || pos == prevVal) && isInvited[1]) {
 
             console.log("isAnythingToProcess - return hash:", queueElement[3])
 
             return [queueElement[3], true]
-        } else {
-            console.log("isAnythingToProcess - return hash forced to 0x0:", zeroTransaction)
+        }
+
+
+        else if (prevVal != 0 && (posP == prevVal || !isInvited[1] || valResult[0]) ) {
+
+            console.log("second else if")
+            console.log("prev value 1", prevVal);
+
+            queueElement = await queueContract.methods.get(prevVal).call();
+            console.log("isAnythingToProcess 1 - looping through queue:")
+
+            prevVal = queueElement.next;
+            //get next element from the queue
+            queueElement = await queueContract.methods.get(prevVal).call();
+            // console.log("isAnythingToProcess - looping through queue:", queueElement)
+
+            console.log("prev value 2", prevVal);
+            // return ;
+        }
+        else if (prevVal == tail || prevVal == 0) {
+            console.log("isAnythingToProcess 2 - Nothing to process")
             return [zeroTransaction, true];
         }
     }
@@ -559,9 +585,11 @@ async function checkValQueue() {
                 if (valTx[1]) {
                     const data = await validations.methods.registerValidation().encodeABI();
 
+
                     console.log("[11.1 Attempting to register for validation.... ");
 
                     const nonce = await web3.eth.getTransactionCount(owner);
+                    console.log("data:", `${PROVIDER_MANAGER}/sign?data=${data}&nonce=${nonce}`);
                     const signedMessage = (await axios.get(`${PROVIDER_MANAGER}/sign?data=${data}&nonce=${nonce}`)).data;
                     let receipt;
 
@@ -602,7 +630,7 @@ async function checkValQueue() {
                     console.log("number of validations:", valResult[1]);
 
                     console.log("from checkValQueue", validationHash);
-                    if (valResult[0] == 0 && valResult[1] <= minValidatorCount) {
+                    if (valResult[0] == 0) {
 
                         try {
 
@@ -762,12 +790,9 @@ async function executeVote(valHash, trxHash) {
     let winners = [];
     let votes = [];
 
-
     // let results = await validations.methods.collectValidationResults(valHash).call();
 
-    let results = await valHelperContract.methods.determineWinners(valHash, nonCohortAddress).call();
-
-    console.log("execute vote:", results);
+    let results = await valHelperContract.methods.determineWinners(valHash, validation).call();
 
 
     for (let i = 0; i < results[0].length; i++) {
@@ -925,7 +950,6 @@ async function startProcess() {
             console.log("Signer Manager is not running. Ensure that Signer Manager is running before you run Pacioli Manager");
             exit(0)
         }
-        console.log(error);
     }
 }
 
@@ -952,3 +976,5 @@ if (process.env.TEST_RUNS) {
     }
 
 } else startProcess();
+
+console.log("Hello, I am pacioliAgentCohort!");
