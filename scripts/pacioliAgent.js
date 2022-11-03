@@ -17,11 +17,11 @@ const SECRETS_PATH = process.env.SECRETS_PATH ? process.env.SECRETS_PATH : '/sec
 if (fs.existsSync(SECRETS_PATH)) {
     require('dotenv').config({ path: 'PacioliNode.env' });
 } else if (process.env.PACIOLI_ENV)
-require('dotenv').config({ path: process.env.PACIOLI_ENV });
+    require('dotenv').config({ path: process.env.PACIOLI_ENV });
 else
-require('dotenv').config({ path: './.env' });
+    require('dotenv').config({ path: './.env' });
 
-const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : process.env.TRANSACTION_SIGNER_URL + ":"+ process.env.TRANSACTION_SIGNER_PORT;
+const PROVIDER_MANAGER = process.env.PROVIDER_MANAGER ? process.env.PROVIDER_MANAGER : process.env.TRANSACTION_SIGNER_URL + ":" + process.env.TRANSACTION_SIGNER_PORT;
 
 console.log("transactin signer:", PROVIDER_MANAGER);
 
@@ -157,34 +157,29 @@ async function setUpContracts() {
 
 
 
+
 /** 
  * @dev Call Pacioli endpoint and receive report, then store it on IPFS
  * @param  {contains information about the location of the submitted report on IPFS by the data subscriber } metadataUrl
  * @param  {blockchain transaction hash} trxHash
  * @returns {location of Pacioli report on IPFS and result of validation valid or not}
  */
-async function verifyPacioli(metadataUrl, trxHash) {
+ async function verifyPacioli(metadataUrl, trxHash) {
 
     console.log("metadataUrl:", metadataUrl)
 
     const reportContent1 = (await axios.get(ipfsBasePrivate + metadataUrl)).data;
-    // const result = await ipfs.cat(metadataUrl);
-
-
-    // let content = [];
-    // for await (const chunk of result) {
-    //   content = [...content, ...chunk];
-    // }
-    // console.log("content", JSON.stringify(reportContent1));
-
     const reportUrl = JSON.parse(JSON.stringify(reportContent1))["reportUrl"];
     const queryingPacioliStart = Date.now();
     console.log("[1 " + trxHash + "]" + "  Querying Pacioli " + reportUrl);
+    let reportContent;
 
-    // const reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
-    //     .catch(error => console.log("ERROR: " + error));
-    const reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
-        .catch(error => console.log("ERROR: " + error));
+    if (process.env.ENV == "remote")
+        reportContent = await pacioli.callRemote(reportUrl, trxHash, true)
+            .catch(error => console.log("ERROR: " + error));
+    else
+        reportContent = await pacioli.callLocal(reportUrl, trxHash, true)
+            .catch(error => console.log("ERROR: " + error));
 
 
     const timePast = (Date.now() - queryingPacioliStart) / 1000 / 60;
@@ -512,7 +507,7 @@ async function isAnythingToProcess() {
         console.log("val[10]", val[10]);
         console.log("queueElement[3]", queueElement[3]);
 
-        if (Number(val[10]) > minValidatorCount ) {
+        if (Number(val[10]) > minValidatorCount) {
 
             queueElement = await queueContract.methods.get(prevVal).call();
             prevVal = queueElement[1];
@@ -767,11 +762,11 @@ async function executeVote(valHash, trxHash) {
     let winners = [];
     let votes = [];
 
-    
+
     // let results = await validations.methods.collectValidationResults(valHash).call();
 
     let results = await valHelperContract.methods.determineWinners(valHash, nonCohortAddress).call();
-    
+
     console.log("execute vote:", results);
 
 
