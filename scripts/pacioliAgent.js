@@ -359,11 +359,13 @@ function sleep(ms) {
  * @returns {winner address for which check was done } winnerAddress
  */
 
-async function checkHash(validators, valHash) {
+async function checkHash(validators, valHash, i) {
 
     const count = validators.length;
     const winnerSelected = Math.floor((Math.random() * count));
-    const winnerAddress = validators[winnerSelected];
+    // const winnerAddress = validators[winnerSelected];
+    const winnerAddress = validators[i];
+
 
     console.log("[8 " + "0x" + "] Verifying winner validation for account:" + winnerAddress)
 
@@ -504,7 +506,7 @@ async function isAnythingToProcess() {
         // let processedId = await validations.methods.processedId().call();
 
         // console.log("processed Id:", processedId);
-        console.log("val[10]", val[10]);
+        console.log("regNum", val.regNum);
         console.log("queueElement[3]", queueElement[3]);
 
         if (Number(val[10]) > minValidatorCount) {
@@ -513,7 +515,7 @@ async function isAnythingToProcess() {
             prevVal = queueElement[1];
             //get next element from the queue
             queueElement = await queueContract.methods.get(prevVal).call();
-            console.log("isAnythingToProcess - looping through queue:", queueElement)
+            console.log("isAnythingToProcess - looping through queue:", queueElement.id)
 
 
         } else if (val[10] <= minValidatorCount && queueElement[3] != 0x0 && posP != prevVal) {
@@ -568,7 +570,7 @@ async function checkValQueue() {
                     if (signedMessage != "Not approved call") {
 
                         receipt = await web3.eth.sendSignedTransaction(signedMessage);
-                        console.log("receipt:", receipt.logs[0]);
+                        // console.log("receipt:", receipt.logs[0]);
 
                         if (receipt.logs[0].data == zeroTransaction)
                             console.log("[11 " + "Failed to register for processing...  ");
@@ -771,7 +773,7 @@ async function executeVote(valHash, trxHash) {
 
 
     for (let i = 0; i < results[0].length; i++) {
-        const [vote, winner] = await checkHash(results[0], valHash);
+        const [vote, winner] = await checkHash(results[0], valHash, i);
 
         if (winner != null) {
             votes[i] = vote;
